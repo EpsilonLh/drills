@@ -1,0 +1,456 @@
+{
+  "summary": {
+    "reference": {
+      "luts": [
+        300,
+        305,
+        306
+      ],
+      "mean": 303.6666666666667,
+      "std": 2.6246692913372702,
+      "late_endpoint_mean": 320.25,
+      "endpoint_feasible_fraction": 1.0,
+      "actions_different_from_reference": 0,
+      "training_seconds": 722.5098850040004
+    },
+    "A": {
+      "luts": [
+        300,
+        307,
+        306
+      ],
+      "mean": 304.3333333333333,
+      "std": 3.091206165165235,
+      "late_endpoint_mean": 321.6,
+      "endpoint_feasible_fraction": 1.0,
+      "actions_different_from_reference": 165,
+      "training_seconds": 440.6746752230002
+    },
+    "B": {
+      "luts": [
+        300,
+        307,
+        306
+      ],
+      "mean": 304.3333333333333,
+      "std": 3.091206165165235,
+      "late_endpoint_mean": 319.9166666666667,
+      "endpoint_feasible_fraction": 1.0,
+      "actions_different_from_reference": 116,
+      "training_seconds": 470.92134462599984
+    },
+    "C": {
+      "luts": [
+        301,
+        307,
+        306
+      ],
+      "mean": 304.6666666666667,
+      "std": 2.6246692913372702,
+      "late_endpoint_mean": 321.9,
+      "endpoint_feasible_fraction": 1.0,
+      "actions_different_from_reference": 163,
+      "training_seconds": 500.63040770700024
+    }
+  },
+  "contrasts": {
+    "A_vs_reference": {
+      "baseline": "reference",
+      "treatment": "A",
+      "reductions": [
+        0,
+        -2,
+        0
+      ],
+      "mean_reduction": -0.6666666666666666,
+      "wins": 0,
+      "ties": 2,
+      "losses": 1
+    },
+    "B_vs_A": {
+      "baseline": "A",
+      "treatment": "B",
+      "reductions": [
+        0,
+        0,
+        0
+      ],
+      "mean_reduction": 0.0,
+      "wins": 0,
+      "ties": 3,
+      "losses": 0
+    },
+    "reference_vs_C": {
+      "baseline": "C",
+      "treatment": "reference",
+      "reductions": [
+        1,
+        2,
+        0
+      ],
+      "mean_reduction": 1.0,
+      "wins": 2,
+      "ties": 1,
+      "losses": 0
+    },
+    "A_vs_C": {
+      "baseline": "C",
+      "treatment": "A",
+      "reductions": [
+        1,
+        0,
+        0
+      ],
+      "mean_reduction": 0.3333333333333333,
+      "wins": 1,
+      "ties": 2,
+      "losses": 0
+    },
+    "B_vs_C": {
+      "baseline": "C",
+      "treatment": "B",
+      "reductions": [
+        1,
+        0,
+        0
+      ],
+      "mean_reduction": 0.3333333333333333,
+      "wins": 1,
+      "ties": 2,
+      "losses": 0
+    }
+  },
+  "pairs": [
+    {
+      "group": "reference",
+      "seed": 0,
+      "luts": 300,
+      "levels": 4,
+      "reduction_vs_reference": 0,
+      "best": {
+        "luts": 300,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "resub",
+          "rewrite -z",
+          "rewrite",
+          "rewrite",
+          "rewrite -z",
+          "rewrite -z",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite",
+          "resub"
+        ],
+        "episode": 23,
+        "iteration": 10
+      },
+      "training_seconds": 244.89085529099998
+    },
+    {
+      "group": "reference",
+      "seed": 1,
+      "luts": 305,
+      "levels": 4,
+      "reduction_vs_reference": 0,
+      "best": {
+        "luts": 305,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "resub",
+          "refactor -z",
+          "rewrite",
+          "balance",
+          "refactor -z",
+          "resub",
+          "refactor",
+          "rewrite"
+        ],
+        "episode": 51,
+        "iteration": 9
+      },
+      "training_seconds": 233.87890633500027
+    },
+    {
+      "group": "reference",
+      "seed": 2,
+      "luts": 306,
+      "levels": 4,
+      "reduction_vs_reference": 0,
+      "best": {
+        "luts": 306,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "resub -z",
+          "refactor -z",
+          "rewrite -z",
+          "rewrite",
+          "rewrite -z",
+          "resub",
+          "rewrite -z",
+          "resub -z"
+        ],
+        "episode": 81,
+        "iteration": 10
+      },
+      "training_seconds": 243.74012337800013
+    },
+    {
+      "group": "A",
+      "seed": 0,
+      "luts": 300,
+      "levels": 4,
+      "reduction_vs_reference": 0,
+      "best": {
+        "luts": 300,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "resub",
+          "rewrite -z",
+          "rewrite",
+          "rewrite",
+          "rewrite -z",
+          "rewrite -z",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite",
+          "resub"
+        ],
+        "episode": 23,
+        "iteration": 10
+      },
+      "training_seconds": 149.24493112599998
+    },
+    {
+      "group": "A",
+      "seed": 1,
+      "luts": 307,
+      "levels": 4,
+      "reduction_vs_reference": -2,
+      "best": {
+        "luts": 307,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "balance",
+          "resub -z",
+          "refactor -z",
+          "resub -z",
+          "rewrite -z",
+          "resub"
+        ],
+        "episode": 70,
+        "iteration": 8
+      },
+      "training_seconds": 144.13433630200007
+    },
+    {
+      "group": "A",
+      "seed": 2,
+      "luts": 306,
+      "levels": 4,
+      "reduction_vs_reference": 0,
+      "best": {
+        "luts": 306,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "resub -z",
+          "refactor -z",
+          "rewrite -z",
+          "rewrite",
+          "rewrite -z",
+          "resub",
+          "rewrite -z",
+          "resub -z"
+        ],
+        "episode": 81,
+        "iteration": 10
+      },
+      "training_seconds": 147.29540779500013
+    },
+    {
+      "group": "B",
+      "seed": 0,
+      "luts": 300,
+      "levels": 4,
+      "reduction_vs_reference": 0,
+      "best": {
+        "luts": 300,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "resub",
+          "rewrite -z",
+          "rewrite",
+          "rewrite",
+          "rewrite -z",
+          "rewrite -z",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite",
+          "resub"
+        ],
+        "episode": 23,
+        "iteration": 10
+      },
+      "training_seconds": 159.26758071199993
+    },
+    {
+      "group": "B",
+      "seed": 1,
+      "luts": 307,
+      "levels": 4,
+      "reduction_vs_reference": -2,
+      "best": {
+        "luts": 307,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "balance",
+          "resub -z",
+          "refactor -z",
+          "resub -z",
+          "rewrite -z",
+          "resub"
+        ],
+        "episode": 70,
+        "iteration": 8
+      },
+      "training_seconds": 154.16751533500002
+    },
+    {
+      "group": "B",
+      "seed": 2,
+      "luts": 306,
+      "levels": 4,
+      "reduction_vs_reference": 0,
+      "best": {
+        "luts": 306,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "resub -z",
+          "refactor -z",
+          "rewrite -z",
+          "rewrite",
+          "rewrite -z",
+          "resub",
+          "rewrite -z",
+          "resub -z"
+        ],
+        "episode": 81,
+        "iteration": 10
+      },
+      "training_seconds": 157.48624857899992
+    },
+    {
+      "group": "C",
+      "seed": 0,
+      "luts": 301,
+      "levels": 4,
+      "reduction_vs_reference": -1,
+      "best": {
+        "luts": 301,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "refactor -z",
+          "balance",
+          "rewrite -z",
+          "rewrite -z",
+          "rewrite",
+          "refactor",
+          "resub",
+          "resub -z",
+          "rewrite -z"
+        ],
+        "episode": 64,
+        "iteration": 10
+      },
+      "training_seconds": 169.07809390900002
+    },
+    {
+      "group": "C",
+      "seed": 1,
+      "luts": 307,
+      "levels": 4,
+      "reduction_vs_reference": -2,
+      "best": {
+        "luts": 307,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "balance",
+          "resub -z",
+          "refactor -z",
+          "resub -z",
+          "rewrite -z",
+          "resub"
+        ],
+        "episode": 70,
+        "iteration": 8
+      },
+      "training_seconds": 164.49543008600017
+    },
+    {
+      "group": "C",
+      "seed": 2,
+      "luts": 306,
+      "levels": 4,
+      "reduction_vs_reference": 0,
+      "best": {
+        "luts": 306,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "resub -z",
+          "refactor -z",
+          "rewrite -z",
+          "rewrite",
+          "rewrite -z",
+          "resub",
+          "rewrite -z",
+          "resub -z"
+        ],
+        "episode": 81,
+        "iteration": 10
+      },
+      "training_seconds": 167.0568837120001
+    }
+  ],
+  "metric": "Best feasible training-time LUTs; positive reduction favors treatment",
+  "fixed_budget": "100 episodes x 10 actions, seeds 0/1/2"
+}

@@ -1,0 +1,12 @@
+{
+  "command": ".tools/conda-env/bin/python -B -m unittest discover -s tests -v",
+  "exit_code": 0,
+  "tests_passed": 24,
+  "tests_skipped": 0,
+  "seconds": 9.081,
+  "source_hashes": {
+    "tests/test_return_handling.py": "e73e85422cfda0db653ba51346fd8855a7f9b964b7acf154f69235c4c8495c96",
+    "tests/test_rewards.py": "b1a4b562c9b3015dd27a06a10520de2a770d3f8b8fc382ffe1667017cb5c201d"
+  },
+  "log_sha256": "e0a5a854f4db3cbff8069698b697e755cd4eac3fee77c89a2246f52c075f782d"
+}

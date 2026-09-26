@@ -78,6 +78,28 @@ method:
 本次固定 c=1、三个电路及种子 0/1/2 的代码、命令和实验证据见
 [实验报告](experiments/change-rewards/report.md)。
 
+## i2c 回报处理对照
+
+`method.learning_enabled` 缺省为 `true`。设为 `false` 时跳过网络与 Adam 更新，
+保留初始策略、状态处理和随机采样，用于同预算的冻结策略对照。
+`normalization.returns` 仅接受 `standardize` 或 `none`；后者保留原始折扣回报。
+`returns_epsilon` 必须为有限正数。默认配置继续使用逐轮回报标准化。
+
+本次仅测试 i2c，复用已有的 standardize/c=1 结果，新增 none/c=1、none/c=10
+和 none/c=1 的冻结组。每组采用种子 0/1/2、100 轮 × 10 步。
+
+```bash
+.tools/conda-env/bin/python -B -u experiments/i2c-return-handling/run.py
+# 中断后使用原配置、原源码接续
+.tools/conda-env/bin/python -B -u experiments/i2c-return-handling/run.py --resume
+.tools/conda-env/bin/python -B experiments/i2c-return-handling/evaluate.py
+```
+
+首次运行要求输出目录尚不存在；复核本地已完成结果时仅运行 evaluate.py。
+运行器和检查点使用实验指纹拒绝跨组或更改配置后的续跑。
+结果保存在 `results/i2c-return-handling/`，代码与紧凑证据见
+[i2c 实验报告](experiments/i2c-return-handling/report.md)。
+
 ## 参考基线
 
 采用 LUT6 映射；参考运行使用 100 episodes × 10 iterations、种子 0/1/2。参考结果取三个种子各自训练搜索最优可行解的均值。

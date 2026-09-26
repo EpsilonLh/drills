@@ -72,6 +72,10 @@ class A2C:
         self.training_seconds = 0.0
         if resume:
             saved = torch.load(self.checkpoint, map_location='cpu', weights_only=True)
+            if saved.get('learning_enabled', True) != self.method.get('learning_enabled', True):
+                raise ValueError('Cannot change learning_enabled when resuming a checkpoint.')
+            if saved.get('experiment_fingerprint') != config['runtime'].get('experiment_fingerprint'):
+                raise ValueError('Checkpoint experiment fingerprint does not match this configuration.')
             self.network.load_state_dict(saved['network'])
             current_groups = [dict(g) for g in self.optimizer.param_groups]
             self.optimizer.load_state_dict(saved['optimizer'])
@@ -106,7 +110,8 @@ class A2C:
             actions.append(action)
             state, reward, done = self.game.step(action)
             rewards.append(reward)
-        self._update(states, actions, rewards)
+        if self.method.get('learning_enabled', True):
+            self._update(states, actions, rewards)
         if self.training_seconds is not None:
             self.training_seconds += perf_counter() - started
         self.episodes_completed += 1
@@ -114,7 +119,7 @@ class A2C:
         self.save_model()
         return self.rewards[-1]
 
-    def _update(self, states, actions, rewards):
+    def _get_returns(self, rewards):
         returns = np.empty(len(rewards), dtype=np.float32)
         cumulative = 0.0
         for i in reversed(range(len(rewards))):
@@ -123,6 +128,10 @@ class A2C:
         norm = self.method['normalization']
         if norm['returns'] == 'standardize':
             returns = (returns - returns.mean()) / max(float(returns.std()), norm['returns_epsilon'])
+        return returns
+
+    def _update(self, states, actions, rewards):
+        returns = self._get_returns(rewards)
         logits, values = self.network(torch.tensor(np.asarray(states), device='cpu'))
         advantage = torch.tensor(returns, device='cpu') - values
         log_probs = logits.log_softmax(-1).gather(1, torch.tensor(actions, device='cpu')[:, None]).squeeze(1)
@@ -140,6 +149,8 @@ class A2C:
                         optimizer=self.optimizer.state_dict(), rng_state=self.rng.get_state(),
                         episodes_completed=self.episodes_completed, rewards=self.rewards,
                         training_seconds=self.training_seconds,
+                        learning_enabled=self.method.get('learning_enabled', True),
+                        experiment_fingerprint=self.config['runtime'].get('experiment_fingerprint'),
                         best=self.game.best, best_netlists=self.game.best_netlists), temporary)
         temporary.replace(self.checkpoint)
         self.game.export_best()

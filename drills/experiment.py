@@ -30,6 +30,14 @@ def load_config(filename):
         raise ValueError('Circuits, actions and initial sequence must not be empty.')
     if not 0 <= protocol['evaluation']['std_ddof'] < len(seeds):
         raise ValueError('Standard deviation ddof must be smaller than the number of seeds.')
+    if type(method.get('learning_enabled', True)) is not bool:
+        raise ValueError('method.learning_enabled must be a boolean.')
+    norm = method['normalization']
+    if norm['returns'] not in ['none', 'standardize']:
+        raise ValueError('normalization.returns must be none or standardize.')
+    epsilon = norm['returns_epsilon']
+    if type(epsilon) not in [int, float] or not math.isfinite(epsilon) or epsilon <= 0:
+        raise ValueError('normalization.returns_epsilon must be a finite positive number.')
     reward = method['reward']
     if reward.get('feasible_mode', 'table') not in ['table', 'normalized_delta']:
         raise ValueError('Reward feasible_mode must be table or normalized_delta.')
