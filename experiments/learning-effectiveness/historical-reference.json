@@ -1,0 +1,34 @@
+{
+  "manifest": "results/new-state/baseline-provenance.json",
+  "manifest_sha256": "80e8cde97c5360097ac33b782d7614c6001827cb984b96f4c39a7c4dd0b48e97",
+  "baseline_commit": "adf7bef53cdf6c4161586c03e6e2caecffe26bc4",
+  "historical_file_count": 2768,
+  "all_hashes_match": true,
+  "historical_tool_versions": "Not recorded in the original manifest; present tools are recorded in new provenance.",
+  "historical_i2c": {
+    "commit": "70d9df453bf0cd5c0b9689a2d22be2a03a8d32eb",
+    "report": "experiments/i2c-learning-horizon/report.md",
+    "report_sha256": "3825cc5997b719e982247a70b55c1dad71b766f3335f3cd73dd7b8487113ba0a",
+    "trained_10": [
+      300,
+      305,
+      306
+    ],
+    "frozen_10": [
+      301,
+      307,
+      306
+    ],
+    "trained_30": [
+      286,
+      290,
+      292
+    ],
+    "frozen_30": [
+      285,
+      291,
+      287
+    ]
+  },
+  "final_checked_at": "2026-09-26T19:41:34.093457+00:00"
+}

@@ -1,0 +1,267 @@
+{
+  "time": "2026-09-26T19:40:48.892527+00:00",
+  "training": [
+    {
+      "group": "trained",
+      "circuit": "int2float",
+      "seed": 0,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "trained",
+      "circuit": "int2float",
+      "seed": 1,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "trained",
+      "circuit": "int2float",
+      "seed": 2,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "trained",
+      "circuit": "i2c",
+      "seed": 0,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "trained",
+      "circuit": "i2c",
+      "seed": 1,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "trained",
+      "circuit": "i2c",
+      "seed": 2,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "trained",
+      "circuit": "max",
+      "seed": 0,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "trained",
+      "circuit": "max",
+      "seed": 1,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "trained",
+      "circuit": "max",
+      "seed": 2,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "frozen",
+      "circuit": "int2float",
+      "seed": 0,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "frozen",
+      "circuit": "int2float",
+      "seed": 1,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "frozen",
+      "circuit": "int2float",
+      "seed": 2,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "frozen",
+      "circuit": "i2c",
+      "seed": 0,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "frozen",
+      "circuit": "i2c",
+      "seed": 1,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "frozen",
+      "circuit": "i2c",
+      "seed": 2,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "frozen",
+      "circuit": "max",
+      "seed": 0,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "frozen",
+      "circuit": "max",
+      "seed": 1,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "frozen",
+      "circuit": "max",
+      "seed": 2,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "uniform",
+      "circuit": "int2float",
+      "seed": 0,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "uniform",
+      "circuit": "int2float",
+      "seed": 1,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "uniform",
+      "circuit": "int2float",
+      "seed": 2,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "uniform",
+      "circuit": "i2c",
+      "seed": 0,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "uniform",
+      "circuit": "i2c",
+      "seed": 1,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "uniform",
+      "circuit": "i2c",
+      "seed": 2,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "uniform",
+      "circuit": "max",
+      "seed": 0,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "uniform",
+      "circuit": "max",
+      "seed": 1,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    },
+    {
+      "group": "uniform",
+      "circuit": "max",
+      "seed": 2,
+      "completed_episodes": 100,
+      "replayed_steps": 1000,
+      "status": "complete",
+      "best_replayed": true
+    }
+  ],
+  "evaluation_rollouts": 1080,
+  "training_cec": 27,
+  "evaluation_cec": 1080,
+  "netlist_validation": {
+    "command": [
+      "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+      "-B",
+      "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness/verify.py"
+    ],
+    "source_sha256": "6f1a8e7e6d5a8eeb9689c5c24187a353ff78c3247e5d9b651a0b775dd2806db2",
+    "abc_sha256": "8bfa8e2ed1ea3c952cf9445e9467f16882b204f4c609e493bf96a83943817366",
+    "started_at": "2026-09-26T19:39:19.922020+00:00",
+    "finished_at": "2026-09-26T19:40:30.177974+00:00",
+    "status": "complete",
+    "workers": 3,
+    "exports_checked": 1110,
+    "netlists_verified": 2217
+  },
+  "reward_and_best_replay": true
+}

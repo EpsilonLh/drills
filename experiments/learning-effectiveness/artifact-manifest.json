@@ -1,0 +1,170 @@
+{
+  "command": [
+    "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+    "-B",
+    "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness/package.py"
+  ],
+  "packaged_at": "2026-09-26T19:41:34.094269+00:00",
+  "training_fingerprint": "db942d83d54c99a5e9dbf932f33e14d45e05cbc6eb0c5f83da205cf96de5ede1",
+  "training_runs": 27,
+  "evaluation_tasks": 36,
+  "evaluation_rollouts": 1080,
+  "tests_passed": 15,
+  "netlists_verified": 2217,
+  "training_checkpoints_unchanged_after_evaluation": true,
+  "historical_files_unchanged": 2768,
+  "files": {
+    "experiments/learning-effectiveness/analysis-provenance.json": {
+      "sha256": "60876ab9f56ab6dd0d23c39defba10dc2e5a3139caf3ddafbe5274679252d833",
+      "bytes": 1162
+    },
+    "experiments/learning-effectiveness/analysis.py": {
+      "sha256": "442d15302023e524fc57ba24fabf1abfe9802742fb4d0573335cb95ed4909cb9",
+      "bytes": 43419
+    },
+    "experiments/learning-effectiveness/archive-validation.json": {
+      "sha256": "80286fd213b0d12fa1aab5bee95def46d2327c2b9e903163669c6a2d63c8f322",
+      "bytes": 130
+    },
+    "experiments/learning-effectiveness/check.py": {
+      "sha256": "dbfd9cc46eccc2b26327169e8349196070af6a8f1b25918c893aaf6badc60263",
+      "bytes": 1383
+    },
+    "experiments/learning-effectiveness/common.py": {
+      "sha256": "f81b8778547ae8bd1f3223e4e733348c11e5c5d7a52b19ce29fc28d870405704",
+      "bytes": 13586
+    },
+    "experiments/learning-effectiveness/comparisons.csv": {
+      "sha256": "e96523e5ea78a256241fe258d4aae13392d83d3c62b599c1d026840e3adbe67b",
+      "bytes": 3806
+    },
+    "experiments/learning-effectiveness/diagnostics.csv": {
+      "sha256": "44682c4ffcc3e14c77a1a471ea66c042e72ae37f2b6c47259baf7285ca6687ae",
+      "bytes": 4398221
+    },
+    "experiments/learning-effectiveness/episodes.csv": {
+      "sha256": "4c206cdbba2f38c32030e67aeedb84855e4f021e305846fe59aeec72f230734d",
+      "bytes": 119568
+    },
+    "experiments/learning-effectiveness/evaluate.py": {
+      "sha256": "aa7ef0258751d53abb2b5022b3e6c7ce2c68560274782f7adf1309e9d1619e04",
+      "bytes": 10594
+    },
+    "experiments/learning-effectiveness/evaluation-provenance.json": {
+      "sha256": "50fe3abbf3ec2a2ccdcf75d0faf439da058bcf7ef8c490782e35e22a3ad33145",
+      "bytes": 39548
+    },
+    "experiments/learning-effectiveness/evaluation.csv": {
+      "sha256": "03f87b60f7466877bb2ad585c80cb8e3de54795352123b50a073b6973c71dd0d",
+      "bytes": 73215
+    },
+    "experiments/learning-effectiveness/evidence.tar.gz": {
+      "sha256": "43fe6854dea9e5b6064f8d7d4ccca7dfe3f4e84472af9890412aab9129dffdf3",
+      "bytes": 30521427
+    },
+    "experiments/learning-effectiveness/historical-reference.json": {
+      "sha256": "947ae18dc2dd5d4fb2408784445aae057f0498852b0ea70e2462ce6384c97a61",
+      "bytes": 921
+    },
+    "experiments/learning-effectiveness/model-manifest.json": {
+      "sha256": "a96fab8292813fc1a95df3fa79f26e00e4f0323adfb8af0e215964fa3c464827",
+      "bytes": 16332
+    },
+    "experiments/learning-effectiveness/netlist-validation.json": {
+      "sha256": "e015b773c7785dc4b0cb1aa79c88ba057a6e7e6144c47eaefd5bd48d2050af48",
+      "bytes": 1780724
+    },
+    "experiments/learning-effectiveness/package.py": {
+      "sha256": "bd41ed8446f61bb7b5dc18e400a53c64e62aa502a551598e8460e9720997bfa4",
+      "bytes": 5000
+    },
+    "experiments/learning-effectiveness/plot-validation.json": {
+      "sha256": "5eec3a14de89ffe0b929f5eb68e3414a6a8e6434a9070e75550dbe977f276825",
+      "bytes": 964
+    },
+    "experiments/learning-effectiveness/plot.py": {
+      "sha256": "a9feeff44e01c3140bf8c012b7f49f6017a69aab906c6366fdd4ffd4272c411e",
+      "bytes": 7200
+    },
+    "experiments/learning-effectiveness/policy-evaluation.png": {
+      "sha256": "8e986a044a44f02cdcd2bcdbd6b19d2d9acb802bc027bc97edfc5fe272b354d7",
+      "bytes": 66655
+    },
+    "experiments/learning-effectiveness/policy-evaluation.svg": {
+      "sha256": "2e8696cfd8426d00bbc23b93264113fc45205e22b4161c1d7192819a4418759b",
+      "bytes": 16899
+    },
+    "experiments/learning-effectiveness/protocol.yml": {
+      "sha256": "dc5ead9a91734f689ce0f609183a244337747cb474d7f63c94c2be786004821f",
+      "bytes": 2029
+    },
+    "experiments/learning-effectiveness/provenance.json": {
+      "sha256": "6f57e2c122198bf06d3500379eb1652225f144a739e35b4799f0fe7dd06783c7",
+      "bytes": 24753
+    },
+    "experiments/learning-effectiveness/report.md": {
+      "sha256": "fd0eb601deeb0b53c4d90a1cafb7831e244fcfd2fca9725c3eb84aff948f60c6",
+      "bytes": 15360
+    },
+    "experiments/learning-effectiveness/run.py": {
+      "sha256": "7d7543e498072b72d64b68b1fd9c58afa66467fe9bcdbdc5e7dd00b292459731",
+      "bytes": 5954
+    },
+    "experiments/learning-effectiveness/search-curves.png": {
+      "sha256": "e7a1db71bf735d19cb201a899ba3571fa63ef8e94643724f229f851a9f77dad6",
+      "bytes": 119295
+    },
+    "experiments/learning-effectiveness/search-curves.svg": {
+      "sha256": "176b605c12a44562543b563a937254799517e1781cbe0fe0c9607c83d1d12dab",
+      "bytes": 485480
+    },
+    "experiments/learning-effectiveness/steps.csv": {
+      "sha256": "b369b9d3ad29f5572dc090c76e19f544e3a488809955859719fc7de6f4dfeacc",
+      "bytes": 11582056
+    },
+    "experiments/learning-effectiveness/summary.json": {
+      "sha256": "f525482ae1798061a41bbbe22eb3edc04e8035817e36338fb681bb4bdc5e2d46",
+      "bytes": 57603
+    },
+    "experiments/learning-effectiveness/test-results.json": {
+      "sha256": "c796a8f38e18bad52190e5947425885d5cc7e6d15292211a0d0fb9042bf596ce",
+      "bytes": 2391
+    },
+    "experiments/learning-effectiveness/tests.log": {
+      "sha256": "88e434c95f615beab8603616987a4adca4ca7e180fe2d51b0d9e5f4344154adc",
+      "bytes": 1967
+    },
+    "experiments/learning-effectiveness/training.csv": {
+      "sha256": "8ffb9c6ca4a7f21f34de8c0988261506e9f6d67982192eb804399d06e441a492",
+      "bytes": 1657
+    },
+    "experiments/learning-effectiveness/trajectories.csv": {
+      "sha256": "0e179c96edf27972fae62bd342408b63e550f09894e76d4ab5020030bef568db",
+      "bytes": 852372
+    },
+    "experiments/learning-effectiveness/validation.json": {
+      "sha256": "6b2519787a7e052f65dfbdb00aa959dcec1f068af96515ff03ffbc93aaa9de05",
+      "bytes": 6212
+    },
+    "experiments/learning-effectiveness/verify.py": {
+      "sha256": "6f1a8e7e6d5a8eeb9689c5c24187a353ff78c3247e5d9b651a0b775dd2806db2",
+      "bytes": 5411
+    },
+    "experiments/learning-effectiveness/visual-review.json": {
+      "sha256": "6625da23a41b48b89b09e80eaf90966cef0ebb8cf75398af6263c8eb8d576038",
+      "bytes": 436
+    },
+    "README.md": {
+      "sha256": "8930bbedb78a57d8c1b13e95d81b36c51890429a9f3f31487f983ce7f0c1b11a",
+      "bytes": 3637
+    },
+    "drills/model.py": {
+      "sha256": "299b93b7c721a98136ff51e1428322344515676079a32b2e48e52f0ccec574dd",
+      "bytes": 7800
+    },
+    "tests/test_learning_effectiveness.py": {
+      "sha256": "6093c492b230aed0e86bdffa4094c3ad9153687291e0abe614c707cdb9b26421",
+      "bytes": 14852
+    }
+  }
+}

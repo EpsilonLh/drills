@@ -1,0 +1,9 @@
+{
+  "reviewed_at": "2026-09-26T19:40:46.577990+00:00",
+  "visual_review_passed": true,
+  "findings": "Axes, labels, legends and all panels are readable; no clipping. max uses feasibility without dropping infeasible rollouts.",
+  "images": {
+    "search-curves.png": "e7a1db71bf735d19cb201a899ba3571fa63ef8e94643724f229f851a9f77dad6",
+    "policy-evaluation.png": "8e986a044a44f02cdcd2bcdbd6b19d2d9acb802bc027bc97edfc5fe272b354d7"
+  }
+}

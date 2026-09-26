@@ -70,11 +70,14 @@ python drills.py report fpga
 .tools/conda-env/bin/python -B -m unittest discover -s tests -v
 .tools/conda-env/bin/python -B -u experiments/learning-effectiveness/run.py
 .tools/conda-env/bin/python -B -u experiments/learning-effectiveness/evaluate.py
+.tools/conda-env/bin/python -B experiments/learning-effectiveness/verify.py
 ```
 
 修改 `protocol.yml` 中工具路径以匹配本机环境。`--resume` 只接受相同源码、协议、工具和数据指纹。
 原始输出位于 `results/learning-effectiveness/`；报告、CSV 和压缩证据位于实验目录。
 `evaluate.py --report-only` 重读已有证据生成报告。图表由 `plot.py` 使用 ReportLab 绘制。
+`verify.py` 复核所有映射及未映射的最佳网表；`package.py` 核对源码、模型、交付物哈希与历史输出。
+完整模型未纳入 Git；其哈希见 `model-manifest.json`，其他机器需重新训练或复制本机权重。
 
 通用训练配置可选 `method.learning_enabled: false`，跳过 Actor/Critic 和 Adam 更新；默认仍开启学习。
 同一检查点不允许切换学习开关或实验组别续跑。

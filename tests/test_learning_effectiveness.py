@@ -15,11 +15,11 @@ import torch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'experiments/learning-effectiveness'))
-from common import (ORIGINAL, DiagnosticA2C, config, group_config, load, state_hash)
+from common import (ORIGINAL, DiagnosticA2C, config, dump, group_config, load, sha, state_hash)
 from drills.model import A2C, ActorCritic, Normalizer
 from drills.fpga_session import FPGASession
 from evaluate import inference_rollout
-from analysis import hierarchical_bootstrap, generate
+from analysis import hierarchical_bootstrap, generate, policy_comparison
 
 
 class LearningTests(unittest.TestCase):
@@ -77,6 +77,22 @@ class LearningTests(unittest.TestCase):
         for name in ('episodes/1/log.csv', 'steps.jsonl'):
             self.assertEqual((self.directory / 'trained' / name).read_bytes(),
                              (self.directory / 'frozen' / name).read_bytes())
+
+    def test_frozen_path_preserves_populated_adam_moments(self):
+        cfg = group_config(self.cfg, 'frozen', 'test-fingerprint')
+        agent = A2C(cfg, self.circuit, 0, self.directory / 'populated-adam')
+        # Exercise nonempty step/exp_avg/exp_avg_sq entries as well as parameter groups.
+        for parameter in agent.network.parameters():
+            parameter.grad = torch.ones_like(parameter)
+        agent.optimizer.step()
+        agent.optimizer.zero_grad(set_to_none=True)
+        self.assertTrue(agent.optimizer.state_dict()['state'])
+        before_network = state_hash(agent.network.state_dict())
+        before_optimizer = state_hash(agent.optimizer.state_dict())
+        with patch.object(agent, '_update', side_effect=AssertionError('Frozen update called')):
+            agent.run_episode()
+        self.assertEqual(before_network, state_hash(agent.network.state_dict()))
+        self.assertEqual(before_optimizer, state_hash(agent.optimizer.state_dict()))
 
     def test_real_tool_resume_matches_continuous_for_all_groups(self):
         for group in ('trained', 'frozen', 'uniform'):
@@ -197,6 +213,49 @@ class LearningTests(unittest.TestCase):
         self.assertEqual(len(summary['evaluation']), 36)
         self.assertEqual(summary['training_complete'], 0)
         self.assertTrue(all(r['mean_luts_reduction'] is None for r in summary['comparisons']))
+
+    def test_failed_partial_training_and_evaluation_are_not_aggregated(self):
+        cfg = config()
+        root = self.directory / 'failed-results'
+        cfg['runtime']['output_dir'] = str(root)
+        folder = root / 'training/trained/int2float/seed-0'
+        agent = DiagnosticA2C(group_config(cfg, 'trained', 'test'), self.circuit, 0, folder)
+        agent.run_episode()
+        dump(folder / 'status.json', dict(status='failed', error='Injected failure', episodes=1))
+        destination = root / 'evaluation/initial/int2float/seed-0/rollout-10000'
+        row = inference_rollout(cfg, self.circuit, agent.reference, 10000, destination)
+        row.update(policy='initial', circuit='int2float', training_seed=0, status='complete',
+                   checkpoint_sha256=sha(folder / 'snapshots/0.pt'))
+        dump(destination / 'rollout.json', row)
+        dump(destination.parent / 'status.json', dict(status='failed', completed=1, error='Injected failure'))
+        report = self.directory / 'failed-report'
+        report.mkdir()
+        with patch('analysis.HERE', report):
+            generate(cfg)
+        summary = json.loads((report / 'summary.json').read_text())
+        training = next(r for r in summary['training'] if r['group'] == 'trained' and r['circuit'] == 'int2float' and r['seed'] == 0)
+        evaluation = next(r for r in summary['evaluation'] if r['policy'] == 'initial' and r['circuit'] == 'int2float' and r['training_seed'] == 0)
+        self.assertEqual((training['status'], training['episodes_completed']), ('failed', 1))
+        self.assertEqual((evaluation['status'], evaluation['completed']), ('failed', 1))
+        self.assertIsNone(evaluation['best_luts_mean'])
+        self.assertTrue(all(r['mean_luts_reduction'] is None and r['wins'] is None for r in summary['comparisons']))
+
+    def test_infeasible_rollouts_are_counted_without_filtered_lut_means(self):
+        rows = []
+        for seed in (0, 1, 2):
+            for policy in ('initial', 'trained-100'):
+                for index in range(30):
+                    feasible = policy == 'trained-100' or index < 29
+                    rows.append(dict(policy=policy, circuit='case', training_seed=seed, evaluation_seed=10000 + index,
+                        best_luts=11 if policy == 'trained-100' else 10, best_levels=3 if feasible else 4,
+                        best_feasible=feasible, task_status='complete'))
+        comparison = policy_comparison(rows, 'case', 'initial', [0, 1, 2])
+        self.assertTrue(comparison['complete'])
+        self.assertFalse(comparison['complete_feasible'])
+        self.assertIsNone(comparison['mean_luts_reduction'])
+        self.assertEqual((comparison['baseline_feasible'], comparison['trained_feasible']), (87, 90))
+        self.assertAlmostEqual(comparison['feasibility_gain_pp'], 100 / 30)
+        self.assertEqual((comparison['wins'], comparison['ties'], comparison['losses']), (3, 0, 87))
 
 
 if __name__ == '__main__':

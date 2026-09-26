@@ -1,0 +1,54 @@
+{
+  "command": [
+    "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+    "experiments/learning-effectiveness/evaluate.py",
+    "--report-only"
+  ],
+  "finished_at": "2026-09-26T19:41:03.019885+00:00",
+  "sources": {
+    "analysis.py": "442d15302023e524fc57ba24fabf1abfe9802742fb4d0573335cb95ed4909cb9",
+    "evaluate.py": "aa7ef0258751d53abb2b5022b3e6c7ce2c68560274782f7adf1309e9d1619e04"
+  },
+  "protocol_sha256": "dc5ead9a91734f689ce0f609183a244337747cb474d7f63c94c2be786004821f",
+  "evidence_sha256": "43fe6854dea9e5b6064f8d7d4ccca7dfe3f4e84472af9890412aab9129dffdf3",
+  "bootstrap_repetitions": 10000,
+  "bootstrap_seed": 20260927,
+  "pairing": "training rows resampled first; common evaluation columns resampled jointly",
+  "independent_training_seeds": [
+    0,
+    1,
+    2
+  ],
+  "evaluation_seeds": [
+    10000,
+    10001,
+    10002,
+    10003,
+    10004,
+    10005,
+    10006,
+    10007,
+    10008,
+    10009,
+    10010,
+    10011,
+    10012,
+    10013,
+    10014,
+    10015,
+    10016,
+    10017,
+    10018,
+    10019,
+    10020,
+    10021,
+    10022,
+    10023,
+    10024,
+    10025,
+    10026,
+    10027,
+    10028,
+    10029
+  ]
+}

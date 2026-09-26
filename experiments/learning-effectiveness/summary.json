@@ -1,0 +1,2507 @@
+{
+  "training": [
+    {
+      "group": "trained",
+      "circuit": "int2float",
+      "seed": 0,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 45,
+        "levels": 3,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "refactor",
+          "refactor",
+          "balance",
+          "refactor -z",
+          "rewrite -z",
+          "resub",
+          "refactor -z"
+        ],
+        "episode": 9,
+        "iteration": 7
+      },
+      "training_seconds": 85.88139487200004,
+      "error": null
+    },
+    {
+      "group": "trained",
+      "circuit": "int2float",
+      "seed": 1,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 44,
+        "levels": 3,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "resub -z",
+          "resub -z",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite -z",
+          "balance"
+        ],
+        "episode": 7,
+        "iteration": 6
+      },
+      "training_seconds": 82.99596333599997,
+      "error": null
+    },
+    {
+      "group": "trained",
+      "circuit": "int2float",
+      "seed": 2,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 43,
+        "levels": 3,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "balance",
+          "rewrite -z",
+          "rewrite -z",
+          "rewrite",
+          "resub",
+          "refactor",
+          "refactor -z",
+          "refactor -z",
+          "resub -z",
+          "refactor -z"
+        ],
+        "episode": 97,
+        "iteration": 10
+      },
+      "training_seconds": 84.27051704599992,
+      "error": null
+    },
+    {
+      "group": "trained",
+      "circuit": "i2c",
+      "seed": 0,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 300,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "resub",
+          "rewrite -z",
+          "rewrite",
+          "rewrite",
+          "rewrite -z",
+          "rewrite -z",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite",
+          "resub"
+        ],
+        "episode": 23,
+        "iteration": 10
+      },
+      "training_seconds": 176.36332720500002,
+      "error": null
+    },
+    {
+      "group": "trained",
+      "circuit": "i2c",
+      "seed": 1,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 305,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "resub",
+          "refactor -z",
+          "rewrite",
+          "balance",
+          "refactor -z",
+          "resub",
+          "refactor",
+          "rewrite"
+        ],
+        "episode": 51,
+        "iteration": 9
+      },
+      "training_seconds": 169.81248591999983,
+      "error": null
+    },
+    {
+      "group": "trained",
+      "circuit": "i2c",
+      "seed": 2,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 306,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "resub -z",
+          "rewrite -z",
+          "rewrite -z",
+          "refactor -z",
+          "refactor -z",
+          "refactor -z",
+          "refactor -z",
+          "rewrite -z",
+          "resub -z",
+          "balance"
+        ],
+        "episode": 71,
+        "iteration": 10
+      },
+      "training_seconds": 174.14063758499992,
+      "error": null
+    },
+    {
+      "group": "trained",
+      "circuit": "max",
+      "seed": 0,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 769,
+        "levels": 41,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "rewrite -z",
+          "balance",
+          "balance",
+          "resub -z",
+          "refactor",
+          "rewrite -z",
+          "rewrite -z",
+          "refactor -z"
+        ],
+        "episode": 28,
+        "iteration": 10
+      },
+      "training_seconds": 332.6710742059998,
+      "error": null
+    },
+    {
+      "group": "trained",
+      "circuit": "max",
+      "seed": 1,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 775,
+        "levels": 41,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "resub -z",
+          "resub -z",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite -z",
+          "balance",
+          "refactor -z",
+          "rewrite",
+          "refactor -z",
+          "refactor -z"
+        ],
+        "episode": 7,
+        "iteration": 10
+      },
+      "training_seconds": 331.28127441700025,
+      "error": null
+    },
+    {
+      "group": "trained",
+      "circuit": "max",
+      "seed": 2,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 773,
+        "levels": 41,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "rewrite -z",
+          "refactor -z",
+          "balance"
+        ],
+        "episode": 8,
+        "iteration": 5
+      },
+      "training_seconds": 334.710714994,
+      "error": null
+    },
+    {
+      "group": "frozen",
+      "circuit": "int2float",
+      "seed": 0,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 44,
+        "levels": 3,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "refactor -z",
+          "balance",
+          "rewrite",
+          "refactor -z",
+          "rewrite -z",
+          "rewrite",
+          "refactor -z",
+          "balance"
+        ],
+        "episode": 98,
+        "iteration": 8
+      },
+      "training_seconds": 123.117857797,
+      "error": null
+    },
+    {
+      "group": "frozen",
+      "circuit": "int2float",
+      "seed": 1,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 44,
+        "levels": 3,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "resub -z",
+          "resub -z",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite -z",
+          "balance"
+        ],
+        "episode": 7,
+        "iteration": 6
+      },
+      "training_seconds": 118.29859854499998,
+      "error": null
+    },
+    {
+      "group": "frozen",
+      "circuit": "int2float",
+      "seed": 2,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 43,
+        "levels": 3,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "resub -z",
+          "rewrite -z",
+          "balance",
+          "balance",
+          "resub -z",
+          "refactor -z",
+          "rewrite -z",
+          "rewrite",
+          "resub -z",
+          "balance"
+        ],
+        "episode": 47,
+        "iteration": 10
+      },
+      "training_seconds": 120.87738157600009,
+      "error": null
+    },
+    {
+      "group": "frozen",
+      "circuit": "i2c",
+      "seed": 0,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 301,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "refactor -z",
+          "balance",
+          "rewrite -z",
+          "rewrite -z",
+          "rewrite",
+          "refactor",
+          "resub",
+          "resub -z",
+          "rewrite -z"
+        ],
+        "episode": 64,
+        "iteration": 10
+      },
+      "training_seconds": 211.69309929199997,
+      "error": null
+    },
+    {
+      "group": "frozen",
+      "circuit": "i2c",
+      "seed": 1,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 307,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "balance",
+          "resub -z",
+          "refactor -z",
+          "resub -z",
+          "rewrite -z",
+          "resub"
+        ],
+        "episode": 70,
+        "iteration": 8
+      },
+      "training_seconds": 206.09598221400012,
+      "error": null
+    },
+    {
+      "group": "frozen",
+      "circuit": "i2c",
+      "seed": 2,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 306,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "resub -z",
+          "refactor -z",
+          "rewrite -z",
+          "rewrite",
+          "rewrite -z",
+          "resub",
+          "rewrite -z",
+          "resub -z"
+        ],
+        "episode": 81,
+        "iteration": 10
+      },
+      "training_seconds": 209.37318134000006,
+      "error": null
+    },
+    {
+      "group": "frozen",
+      "circuit": "max",
+      "seed": 0,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 763,
+        "levels": 41,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "refactor -z",
+          "balance",
+          "refactor",
+          "rewrite -z",
+          "balance",
+          "resub",
+          "rewrite",
+          "balance",
+          "refactor -z"
+        ],
+        "episode": 48,
+        "iteration": 10
+      },
+      "training_seconds": 398.8456029939999,
+      "error": null
+    },
+    {
+      "group": "frozen",
+      "circuit": "max",
+      "seed": 1,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 775,
+        "levels": 41,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "resub -z",
+          "resub -z",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite -z",
+          "balance",
+          "refactor -z",
+          "rewrite",
+          "refactor -z",
+          "refactor -z"
+        ],
+        "episode": 7,
+        "iteration": 10
+      },
+      "training_seconds": 396.8306364539998,
+      "error": null
+    },
+    {
+      "group": "frozen",
+      "circuit": "max",
+      "seed": 2,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 773,
+        "levels": 41,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite",
+          "rewrite -z",
+          "resub -z",
+          "refactor -z",
+          "rewrite",
+          "balance",
+          "rewrite -z",
+          "refactor -z",
+          "balance"
+        ],
+        "episode": 100,
+        "iteration": 9
+      },
+      "training_seconds": 400.18273407600026,
+      "error": null
+    },
+    {
+      "group": "uniform",
+      "circuit": "int2float",
+      "seed": 0,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 44,
+        "levels": 3,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "resub -z",
+          "resub -z",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite -z",
+          "rewrite -z",
+          "balance",
+          "refactor",
+          "refactor -z"
+        ],
+        "episode": 52,
+        "iteration": 10
+      },
+      "training_seconds": 131.66120104900003,
+      "error": null
+    },
+    {
+      "group": "uniform",
+      "circuit": "int2float",
+      "seed": 1,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 44,
+        "levels": 3,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "refactor -z",
+          "rewrite",
+          "resub -z",
+          "resub -z",
+          "rewrite -z",
+          "refactor -z"
+        ],
+        "episode": 79,
+        "iteration": 6
+      },
+      "training_seconds": 133.187764458,
+      "error": null
+    },
+    {
+      "group": "uniform",
+      "circuit": "int2float",
+      "seed": 2,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 44,
+        "levels": 3,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "refactor -z",
+          "resub -z",
+          "refactor",
+          "refactor -z",
+          "resub -z",
+          "rewrite",
+          "rewrite -z"
+        ],
+        "episode": 15,
+        "iteration": 7
+      },
+      "training_seconds": 131.784162663,
+      "error": null
+    },
+    {
+      "group": "uniform",
+      "circuit": "i2c",
+      "seed": 0,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 304,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "resub -z",
+          "rewrite -z",
+          "refactor",
+          "rewrite -z",
+          "resub -z",
+          "refactor -z",
+          "resub",
+          "refactor -z",
+          "resub -z"
+        ],
+        "episode": 41,
+        "iteration": 9
+      },
+      "training_seconds": 206.08990404099998,
+      "error": null
+    },
+    {
+      "group": "uniform",
+      "circuit": "i2c",
+      "seed": 1,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 304,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "resub -z",
+          "balance",
+          "rewrite -z",
+          "rewrite",
+          "resub",
+          "resub -z",
+          "refactor -z",
+          "rewrite -z",
+          "resub -z"
+        ],
+        "episode": 61,
+        "iteration": 10
+      },
+      "training_seconds": 207.77382795399998,
+      "error": null
+    },
+    {
+      "group": "uniform",
+      "circuit": "i2c",
+      "seed": 2,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 305,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite",
+          "rewrite -z",
+          "resub -z",
+          "refactor -z",
+          "rewrite",
+          "resub",
+          "rewrite -z",
+          "rewrite -z",
+          "balance",
+          "resub -z"
+        ],
+        "episode": 100,
+        "iteration": 10
+      },
+      "training_seconds": 207.79489170800014,
+      "error": null
+    },
+    {
+      "group": "uniform",
+      "circuit": "max",
+      "seed": 0,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 769,
+        "levels": 41,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "rewrite -z",
+          "balance",
+          "balance",
+          "resub -z",
+          "refactor",
+          "rewrite -z",
+          "rewrite -z",
+          "refactor -z"
+        ],
+        "episode": 28,
+        "iteration": 10
+      },
+      "training_seconds": 383.0343845429999,
+      "error": null
+    },
+    {
+      "group": "uniform",
+      "circuit": "max",
+      "seed": 1,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 778,
+        "levels": 41,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite -z",
+          "balance",
+          "rewrite",
+          "refactor -z",
+          "resub -z",
+          "resub -z",
+          "rewrite"
+        ],
+        "episode": 39,
+        "iteration": 9
+      },
+      "training_seconds": 385.49151650399995,
+      "error": null
+    },
+    {
+      "group": "uniform",
+      "circuit": "max",
+      "seed": 2,
+      "status": "complete",
+      "episodes_completed": 100,
+      "best": {
+        "luts": 777,
+        "levels": 41,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "refactor",
+          "refactor",
+          "refactor",
+          "rewrite -z",
+          "balance",
+          "balance",
+          "refactor -z",
+          "rewrite -z",
+          "balance"
+        ],
+        "episode": 3,
+        "iteration": 9
+      },
+      "training_seconds": 384.0654322079998,
+      "error": null
+    }
+  ],
+  "evaluation": [
+    {
+      "policy": "initial",
+      "circuit": "int2float",
+      "training_seed": 0,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 46.766666666666666,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 23,
+      "error": null
+    },
+    {
+      "policy": "initial",
+      "circuit": "int2float",
+      "training_seed": 1,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 46.93333333333333,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 25,
+      "error": null
+    },
+    {
+      "policy": "initial",
+      "circuit": "int2float",
+      "training_seed": 2,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 46.666666666666664,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 28,
+      "error": null
+    },
+    {
+      "policy": "initial",
+      "circuit": "i2c",
+      "training_seed": 0,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 319.26666666666665,
+      "terminal_luts_mean": 319.9,
+      "terminal_feasible": 30,
+      "error": null
+    },
+    {
+      "policy": "initial",
+      "circuit": "i2c",
+      "training_seed": 1,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 323.46666666666664,
+      "terminal_luts_mean": 325.56666666666666,
+      "terminal_feasible": 30,
+      "error": null
+    },
+    {
+      "policy": "initial",
+      "circuit": "i2c",
+      "training_seed": 2,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 320.1333333333333,
+      "terminal_luts_mean": 320.8666666666667,
+      "terminal_feasible": 30,
+      "error": null
+    },
+    {
+      "policy": "initial",
+      "circuit": "max",
+      "training_seed": 0,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 10,
+      "best_luts_mean": null,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 10,
+      "error": null
+    },
+    {
+      "policy": "initial",
+      "circuit": "max",
+      "training_seed": 1,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 11,
+      "best_luts_mean": null,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 11,
+      "error": null
+    },
+    {
+      "policy": "initial",
+      "circuit": "max",
+      "training_seed": 2,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 11,
+      "best_luts_mean": null,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 11,
+      "error": null
+    },
+    {
+      "policy": "trained-50",
+      "circuit": "int2float",
+      "training_seed": 0,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 46.7,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 24,
+      "error": null
+    },
+    {
+      "policy": "trained-50",
+      "circuit": "int2float",
+      "training_seed": 1,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 46.86666666666667,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 27,
+      "error": null
+    },
+    {
+      "policy": "trained-50",
+      "circuit": "int2float",
+      "training_seed": 2,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 46.63333333333333,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 28,
+      "error": null
+    },
+    {
+      "policy": "trained-50",
+      "circuit": "i2c",
+      "training_seed": 0,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 316.9,
+      "terminal_luts_mean": 318.8333333333333,
+      "terminal_feasible": 30,
+      "error": null
+    },
+    {
+      "policy": "trained-50",
+      "circuit": "i2c",
+      "training_seed": 1,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 323.8,
+      "terminal_luts_mean": 326.56666666666666,
+      "terminal_feasible": 30,
+      "error": null
+    },
+    {
+      "policy": "trained-50",
+      "circuit": "i2c",
+      "training_seed": 2,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 319.8666666666667,
+      "terminal_luts_mean": 321.0,
+      "terminal_feasible": 30,
+      "error": null
+    },
+    {
+      "policy": "trained-50",
+      "circuit": "max",
+      "training_seed": 0,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 11,
+      "best_luts_mean": null,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 11,
+      "error": null
+    },
+    {
+      "policy": "trained-50",
+      "circuit": "max",
+      "training_seed": 1,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 10,
+      "best_luts_mean": null,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 10,
+      "error": null
+    },
+    {
+      "policy": "trained-50",
+      "circuit": "max",
+      "training_seed": 2,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 11,
+      "best_luts_mean": null,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 11,
+      "error": null
+    },
+    {
+      "policy": "trained-100",
+      "circuit": "int2float",
+      "training_seed": 0,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 46.666666666666664,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 26,
+      "error": null
+    },
+    {
+      "policy": "trained-100",
+      "circuit": "int2float",
+      "training_seed": 1,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 46.766666666666666,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 27,
+      "error": null
+    },
+    {
+      "policy": "trained-100",
+      "circuit": "int2float",
+      "training_seed": 2,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 46.63333333333333,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 27,
+      "error": null
+    },
+    {
+      "policy": "trained-100",
+      "circuit": "i2c",
+      "training_seed": 0,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 316.56666666666666,
+      "terminal_luts_mean": 318.43333333333334,
+      "terminal_feasible": 30,
+      "error": null
+    },
+    {
+      "policy": "trained-100",
+      "circuit": "i2c",
+      "training_seed": 1,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 323.56666666666666,
+      "terminal_luts_mean": 326.56666666666666,
+      "terminal_feasible": 30,
+      "error": null
+    },
+    {
+      "policy": "trained-100",
+      "circuit": "i2c",
+      "training_seed": 2,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 320.0,
+      "terminal_luts_mean": 320.8333333333333,
+      "terminal_feasible": 30,
+      "error": null
+    },
+    {
+      "policy": "trained-100",
+      "circuit": "max",
+      "training_seed": 0,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 11,
+      "best_luts_mean": null,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 11,
+      "error": null
+    },
+    {
+      "policy": "trained-100",
+      "circuit": "max",
+      "training_seed": 1,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 10,
+      "best_luts_mean": null,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 10,
+      "error": null
+    },
+    {
+      "policy": "trained-100",
+      "circuit": "max",
+      "training_seed": 2,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 11,
+      "best_luts_mean": null,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 11,
+      "error": null
+    },
+    {
+      "policy": "uniform",
+      "circuit": "int2float",
+      "training_seed": 0,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 46.766666666666666,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 23,
+      "error": null
+    },
+    {
+      "policy": "uniform",
+      "circuit": "int2float",
+      "training_seed": 1,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 46.766666666666666,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 23,
+      "error": null
+    },
+    {
+      "policy": "uniform",
+      "circuit": "int2float",
+      "training_seed": 2,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 46.766666666666666,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 23,
+      "error": null
+    },
+    {
+      "policy": "uniform",
+      "circuit": "i2c",
+      "training_seed": 0,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 321.3333333333333,
+      "terminal_luts_mean": 323.9,
+      "terminal_feasible": 30,
+      "error": null
+    },
+    {
+      "policy": "uniform",
+      "circuit": "i2c",
+      "training_seed": 1,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 321.3333333333333,
+      "terminal_luts_mean": 323.9,
+      "terminal_feasible": 30,
+      "error": null
+    },
+    {
+      "policy": "uniform",
+      "circuit": "i2c",
+      "training_seed": 2,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 30,
+      "best_luts_mean": 321.3333333333333,
+      "terminal_luts_mean": 323.9,
+      "terminal_feasible": 30,
+      "error": null
+    },
+    {
+      "policy": "uniform",
+      "circuit": "max",
+      "training_seed": 0,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 10,
+      "best_luts_mean": null,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 10,
+      "error": null
+    },
+    {
+      "policy": "uniform",
+      "circuit": "max",
+      "training_seed": 1,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 10,
+      "best_luts_mean": null,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 10,
+      "error": null
+    },
+    {
+      "policy": "uniform",
+      "circuit": "max",
+      "training_seed": 2,
+      "status": "complete",
+      "completed": 30,
+      "feasible": 10,
+      "best_luts_mean": null,
+      "terminal_luts_mean": null,
+      "terminal_feasible": 10,
+      "error": null
+    }
+  ],
+  "comparisons": [
+    {
+      "circuit": "int2float",
+      "baseline": "initial",
+      "treatment": "trained-100",
+      "mean_luts_reduction": 0.1,
+      "ci95": [
+        -0.17777777777777778,
+        0.3888888888888889
+      ],
+      "feasibility_gain_pp": 0.0,
+      "feasibility_ci95": [
+        0.0,
+        0.0
+      ],
+      "baseline_feasible": 90,
+      "trained_feasible": 90,
+      "per_seed": [
+        {
+          "seed": 0,
+          "luts_reduction": 0.1,
+          "percent": 0.21382751247327156,
+          "baseline_feasible": 30,
+          "trained_feasible": 30,
+          "feasibility_gain_pp": 0.0
+        },
+        {
+          "seed": 1,
+          "luts_reduction": 0.16666666666666666,
+          "percent": 0.35511363636363635,
+          "baseline_feasible": 30,
+          "trained_feasible": 30,
+          "feasibility_gain_pp": 0.0
+        },
+        {
+          "seed": 2,
+          "luts_reduction": 0.03333333333333333,
+          "percent": 0.07142857142857144,
+          "baseline_feasible": 30,
+          "trained_feasible": 30,
+          "feasibility_gain_pp": 0.0
+        }
+      ],
+      "wins": 18,
+      "ties": 59,
+      "losses": 13,
+      "complete": true,
+      "complete_feasible": true
+    },
+    {
+      "circuit": "int2float",
+      "baseline": "uniform",
+      "treatment": "trained-100",
+      "mean_luts_reduction": 0.07777777777777778,
+      "ci95": [
+        -0.3,
+        0.43333333333333335
+      ],
+      "feasibility_gain_pp": 0.0,
+      "feasibility_ci95": [
+        0.0,
+        0.0
+      ],
+      "baseline_feasible": 90,
+      "trained_feasible": 90,
+      "per_seed": [
+        {
+          "seed": 0,
+          "luts_reduction": 0.1,
+          "percent": 0.21382751247327156,
+          "baseline_feasible": 30,
+          "trained_feasible": 30,
+          "feasibility_gain_pp": 0.0
+        },
+        {
+          "seed": 1,
+          "luts_reduction": 0.0,
+          "percent": 0.0,
+          "baseline_feasible": 30,
+          "trained_feasible": 30,
+          "feasibility_gain_pp": 0.0
+        },
+        {
+          "seed": 2,
+          "luts_reduction": 0.13333333333333333,
+          "percent": 0.2851033499643621,
+          "baseline_feasible": 30,
+          "trained_feasible": 30,
+          "feasibility_gain_pp": 0.0
+        }
+      ],
+      "wins": 24,
+      "ties": 49,
+      "losses": 17,
+      "complete": true,
+      "complete_feasible": true
+    },
+    {
+      "circuit": "i2c",
+      "baseline": "initial",
+      "treatment": "trained-100",
+      "mean_luts_reduction": 0.9111111111111111,
+      "ci95": [
+        -0.7111111111111111,
+        2.7666666666666666
+      ],
+      "feasibility_gain_pp": 0.0,
+      "feasibility_ci95": [
+        0.0,
+        0.0
+      ],
+      "baseline_feasible": 90,
+      "trained_feasible": 90,
+      "per_seed": [
+        {
+          "seed": 0,
+          "luts_reduction": 2.7,
+          "percent": 0.8456880350803926,
+          "baseline_feasible": 30,
+          "trained_feasible": 30,
+          "feasibility_gain_pp": 0.0
+        },
+        {
+          "seed": 1,
+          "luts_reduction": -0.1,
+          "percent": -0.030915086562242376,
+          "baseline_feasible": 30,
+          "trained_feasible": 30,
+          "feasibility_gain_pp": 0.0
+        },
+        {
+          "seed": 2,
+          "luts_reduction": 0.13333333333333333,
+          "percent": 0.04164931278633903,
+          "baseline_feasible": 30,
+          "trained_feasible": 30,
+          "feasibility_gain_pp": 0.0
+        }
+      ],
+      "wins": 28,
+      "ties": 44,
+      "losses": 18,
+      "complete": true,
+      "complete_feasible": true
+    },
+    {
+      "circuit": "i2c",
+      "baseline": "uniform",
+      "treatment": "trained-100",
+      "mean_luts_reduction": 1.288888888888889,
+      "ci95": [
+        -2.533333333333333,
+        4.988888888888889
+      ],
+      "feasibility_gain_pp": 0.0,
+      "feasibility_ci95": [
+        0.0,
+        0.0
+      ],
+      "baseline_feasible": 90,
+      "trained_feasible": 90,
+      "per_seed": [
+        {
+          "seed": 0,
+          "luts_reduction": 4.766666666666667,
+          "percent": 1.483402489626556,
+          "baseline_feasible": 30,
+          "trained_feasible": 30,
+          "feasibility_gain_pp": 0.0
+        },
+        {
+          "seed": 1,
+          "luts_reduction": -2.2333333333333334,
+          "percent": -0.6950207468879669,
+          "baseline_feasible": 30,
+          "trained_feasible": 30,
+          "feasibility_gain_pp": 0.0
+        },
+        {
+          "seed": 2,
+          "luts_reduction": 1.3333333333333333,
+          "percent": 0.41493775933609955,
+          "baseline_feasible": 30,
+          "trained_feasible": 30,
+          "feasibility_gain_pp": 0.0
+        }
+      ],
+      "wins": 38,
+      "ties": 17,
+      "losses": 35,
+      "complete": true,
+      "complete_feasible": true
+    },
+    {
+      "circuit": "max",
+      "baseline": "initial",
+      "treatment": "trained-100",
+      "mean_luts_reduction": null,
+      "ci95": null,
+      "feasibility_gain_pp": 0.0,
+      "feasibility_ci95": [
+        -6.666666666666667,
+        6.666666666666667
+      ],
+      "baseline_feasible": 32,
+      "trained_feasible": 32,
+      "per_seed": [
+        {
+          "seed": 0,
+          "luts_reduction": null,
+          "percent": null,
+          "baseline_feasible": 10,
+          "trained_feasible": 11,
+          "feasibility_gain_pp": 3.3333333333333335
+        },
+        {
+          "seed": 1,
+          "luts_reduction": null,
+          "percent": null,
+          "baseline_feasible": 11,
+          "trained_feasible": 10,
+          "feasibility_gain_pp": -3.3333333333333335
+        },
+        {
+          "seed": 2,
+          "luts_reduction": null,
+          "percent": null,
+          "baseline_feasible": 11,
+          "trained_feasible": 11,
+          "feasibility_gain_pp": 0.0
+        }
+      ],
+      "wins": 10,
+      "ties": 68,
+      "losses": 12,
+      "complete": true,
+      "complete_feasible": false
+    },
+    {
+      "circuit": "max",
+      "baseline": "uniform",
+      "treatment": "trained-100",
+      "mean_luts_reduction": null,
+      "ci95": null,
+      "feasibility_gain_pp": 2.2222222222222223,
+      "feasibility_ci95": [
+        -2.2222222222222223,
+        8.88888888888889
+      ],
+      "baseline_feasible": 30,
+      "trained_feasible": 32,
+      "per_seed": [
+        {
+          "seed": 0,
+          "luts_reduction": null,
+          "percent": null,
+          "baseline_feasible": 10,
+          "trained_feasible": 11,
+          "feasibility_gain_pp": 3.3333333333333335
+        },
+        {
+          "seed": 1,
+          "luts_reduction": null,
+          "percent": null,
+          "baseline_feasible": 10,
+          "trained_feasible": 10,
+          "feasibility_gain_pp": 0.0
+        },
+        {
+          "seed": 2,
+          "luts_reduction": null,
+          "percent": null,
+          "baseline_feasible": 10,
+          "trained_feasible": 11,
+          "feasibility_gain_pp": 3.3333333333333335
+        }
+      ],
+      "wins": 18,
+      "ties": 57,
+      "losses": 15,
+      "complete": true,
+      "complete_feasible": false
+    }
+  ],
+  "behavior": [
+    {
+      "group": "trained",
+      "circuit": "int2float",
+      "seed": 0,
+      "positive_lut_roundtrips": 41,
+      "lut_roundtrips": 41,
+      "zero_reward_fraction": 0.47,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "trained",
+      "circuit": "int2float",
+      "seed": 1,
+      "positive_lut_roundtrips": 44,
+      "lut_roundtrips": 44,
+      "zero_reward_fraction": 0.565,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "trained",
+      "circuit": "int2float",
+      "seed": 2,
+      "positive_lut_roundtrips": 66,
+      "lut_roundtrips": 66,
+      "zero_reward_fraction": 0.499,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "trained",
+      "circuit": "i2c",
+      "seed": 0,
+      "positive_lut_roundtrips": 32,
+      "lut_roundtrips": 32,
+      "zero_reward_fraction": 0.132,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "trained",
+      "circuit": "i2c",
+      "seed": 1,
+      "positive_lut_roundtrips": 36,
+      "lut_roundtrips": 36,
+      "zero_reward_fraction": 0.22,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "trained",
+      "circuit": "i2c",
+      "seed": 2,
+      "positive_lut_roundtrips": 33,
+      "lut_roundtrips": 33,
+      "zero_reward_fraction": 0.161,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "trained",
+      "circuit": "max",
+      "seed": 0,
+      "positive_lut_roundtrips": 0,
+      "lut_roundtrips": 0,
+      "zero_reward_fraction": 0.511,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "trained",
+      "circuit": "max",
+      "seed": 1,
+      "positive_lut_roundtrips": 0,
+      "lut_roundtrips": 0,
+      "zero_reward_fraction": 0.562,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "trained",
+      "circuit": "max",
+      "seed": 2,
+      "positive_lut_roundtrips": 0,
+      "lut_roundtrips": 0,
+      "zero_reward_fraction": 0.522,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "frozen",
+      "circuit": "int2float",
+      "seed": 0,
+      "positive_lut_roundtrips": 43,
+      "lut_roundtrips": 43,
+      "zero_reward_fraction": 0.45,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "frozen",
+      "circuit": "int2float",
+      "seed": 1,
+      "positive_lut_roundtrips": 45,
+      "lut_roundtrips": 45,
+      "zero_reward_fraction": 0.541,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "frozen",
+      "circuit": "int2float",
+      "seed": 2,
+      "positive_lut_roundtrips": 55,
+      "lut_roundtrips": 55,
+      "zero_reward_fraction": 0.496,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "frozen",
+      "circuit": "i2c",
+      "seed": 0,
+      "positive_lut_roundtrips": 26,
+      "lut_roundtrips": 26,
+      "zero_reward_fraction": 0.164,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "frozen",
+      "circuit": "i2c",
+      "seed": 1,
+      "positive_lut_roundtrips": 32,
+      "lut_roundtrips": 32,
+      "zero_reward_fraction": 0.226,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "frozen",
+      "circuit": "i2c",
+      "seed": 2,
+      "positive_lut_roundtrips": 34,
+      "lut_roundtrips": 34,
+      "zero_reward_fraction": 0.159,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "frozen",
+      "circuit": "max",
+      "seed": 0,
+      "positive_lut_roundtrips": 1,
+      "lut_roundtrips": 1,
+      "zero_reward_fraction": 0.529,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "frozen",
+      "circuit": "max",
+      "seed": 1,
+      "positive_lut_roundtrips": 0,
+      "lut_roundtrips": 0,
+      "zero_reward_fraction": 0.558,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "frozen",
+      "circuit": "max",
+      "seed": 2,
+      "positive_lut_roundtrips": 2,
+      "lut_roundtrips": 2,
+      "zero_reward_fraction": 0.531,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "uniform",
+      "circuit": "int2float",
+      "seed": 0,
+      "positive_lut_roundtrips": 33,
+      "lut_roundtrips": 33,
+      "zero_reward_fraction": 0.531,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "uniform",
+      "circuit": "int2float",
+      "seed": 1,
+      "positive_lut_roundtrips": 43,
+      "lut_roundtrips": 43,
+      "zero_reward_fraction": 0.55,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "uniform",
+      "circuit": "int2float",
+      "seed": 2,
+      "positive_lut_roundtrips": 42,
+      "lut_roundtrips": 42,
+      "zero_reward_fraction": 0.53,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "uniform",
+      "circuit": "i2c",
+      "seed": 0,
+      "positive_lut_roundtrips": 31,
+      "lut_roundtrips": 31,
+      "zero_reward_fraction": 0.196,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "uniform",
+      "circuit": "i2c",
+      "seed": 1,
+      "positive_lut_roundtrips": 35,
+      "lut_roundtrips": 35,
+      "zero_reward_fraction": 0.207,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "uniform",
+      "circuit": "i2c",
+      "seed": 2,
+      "positive_lut_roundtrips": 27,
+      "lut_roundtrips": 27,
+      "zero_reward_fraction": 0.189,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "uniform",
+      "circuit": "max",
+      "seed": 0,
+      "positive_lut_roundtrips": 0,
+      "lut_roundtrips": 0,
+      "zero_reward_fraction": 0.574,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "uniform",
+      "circuit": "max",
+      "seed": 1,
+      "positive_lut_roundtrips": 0,
+      "lut_roundtrips": 0,
+      "zero_reward_fraction": 0.564,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    },
+    {
+      "group": "uniform",
+      "circuit": "max",
+      "seed": 2,
+      "positive_lut_roundtrips": 1,
+      "lut_roundtrips": 1,
+      "zero_reward_fraction": 0.558,
+      "raw_constant_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ],
+      "normalized_zero_features": [
+        "input_pins",
+        "output_pins",
+        "latches"
+      ]
+    }
+  ],
+  "search_comparisons": [
+    {
+      "circuit": "int2float",
+      "baseline": "frozen",
+      "differences": [
+        -1,
+        0,
+        0
+      ],
+      "mean_luts_reduction": -0.3333333333333333,
+      "percent": -0.7633587786259541,
+      "wins": 0,
+      "ties": 2,
+      "losses": 1
+    },
+    {
+      "circuit": "int2float",
+      "baseline": "uniform",
+      "differences": [
+        -1,
+        0,
+        1
+      ],
+      "mean_luts_reduction": 0.0,
+      "percent": 0.0,
+      "wins": 1,
+      "ties": 1,
+      "losses": 1
+    },
+    {
+      "circuit": "i2c",
+      "baseline": "frozen",
+      "differences": [
+        1,
+        2,
+        0
+      ],
+      "mean_luts_reduction": 1.0,
+      "percent": 0.3282275711159737,
+      "wins": 2,
+      "ties": 1,
+      "losses": 0
+    },
+    {
+      "circuit": "i2c",
+      "baseline": "uniform",
+      "differences": [
+        4,
+        -1,
+        -1
+      ],
+      "mean_luts_reduction": 0.6666666666666666,
+      "percent": 0.21905805038335158,
+      "wins": 1,
+      "ties": 0,
+      "losses": 2
+    },
+    {
+      "circuit": "max",
+      "baseline": "frozen",
+      "differences": [
+        -6,
+        0,
+        0
+      ],
+      "mean_luts_reduction": -2.0,
+      "percent": -0.2596278667243617,
+      "wins": 0,
+      "ties": 2,
+      "losses": 1
+    },
+    {
+      "circuit": "max",
+      "baseline": "uniform",
+      "differences": [
+        0,
+        3,
+        4
+      ],
+      "mean_luts_reduction": 2.3333333333333335,
+      "percent": 0.30120481927710846,
+      "wins": 2,
+      "ties": 1,
+      "losses": 0
+    }
+  ],
+  "baseline": {
+    "int2float": {
+      "luts": 48,
+      "levels": 3
+    },
+    "i2c": {
+      "luts": 322,
+      "levels": 4
+    },
+    "max": {
+      "luts": 777,
+      "levels": 41
+    }
+  },
+  "diagnostic_summary": [
+    {
+      "group": "trained",
+      "circuit": "int2float",
+      "seed": 0,
+      "episode": 100,
+      "policy_kl": 0.011437565088272095,
+      "actor_drift_rms": 0.0098144217857289,
+      "critic_drift_rms": 0.01947091749712519,
+      "entropy": 1.9211199283599854
+    },
+    {
+      "group": "trained",
+      "circuit": "int2float",
+      "seed": 1,
+      "episode": 100,
+      "policy_kl": 0.01233829278498888,
+      "actor_drift_rms": 0.011946335975444962,
+      "critic_drift_rms": 0.0213543068170079,
+      "entropy": 1.876392126083374
+    },
+    {
+      "group": "trained",
+      "circuit": "int2float",
+      "seed": 2,
+      "episode": 100,
+      "policy_kl": 0.020851511508226395,
+      "actor_drift_rms": 0.014317012778722793,
+      "critic_drift_rms": 0.018045047166745376,
+      "entropy": 1.8860886096954346
+    },
+    {
+      "group": "trained",
+      "circuit": "i2c",
+      "seed": 0,
+      "episode": 100,
+      "policy_kl": 0.018859174102544785,
+      "actor_drift_rms": 0.008335486297480987,
+      "critic_drift_rms": 0.032431902754172466,
+      "entropy": 1.8311767578125
+    },
+    {
+      "group": "trained",
+      "circuit": "i2c",
+      "seed": 1,
+      "episode": 100,
+      "policy_kl": 0.025669962167739868,
+      "actor_drift_rms": 0.009961767359549591,
+      "critic_drift_rms": 0.02341186977262698,
+      "entropy": 1.8156917095184326
+    },
+    {
+      "group": "trained",
+      "circuit": "i2c",
+      "seed": 2,
+      "episode": 100,
+      "policy_kl": 0.005264613777399063,
+      "actor_drift_rms": 0.007517013155827485,
+      "critic_drift_rms": 0.03160581352868865,
+      "entropy": 1.910405158996582
+    },
+    {
+      "group": "trained",
+      "circuit": "max",
+      "seed": 0,
+      "episode": 100,
+      "policy_kl": 0.005583364516496658,
+      "actor_drift_rms": 0.010155566892138375,
+      "critic_drift_rms": 0.03645754622034934,
+      "entropy": 1.8863767385482788
+    },
+    {
+      "group": "trained",
+      "circuit": "max",
+      "seed": 1,
+      "episode": 100,
+      "policy_kl": 0.006572631187736988,
+      "actor_drift_rms": 0.009703541572800563,
+      "critic_drift_rms": 0.03075823618414523,
+      "entropy": 1.8958526849746704
+    },
+    {
+      "group": "trained",
+      "circuit": "max",
+      "seed": 2,
+      "episode": 100,
+      "policy_kl": 0.057600151747465134,
+      "actor_drift_rms": 0.016969194276180093,
+      "critic_drift_rms": 0.03025274260758289,
+      "entropy": 1.8090864419937134
+    },
+    {
+      "group": "frozen",
+      "circuit": "int2float",
+      "seed": 0,
+      "episode": 100,
+      "policy_kl": 0.0,
+      "actor_drift_rms": 0.0,
+      "critic_drift_rms": 0.0,
+      "entropy": 1.9046627283096313
+    },
+    {
+      "group": "frozen",
+      "circuit": "int2float",
+      "seed": 1,
+      "episode": 100,
+      "policy_kl": 0.0,
+      "actor_drift_rms": 0.0,
+      "critic_drift_rms": 0.0,
+      "entropy": 1.9056535959243774
+    },
+    {
+      "group": "frozen",
+      "circuit": "int2float",
+      "seed": 2,
+      "episode": 100,
+      "policy_kl": 0.0,
+      "actor_drift_rms": 0.0,
+      "critic_drift_rms": 0.0,
+      "entropy": 1.9309686422348022
+    },
+    {
+      "group": "frozen",
+      "circuit": "i2c",
+      "seed": 0,
+      "episode": 100,
+      "policy_kl": 0.0,
+      "actor_drift_rms": 0.0,
+      "critic_drift_rms": 0.0,
+      "entropy": 1.892523169517517
+    },
+    {
+      "group": "frozen",
+      "circuit": "i2c",
+      "seed": 1,
+      "episode": 100,
+      "policy_kl": 0.0,
+      "actor_drift_rms": 0.0,
+      "critic_drift_rms": 0.0,
+      "entropy": 1.8562825918197632
+    },
+    {
+      "group": "frozen",
+      "circuit": "i2c",
+      "seed": 2,
+      "episode": 100,
+      "policy_kl": 0.0,
+      "actor_drift_rms": 0.0,
+      "critic_drift_rms": 0.0,
+      "entropy": 1.9211595058441162
+    },
+    {
+      "group": "frozen",
+      "circuit": "max",
+      "seed": 0,
+      "episode": 100,
+      "policy_kl": 0.0,
+      "actor_drift_rms": 0.0,
+      "critic_drift_rms": 0.0,
+      "entropy": 1.9020639657974243
+    },
+    {
+      "group": "frozen",
+      "circuit": "max",
+      "seed": 1,
+      "episode": 100,
+      "policy_kl": 0.0,
+      "actor_drift_rms": 0.0,
+      "critic_drift_rms": 0.0,
+      "entropy": 1.9124557971954346
+    },
+    {
+      "group": "frozen",
+      "circuit": "max",
+      "seed": 2,
+      "episode": 100,
+      "policy_kl": 0.0,
+      "actor_drift_rms": 0.0,
+      "critic_drift_rms": 0.0,
+      "entropy": 1.921776533126831
+    },
+    {
+      "group": "uniform",
+      "circuit": "int2float",
+      "seed": 0,
+      "episode": 100,
+      "policy_kl": 0.0,
+      "actor_drift_rms": 0.0,
+      "critic_drift_rms": 0.0,
+      "entropy": 1.9459104537963867
+    },
+    {
+      "group": "uniform",
+      "circuit": "int2float",
+      "seed": 1,
+      "episode": 100,
+      "policy_kl": 0.0,
+      "actor_drift_rms": 0.0,
+      "critic_drift_rms": 0.0,
+      "entropy": 1.9459104537963867
+    },
+    {
+      "group": "uniform",
+      "circuit": "int2float",
+      "seed": 2,
+      "episode": 100,
+      "policy_kl": 0.0,
+      "actor_drift_rms": 0.0,
+      "critic_drift_rms": 0.0,
+      "entropy": 1.9459104537963867
+    },
+    {
+      "group": "uniform",
+      "circuit": "i2c",
+      "seed": 0,
+      "episode": 100,
+      "policy_kl": 0.0,
+      "actor_drift_rms": 0.0,
+      "critic_drift_rms": 0.0,
+      "entropy": 1.9459104537963867
+    },
+    {
+      "group": "uniform",
+      "circuit": "i2c",
+      "seed": 1,
+      "episode": 100,
+      "policy_kl": 0.0,
+      "actor_drift_rms": 0.0,
+      "critic_drift_rms": 0.0,
+      "entropy": 1.9459104537963867
+    },
+    {
+      "group": "uniform",
+      "circuit": "i2c",
+      "seed": 2,
+      "episode": 100,
+      "policy_kl": 0.0,
+      "actor_drift_rms": 0.0,
+      "critic_drift_rms": 0.0,
+      "entropy": 1.9459104537963867
+    },
+    {
+      "group": "uniform",
+      "circuit": "max",
+      "seed": 0,
+      "episode": 100,
+      "policy_kl": 0.0,
+      "actor_drift_rms": 0.0,
+      "critic_drift_rms": 0.0,
+      "entropy": 1.9459104537963867
+    },
+    {
+      "group": "uniform",
+      "circuit": "max",
+      "seed": 1,
+      "episode": 100,
+      "policy_kl": 0.0,
+      "actor_drift_rms": 0.0,
+      "critic_drift_rms": 0.0,
+      "entropy": 1.9459104537963867
+    },
+    {
+      "group": "uniform",
+      "circuit": "max",
+      "seed": 2,
+      "episode": 100,
+      "policy_kl": 0.0,
+      "actor_drift_rms": 0.0,
+      "critic_drift_rms": 0.0,
+      "entropy": 1.9459104537963867
+    }
+  ],
+  "training_complete": 27,
+  "evaluation_complete": 36,
+  "terminal_evaluation": [
+    {
+      "circuit": "int2float",
+      "policy": "initial",
+      "completed": 90,
+      "feasible": 76,
+      "luts_mean": null,
+      "levels_mean": 3.1555555555555554,
+      "reward_mean": 3.0555555555555554
+    },
+    {
+      "circuit": "int2float",
+      "policy": "trained-50",
+      "completed": 90,
+      "feasible": 79,
+      "luts_mean": null,
+      "levels_mean": 3.1222222222222222,
+      "reward_mean": 3.7
+    },
+    {
+      "circuit": "int2float",
+      "policy": "trained-100",
+      "completed": 90,
+      "feasible": 80,
+      "luts_mean": null,
+      "levels_mean": 3.111111111111111,
+      "reward_mean": 4.055555555555555
+    },
+    {
+      "circuit": "int2float",
+      "policy": "uniform",
+      "completed": 90,
+      "feasible": 69,
+      "luts_mean": null,
+      "levels_mean": 3.2333333333333334,
+      "reward_mean": 2.933333333333333
+    },
+    {
+      "circuit": "i2c",
+      "policy": "initial",
+      "completed": 90,
+      "feasible": 90,
+      "luts_mean": 322.1111111111111,
+      "levels_mean": 3.977777777777778,
+      "reward_mean": 17.9
+    },
+    {
+      "circuit": "i2c",
+      "policy": "trained-50",
+      "completed": 90,
+      "feasible": 90,
+      "luts_mean": 322.1333333333333,
+      "levels_mean": 3.933333333333333,
+      "reward_mean": 18.255555555555556
+    },
+    {
+      "circuit": "i2c",
+      "policy": "trained-100",
+      "completed": 90,
+      "feasible": 90,
+      "luts_mean": 321.94444444444446,
+      "levels_mean": 3.9444444444444446,
+      "reward_mean": 18.044444444444444
+    },
+    {
+      "circuit": "i2c",
+      "policy": "uniform",
+      "completed": 90,
+      "feasible": 90,
+      "luts_mean": 323.9,
+      "levels_mean": 3.933333333333333,
+      "reward_mean": 17.0
+    },
+    {
+      "circuit": "max",
+      "policy": "initial",
+      "completed": 90,
+      "feasible": 32,
+      "luts_mean": null,
+      "levels_mean": 42.08888888888889,
+      "reward_mean": 3.8222222222222224
+    },
+    {
+      "circuit": "max",
+      "policy": "trained-50",
+      "completed": 90,
+      "feasible": 32,
+      "luts_mean": null,
+      "levels_mean": 41.977777777777774,
+      "reward_mean": 4.055555555555555
+    },
+    {
+      "circuit": "max",
+      "policy": "trained-100",
+      "completed": 90,
+      "feasible": 32,
+      "luts_mean": null,
+      "levels_mean": 41.91111111111111,
+      "reward_mean": 3.977777777777778
+    },
+    {
+      "circuit": "max",
+      "policy": "uniform",
+      "completed": 90,
+      "feasible": 30,
+      "luts_mean": null,
+      "levels_mean": 42.4,
+      "reward_mean": 4.166666666666667
+    }
+  ],
+  "historical_reference": {
+    "manifest": "results/new-state/baseline-provenance.json",
+    "manifest_sha256": "80e8cde97c5360097ac33b782d7614c6001827cb984b96f4c39a7c4dd0b48e97",
+    "baseline_commit": "adf7bef53cdf6c4161586c03e6e2caecffe26bc4",
+    "historical_file_count": 2768,
+    "all_hashes_match": true,
+    "historical_tool_versions": "Not recorded in the original manifest; present tools are recorded in new provenance.",
+    "historical_i2c": {
+      "commit": "70d9df453bf0cd5c0b9689a2d22be2a03a8d32eb",
+      "report": "experiments/i2c-learning-horizon/report.md",
+      "report_sha256": "3825cc5997b719e982247a70b55c1dad71b766f3335f3cd73dd7b8487113ba0a",
+      "trained_10": [
+        300,
+        305,
+        306
+      ],
+      "frozen_10": [
+        301,
+        307,
+        306
+      ],
+      "trained_30": [
+        286,
+        290,
+        292
+      ],
+      "frozen_30": [
+        285,
+        291,
+        287
+      ]
+    }
+  },
+  "execution": {
+    "training": {
+      "started_at": "2026-09-26T18:47:45.464971+00:00",
+      "finished_at": "2026-09-26T19:22:27.383487+00:00",
+      "status": "complete",
+      "minutes": 34.698641933333334
+    },
+    "evaluation": {
+      "started_at": "2026-09-26T19:22:48.642167+00:00",
+      "finished_at": "2026-09-26T19:38:51.829121+00:00",
+      "status": "complete",
+      "minutes": 16.0531159
+    }
+  },
+  "netlist_validation": {
+    "command": [
+      "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+      "-B",
+      "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness/verify.py"
+    ],
+    "source_sha256": "6f1a8e7e6d5a8eeb9689c5c24187a353ff78c3247e5d9b651a0b775dd2806db2",
+    "abc_sha256": "8bfa8e2ed1ea3c952cf9445e9467f16882b204f4c609e493bf96a83943817366",
+    "started_at": "2026-09-26T19:39:19.922020+00:00",
+    "finished_at": "2026-09-26T19:40:30.177974+00:00",
+    "status": "complete",
+    "workers": 3,
+    "exports_checked": 1110,
+    "netlists_verified": 2217
+  }
+}
