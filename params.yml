@@ -1,45 +1,58 @@
-# Copyright (c) 2019, SCALE Lab, Brown University
-# All rights reserved.
-
-# This source code is licensed under the BSD-style license found in the
-# LICENSE file in the root directory of this source tree. 
-
-# ======================================================================
-# This file holds parameters for running a DRiLLS agent for training and
-# inference. It sets up the RL environment along with the logic synthesis
-# environment to train the RL agent. 
-
-# change this to the abc binary path if the command is not recognized system-wide
-abc_binary: yosys-abc
-yosys_binary: yosys
-
-# path of the design file in one of the accepted formats by ABC
-design_file: design.v
-
-# standard cell library mapping
-mapping:
-  clock_period: 150   # in pico seconds
-  library_file: tech.lib
-
-# FPGA mapping - exlusive with the above
-fpga_mapping:
-  levels: 100
+# Experiment defaults: all settings below may be changed.
+# Experiment count is len(seeds); no fixed/allowed parameter categories.
+protocol:
+  episodes: 100                 # Total completed episodes, including those before resume.
+  iterations: 10               # Optimization actions per episode; initial mapping is step 0.
+  seeds: [0, 1, 2]
   lut_inputs: 6
+  initial_sequence: [strash]
+  resyn2: [balance, rewrite, refactor, balance, rewrite, rewrite -z, balance, refactor -z, rewrite -z, balance]
+  actions: [rewrite, rewrite -z, refactor, refactor -z, resub, resub -z, balance]
+  circuits:
+    int2float:
+      file: benchmarks/int2float.aig
+      max_levels: 3
+    i2c:
+      file: benchmarks/i2c.aig
+      max_levels: 4
+    max:
+      file: benchmarks/max.aig
+      max_levels: 41
+  evaluation:
+    include_initial: true
+    std_ddof: 0                # Population standard deviation across all prescribed seeds.
 
-# add more optimization to the toolbox
-optimizations:
-  - rewrite
-  - rewrite -z
-  - refactor
-  - refactor -z
-  - resub
-  - resub -z
-  - balance
+method:
+  gamma: 0.99
+  optimizer: {name: Adam, learning_rate: 0.001, betas: [0.9, 0.999], epsilon: 1.0e-8, weight_decay: 0.0}
+  network:
+    actor_hidden: [20, 20]
+    critic_hidden: [10]
+    activation: ReLU
+    initialization: xavier_uniform
+    bias_initialization: 0.0
+  features: [input_pins, output_pins, cells, edges, levels, latches, and_fraction, or_fraction, not_fraction]
+  normalization:
+    state: episode_welford
+    variance_min: 0.01
+    variance_max: 1000000000.0
+    returns: standardize
+    returns_epsilon: 1.0e-8
+  loss: {actor_weight: 1.0, critic_weight: 1.0, reduction: sum}
+  reward:
+    feasible: {-1: -1, 0: 0, 1: 3}
+    infeasible:
+      -1: {-1: -3, 0: -2, 1: -1}
+      0: {-1: -2, 0: 0, 1: 2}
+      1: {-1: 1, 0: 2, 1: 3}
 
-# the directory to hold the playground an agent uses to practice
-playground_dir: playground
+environment:
+  torch_threads: 1
 
-# agent training parameters
-episodes: 100
-iterations: 50
-model_dir: /tmp/brain/model.ckpt   # must be absolute path
+# Paths and output directory are relative to this YAML file.
+# Workers use separate processes; adjust to available CPU resources.
+runtime:
+  abc_binary: yosys-abc
+  yosys_binary: yosys
+  output_dir: results
+  workers: 3

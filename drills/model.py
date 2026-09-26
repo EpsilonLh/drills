@@ -1,217 +1,145 @@
-#!/usr/bin/python3
+# Copyright (c) 2019, SCALE Lab, Brown University. BSD-3-Clause; see LICENSE.
+from pathlib import Path
+from time import perf_counter
 
-# Copyright (c) 2019, SCALE Lab, Brown University
-# All rights reserved.
-
-# This source code is licensed under the BSD-style license found in the
-# LICENSE file in the root directory of this source tree. 
-
-import tensorflow as tf
 import numpy as np
-import datetime
-import time
-from .scl_session import SCLSession as SCLGame
-from .fpga_session import FPGASession as FPGAGame
+import torch
+from torch import nn
 
-def log(message):
-    print('[DRiLLS {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now()) + "] " + message)
+from .fpga_session import FPGASession
 
-class Normalizer():
-    def __init__(self, num_inputs):
-        self.num_inputs = num_inputs
-        self.n = tf.zeros(num_inputs)
-        self.mean = tf.zeros(num_inputs)
-        self.mean_diff = tf.zeros(num_inputs)
-        self.var = tf.zeros(num_inputs)
 
-    def observe(self, x):
-        self.n += 1.
-        last_mean = tf.identity(self.mean)
-        self.mean += (x-self.mean)/self.n
-        self.mean_diff += (x-last_mean)*(x-self.mean)
-        self.var = tf.clip_by_value(self.mean_diff/self.n, clip_value_min=1e-2, clip_value_max=1000000000)
+class Normalizer:
+    def __init__(self, size, params):
+        self.params = params
+        self.n = 0
+        self.mean = np.zeros(size)
+        self.mean_diff = np.zeros(size)
 
-    def normalize(self, inputs):
-        obs_std = tf.sqrt(self.var)
-        return (inputs - self.mean)/obs_std
-    
-    def reset(self):
-        self.n = tf.zeros(self.num_inputs)
-        self.mean = tf.zeros(self.num_inputs)
-        self.mean_diff = tf.zeros(self.num_inputs)
-        self.var = tf.zeros(self.num_inputs)
+    def normalize(self, state):
+        if self.params['state'] == 'none':
+            return state
+        self.n += 1
+        delta = state - self.mean
+        self.mean += delta / self.n
+        self.mean_diff += delta * (state - self.mean)
+        variance = np.clip(self.mean_diff / self.n, self.params['variance_min'], self.params['variance_max'])
+        return ((state - self.mean) / np.sqrt(variance)).astype(np.float32)
+
+
+class ActorCritic(nn.Module):
+    def __init__(self, inputs, actions, params):
+        super().__init__()
+        activation = {'ReLU': nn.ReLU, 'Tanh': nn.Tanh}[params['activation']]
+
+        def network(hidden, outputs):
+            sizes = [inputs] + hidden + [outputs]
+            layers = []
+            for i in range(len(sizes) - 1):
+                layers.append(nn.Linear(sizes[i], sizes[i + 1]))
+                if i < len(sizes) - 2:
+                    layers.append(activation())
+            return nn.Sequential(*layers)
+
+        self.actor = network(params['actor_hidden'], actions)
+        self.critic = network(params['critic_hidden'], 1)
+        initialize = {'xavier_uniform': nn.init.xavier_uniform_}[params['initialization']]
+        for layer in self.modules():
+            if isinstance(layer, nn.Linear):
+                initialize(layer.weight)
+                nn.init.constant_(layer.bias, params['bias_initialization'])
+
+    def forward(self, states):
+        return self.actor(states), self.critic(states).squeeze(-1)
+
 
 class A2C:
-    def __init__(self, options, load_model=False, fpga_mapping=False):
-        if fpga_mapping:
-            self.game = FPGAGame(options)
+    def __init__(self, config, circuit, seed, directory, resume=False):
+        self.config = config
+        self.method, self.protocol = config['method'], config['protocol']
+        torch.set_num_threads(config['environment']['torch_threads'])
+        torch.manual_seed(seed)
+        self.rng = torch.Generator(device='cpu').manual_seed(seed)
+        self.game = FPGASession(config, circuit, directory)
+        self.network = ActorCritic(len(self.method['features']), len(self.protocol['actions']),
+                                   self.method['network']).to('cpu')
+        opt = self.method['optimizer']
+        self.optimizer = {'Adam': torch.optim.Adam}[opt['name']](
+            self.network.parameters(), lr=opt['learning_rate'], betas=opt['betas'],
+            eps=opt['epsilon'], weight_decay=opt['weight_decay'])
+        self.checkpoint = Path(directory) / 'checkpoint.pt'
+        self.episodes_completed, self.rewards = 0, []
+        self.training_seconds = 0.0
+        if resume:
+            saved = torch.load(self.checkpoint, map_location='cpu', weights_only=True)
+            self.network.load_state_dict(saved['network'])
+            current_groups = [dict(g) for g in self.optimizer.param_groups]
+            self.optimizer.load_state_dict(saved['optimizer'])
+            # Resume optimizer history, but apply the newly requested hyperparameters.
+            for group, current in zip(self.optimizer.param_groups, current_groups):
+                group.update({k: v for k, v in current.items() if k != 'params'})
+            self.rng.set_state(saved['rng_state'])
+            self.episodes_completed, self.rewards = saved['episodes_completed'], saved['rewards']
+            self.training_seconds = saved.get('training_seconds')
+            if self.episodes_completed < 0 or len(self.rewards) != self.episodes_completed:
+                raise ValueError('Checkpoint episode count is inconsistent with the prescribed budget.')
+            self.game.best, self.game.best_netlists = saved['best'], saved['best_netlists']
+            self.game.episode = self.episodes_completed
+            self.game.export_best()
         else:
-            self.game = SCLGame(options)
+            self.save_model()  # Also permits resuming an interruption during the first episode.
 
-        self.num_actions = self.game.action_space_length
-        self.state_size = self.game.observation_space_size
-        self.normalizer = Normalizer(self.state_size)
+    def run_episode(self):
+        if self.episodes_completed >= self.protocol['episodes']:
+            raise RuntimeError('The prescribed training budget is already complete.')
+        started = perf_counter()
+        state = self.game.reset()
+        normalizer = Normalizer(len(state), self.method['normalization'])
+        states, actions, rewards = [], [], []
+        done = False
+        while not done:
+            state = normalizer.normalize(state)
+            with torch.no_grad():
+                logits, _ = self.network(torch.as_tensor(state, device='cpu'))
+                action = torch.multinomial(logits.softmax(-1), 1, generator=self.rng).item()
+            states.append(state)
+            actions.append(action)
+            state, reward, done = self.game.step(action)
+            rewards.append(reward)
+        self._update(states, actions, rewards)
+        if self.training_seconds is not None:
+            self.training_seconds += perf_counter() - started
+        self.episodes_completed += 1
+        self.rewards.append(sum(rewards))
+        self.save_model()
+        return self.rewards[-1]
 
-        self.state_input = tf.placeholder(tf.float32, [None, self.state_size])
-
-        # Define any additional placeholders needed for training your agent here:
-        self.actions = tf.placeholder(tf.float32, [None, self.num_actions])
-        self.discounted_episode_rewards_ = tf.placeholder(tf.float32, [None, ])
-
-        self.state_value = self.critic()
-        self.actor_probs = self.actor()
-        self.loss_val = self.loss()
-        self.train_op = self.optimizer()
-        self.session = tf.Session()
-        
-        # model saving/restoring
-        self.model_dir = options['model_dir']
-        self.saver = tf.train.Saver()
-
-        if load_model:
-            self.saver.restore(self.session, self.model_dir)
-            log("Model restored.")
-        else:
-            self.session.run(tf.global_variables_initializer())
-        
-        self.gamma = 0.99
-        self.learning_rate = 0.01
-
-    def optimizer(self):
-        """
-        :return: Optimizer for your loss function
-        """
-        return tf.train.AdamOptimizer(0.01).minimize(self.loss_val)        
-
-    def critic(self):
-        """
-        Calculates the estimated value for every state in self.state_input. The critic should not depend on
-        any other tensors besides self.state_input.
-        :return: A tensor of shape [num_states] representing the estimated value of each state in the trajectory.
-        """
-        c_fc1 = tf.contrib.layers.fully_connected(inputs=self.state_input,
-                                                num_outputs=10,
-                                                activation_fn=tf.nn.relu,
-                                                weights_initializer=tf.contrib.layers.xavier_initializer())
-
-    
-        c_fc2 = tf.contrib.layers.fully_connected(inputs=c_fc1,
-                                                num_outputs=1,
-                                                activation_fn=None,
-                                                weights_initializer=tf.contrib.layers.xavier_initializer())
-        
-        return c_fc2
-
-    def actor(self):
-        """
-        Calculates the action probabilities for every state in self.state_input. The actor should not depend on
-        any other tensors besides self.state_input.
-        :return: A tensor of shape [num_states, num_actions] representing the probability distribution
-            over actions that is generated by your actor.
-        """
-        a_fc1 = tf.contrib.layers.fully_connected(inputs=self.state_input,
-                                                num_outputs=20,
-                                                activation_fn=tf.nn.relu,
-                                                weights_initializer=tf.contrib.layers.xavier_initializer())
-    
-        a_fc2 = tf.contrib.layers.fully_connected(inputs=a_fc1,
-                                                num_outputs=20,
-                                                activation_fn=tf.nn.relu,
-                                                weights_initializer=tf.contrib.layers.xavier_initializer())
-        
-        a_fc3 = tf.contrib.layers.fully_connected(inputs=a_fc2,
-                                                num_outputs=self.num_actions,
-                                                activation_fn=None,
-                                                weights_initializer=tf.contrib.layers.xavier_initializer())
-    
-        return tf.nn.softmax(a_fc3)
-
-    def loss(self):
-        """
-        :return: A scalar tensor representing the combined actor and critic loss.
-        """
-        # critic loss
-        advantage = self.discounted_episode_rewards_ - self.state_value
-        critic_loss = tf.reduce_sum(tf.square(advantage))
-
-        # actor loss        
-        neg_log_prob = tf.nn.softmax_cross_entropy_with_logits_v2(logits=tf.log(self.actor_probs), 
-                                                                  labels=self.actions)
-        actor_loss = tf.reduce_sum(neg_log_prob * advantage)
-        
-        neg_log_prob = tf.nn.softmax_cross_entropy_with_logits_v2(logits=self.actor_probs,
-                                                                 labels=self.actions)
-        policy_gradient_loss = tf.reduce_mean(neg_log_prob * self.discounted_episode_rewards_)
-        # return policy_gradient_loss
-        
-        return critic_loss + actor_loss
+    def _update(self, states, actions, rewards):
+        returns = np.empty(len(rewards), dtype=np.float32)
+        cumulative = 0.0
+        for i in reversed(range(len(rewards))):
+            cumulative = rewards[i] + self.method['gamma'] * cumulative
+            returns[i] = cumulative
+        norm = self.method['normalization']
+        if norm['returns'] == 'standardize':
+            returns = (returns - returns.mean()) / max(float(returns.std()), norm['returns_epsilon'])
+        logits, values = self.network(torch.tensor(np.asarray(states), device='cpu'))
+        advantage = torch.tensor(returns, device='cpu') - values
+        log_probs = logits.log_softmax(-1).gather(1, torch.tensor(actions, device='cpu')[:, None]).squeeze(1)
+        settings = self.method['loss']
+        actor = getattr(-log_probs * advantage.detach(), settings['reduction'])()
+        critic = getattr(advantage.square(), settings['reduction'])()
+        loss = settings['actor_weight'] * actor + settings['critic_weight'] * critic
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()
 
     def save_model(self):
-        save_path = self.saver.save(self.session, self.model_dir)
-        log("Model saved in path: %s" % str(save_path))
-
-    def train_episode(self):
-        """
-        train_episode will be called several times by the drills.py to train the agent. In this method,
-        we run the agent for a single episode, then use that data to train the agent.
-        """
-        state = self.game.reset()
-        self.normalizer.reset()
-        self.normalizer.observe(state)
-        state = self.normalizer.normalize(state).eval(session=self.session)
-        done = False
-        
-        episode_states = []
-        episode_actions = []
-        episode_rewards = []
-        
-        while not done:
-            log('  iteration: ' + str(self.game.iteration))
-            action_probability_distribution = self.session.run(self.actor_probs, \
-                feed_dict={self.state_input: state.reshape([1, self.state_size])})
-            action = np.random.choice(range(action_probability_distribution.shape[1]), \
-                p=action_probability_distribution.ravel())
-            new_state, reward, done, _ = self.game.step(action)
-            
-            # append this step
-            episode_states.append(state)
-            action_ = np.zeros(self.num_actions)
-            action_[action] = 1
-            episode_actions.append(action_)
-            episode_rewards.append(reward)
-            
-            state = new_state
-            self.normalizer.observe(state)
-            state = self.normalizer.normalize(state).eval(session=self.session)
-        
-        # Now that we have run the episode, we use this data to train the agent
-        start = time.time()
-        discounted_episode_rewards = self.discount_and_normalize_rewards(episode_rewards)
-        
-        _ = self.session.run(self.train_op, feed_dict={self.state_input: np.array(episode_states), \
-            self.actions: np.array(episode_actions), \
-                self.discounted_episode_rewards_: discounted_episode_rewards})
-        end = time.time()
-        log('Episode Agent Training Time ~ ' + str((start - end) / 60) + ' minutes.')
-        
-        self.save_model()
-        
-        return np.sum(episode_rewards)
-    
-    def discount_and_normalize_rewards(self, episode_rewards):
-        """
-        used internally to calculate the discounted episode rewards
-        """
-        discounted_episode_rewards = np.zeros_like(episode_rewards)
-        cumulative = 0.0
-        for i in reversed(range(len(episode_rewards))):
-            cumulative = cumulative * self.gamma + episode_rewards[i]
-            discounted_episode_rewards[i] = cumulative
-    
-        mean = np.mean(discounted_episode_rewards)
-        std = np.std(discounted_episode_rewards)
-    
-        discounted_episode_rewards = (discounted_episode_rewards - mean) / std
-    
-        return discounted_episode_rewards
-
+        temporary = self.checkpoint.with_suffix('.tmp')
+        torch.save(dict(network=self.network.state_dict(),
+                        optimizer=self.optimizer.state_dict(), rng_state=self.rng.get_state(),
+                        episodes_completed=self.episodes_completed, rewards=self.rewards,
+                        training_seconds=self.training_seconds,
+                        best=self.game.best, best_netlists=self.game.best_netlists), temporary)
+        temporary.replace(self.checkpoint)
+        self.game.export_best()

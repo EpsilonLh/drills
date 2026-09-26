@@ -1,77 +1,62 @@
-# DRiLLS <img align="right" width="10%" src="doc/img/drills-logo.png">
-Deep Reinforcement Learning for Logic Synthesis Optimization
+﻿# DRiLLS
 
-## Abstract
-Logic synthesis requires extensive tuning of the synthesis optimization flow where the quality of results (QoR) depends on the sequence of opti-mizations used.  Efficient design space exploration ischallenging due to the exponential number of possible optimization  permutations. Therefore,  automating the optimization process is necessary. In this work, we propose a novel reinforcement learning-based methodology  that  navigates  the  optimization  space  without human intervention.  We demonstrate the training of an Advantage Actor Critic (A2C) agent that seeks to minimize area subject to a timing constraint.  Using the proposed framework, designs can be optimized autonomously with no-humans in-loop.
+基于 [官方 DRiLLS](https://github.com/scale-lab/DRiLLS) 的 FPGA 版本，使用 PyTorch CPU 训练 A2C，搜索满足深度约束且 LUT 数较少的 ABC 综合序列。
 
-## Paper
-DRiLLS has been presented at ASP-DAC 2020 and the manuscript is available on [IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/9045559). A pre-print version is available on [arXiv](https://arxiv.org/abs/1911.04021).
+## 环境
 
-## Setup
-DRiLLS requires `Python 3.6`, `pip3` and `virtualenv` installed on the system.
+- Linux（已在 Ubuntu 20.04 x86_64 验证），无需 GPU。
+- Python 3.9。
+- PyTorch 2.8.0+cpu、NumPy、PyYAML、filelock，由 `requirements.txt` 安装。
+- [ABC](https://github.com/berkeley-abc/abc) 和 [Yosys](https://github.com/YosysHQ/yosys)（本次实验使用 ABC 1.01、Yosys 0.44；安装方法见各仓库 README）。
 
-1. `virtualenv .venv --python=python3`
-2. `source .venv/bin/activate`
-3. `pip install -r requirements.txt`
+使用任意 Python 3.9 环境（如 Conda、venv 或已有环境），在项目目录安装依赖：
 
-:warning: WARNING :warning:
-
-Since TensorFlow 2.x is not compatible with TensorFlow 1.x, this implementation is tested only on Python 3.6.
-If you have a newer version of Python, `pip` won't be able to find `tensorflow==1.x`. 
-
-
-## Run the agent
-
-1. Edit `params.yml` file. Comments in the file illustrate the individual fields.
-2. Run `python drills.py train scl`
-
-For help, `python drills.py -help`
-
-## How It Works
-<img src="doc/img/drills-architecture.png" width="70%" style="display: block;  margin: 0 auto;">
-
-There are two major components in DRiLLS framework: 
-
-* **Logic Synthesis** environment: a setup of the design space exploration problem as a reinforcement learning task. The logic synthesis environment is implemented as a session in [drills/scl_session.py](drills/scl_session.py) and [drills/fpga_session.py](drills/fpga_session.py).
-* **Reinforcement Learning** environment: it employs an *Advantage Actor Critic agent (A2C)* to navigate the environment searching for the best optimization at a given state. It is implemented in [drills/model.py](drills/model.py) and uses [drills/features.py](drills/features.py) to extract AIG features.
-
-DRiLLS agent exploring the design space of [Max](https://github.com/lsils/benchmarks/blob/master/arithmetic/max.v) design.
-
-![](https://media.giphy.com/media/XbbW4WjeLuqneVbGEU/giphy.gif)
-
-For more details on the inner-workings of the framework, see Section 4 in [the paper](https://github.com/scale-lab/DRiLLS/blob/drills-preprint/doc/preprint/DRiLLS_preprint_AH.pdf).
-
-## Reporting Bugs
-Please, use [ISSUE_TEMPLATE/bug_report.md](.github/ISSUE_TEMPLATE/bug_report.md) to create an issue and describe your bug.
-
-## Contributing
-Below is a list of suggested contributions you can make. Before you work on any, it is advised that you create an issue using the [ISSUE_TEMPLATE/contribution.md](.github/ISSUE_TEMPLATE/contribution.md) to tell us what you plan to work on. This ensures that your work can be merged to the `master` branch in a timely manner.
-
-### Modernize Tensorflow Implementation
-
-Google has recently released [Dopamine](https://github.com/google/dopamine) which sets up a framework for researching reinforcement learning algorithms. A new version of DRiLLS would adopt Dopamine to make it easier to implement the model and session classes. If you are new to Dopamine and want to try it on a real use case, it would be a great fit for DRiLLS and will add a great value to our repository.
-
-### Better Integration
-The current implementation interacts with the logic synthesis environment using files. This affects the run time of the agent training as it tries to extract features and statistics through files. A better integrations keeps a session of `yosys` and `abc` where the design is loaded once in the beginning and the feature extraction (and results extraction) are retrieved through this open session.
-
-### Study An Enhanced Model
-The goal is to enhance the model architecture used in [drills/model.py]. An enhancement should give better results (less area **AND** meets timing constraints):
-* Deeper network architecure. 
-* Changing gamma rate.
-* Changing learning rate.
-* Improve normalization.
-
-## Citation
-```
-@INPROCEEDINGS{9045559,
-    author={A. {Hosny} and S. {Hashemi} and M. {Shalan} and S. {Reda}},
-     booktitle={2020 25th Asia and South Pacific Design Automation Conference (ASP-DAC)},
-     title={DRiLLS: Deep Reinforcement Learning for Logic Synthesis},
-     year={2020},
-     volume={},
-     number={},
-     pages={581-586},}
+```bash
+python -m pip install -r requirements.txt
 ```
 
-## License
-BSD 3-Clause License. See [LICENSE](LICENSE) file
+ABC 和 Yosys 的安装方式及编译依赖见上面的官方仓库链接。安装完成后配置可执行文件路径。
+
+在 `params.yml` 中设置工具路径：
+
+```yaml
+runtime:
+  abc_binary: /你的工具目录/bin/yosys-abc
+  yosys_binary: /你的工具目录/bin/yosys
+  output_dir: results
+  workers: 3
+```
+
+如果工具已在 PATH 中，可直接填写 `yosys-abc` 和 `yosys`。
+
+## 配置与运行
+
+所有实验参数均在 `params.yml` 中，可自行修改。默认运行 int2float、i2c、max，使用种子 0、1、2，每次训练 100 轮、每轮 10 步。输入电路已包含在 `benchmarks/` 中。
+
+```bash
+# 运行 resyn2 基线和全部训练搜索
+python drills.py train fpga
+
+# 续训至 params.yml 中设置的总轮数
+python drills.py train fpga --resume
+
+# 仅运行 resyn2 基线
+python drills.py baseline fpga
+
+# 重新生成结果汇总
+python drills.py report fpga
+```
+
+使用其他配置时，在 `fpga` 后追加 YAML 路径。相对路径以配置文件所在目录为基准。
+
+结果默认保存到 `results/`：`results.md` 查看各个种子的 LUTs、levels 和训练耗时；各电路的 `seed-*` 目录保存检查点、最优网表和逐步日志。
+
+## 参考基线
+
+采用 LUT6 映射；参考运行使用 100 episodes × 10 iterations、种子 0/1/2。参考结果取三个种子各自训练搜索最优可行解的均值。
+
+| 电路 | resyn2 levels | resyn2 LUTs | 参考结果 levels | 参考结果 LUTs |
+|---|---:|---:|---:|---:|
+| int2float | 3 | 48 | 3 | 44.00 |
+| i2c | 4 | 322 | 4 | 303.67 |
+| max | 41 | 777 | 41 | 772.33 |
