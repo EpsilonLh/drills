@@ -40,6 +40,8 @@ method:
     returns_epsilon: 1.0e-8
   loss: {actor_weight: 1.0, critic_weight: 1.0, reduction: sum}
   reward:
+    feasible_mode: normalized_delta  # Only transitions whose two states satisfy max_levels.
+    feasible_scale: 1.0              # c * (previous LUTs - current LUTs) / episode initial LUTs.
     feasible: {-1: -1, 0: 0, 1: 3}
     infeasible:
       -1: {-1: -3, 0: -2, 1: -1}
@@ -54,5 +56,5 @@ environment:
 runtime:
   abc_binary: yosys-abc
   yosys_binary: yosys
-  output_dir: results
+  output_dir: results/change-rewards
   workers: 3

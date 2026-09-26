@@ -1,0 +1,4 @@
+ABC command line: "read "/Users/zhan/Downloads/test/DRiLLS/results/max/seed-2/best-mapped.v"; print_stats; cec "/Users/zhan/Downloads/test/DRiLLS/benchmarks/max.aig" "/Users/zhan/Downloads/test/DRiLLS/results/max/seed-2/best-mapped.v";".
+
+[1;37m/Users/zhan/Downloads/test/DRiLLS/benchmarks/max:[0m i/o =  512/  130  lat =    0  nd =   773  edge =   3398  aig  =  3591  lev = 41
+Networks are equivalent.  Time =     0.19 sec

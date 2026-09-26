@@ -1,0 +1,561 @@
+{
+  "metric": "Best feasible training-time LUTs; reduction = old - new (positive is better)",
+  "control": "Historical completed results; no old reward training was rerun",
+  "protocol": {
+    "episodes": 100,
+    "iterations": 10,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "lut_inputs": 6,
+    "initial_sequence": [
+      "strash"
+    ],
+    "resyn2": [
+      "balance",
+      "rewrite",
+      "refactor",
+      "balance",
+      "rewrite",
+      "rewrite -z",
+      "balance",
+      "refactor -z",
+      "rewrite -z",
+      "balance"
+    ],
+    "actions": [
+      "rewrite",
+      "rewrite -z",
+      "refactor",
+      "refactor -z",
+      "resub",
+      "resub -z",
+      "balance"
+    ],
+    "circuits": {
+      "int2float": {
+        "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/int2float.aig",
+        "max_levels": 3
+      },
+      "i2c": {
+        "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/i2c.aig",
+        "max_levels": 4
+      },
+      "max": {
+        "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/max.aig",
+        "max_levels": 41
+      }
+    },
+    "evaluation": {
+      "include_initial": true,
+      "std_ddof": 0
+    }
+  },
+  "reward": {
+    "feasible_mode": "normalized_delta",
+    "feasible_scale": 1.0,
+    "feasible": {
+      "-1": -1,
+      "0": 0,
+      "1": 3
+    },
+    "infeasible": {
+      "-1": {
+        "-1": -3,
+        "0": -2,
+        "1": -1
+      },
+      "0": {
+        "-1": -2,
+        "0": 0,
+        "1": 2
+      },
+      "1": {
+        "-1": 1,
+        "0": 2,
+        "1": 3
+      }
+    }
+  },
+  "summary": {
+    "int2float": {
+      "old_mean": 44.0,
+      "old_std": 0.816496580927726,
+      "new_mean": 44.0,
+      "new_std": 0.816496580927726,
+      "mean_lut_reduction": 0.0,
+      "percent_reduction": 0.0,
+      "wins": 0,
+      "ties": 3,
+      "losses": 0
+    },
+    "i2c": {
+      "old_mean": 303.6666666666667,
+      "old_std": 2.6246692913372702,
+      "new_mean": 303.6666666666667,
+      "new_std": 2.6246692913372702,
+      "mean_lut_reduction": 0.0,
+      "percent_reduction": 0.0,
+      "wins": 0,
+      "ties": 3,
+      "losses": 0
+    },
+    "max": {
+      "old_mean": 772.3333333333334,
+      "old_std": 2.494438257849294,
+      "new_mean": 772.3333333333334,
+      "new_std": 2.494438257849294,
+      "mean_lut_reduction": 0.0,
+      "percent_reduction": 0.0,
+      "wins": 0,
+      "ties": 3,
+      "losses": 0
+    }
+  },
+  "pairs": [
+    {
+      "circuit": "int2float",
+      "seed": 0,
+      "old_luts": 45,
+      "new_luts": 45,
+      "old_levels": 3,
+      "new_levels": 3,
+      "lut_reduction": 0,
+      "outcome": "tie",
+      "old_training_seconds": 85.04925783700004,
+      "new_training_seconds": 92.51763279299998,
+      "old_best": {
+        "luts": 45,
+        "levels": 3,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "refactor",
+          "refactor",
+          "balance",
+          "refactor -z",
+          "rewrite -z",
+          "resub",
+          "refactor -z"
+        ],
+        "episode": 9,
+        "iteration": 7
+      },
+      "new_best": {
+        "luts": 45,
+        "levels": 3,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "refactor",
+          "refactor",
+          "balance",
+          "refactor -z",
+          "rewrite -z",
+          "resub",
+          "refactor -z"
+        ],
+        "episode": 9,
+        "iteration": 7
+      }
+    },
+    {
+      "circuit": "int2float",
+      "seed": 1,
+      "old_luts": 44,
+      "new_luts": 44,
+      "old_levels": 3,
+      "new_levels": 3,
+      "lut_reduction": 0,
+      "outcome": "tie",
+      "old_training_seconds": 81.836220491,
+      "new_training_seconds": 88.55737182600002,
+      "old_best": {
+        "luts": 44,
+        "levels": 3,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "resub -z",
+          "resub -z",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite -z",
+          "balance"
+        ],
+        "episode": 7,
+        "iteration": 6
+      },
+      "new_best": {
+        "luts": 44,
+        "levels": 3,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "resub -z",
+          "resub -z",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite -z",
+          "balance"
+        ],
+        "episode": 7,
+        "iteration": 6
+      }
+    },
+    {
+      "circuit": "int2float",
+      "seed": 2,
+      "old_luts": 43,
+      "new_luts": 43,
+      "old_levels": 3,
+      "new_levels": 3,
+      "lut_reduction": 0,
+      "outcome": "tie",
+      "old_training_seconds": 83.477426378,
+      "new_training_seconds": 90.50899587900003,
+      "old_best": {
+        "luts": 43,
+        "levels": 3,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "balance",
+          "rewrite -z",
+          "rewrite -z",
+          "rewrite",
+          "resub",
+          "refactor",
+          "refactor -z",
+          "refactor -z",
+          "resub -z",
+          "refactor -z"
+        ],
+        "episode": 97,
+        "iteration": 10
+      },
+      "new_best": {
+        "luts": 43,
+        "levels": 3,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "balance",
+          "rewrite -z",
+          "rewrite -z",
+          "rewrite",
+          "resub",
+          "refactor",
+          "refactor -z",
+          "refactor -z",
+          "resub -z",
+          "refactor -z"
+        ],
+        "episode": 97,
+        "iteration": 10
+      }
+    },
+    {
+      "circuit": "i2c",
+      "seed": 0,
+      "old_luts": 300,
+      "new_luts": 300,
+      "old_levels": 4,
+      "new_levels": 4,
+      "lut_reduction": 0,
+      "outcome": "tie",
+      "old_training_seconds": 197.47692896100014,
+      "new_training_seconds": 244.89085529099998,
+      "old_best": {
+        "luts": 300,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "resub",
+          "rewrite -z",
+          "rewrite",
+          "rewrite",
+          "rewrite -z",
+          "rewrite -z",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite",
+          "resub"
+        ],
+        "episode": 23,
+        "iteration": 10
+      },
+      "new_best": {
+        "luts": 300,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "resub",
+          "rewrite -z",
+          "rewrite",
+          "rewrite",
+          "rewrite -z",
+          "rewrite -z",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite",
+          "resub"
+        ],
+        "episode": 23,
+        "iteration": 10
+      }
+    },
+    {
+      "circuit": "i2c",
+      "seed": 1,
+      "old_luts": 305,
+      "new_luts": 305,
+      "old_levels": 4,
+      "new_levels": 4,
+      "lut_reduction": 0,
+      "outcome": "tie",
+      "old_training_seconds": 189.32257678800013,
+      "new_training_seconds": 233.87890633500027,
+      "old_best": {
+        "luts": 305,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "resub",
+          "refactor -z",
+          "rewrite",
+          "balance",
+          "refactor -z",
+          "resub",
+          "refactor",
+          "rewrite"
+        ],
+        "episode": 51,
+        "iteration": 9
+      },
+      "new_best": {
+        "luts": 305,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "resub",
+          "refactor -z",
+          "rewrite",
+          "balance",
+          "refactor -z",
+          "resub",
+          "refactor",
+          "rewrite"
+        ],
+        "episode": 51,
+        "iteration": 9
+      }
+    },
+    {
+      "circuit": "i2c",
+      "seed": 2,
+      "old_luts": 306,
+      "new_luts": 306,
+      "old_levels": 4,
+      "new_levels": 4,
+      "lut_reduction": 0,
+      "outcome": "tie",
+      "old_training_seconds": 195.2062330389999,
+      "new_training_seconds": 243.74012337800013,
+      "old_best": {
+        "luts": 306,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "resub -z",
+          "rewrite -z",
+          "rewrite -z",
+          "refactor -z",
+          "refactor -z",
+          "refactor -z",
+          "refactor -z",
+          "rewrite -z",
+          "resub -z",
+          "balance"
+        ],
+        "episode": 71,
+        "iteration": 10
+      },
+      "new_best": {
+        "luts": 306,
+        "levels": 4,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "resub -z",
+          "refactor -z",
+          "rewrite -z",
+          "rewrite",
+          "rewrite -z",
+          "resub",
+          "rewrite -z",
+          "resub -z"
+        ],
+        "episode": 81,
+        "iteration": 10
+      }
+    },
+    {
+      "circuit": "max",
+      "seed": 0,
+      "old_luts": 769,
+      "new_luts": 769,
+      "old_levels": 41,
+      "new_levels": 41,
+      "lut_reduction": 0,
+      "outcome": "tie",
+      "old_training_seconds": 502.85648466499987,
+      "new_training_seconds": 484.6657304560002,
+      "old_best": {
+        "luts": 769,
+        "levels": 41,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "rewrite -z",
+          "balance",
+          "balance",
+          "resub -z",
+          "refactor",
+          "rewrite -z",
+          "rewrite -z",
+          "refactor -z"
+        ],
+        "episode": 28,
+        "iteration": 10
+      },
+      "new_best": {
+        "luts": 769,
+        "levels": 41,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "rewrite -z",
+          "balance",
+          "balance",
+          "resub -z",
+          "refactor",
+          "rewrite -z",
+          "rewrite -z",
+          "refactor -z"
+        ],
+        "episode": 28,
+        "iteration": 10
+      }
+    },
+    {
+      "circuit": "max",
+      "seed": 1,
+      "old_luts": 775,
+      "new_luts": 775,
+      "old_levels": 41,
+      "new_levels": 41,
+      "lut_reduction": 0,
+      "outcome": "tie",
+      "old_training_seconds": 501.6508722959997,
+      "new_training_seconds": 478.76351525399974,
+      "old_best": {
+        "luts": 775,
+        "levels": 41,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "resub -z",
+          "resub -z",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite -z",
+          "balance",
+          "refactor -z",
+          "rewrite",
+          "refactor -z",
+          "refactor -z"
+        ],
+        "episode": 7,
+        "iteration": 10
+      },
+      "new_best": {
+        "luts": 775,
+        "levels": 41,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "resub -z",
+          "resub -z",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite -z",
+          "balance",
+          "refactor -z",
+          "rewrite",
+          "refactor -z",
+          "refactor -z"
+        ],
+        "episode": 7,
+        "iteration": 10
+      }
+    },
+    {
+      "circuit": "max",
+      "seed": 2,
+      "old_luts": 773,
+      "new_luts": 773,
+      "old_levels": 41,
+      "new_levels": 41,
+      "lut_reduction": 0,
+      "outcome": "tie",
+      "old_training_seconds": 501.89187058499965,
+      "new_training_seconds": 478.2297305380001,
+      "old_best": {
+        "luts": 773,
+        "levels": 41,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "rewrite -z",
+          "refactor -z",
+          "balance"
+        ],
+        "episode": 8,
+        "iteration": 5
+      },
+      "new_best": {
+        "luts": 773,
+        "levels": 41,
+        "feasible": true,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "rewrite -z",
+          "refactor -z",
+          "balance"
+        ],
+        "episode": 8,
+        "iteration": 5
+      }
+    }
+  ]
+}

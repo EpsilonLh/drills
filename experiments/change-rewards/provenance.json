@@ -1,0 +1,68 @@
+{
+  "command": [
+    "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+    "-B",
+    "-u",
+    "drills.py",
+    "train",
+    "fpga",
+    "experiments/change-rewards/params.yml"
+  ],
+  "working_directory": "/Users/zhan/Downloads/test/DRiLLS",
+  "started_at": "2026-09-26T16:32:37.663248+00:00",
+  "branch": "change-rewards",
+  "base_commit": "adf7bef53cdf6c4161586c03e6e2caecffe26bc4",
+  "source_hashes": {
+    "drills.py": "9525a72d594532339fe72e2ff26b9d2f86369b8d380ab143c7882eb4b6ad6cb8",
+    "params.yml": "cf99cd8950d6374f51d42b937ce96bebc715ff575111509edd8c4b6517831875",
+    "drills/__init__.py": "bd1d84a3673dabd0fdbe4d8ca4f11f69155e9ad500c8e2c375df42809034a875",
+    "drills/experiment.py": "9ebb6c42a9df015ab1b001bc9fd97f9041594b9d0c8baf67e499c5d9b29cac0c",
+    "drills/features.py": "d0c9ab6028f2c28e1116de693a66eceefab0c78a5d57a34c0ee76dce4ab46dc6",
+    "drills/fpga_session.py": "9b1bffe8f0200afde99730aed4e33e050d9241d234322b2d23ca1cdf9c6c410d",
+    "drills/model.py": "f0bc47e08db3d296ab50d2441f0630ebfe1b19f574f22e09217ea73bae49b835",
+    "experiments/change-rewards/params.yml": "75ac8ab0ac051e9ca44e5a58a88e9e604fde41af0901a556bb9cbfc4f8a297f0",
+    "experiments/change-rewards/run.py": "100dfc4cdfc2b06e90e4043fc64a0095678041e8843e1132389cbac641eeedd5",
+    "tests/test_rewards.py": "b1a4b562c9b3015dd27a06a10520de2a770d3f8b8fc382ffe1667017cb5c201d"
+  },
+  "benchmark_hashes": {
+    "benchmarks/i2c.aig": "3f6ab413a3f745c87811fa6565d972146f1f4e6ede78fae71fcb16e469b9b213",
+    "benchmarks/int2float.aig": "ad280bdb8331591998b8184ff70ad00d31184649c245796965fc6777e3016bab",
+    "benchmarks/max.aig": "9a7c45c95cec2afbfd418468d8b5ff6a33161c591892e34ba34ff6ed3fbbb1a9"
+  },
+  "python": "3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 18:02:02) \n[Clang 18.1.8 ]",
+  "torch": "2.8.0",
+  "numpy": "1.26.4",
+  "pyyaml": "6.0.2",
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "machine": "arm64",
+  "historical_control": {
+    "root": "results",
+    "baseline_commit": "adf7bef53cdf6c4161586c03e6e2caecffe26bc4",
+    "manifest": "results/new-state/baseline-provenance.json",
+    "manifest_sha256": "80e8cde97c5360097ac33b782d7614c6001827cb984b96f4c39a7c4dd0b48e97",
+    "checked_artifacts": 2768,
+    "source_hashes": {
+      "drills.py": "9525a72d594532339fe72e2ff26b9d2f86369b8d380ab143c7882eb4b6ad6cb8",
+      "drills/model.py": "f0bc47e08db3d296ab50d2441f0630ebfe1b19f574f22e09217ea73bae49b835",
+      "drills/fpga_session.py": "1ecba422c1e69bc17bb911e2561130cf16f8b591eb30a23a6a38e500f71dcbf9",
+      "drills/features.py": "d0c9ab6028f2c28e1116de693a66eceefab0c78a5d57a34c0ee76dce4ab46dc6",
+      "drills/experiment.py": "b7d11ffe5db362ac0b57954fc647550718262ac92d8f650055b84ef1394b4b0b",
+      "params.yml": "ed6642b4e3caf3f4aa4426e3fe98cdbe7e46e0ce8d0bb8dc9e8a69c387311f52",
+      "requirements.txt": "ce06542b5e74aeae2733fe9ac3607c3f11e41bfc3cea747a9dd4b80608963aed"
+    },
+    "historical_tool_versions": "Not recorded by the historical control manifest."
+  },
+  "yosys": {
+    "path": "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/yosys",
+    "sha256": "da0a89f2c35c7a5d4d582ab6c547a9cab00d38f4afeb2b4572994e9bd3ae36a4",
+    "version": "Yosys 0.44 (git sha1 80ba43d26, clang++ 21.0.0 -fPIC -O3)"
+  },
+  "abc": {
+    "path": "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/yosys-abc",
+    "sha256": "8bfa8e2ed1ea3c952cf9445e9467f16882b204f4c609e493bf96a83943817366",
+    "version": "ABC command line: \"version\".\n\nUC Berkeley, ABC 1.01 (compiled Sep 25 2026 02:25:45)"
+  },
+  "finished_at": "2026-09-26T16:46:17.043391+00:00",
+  "exit_code": 0,
+  "training_log_sha256": "78858ab8cf03543adfac3517ffee7416c8e3a5fdc0c3753bce566843937d2267"
+}

@@ -1,6 +1,7 @@
 """The complete assessment: configuration, prescribed runs and all-seed reporting."""
 from concurrent.futures import ProcessPoolExecutor
 import json
+import math
 from multiprocessing import get_context
 from pathlib import Path
 import re
@@ -29,6 +30,12 @@ def load_config(filename):
         raise ValueError('Circuits, actions and initial sequence must not be empty.')
     if not 0 <= protocol['evaluation']['std_ddof'] < len(seeds):
         raise ValueError('Standard deviation ddof must be smaller than the number of seeds.')
+    reward = method['reward']
+    if reward.get('feasible_mode', 'table') not in ['table', 'normalized_delta']:
+        raise ValueError('Reward feasible_mode must be table or normalized_delta.')
+    scale = reward.get('feasible_scale', 1.0)
+    if type(scale) not in [int, float] or not math.isfinite(scale) or scale <= 0:
+        raise ValueError('Reward feasible_scale must be a finite positive number.')
     for key in ['abc_binary', 'yosys_binary']:
         binary = runtime[key]
         if '/' in binary or '\\' in binary:

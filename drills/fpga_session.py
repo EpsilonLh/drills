@@ -22,6 +22,7 @@ class FPGASession:
         self.iteration = 0
         self.sequence = list(self.protocol['initial_sequence'])
         self.luts = self.levels = float('inf')
+        self.initial_luts = None
         self.episode_dir = self.directory / 'episodes' / str(self.episode)
         self.episode_dir.mkdir(parents=True, exist_ok=True)
         self.log_file = self.episode_dir / 'log.csv'
@@ -55,6 +56,10 @@ class FPGASession:
         if not unmapped.is_file() or not mapped.is_file():
             raise RuntimeError('ABC did not produce the current netlists.\n' + output)
         luts, levels = map(int, re.findall(r'\bnd\s*=\s*(\d+)[^\n]*?\blev\s*=\s*(\d+)', output)[-1])
+        if not self.iteration:
+            self.initial_luts = luts
+            if self.method['reward'].get('feasible_mode', 'table') == 'normalized_delta' and luts == 0:
+                raise ValueError('normalized_delta rewards require positive initial mapped LUTs.')
         state = extract_features(unmapped, self.config)
         reward = self._get_reward(luts, levels) if self.iteration else 0
         self.luts, self.levels = luts, levels
@@ -81,6 +86,10 @@ class FPGASession:
     def _get_reward(self, luts, levels):
         area = int(luts < self.luts) - int(luts > self.luts)
         if levels <= self.circuit['max_levels']:
+            reward = self.method['reward']
+            if (reward.get('feasible_mode', 'table') == 'normalized_delta'
+                    and self.levels <= self.circuit['max_levels']):
+                return reward.get('feasible_scale', 1.0) * (self.luts - luts) / self.initial_luts
             return self.method['reward']['feasible'][area]
         depth = int(levels < self.levels) - int(levels > self.levels)
         return self.method['reward']['infeasible'][depth][area]

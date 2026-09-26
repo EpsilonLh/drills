@@ -23,7 +23,7 @@ ABC 和 Yosys 的安装方式及编译依赖见上面的官方仓库链接。安
 runtime:
   abc_binary: /你的工具目录/bin/yosys-abc
   yosys_binary: /你的工具目录/bin/yosys
-  output_dir: results
+  output_dir: results/change-rewards
   workers: 3
 ```
 
@@ -49,7 +49,34 @@ python drills.py report fpga
 
 使用其他配置时，在 `fpga` 后追加 YAML 路径。相对路径以配置文件所在目录为基准。
 
-结果默认保存到 `results/`：`results.md` 查看各个种子的 LUTs、levels 和训练耗时；各电路的 `seed-*` 目录保存检查点、最优网表和逐步日志。
+结果默认保存到 `results/change-rewards/`：`results.md` 查看各个种子的 LUTs、levels 和训练耗时；各电路的 `seed-*` 目录保存检查点、最优网表和逐步日志。原有 `results/` 数据保留作为旧奖励的历史对照。
+
+## LUT 幅度奖励
+
+本分支默认配置为：
+
+```yaml
+method:
+  reward:
+    feasible_mode: normalized_delta
+    feasible_scale: 1.0
+```
+
+仅当前后两步都满足 `levels <= max_levels` 时，奖励为
+`feasible_scale * (previous LUTs - current LUTs) / initial LUTs`。
+`initial LUTs` 是每轮初始序列映射出的 step 0 LUT 数，整轮固定。
+改善和恶化按相同尺度计分；LUT 数相同时奖励为零。新模式拒绝初始 LUT 为零的电路。
+跨越约束和目标状态不可行时仍使用原有奖励表。
+
+`feasible_mode: table` 使用原奖励；旧配置省略新增字段时也使用原奖励。
+`feasible_scale` 缺省为 1.0，必须为有限正数。
+训练仍标准化每轮折扣回报，因此尺度在全程可行的回合中通常会被抵消，混合奖励分支时仍会影响训练。
+`49→50→49` 的新原始奖励合计为零；折扣回报不保证相消。
+
+实验必须从头训练到新的输出目录，不能以旧奖励的模型续训作为新策略对照。
+同配置新策略可使用 `--resume` 接续中断的训练。
+本次固定 c=1、三个电路及种子 0/1/2 的代码、命令和实验证据见
+[实验报告](experiments/change-rewards/report.md)。
 
 ## 参考基线
 

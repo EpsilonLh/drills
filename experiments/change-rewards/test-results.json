@@ -1,0 +1,9 @@
+{
+  "command": ".tools/conda-env/bin/python -B -m unittest discover -s tests -v",
+  "exit_code": 0,
+  "tests_passed": 12,
+  "tests_skipped": 0,
+  "seconds": 3.513,
+  "test_source_sha256": "b1a4b562c9b3015dd27a06a10520de2a770d3f8b8fc382ffe1667017cb5c201d",
+  "real_tools_resume_test": true
+}

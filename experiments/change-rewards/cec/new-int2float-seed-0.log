@@ -1,0 +1,4 @@
+ABC command line: "read "/Users/zhan/Downloads/test/DRiLLS/results/change-rewards/int2float/seed-0/best-mapped.v"; print_stats; cec "/Users/zhan/Downloads/test/DRiLLS/benchmarks/int2float.aig" "/Users/zhan/Downloads/test/DRiLLS/results/change-rewards/int2float/seed-0/best-mapped.v";".
+
+[1;37m/Users/zhan/Downloads/test/DRiLLS/benchmarks/int2float:[0m i/o =   11/    7  lat =    0  nd =    45  edge =    232  aig  =   281  lev = 3
+Networks are equivalent.  Time =     0.01 sec
