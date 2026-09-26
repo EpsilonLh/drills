@@ -107,6 +107,13 @@ def compare(stage):
     performance_mask = performance_method.pop('performance_feature_mask', [1, 1])
     if zero_mask != [0, 0] or performance_mask != [1, 1] or method != performance_method:
         raise ValueError('The methods differ beyond the prespecified feature mask.')
+    historical_method = dict(historical_config['method'])
+    historical_method.pop('performance_feature_mask', None)
+    if method != historical_method or zero_config['environment'] != historical_config['environment']:
+        raise ValueError('Training settings differ from the reused historical seeds.')
+    for key, expected in historical_config['protocol'].items():
+        if key != 'seeds' and zero_config['protocol'][key] != expected:
+            raise ValueError(f'Protocol differs from the reused historical seeds: {key}')
     for key in ['protocol', 'environment']:
         if zero_config[key] != performance_config[key]:
             raise ValueError(f'Unequal experimental settings: {key}')
@@ -241,8 +248,11 @@ def compare(stage):
         lines += ['本阶段未达到预先约定的单维消融条件：当前数据不足以确认性能信息带来稳定收益。先保留这一结论，不继续增加单维实验或挑选种子追求正结果。']
     lines += ['', '区间跨零表示本次数据尚不能确定平均差值方向，不等于证明两种状态等效。即使区间完全为正，也仅支持这些电路、预算和种子分布下的初步结论。',
               '没有跨电路泛化或冻结模型独立测试；比较的是搜索期间最优可行结果。全部种子独立从头训练，第二阶段仅复用已完成的种子，不增加其预算。',
+              '复用的三个性能特征种子在方案制定前已观察过；区间和消融门槛用于探索性判断，不作为完全独立的确认性检验。',
               'AI 协助实现、执行、核验与描述性统计。结果未通过超参数调整、追加种子或挑选最好结果来优化。', '']
     stem.with_suffix('.md').write_text('\n'.join(lines), encoding='utf-8')
+    for extension in ['csv', 'json']:
+        (OUTPUT / f'comparison-{stage}.{extension}').write_bytes(stem.with_suffix(f'.{extension}').read_bytes())
     return summary, gate
 
 
