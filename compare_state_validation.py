@@ -148,7 +148,7 @@ def compare(stage):
             item.update({f'{variant}_{key}': value for key, value in row[variant].items() if key != 'sequence'})
         flat.append(item)
     with stem.with_suffix('.csv').open('w', encoding='utf-8-sig', newline='') as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(flat[0]))
+        writer = csv.DictWriter(handle, fieldnames=list(flat[0]), lineterminator='\n')
         writer.writeheader()
         writer.writerows(flat)
     title = '第一步：三种子十一维零特征对照' if stage == 'first' else '第二步：十种子同维度性能信息验证'
