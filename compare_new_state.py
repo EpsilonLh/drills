@@ -7,10 +7,31 @@ import json
 from pathlib import Path
 import re
 import statistics
+import subprocess
 
 
 def read_json(path):
     return json.loads(path.read_text(encoding='utf-8'))
+
+
+def verify_recorded_source(project, source_hashes):
+    """Verify historical execution code against current files or immutable Git history."""
+    verified = {}
+    for name, expected in source_hashes.items():
+        if (project / name).is_file() and hashlib.sha256((project / name).read_bytes()).hexdigest() == expected:
+            verified[name] = 'working-tree'
+            continue
+        revisions = subprocess.check_output(['git', 'log', '--format=%H', '--', name],
+                                            cwd=project, text=True).splitlines()
+        for revision in revisions:
+            saved = subprocess.run(['git', 'show', f'{revision}:{name}'], cwd=project,
+                                   stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+            if saved.returncode == 0 and hashlib.sha256(saved.stdout).hexdigest() == expected:
+                verified[name] = revision
+                break
+        else:
+            raise ValueError(f'Cannot verify recorded experiment source: {name}')
+    return verified
 
 
 def summarize_run(root, circuit, seed, protocol):
@@ -113,9 +134,7 @@ def compare(baseline, improved, report):
     validation = read_json(improved / 'validation.json')
     if validation['exit_code'] != 0 or validation['tests_passed'] != 9:
         raise ValueError('State compatibility and integration checks did not pass.')
-    for name, expected in provenance['source_hashes'].items():
-        if hashlib.sha256((project / name).read_bytes()).hexdigest() != expected:
-            raise ValueError(f'Experiment source changed after launch: {name}')
+    verified_sources = verify_recorded_source(project, provenance['source_hashes'])
     if status['status'] != 'complete' or status['exit_code'] != 0 or status['completed_runs'] != len(rows):
         raise ValueError('Full experiment did not finish successfully.')
     payload = dict(material_passport=dict(origin_skill='academic-research-suite/experiment-agent',
@@ -124,7 +143,8 @@ def compare(baseline, improved, report):
                    baseline_commit=preserved['baseline_commit'], baseline_source_hashes=preserved['source_hashes'],
                    baseline_directory=str(baseline), improved_directory=str(improved),
                    original_config=original, improved_config=augmented, provenance=provenance,
-                   run_status=status, validation=validation, baseline_files_unchanged=True, rows=rows, summary=summaries)
+                   run_status=status, validation=validation, verified_sources=verified_sources,
+                   baseline_files_unchanged=True, rows=rows, summary=summaries)
     payload['interpretation_checks'] = [
         dict(name="Simpson's paradox", finding='Each circuit and seed is reported separately; no pooled cross-circuit score.'),
         dict(name='Ecological fallacy', finding='Means are not claimed to describe every seed; per-seed outcomes are shown.'),

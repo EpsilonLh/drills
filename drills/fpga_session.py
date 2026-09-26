@@ -19,6 +19,15 @@ def performance_feature_names(method):
     return list(names)
 
 
+def performance_feature_mask(method):
+    names = performance_feature_names(method)
+    mask = method.get('performance_feature_mask', [1] * len(names))
+    if (not isinstance(mask, list) or len(mask) != len(names)
+            or any(type(value) is not int or value not in (0, 1) for value in mask)):
+        raise ValueError('performance_feature_mask must contain one integer 0/1 per performance feature.')
+    return list(mask)
+
+
 class FPGASession:
     def __init__(self, config, circuit, directory):
         self.config, self.circuit = config, circuit

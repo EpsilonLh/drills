@@ -13,7 +13,7 @@ import torch
 import yaml
 
 from .model import A2C
-from .fpga_session import performance_feature_names
+from .fpga_session import performance_feature_names, performance_feature_mask
 
 
 def load_config(filename):
@@ -21,6 +21,7 @@ def load_config(filename):
     config = yaml.safe_load(filename.read_text(encoding='utf-8'))
     protocol, method, environment, runtime = (config[k] for k in ['protocol', 'method', 'environment', 'runtime'])
     performance_features = performance_feature_names(method)
+    performance_feature_mask(method)
     for value in [protocol['episodes'], protocol['iterations'], runtime['workers'], environment['torch_threads']]:
         if type(value) is not int or value <= 0:
             raise ValueError('Episodes, iterations, workers and threads must be positive integers.')

@@ -6,7 +6,7 @@ import numpy as np
 import torch
 from torch import nn
 
-from .fpga_session import FPGASession
+from .fpga_session import FPGASession, performance_feature_mask
 
 
 class Normalizer:
@@ -63,6 +63,7 @@ class A2C:
         self.game = FPGASession(config, circuit, directory)
         self.state_features = dict(structural=list(self.method['features']),
                                    performance=list(self.game.performance_features))
+        self.performance_mask = performance_feature_mask(self.method)
         inputs = len(self.state_features['structural']) + len(self.state_features['performance'])
         self.network = ActorCritic(inputs, len(self.protocol['actions']),
                                    self.method['network']).to('cpu')
@@ -82,6 +83,9 @@ class A2C:
                     raise ValueError('Legacy checkpoints cannot resume with performance features enabled.')
             elif saved_features != self.state_features:
                 raise ValueError('Checkpoint state features do not match the requested configuration.')
+            saved_mask = saved.get('performance_feature_mask', [1] * len(self.performance_mask))
+            if saved_mask != self.performance_mask:
+                raise ValueError('Checkpoint performance feature mask does not match the requested configuration.')
             self.network.load_state_dict(saved['network'])
             current_groups = [dict(g) for g in self.optimizer.param_groups]
             self.optimizer.load_state_dict(saved['optimizer'])
@@ -111,7 +115,10 @@ class A2C:
         while not done:
             structural = normalizer.normalize(state[:structural_size])
             # Fixed-scale performance features retain their constraint boundary at zero.
-            state = (np.concatenate((structural, state[structural_size:]))
+            performance = state[structural_size:]
+            if self.performance_mask and not all(self.performance_mask):
+                performance = performance * np.asarray(self.performance_mask, dtype=np.float32)
+            state = (np.concatenate((structural, performance))
                      if self.state_features['performance'] else structural)
             with torch.no_grad():
                 logits, _ = self.network(torch.as_tensor(state, device='cpu'))
@@ -154,6 +161,7 @@ class A2C:
                         optimizer=self.optimizer.state_dict(), rng_state=self.rng.get_state(),
                         episodes_completed=self.episodes_completed, rewards=self.rewards,
                         state_features=self.state_features,
+                        performance_feature_mask=self.performance_mask,
                         training_seconds=self.training_seconds,
                         best=self.game.best, best_netlists=self.game.best_netlists), temporary)
         temporary.replace(self.checkpoint)
