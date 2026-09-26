@@ -1,0 +1,10 @@
+﻿circuit,seed,lut_reduction,outcome,reused_performance_run,zero_luts,zero_levels,zero_feasible,zero_episode,zero_iteration,zero_training_seconds,zero_feasible_episodes,zero_feasible_episode_percent,performance_luts,performance_levels,performance_feasible,performance_episode,performance_iteration,performance_training_seconds,performance_feasible_episodes,performance_feasible_episode_percent
+int2float,0,0,tied,True,44,3,True,37,9,95.86127312499994,100,100.0,44,3,True,5,6,89.11227495799999,100,100.0
+int2float,1,0,tied,True,44,3,True,79,6,98.43902096200003,100,100.0,44,3,True,79,6,91.82373308599995,100,100.0
+int2float,2,-1,regressed,True,42,3,True,5,10,97.69783858299998,100,100.0,43,3,True,97,10,90.87001295399998,100,100.0
+i2c,0,0,tied,True,304,4,True,41,9,222.11072350000003,100,100.0,304,4,True,23,9,170.52493050299998,100,100.0
+i2c,1,0,tied,True,297,4,True,49,10,228.49296500000045,100,100.0,297,4,True,49,10,178.81882887999978,100,100.0
+i2c,2,1,improved,True,309,4,True,81,8,225.9862234140001,100,100.0,308,4,True,88,9,176.18929442400005,100,100.0
+max,0,2,improved,True,769,41,True,28,10,468.90911649699984,24,24.0,767,41,True,15,7,380.35441241399957,29,29.0
+max,1,6,improved,True,776,41,True,39,6,476.95871516500034,22,22.0,770,41,True,76,8,383.2932049600002,21,21.0
+max,2,2,improved,True,775,41,True,88,10,471.2442697909996,18,18.0,773,41,True,8,5,383.6592155899998,24,24.0

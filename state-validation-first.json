@@ -1,0 +1,1153 @@
+{
+  "material_passport": {
+    "origin_skill": "academic-research-suite/experiment-agent",
+    "origin_mode": "validate",
+    "origin_date": "2026-09-26",
+    "verification_status": "VERIFIED",
+    "version_label": "matched_state_first_v1"
+  },
+  "stage": "first",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "zero_config": {
+    "protocol": {
+      "episodes": 100,
+      "iterations": 10,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "lut_inputs": 6,
+      "initial_sequence": [
+        "strash"
+      ],
+      "resyn2": [
+        "balance",
+        "rewrite",
+        "refactor",
+        "balance",
+        "rewrite",
+        "rewrite -z",
+        "balance",
+        "refactor -z",
+        "rewrite -z",
+        "balance"
+      ],
+      "actions": [
+        "rewrite",
+        "rewrite -z",
+        "refactor",
+        "refactor -z",
+        "resub",
+        "resub -z",
+        "balance"
+      ],
+      "circuits": {
+        "int2float": {
+          "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/int2float.aig",
+          "max_levels": 3
+        },
+        "i2c": {
+          "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/i2c.aig",
+          "max_levels": 4
+        },
+        "max": {
+          "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/max.aig",
+          "max_levels": 41
+        }
+      },
+      "evaluation": {
+        "include_initial": true,
+        "std_ddof": 0
+      }
+    },
+    "method": {
+      "gamma": 0.99,
+      "optimizer": {
+        "name": "Adam",
+        "learning_rate": 0.001,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "epsilon": 1e-08,
+        "weight_decay": 0.0
+      },
+      "network": {
+        "actor_hidden": [
+          20,
+          20
+        ],
+        "critic_hidden": [
+          10
+        ],
+        "activation": "ReLU",
+        "initialization": "xavier_uniform",
+        "bias_initialization": 0.0
+      },
+      "features": [
+        "input_pins",
+        "output_pins",
+        "cells",
+        "edges",
+        "levels",
+        "latches",
+        "and_fraction",
+        "or_fraction",
+        "not_fraction"
+      ],
+      "performance_features": [
+        "lut_ratio",
+        "depth_margin"
+      ],
+      "performance_feature_mask": [
+        0,
+        0
+      ],
+      "normalization": {
+        "state": "episode_welford",
+        "variance_min": 0.01,
+        "variance_max": 1000000000.0,
+        "returns": "standardize",
+        "returns_epsilon": 1e-08
+      },
+      "loss": {
+        "actor_weight": 1.0,
+        "critic_weight": 1.0,
+        "reduction": "sum"
+      },
+      "reward": {
+        "feasible": {
+          "-1": -1,
+          "0": 0,
+          "1": 3
+        },
+        "infeasible": {
+          "-1": {
+            "-1": -3,
+            "0": -2,
+            "1": -1
+          },
+          "0": {
+            "-1": -2,
+            "0": 0,
+            "1": 2
+          },
+          "1": {
+            "-1": 1,
+            "0": 2,
+            "1": 3
+          }
+        }
+      }
+    },
+    "environment": {
+      "torch_threads": 1
+    },
+    "runtime": {
+      "abc_binary": "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/yosys-abc",
+      "yosys_binary": "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/yosys",
+      "output_dir": "/Users/zhan/Downloads/test/DRiLLS/results/state-validation/zero",
+      "workers": 3
+    }
+  },
+  "performance_config": {
+    "protocol": {
+      "episodes": 100,
+      "iterations": 10,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "lut_inputs": 6,
+      "initial_sequence": [
+        "strash"
+      ],
+      "resyn2": [
+        "balance",
+        "rewrite",
+        "refactor",
+        "balance",
+        "rewrite",
+        "rewrite -z",
+        "balance",
+        "refactor -z",
+        "rewrite -z",
+        "balance"
+      ],
+      "actions": [
+        "rewrite",
+        "rewrite -z",
+        "refactor",
+        "refactor -z",
+        "resub",
+        "resub -z",
+        "balance"
+      ],
+      "circuits": {
+        "int2float": {
+          "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/int2float.aig",
+          "max_levels": 3
+        },
+        "i2c": {
+          "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/i2c.aig",
+          "max_levels": 4
+        },
+        "max": {
+          "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/max.aig",
+          "max_levels": 41
+        }
+      },
+      "evaluation": {
+        "include_initial": true,
+        "std_ddof": 0
+      }
+    },
+    "method": {
+      "gamma": 0.99,
+      "optimizer": {
+        "name": "Adam",
+        "learning_rate": 0.001,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "epsilon": 1e-08,
+        "weight_decay": 0.0
+      },
+      "network": {
+        "actor_hidden": [
+          20,
+          20
+        ],
+        "critic_hidden": [
+          10
+        ],
+        "activation": "ReLU",
+        "initialization": "xavier_uniform",
+        "bias_initialization": 0.0
+      },
+      "features": [
+        "input_pins",
+        "output_pins",
+        "cells",
+        "edges",
+        "levels",
+        "latches",
+        "and_fraction",
+        "or_fraction",
+        "not_fraction"
+      ],
+      "performance_features": [
+        "lut_ratio",
+        "depth_margin"
+      ],
+      "normalization": {
+        "state": "episode_welford",
+        "variance_min": 0.01,
+        "variance_max": 1000000000.0,
+        "returns": "standardize",
+        "returns_epsilon": 1e-08
+      },
+      "loss": {
+        "actor_weight": 1.0,
+        "critic_weight": 1.0,
+        "reduction": "sum"
+      },
+      "reward": {
+        "feasible": {
+          "-1": -1,
+          "0": 0,
+          "1": 3
+        },
+        "infeasible": {
+          "-1": {
+            "-1": -3,
+            "0": -2,
+            "1": -1
+          },
+          "0": {
+            "-1": -2,
+            "0": 0,
+            "1": 2
+          },
+          "1": {
+            "-1": 1,
+            "0": 2,
+            "1": 3
+          }
+        }
+      }
+    },
+    "environment": {
+      "torch_threads": 1
+    },
+    "runtime": {
+      "abc_binary": "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/yosys-abc",
+      "yosys_binary": "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/yosys",
+      "output_dir": "/Users/zhan/Downloads/test/DRiLLS/results/new-state",
+      "workers": 3
+    }
+  },
+  "rows": [
+    {
+      "circuit": "int2float",
+      "seed": 0,
+      "zero": {
+        "luts": 44,
+        "levels": 3,
+        "feasible": true,
+        "episode": 37,
+        "iteration": 9,
+        "sequence": [
+          "strash",
+          "resub -z",
+          "resub",
+          "balance",
+          "refactor -z",
+          "resub",
+          "rewrite -z",
+          "rewrite -z",
+          "balance",
+          "balance"
+        ],
+        "training_seconds": 95.86127312499994,
+        "feasible_episodes": 100,
+        "feasible_episode_percent": 100.0
+      },
+      "performance": {
+        "luts": 44,
+        "levels": 3,
+        "feasible": true,
+        "episode": 5,
+        "iteration": 6,
+        "sequence": [
+          "strash",
+          "refactor -z",
+          "resub",
+          "rewrite",
+          "refactor -z",
+          "rewrite",
+          "balance"
+        ],
+        "training_seconds": 89.11227495799999,
+        "feasible_episodes": 100,
+        "feasible_episode_percent": 100.0
+      },
+      "lut_reduction": 0,
+      "outcome": "tied",
+      "reused_performance_run": true
+    },
+    {
+      "circuit": "int2float",
+      "seed": 1,
+      "zero": {
+        "luts": 44,
+        "levels": 3,
+        "feasible": true,
+        "episode": 79,
+        "iteration": 6,
+        "sequence": [
+          "strash",
+          "refactor -z",
+          "rewrite",
+          "resub -z",
+          "resub -z",
+          "rewrite -z",
+          "refactor -z"
+        ],
+        "training_seconds": 98.43902096200003,
+        "feasible_episodes": 100,
+        "feasible_episode_percent": 100.0
+      },
+      "performance": {
+        "luts": 44,
+        "levels": 3,
+        "feasible": true,
+        "episode": 79,
+        "iteration": 6,
+        "sequence": [
+          "strash",
+          "refactor -z",
+          "rewrite",
+          "resub -z",
+          "rewrite",
+          "rewrite -z",
+          "refactor -z"
+        ],
+        "training_seconds": 91.82373308599995,
+        "feasible_episodes": 100,
+        "feasible_episode_percent": 100.0
+      },
+      "lut_reduction": 0,
+      "outcome": "tied",
+      "reused_performance_run": true
+    },
+    {
+      "circuit": "int2float",
+      "seed": 2,
+      "zero": {
+        "luts": 42,
+        "levels": 3,
+        "feasible": true,
+        "episode": 5,
+        "iteration": 10,
+        "sequence": [
+          "strash",
+          "resub",
+          "refactor -z",
+          "rewrite",
+          "refactor -z",
+          "refactor -z",
+          "resub -z",
+          "refactor",
+          "rewrite -z",
+          "rewrite",
+          "refactor -z"
+        ],
+        "training_seconds": 97.69783858299998,
+        "feasible_episodes": 100,
+        "feasible_episode_percent": 100.0
+      },
+      "performance": {
+        "luts": 43,
+        "levels": 3,
+        "feasible": true,
+        "episode": 97,
+        "iteration": 10,
+        "sequence": [
+          "strash",
+          "balance",
+          "rewrite -z",
+          "rewrite -z",
+          "rewrite",
+          "resub",
+          "refactor",
+          "refactor -z",
+          "refactor -z",
+          "resub -z",
+          "refactor -z"
+        ],
+        "training_seconds": 90.87001295399998,
+        "feasible_episodes": 100,
+        "feasible_episode_percent": 100.0
+      },
+      "lut_reduction": -1,
+      "outcome": "regressed",
+      "reused_performance_run": true
+    },
+    {
+      "circuit": "i2c",
+      "seed": 0,
+      "zero": {
+        "luts": 304,
+        "levels": 4,
+        "feasible": true,
+        "episode": 41,
+        "iteration": 9,
+        "sequence": [
+          "strash",
+          "resub -z",
+          "rewrite -z",
+          "refactor",
+          "rewrite -z",
+          "resub -z",
+          "refactor -z",
+          "resub",
+          "refactor -z",
+          "resub -z"
+        ],
+        "training_seconds": 222.11072350000003,
+        "feasible_episodes": 100,
+        "feasible_episode_percent": 100.0
+      },
+      "performance": {
+        "luts": 304,
+        "levels": 4,
+        "feasible": true,
+        "episode": 23,
+        "iteration": 9,
+        "sequence": [
+          "strash",
+          "resub",
+          "rewrite -z",
+          "rewrite",
+          "rewrite",
+          "rewrite -z",
+          "rewrite -z",
+          "rewrite -z",
+          "refactor -z",
+          "resub -z"
+        ],
+        "training_seconds": 170.52493050299998,
+        "feasible_episodes": 100,
+        "feasible_episode_percent": 100.0
+      },
+      "lut_reduction": 0,
+      "outcome": "tied",
+      "reused_performance_run": true
+    },
+    {
+      "circuit": "i2c",
+      "seed": 1,
+      "zero": {
+        "luts": 297,
+        "levels": 4,
+        "feasible": true,
+        "episode": 49,
+        "iteration": 10,
+        "sequence": [
+          "strash",
+          "rewrite",
+          "resub",
+          "rewrite -z",
+          "rewrite -z",
+          "rewrite -z",
+          "rewrite -z",
+          "refactor",
+          "balance",
+          "refactor -z",
+          "resub"
+        ],
+        "training_seconds": 228.49296500000045,
+        "feasible_episodes": 100,
+        "feasible_episode_percent": 100.0
+      },
+      "performance": {
+        "luts": 297,
+        "levels": 4,
+        "feasible": true,
+        "episode": 49,
+        "iteration": 10,
+        "sequence": [
+          "strash",
+          "rewrite",
+          "resub",
+          "rewrite -z",
+          "rewrite -z",
+          "rewrite -z",
+          "rewrite -z",
+          "refactor",
+          "balance",
+          "refactor -z",
+          "resub"
+        ],
+        "training_seconds": 178.81882887999978,
+        "feasible_episodes": 100,
+        "feasible_episode_percent": 100.0
+      },
+      "lut_reduction": 0,
+      "outcome": "tied",
+      "reused_performance_run": true
+    },
+    {
+      "circuit": "i2c",
+      "seed": 2,
+      "zero": {
+        "luts": 309,
+        "levels": 4,
+        "feasible": true,
+        "episode": 81,
+        "iteration": 8,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "refactor",
+          "refactor -z",
+          "rewrite -z",
+          "rewrite",
+          "rewrite -z",
+          "resub"
+        ],
+        "training_seconds": 225.9862234140001,
+        "feasible_episodes": 100,
+        "feasible_episode_percent": 100.0
+      },
+      "performance": {
+        "luts": 308,
+        "levels": 4,
+        "feasible": true,
+        "episode": 88,
+        "iteration": 9,
+        "sequence": [
+          "strash",
+          "resub -z",
+          "rewrite",
+          "rewrite -z",
+          "balance",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite"
+        ],
+        "training_seconds": 176.18929442400005,
+        "feasible_episodes": 100,
+        "feasible_episode_percent": 100.0
+      },
+      "lut_reduction": 1,
+      "outcome": "improved",
+      "reused_performance_run": true
+    },
+    {
+      "circuit": "max",
+      "seed": 0,
+      "zero": {
+        "luts": 769,
+        "levels": 41,
+        "feasible": true,
+        "episode": 28,
+        "iteration": 10,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "rewrite -z",
+          "balance",
+          "balance",
+          "resub -z",
+          "refactor",
+          "rewrite -z",
+          "rewrite -z",
+          "refactor -z"
+        ],
+        "training_seconds": 468.90911649699984,
+        "feasible_episodes": 24,
+        "feasible_episode_percent": 24.0
+      },
+      "performance": {
+        "luts": 767,
+        "levels": 41,
+        "feasible": true,
+        "episode": 15,
+        "iteration": 7,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite -z",
+          "refactor",
+          "balance"
+        ],
+        "training_seconds": 380.35441241399957,
+        "feasible_episodes": 29,
+        "feasible_episode_percent": 29.0
+      },
+      "lut_reduction": 2,
+      "outcome": "improved",
+      "reused_performance_run": true
+    },
+    {
+      "circuit": "max",
+      "seed": 1,
+      "zero": {
+        "luts": 776,
+        "levels": 41,
+        "feasible": true,
+        "episode": 39,
+        "iteration": 6,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite -z",
+          "balance",
+          "rewrite -z",
+          "refactor -z"
+        ],
+        "training_seconds": 476.95871516500034,
+        "feasible_episodes": 22,
+        "feasible_episode_percent": 22.0
+      },
+      "performance": {
+        "luts": 770,
+        "levels": 41,
+        "feasible": true,
+        "episode": 76,
+        "iteration": 8,
+        "sequence": [
+          "strash",
+          "balance",
+          "rewrite -z",
+          "refactor -z",
+          "resub",
+          "balance",
+          "refactor",
+          "rewrite -z",
+          "balance"
+        ],
+        "training_seconds": 383.2932049600002,
+        "feasible_episodes": 21,
+        "feasible_episode_percent": 21.0
+      },
+      "lut_reduction": 6,
+      "outcome": "improved",
+      "reused_performance_run": true
+    },
+    {
+      "circuit": "max",
+      "seed": 2,
+      "zero": {
+        "luts": 775,
+        "levels": 41,
+        "feasible": true,
+        "episode": 88,
+        "iteration": 10,
+        "sequence": [
+          "strash",
+          "resub -z",
+          "rewrite",
+          "rewrite -z",
+          "balance",
+          "balance",
+          "refactor -z",
+          "rewrite -z",
+          "refactor -z",
+          "rewrite",
+          "balance"
+        ],
+        "training_seconds": 471.2442697909996,
+        "feasible_episodes": 18,
+        "feasible_episode_percent": 18.0
+      },
+      "performance": {
+        "luts": 773,
+        "levels": 41,
+        "feasible": true,
+        "episode": 8,
+        "iteration": 5,
+        "sequence": [
+          "strash",
+          "rewrite -z",
+          "balance",
+          "rewrite -z",
+          "refactor -z",
+          "balance"
+        ],
+        "training_seconds": 383.6592155899998,
+        "feasible_episodes": 24,
+        "feasible_episode_percent": 24.0
+      },
+      "lut_reduction": 2,
+      "outcome": "improved",
+      "reused_performance_run": true
+    }
+  ],
+  "summary": {
+    "int2float": {
+      "required_seeds": 3,
+      "wins": 0,
+      "ties": 2,
+      "losses": 1,
+      "incomparable": 0,
+      "zero": {
+        "feasible_seeds": 3,
+        "luts_mean": 43.333333333333336,
+        "luts_std": 0.9428090415820634,
+        "levels_mean": 3,
+        "training_seconds_mean": 97.33271088999999,
+        "feasible_episode_percent": 100.0
+      },
+      "performance": {
+        "feasible_seeds": 3,
+        "luts_mean": 43.666666666666664,
+        "luts_std": 0.4714045207910317,
+        "levels_mean": 3,
+        "training_seconds_mean": 90.6020069993333,
+        "feasible_episode_percent": 100.0
+      },
+      "paired_mean_reduction": -0.3333333333333333,
+      "paired_median_reduction": 0,
+      "improvement_percent": -0.769230769230769,
+      "intervals": null,
+      "supports_information_gain": false
+    },
+    "i2c": {
+      "required_seeds": 3,
+      "wins": 1,
+      "ties": 2,
+      "losses": 0,
+      "incomparable": 0,
+      "zero": {
+        "feasible_seeds": 3,
+        "luts_mean": 303.3333333333333,
+        "luts_std": 4.921607686744467,
+        "levels_mean": 4,
+        "training_seconds_mean": 225.5299706380002,
+        "feasible_episode_percent": 100.0
+      },
+      "performance": {
+        "feasible_seeds": 3,
+        "luts_mean": 303,
+        "luts_std": 4.546060565661952,
+        "levels_mean": 4,
+        "training_seconds_mean": 175.17768460233327,
+        "feasible_episode_percent": 100.0
+      },
+      "paired_mean_reduction": 0.3333333333333333,
+      "paired_median_reduction": 0,
+      "improvement_percent": 0.10989010989010989,
+      "intervals": null,
+      "supports_information_gain": false
+    },
+    "max": {
+      "required_seeds": 3,
+      "wins": 3,
+      "ties": 0,
+      "losses": 0,
+      "incomparable": 0,
+      "zero": {
+        "feasible_seeds": 3,
+        "luts_mean": 773.3333333333334,
+        "luts_std": 3.0912061651652345,
+        "levels_mean": 41,
+        "training_seconds_mean": 472.37070048433327,
+        "feasible_episode_percent": 21.333333333333332
+      },
+      "performance": {
+        "feasible_seeds": 3,
+        "luts_mean": 770,
+        "luts_std": 2.449489742783178,
+        "levels_mean": 41,
+        "training_seconds_mean": 382.43561098799984,
+        "feasible_episode_percent": 24.666666666666668
+      },
+      "paired_mean_reduction": 3.3333333333333335,
+      "paired_median_reduction": 2,
+      "improvement_percent": 0.4310344827586207,
+      "intervals": null,
+      "supports_information_gain": false
+    }
+  },
+  "initialization": {
+    "inputs": 11,
+    "parameters": 938,
+    "historical_commit": "e1a99bf58ee4cf52a951465966eac9371facb197",
+    "seeds": [
+      {
+        "seed": 0,
+        "zero": "c8a07cabd0ececaf5b27bfe554fb11006c5c7bb53357f93b1e27b734099e3623",
+        "performance": "c8a07cabd0ececaf5b27bfe554fb11006c5c7bb53357f93b1e27b734099e3623",
+        "historical_performance": "c8a07cabd0ececaf5b27bfe554fb11006c5c7bb53357f93b1e27b734099e3623",
+        "exact_match": true
+      },
+      {
+        "seed": 1,
+        "zero": "4976060c1d60a839f03b3eb743d11b43bea69d61c87d8c646764648fb1d180b1",
+        "performance": "4976060c1d60a839f03b3eb743d11b43bea69d61c87d8c646764648fb1d180b1",
+        "historical_performance": "4976060c1d60a839f03b3eb743d11b43bea69d61c87d8c646764648fb1d180b1",
+        "exact_match": true
+      },
+      {
+        "seed": 2,
+        "zero": "75d46ad822b5e2648ac10499258ec03b76a08ce218b973fb1332ed46301e311b",
+        "performance": "75d46ad822b5e2648ac10499258ec03b76a08ce218b973fb1332ed46301e311b",
+        "historical_performance": "75d46ad822b5e2648ac10499258ec03b76a08ce218b973fb1332ed46301e311b",
+        "exact_match": true
+      },
+      {
+        "seed": 3,
+        "zero": "dd5e70e39d3f0d05e11c10ad751b63804d7d413c86a467249ae3ffad8a9385be",
+        "performance": "dd5e70e39d3f0d05e11c10ad751b63804d7d413c86a467249ae3ffad8a9385be",
+        "historical_performance": "dd5e70e39d3f0d05e11c10ad751b63804d7d413c86a467249ae3ffad8a9385be",
+        "exact_match": true
+      },
+      {
+        "seed": 4,
+        "zero": "504294e8ed034cc5584dbccaec2fb89675877e782ba8862f76e05473f32e63e4",
+        "performance": "504294e8ed034cc5584dbccaec2fb89675877e782ba8862f76e05473f32e63e4",
+        "historical_performance": "504294e8ed034cc5584dbccaec2fb89675877e782ba8862f76e05473f32e63e4",
+        "exact_match": true
+      },
+      {
+        "seed": 5,
+        "zero": "f6770e48726a826c2efa6998bb0eca0275c8f4cbd7faa9e0728c765e98916597",
+        "performance": "f6770e48726a826c2efa6998bb0eca0275c8f4cbd7faa9e0728c765e98916597",
+        "historical_performance": "f6770e48726a826c2efa6998bb0eca0275c8f4cbd7faa9e0728c765e98916597",
+        "exact_match": true
+      },
+      {
+        "seed": 6,
+        "zero": "976677b3ddcc98328e717cc1be156e370c6670e1eb916bd098315064400b19fe",
+        "performance": "976677b3ddcc98328e717cc1be156e370c6670e1eb916bd098315064400b19fe",
+        "historical_performance": "976677b3ddcc98328e717cc1be156e370c6670e1eb916bd098315064400b19fe",
+        "exact_match": true
+      },
+      {
+        "seed": 7,
+        "zero": "a8e3209343dcf594a1aab92eb4a81aa85dd834ca8dc91a8e1ddff35750a7a269",
+        "performance": "a8e3209343dcf594a1aab92eb4a81aa85dd834ca8dc91a8e1ddff35750a7a269",
+        "historical_performance": "a8e3209343dcf594a1aab92eb4a81aa85dd834ca8dc91a8e1ddff35750a7a269",
+        "exact_match": true
+      },
+      {
+        "seed": 8,
+        "zero": "e9e059e40ec6c091a6b21d104b53b55dba4f51edcccd1f4023f5da24d0493f26",
+        "performance": "e9e059e40ec6c091a6b21d104b53b55dba4f51edcccd1f4023f5da24d0493f26",
+        "historical_performance": "e9e059e40ec6c091a6b21d104b53b55dba4f51edcccd1f4023f5da24d0493f26",
+        "exact_match": true
+      },
+      {
+        "seed": 9,
+        "zero": "0d0804ed267025d5602bcee6f0341a83c00625c144f4aff281d7684bbc239a42",
+        "performance": "0d0804ed267025d5602bcee6f0341a83c00625c144f4aff281d7684bbc239a42",
+        "historical_performance": "0d0804ed267025d5602bcee6f0341a83c00625c144f4aff281d7684bbc239a42",
+        "exact_match": true
+      }
+    ]
+  },
+  "validation": {
+    "tests_passed": 15,
+    "exit_code": 0,
+    "suite_seconds": 13.019,
+    "command": ".tools/conda-env/bin/python -B -m unittest discover -s tests -v",
+    "fixed_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "training_episodes": 100,
+    "actions_per_episode": 10
+  },
+  "analysis_plan": {
+    "fixed_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "circuits": [
+      "int2float",
+      "i2c",
+      "max"
+    ],
+    "primary_metric": "per-circuit paired mean LUT reduction: zero minus performance, best feasible mapping over all 100 episodes",
+    "require_all_prescribed_runs_complete_and_feasible": true,
+    "bootstrap_samples": 100000,
+    "bootstrap_seed": 20260926,
+    "descriptive_interval_percent": 95,
+    "familywise_interval_percent": 98.33333333333333,
+    "multiplicity": "Bonferroni across the three prespecified circuits; percentile paired bootstrap intervals are approximate",
+    "ablation_gate": "At least one circuit has a positive lower endpoint of the familywise interval, with no reduction in final feasible seed counts; otherwise stop after validation and report uncertainty",
+    "timing_comparison": "descriptive only; existing performance seeds 0/1/2 are historical",
+    "stage1": "three-seed descriptive comparison only; do not alter fixed stage2 sample count based on results"
+  },
+  "execution": [
+    {
+      "label": "stage1-zero",
+      "provenance": {
+        "command": [
+          ".tools/conda-env/bin/python",
+          "drills.py",
+          "train",
+          "fpga",
+          "params-state-zero.yml"
+        ],
+        "config": {
+          "protocol": {
+            "episodes": 100,
+            "iterations": 10,
+            "seeds": [
+              0,
+              1,
+              2
+            ],
+            "lut_inputs": 6,
+            "initial_sequence": [
+              "strash"
+            ],
+            "resyn2": [
+              "balance",
+              "rewrite",
+              "refactor",
+              "balance",
+              "rewrite",
+              "rewrite -z",
+              "balance",
+              "refactor -z",
+              "rewrite -z",
+              "balance"
+            ],
+            "actions": [
+              "rewrite",
+              "rewrite -z",
+              "refactor",
+              "refactor -z",
+              "resub",
+              "resub -z",
+              "balance"
+            ],
+            "circuits": {
+              "int2float": {
+                "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/int2float.aig",
+                "max_levels": 3
+              },
+              "i2c": {
+                "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/i2c.aig",
+                "max_levels": 4
+              },
+              "max": {
+                "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/max.aig",
+                "max_levels": 41
+              }
+            },
+            "evaluation": {
+              "include_initial": true,
+              "std_ddof": 0
+            }
+          },
+          "method": {
+            "gamma": 0.99,
+            "optimizer": {
+              "name": "Adam",
+              "learning_rate": 0.001,
+              "betas": [
+                0.9,
+                0.999
+              ],
+              "epsilon": 1e-08,
+              "weight_decay": 0.0
+            },
+            "network": {
+              "actor_hidden": [
+                20,
+                20
+              ],
+              "critic_hidden": [
+                10
+              ],
+              "activation": "ReLU",
+              "initialization": "xavier_uniform",
+              "bias_initialization": 0.0
+            },
+            "features": [
+              "input_pins",
+              "output_pins",
+              "cells",
+              "edges",
+              "levels",
+              "latches",
+              "and_fraction",
+              "or_fraction",
+              "not_fraction"
+            ],
+            "performance_features": [
+              "lut_ratio",
+              "depth_margin"
+            ],
+            "performance_feature_mask": [
+              0,
+              0
+            ],
+            "normalization": {
+              "state": "episode_welford",
+              "variance_min": 0.01,
+              "variance_max": 1000000000.0,
+              "returns": "standardize",
+              "returns_epsilon": 1e-08
+            },
+            "loss": {
+              "actor_weight": 1.0,
+              "critic_weight": 1.0,
+              "reduction": "sum"
+            },
+            "reward": {
+              "feasible": {
+                "-1": -1,
+                "0": 0,
+                "1": 3
+              },
+              "infeasible": {
+                "-1": {
+                  "-1": -3,
+                  "0": -2,
+                  "1": -1
+                },
+                "0": {
+                  "-1": -2,
+                  "0": 0,
+                  "1": 2
+                },
+                "1": {
+                  "-1": 1,
+                  "0": 2,
+                  "1": 3
+                }
+              }
+            }
+          },
+          "environment": {
+            "torch_threads": 1
+          },
+          "runtime": {
+            "abc_binary": "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/yosys-abc",
+            "yosys_binary": "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/yosys",
+            "output_dir": "/Users/zhan/Downloads/test/DRiLLS/results/state-validation/zero",
+            "workers": 3
+          }
+        },
+        "source_sha256": {
+          "drills.py": "9525a72d594532339fe72e2ff26b9d2f86369b8d380ab143c7882eb4b6ad6cb8",
+          "drills/__init__.py": "bd1d84a3673dabd0fdbe4d8ca4f11f69155e9ad500c8e2c375df42809034a875",
+          "drills/experiment.py": "ae5d0cdc50092bdf34a6a1ddf3c208b74f55662fb58a3ddc038763ff1db68271",
+          "drills/features.py": "d0c9ab6028f2c28e1116de693a66eceefab0c78a5d57a34c0ee76dce4ab46dc6",
+          "drills/fpga_session.py": "eaf9fb6bda5951397d3170d4d7b6aa33ca0a948199bbfa45cc93ce04599aadb0",
+          "drills/model.py": "1a9cbe3eef6d5c745625ce62fb3539fea13a5b7c5c543a9ba4bb891cf61b8e8f",
+          "params-state-zero.yml": "64e4608e48c631f8ec15cc0262415933dfc0cca3840ed56dfa2736b43fd0f75f"
+        },
+        "started_at": "2026-09-26T11:24:27.083193+00:00",
+        "hard_timeout_seconds": 3600,
+        "base_commit": "e1a99bf58ee4cf52a951465966eac9371facb197",
+        "branch": "new-state",
+        "python": "3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 18:02:02) \n[Clang 18.1.8 ]",
+        "torch": "2.8.0",
+        "numpy": "1.26.4",
+        "yosys": "Yosys 0.44 (git sha1 80ba43d26, clang++ 21.0.0 -fPIC -O3)",
+        "abc": "ABC command line: \"version\".\n\nUC Berkeley, ABC 1.01 (compiled Sep 25 2026 02:25:45)",
+        "pid": 81071
+      },
+      "status": {
+        "status": "complete",
+        "exit_code": 0,
+        "elapsed_seconds": 806.092272416,
+        "finished_at": "2026-09-26T11:37:53.278401+00:00",
+        "complete_runs": 9,
+        "required_runs": 9
+      }
+    }
+  ],
+  "historical_commit": "e1a99bf58ee4cf52a951465966eac9371facb197",
+  "historical_source": {
+    "drills.py": "working-tree",
+    "drills/__init__.py": "working-tree",
+    "drills/experiment.py": "e1a99bf58ee4cf52a951465966eac9371facb197",
+    "drills/features.py": "working-tree",
+    "drills/fpga_session.py": "e1a99bf58ee4cf52a951465966eac9371facb197",
+    "drills/model.py": "e1a99bf58ee4cf52a951465966eac9371facb197",
+    "params-new-state.yml": "working-tree"
+  },
+  "preserved_history_files": 5543,
+  "historical_files_unchanged": true,
+  "ablation_gate_met": false
+}

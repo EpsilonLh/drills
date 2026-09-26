@@ -70,6 +70,22 @@ python drills.py report fpga
 
 不配置 `method.performance_features`，或将其设为空列表 `[]`，继续使用原九维状态。新增特征时必须从头训练，不能使用原九维检查点；同一改进版可用 `--resume` 续训，特征定义必须匹配。
 
+### 同维度对照与十种子验证
+
+`method.performance_feature_mask: [0, 0]` 将新增两维置零，但保持十一维网络；`[1, 1]` 保留性能信息。默认不配置掩码时，两维均保留。这样可用相同初始权重比较新增信息的作用。掩码是检查点定义的一部分，续训不能改变。
+
+```bash
+# 第一步：种子 0/1/2 的十一维零特征对照
+.tools/conda-env/bin/python -B run_state_validation.py first
+.tools/conda-env/bin/python -B compare_state_validation.py first
+
+# 第二步：两组扩展至预定种子 0–9，复用已完成种子
+.tools/conda-env/bin/python -B run_state_validation.py ten
+.tools/conda-env/bin/python -B compare_state_validation.py ten
+```
+
+原结果保持在 `results/` 和 `results/new-state/`；新对照写入 `results/state-validation/`。各阶段命令、代码快照、初始化核验和进程状态一并保存，每个训练命令有 60 分钟硬超时。阶段结果分别见 `state-validation-first.md` 和 `state-validation-ten.md`，配套 CSV 与 JSON 包含逐种子数据和分析设置。
+
 ## 参考基线
 
 采用 LUT6 映射；参考运行使用 100 episodes × 10 iterations、种子 0/1/2。参考结果取三个种子各自训练搜索最优可行解的均值。
