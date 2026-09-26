@@ -1,0 +1,17 @@
+test_bootstrap_preserves_training_seed_clusters (test_learning_effectiveness.LearningTests) ... ok
+test_controlled_positive_advantage_increases_action_probability (test_learning_effectiveness.LearningTests) ... ok
+test_default_and_diagnostics_match_original_exactly (test_learning_effectiveness.LearningTests) ... ok
+test_first_episode_of_trained_and_frozen_matches (test_learning_effectiveness.LearningTests) ... ok
+test_frozen_and_uniform_parameters_optimizer_are_unchanged (test_learning_effectiveness.LearningTests) ... ok
+test_independent_evaluation_does_not_mutate_weights_optimizer_or_rng (test_learning_effectiveness.LearningTests) ... ok
+test_interruption_between_checkpoint_and_snapshot_is_repaired (test_learning_effectiveness.LearningTests) ... ok
+test_missing_runs_are_retained_in_partial_report (test_learning_effectiveness.LearningTests) ... ok
+test_normalization_and_reward_diagnostic_properties (test_learning_effectiveness.LearningTests) ... ok
+test_real_tool_resume_matches_continuous_for_all_groups (test_learning_effectiveness.LearningTests) ... ok
+test_resume_rejects_group_fingerprint_and_learning_switch (test_learning_effectiveness.LearningTests) ... ok
+test_uniform_diagnostics_describe_actual_uniform_policy (test_learning_effectiveness.LearningTests) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 7.556s
+
+OK

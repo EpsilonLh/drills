@@ -60,3 +60,21 @@ python drills.py report fpga
 | int2float | 3 | 48 | 3 | 44.00 |
 | i2c | 4 | 322 | 4 | 303.67 |
 | max | 41 | 777 | 41 | 772.33 |
+
+## 学习有效性对照实验
+
+`experiments/learning-effectiveness/` 提供固定原设置的训练、初始化网络冻结、均匀随机三组对照，
+以及第 0/50/100 轮模型在新采样种子上的独立无更新评估。使用本地已配置工具时：
+
+```bash
+.tools/conda-env/bin/python -B -m unittest discover -s tests -v
+.tools/conda-env/bin/python -B -u experiments/learning-effectiveness/run.py
+.tools/conda-env/bin/python -B -u experiments/learning-effectiveness/evaluate.py
+```
+
+修改 `protocol.yml` 中工具路径以匹配本机环境。`--resume` 只接受相同源码、协议、工具和数据指纹。
+原始输出位于 `results/learning-effectiveness/`；报告、CSV 和压缩证据位于实验目录。
+`evaluate.py --report-only` 重读已有证据生成报告。图表由 `plot.py` 使用 ReportLab 绘制。
+
+通用训练配置可选 `method.learning_enabled: false`，跳过 Actor/Critic 和 Adam 更新；默认仍开启学习。
+同一检查点不允许切换学习开关或实验组别续跑。

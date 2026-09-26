@@ -57,6 +57,8 @@ class A2C:
     def __init__(self, config, circuit, seed, directory, resume=False):
         self.config = config
         self.method, self.protocol = config['method'], config['protocol']
+        if type(self.method.get('learning_enabled', True)) is not bool:
+            raise ValueError('learning_enabled must be a boolean.')
         torch.set_num_threads(config['environment']['torch_threads'])
         torch.manual_seed(seed)
         self.rng = torch.Generator(device='cpu').manual_seed(seed)
@@ -72,6 +74,11 @@ class A2C:
         self.training_seconds = 0.0
         if resume:
             saved = torch.load(self.checkpoint, map_location='cpu', weights_only=True)
+            if saved.get('learning_enabled', True) != self.method.get('learning_enabled', True):
+                raise ValueError('Cannot change learning_enabled when resuming.')
+            for key in ['experiment_group', 'experiment_fingerprint']:
+                if saved.get(key) != config['runtime'].get(key):
+                    raise ValueError(f'Checkpoint {key} does not match this experiment.')
             self.network.load_state_dict(saved['network'])
             current_groups = [dict(g) for g in self.optimizer.param_groups]
             self.optimizer.load_state_dict(saved['optimizer'])
@@ -106,7 +113,8 @@ class A2C:
             actions.append(action)
             state, reward, done = self.game.step(action)
             rewards.append(reward)
-        self._update(states, actions, rewards)
+        if self.method.get('learning_enabled', True):
+            self._update(states, actions, rewards)
         if self.training_seconds is not None:
             self.training_seconds += perf_counter() - started
         self.episodes_completed += 1
@@ -140,6 +148,9 @@ class A2C:
                         optimizer=self.optimizer.state_dict(), rng_state=self.rng.get_state(),
                         episodes_completed=self.episodes_completed, rewards=self.rewards,
                         training_seconds=self.training_seconds,
+                        learning_enabled=self.method.get('learning_enabled', True),
+                        experiment_group=self.config['runtime'].get('experiment_group'),
+                        experiment_fingerprint=self.config['runtime'].get('experiment_fingerprint'),
                         best=self.game.best, best_netlists=self.game.best_netlists), temporary)
         temporary.replace(self.checkpoint)
         self.game.export_best()
