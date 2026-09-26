@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/Users/zhan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-B",
+    "experiments/i2c-learning-horizon/plot.py"
+  ],
+  "reportlab": "4.4.9",
+  "pymupdf": "1.28.2",
+  "source_sha256": "510aa6cf2ca836d57677e2477d33f3ca671a24f0065dd445b65ad2bc2ed4e484",
+  "data_sha256": "28ebd7f626f164ba3e268d7e0577524036b38986cb207d81b6cf619d5f6594aa",
+  "outputs": {
+    "best-trajectories.svg": "fe012b4a3f913ce090fc392b2918967569e09480a092722564cc7fd23f73949d",
+    "best-trajectories.png": "fda67ae58da087b8f6ede4cd3d3858a02b254a59e6373af55a9adeaa4c78daba"
+  }
+}

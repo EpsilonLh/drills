@@ -1,0 +1,36 @@
+test_standardize_and_update_match_original_exactly (test_learning_horizon.OriginalAlgorithmTests) ... ok
+test_table_rewards_match_original_all_branches (test_learning_horizon.OriginalAlgorithmTests) ... ok
+test_actual_tools_resume_parity_all_groups (test_learning_horizon.ProtocolTests) ... ok
+test_fixed_groups_only_allowed_changes (test_learning_horizon.ProtocolTests) ... ok
+test_frozen_state_and_rng_at_both_horizons (test_learning_horizon.ProtocolTests) ... ok
+test_group_and_horizon_resume_rejection (test_learning_horizon.ProtocolTests) ... ok
+test_step_boundary_and_log_count (test_learning_horizon.ProtocolTests) ... ok
+test_learning_flag_and_legacy_default (test_return_handling.ConfigTests) ... ok
+test_return_epsilon_validation (test_return_handling.ConfigTests) ... ok
+test_return_mode_validation (test_return_handling.ConfigTests) ... ok
+test_checkpoint_rejects_other_group_or_learning_mode (test_return_handling.LearningTests) ... ok
+test_frozen_network_optimizer_and_advancing_rng (test_return_handling.LearningTests) ... ok
+test_missing_learning_flag_still_updates (test_return_handling.LearningTests) ... ok
+test_feasible_reward_scale_reaches_raw_targets (test_return_handling.ReturnTests) ... ok
+test_none_preserves_discounted_targets (test_return_handling.ReturnTests) ... ok
+test_standardize_keeps_original_formula (test_return_handling.ReturnTests) ... ok
+test_actual_tools_resume_parity_for_all_groups (test_return_handling.RunnerTests) ... ok
+test_group_definitions_and_configuration_fingerprint (test_return_handling.RunnerTests) ... ok
+test_resume_preflight_rejects_changed_configuration (test_return_handling.RunnerTests) ... ok
+test_invalid_mode (test_rewards.ConfigTests) ... ok
+test_invalid_scale (test_rewards.ConfigTests) ... ok
+test_valid_modes_and_legacy_defaults (test_rewards.ConfigTests) ... ok
+test_resumed_search_matches_uninterrupted_search (test_rewards.ResumeIntegrationTests) ... ok
+test_all_infeasible_table_entries_and_leaving_feasibility (test_rewards.RewardTests) ... ok
+test_entering_feasible_region_keeps_table (test_rewards.RewardTests) ... ok
+test_feasible_boundary_includes_equality (test_rewards.RewardTests) ... ok
+test_initial_luts_fixed_then_reset_for_next_episode (test_rewards.RewardTests) ... ok
+test_magnitude_symmetry_and_zero (test_rewards.RewardTests) ... ok
+test_round_trip_has_zero_raw_reward (test_rewards.RewardTests) ... ok
+test_table_mode_and_legacy_missing_mode (test_rewards.RewardTests) ... ok
+test_zero_initial_luts_rejected_only_in_delta_mode (test_rewards.RewardTests) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 51.383s
+
+OK

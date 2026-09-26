@@ -100,6 +100,24 @@ method:
 结果保存在 `results/i2c-return-handling/`，代码与紧凑证据见
 [i2c 实验报告](experiments/i2c-return-handling/report.md)。
 
+## 原始奖励下的 10／30 步学习对照
+
+该实验使用原始离散奖励表（`feasible_mode: table`）和 `standardize` 回报，
+复用 10 步训练结果，新增 10 步冻结、30 步训练、30 步冻结三个组。
+每组固定 i2c、层数上限 4、100 轮和种子 0/1/2；冻结组从随机初始化的网络采样，
+并保持网络及 Adam 状态不变。学习收益为相同长度下的“冻结 LUT − 训练 LUT”。
+
+```bash
+.tools/conda-env/bin/python -B -u experiments/i2c-learning-horizon/run.py
+# 中断后使用相同配置和源码续跑
+.tools/conda-env/bin/python -B -u experiments/i2c-learning-horizon/run.py --resume
+.tools/conda-env/bin/python -B experiments/i2c-learning-horizon/evaluate.py
+```
+
+结果保存在 `results/i2c-learning-horizon/`。首次运行要求新输出目录不存在；
+复核已完成结果仅运行 evaluate.py。配置、来源及紧凑证据见
+[学习长度对照报告](experiments/i2c-learning-horizon/report.md)。
+
 ## 参考基线
 
 采用 LUT6 映射；参考运行使用 100 episodes × 10 iterations、种子 0/1/2。参考结果取三个种子各自训练搜索最优可行解的均值。

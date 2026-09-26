@@ -1,0 +1,4 @@
+ABC command line: "read "/Users/zhan/Downloads/test/DRiLLS/results/i2c-learning-horizon/frozen-30/i2c/seed-2/best-mapped.v"; print_stats; cec "/Users/zhan/Downloads/test/DRiLLS/benchmarks/i2c.aig" "/Users/zhan/Downloads/test/DRiLLS/results/i2c-learning-horizon/frozen-30/i2c/seed-2/best-mapped.v";".
+
+[1;37m/Users/zhan/Downloads/test/DRiLLS/benchmarks/i2c:[0m i/o =  147/  142  lat =    0  nd =   287  edge =   1246  aig  =  1277  lev = 4
+Networks are equivalent.  Time =     0.03 sec
