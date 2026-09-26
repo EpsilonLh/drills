@@ -13,12 +13,14 @@ import torch
 import yaml
 
 from .model import A2C
+from .fpga_session import performance_feature_names
 
 
 def load_config(filename):
     filename = Path(filename).resolve()
     config = yaml.safe_load(filename.read_text(encoding='utf-8'))
     protocol, method, environment, runtime = (config[k] for k in ['protocol', 'method', 'environment', 'runtime'])
+    performance_features = performance_feature_names(method)
     for value in [protocol['episodes'], protocol['iterations'], runtime['workers'], environment['torch_threads']]:
         if type(value) is not int or value <= 0:
             raise ValueError('Episodes, iterations, workers and threads must be positive integers.')
@@ -37,6 +39,8 @@ def load_config(filename):
         if runtime[key] is None:
             raise FileNotFoundError(binary)
     for circuit in protocol['circuits'].values():
+        if performance_features and (type(circuit['max_levels']) is not int or circuit['max_levels'] <= 0):
+            raise ValueError('Performance features require a positive integer max_levels.')
         circuit['file'] = str((filename.parent / Path(circuit['file']).expanduser()).resolve())
     runtime['output_dir'] = str((filename.parent / Path(runtime['output_dir']).expanduser()).resolve())
     return config

@@ -5,13 +5,27 @@ from pathlib import Path
 import re
 from subprocess import check_output
 
+import numpy as np
+
 from .features import extract_features
+
+
+def performance_feature_names(method):
+    names = method.get('performance_features', [])
+    if (not isinstance(names, list)
+            or any(name not in ('lut_ratio', 'depth_margin') for name in names)
+            or len(set(names)) != len(names)):
+        raise ValueError('performance_features must be a list of distinct lut_ratio/depth_margin names.')
+    return list(names)
 
 
 class FPGASession:
     def __init__(self, config, circuit, directory):
         self.config, self.circuit = config, circuit
         self.protocol, self.method = config['protocol'], config['method']
+        self.performance_features = performance_feature_names(self.method)
+        if self.performance_features and (type(circuit['max_levels']) is not int or circuit['max_levels'] <= 0):
+            raise ValueError('Performance features require a positive integer max_levels.')
         self.directory = Path(directory)
         self.directory.mkdir(parents=True, exist_ok=True)
         self.episode = 0
@@ -22,6 +36,7 @@ class FPGASession:
         self.iteration = 0
         self.sequence = list(self.protocol['initial_sequence'])
         self.luts = self.levels = float('inf')
+        self.initial_luts = None
         self.episode_dir = self.directory / 'episodes' / str(self.episode)
         self.episode_dir.mkdir(parents=True, exist_ok=True)
         self.log_file = self.episode_dir / 'log.csv'
@@ -56,6 +71,15 @@ class FPGASession:
             raise RuntimeError('ABC did not produce the current netlists.\n' + output)
         luts, levels = map(int, re.findall(r'\bnd\s*=\s*(\d+)[^\n]*?\blev\s*=\s*(\d+)', output)[-1])
         state = extract_features(unmapped, self.config)
+        if self.performance_features:
+            if self.iteration == 0:
+                if luts <= 0:
+                    raise ValueError('Performance features require a positive initial mapped LUT count.')
+                self.initial_luts = luts
+            performance = dict(lut_ratio=luts / self.initial_luts,
+                               depth_margin=(self.circuit['max_levels'] - levels) / self.circuit['max_levels'])
+            state = np.concatenate((state, np.asarray(
+                [performance[name] for name in self.performance_features], dtype=np.float32)))
         reward = self._get_reward(luts, levels) if self.iteration else 0
         self.luts, self.levels = luts, levels
         with self.log_file.open('a', newline='') as log:

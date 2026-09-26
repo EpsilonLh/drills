@@ -51,6 +51,25 @@ python drills.py report fpga
 
 结果默认保存到 `results/`：`results.md` 查看各个种子的 LUTs、levels 和训练耗时；各电路的 `seed-*` 目录保存检查点、最优网表和逐步日志。
 
+## 新增映射性能状态实验
+
+`params-new-state.yml` 在原九维结构状态之后增加两维：当前映射 LUT 数相对第 0 步映射的比例，以及 `(max_levels - 当前映射 levels) / max_levels`。原九维继续按每回合均值、方差标准化；新增两维直接输入 Actor 和 Critic，保留零余量表示约束边界的含义。它们复用已有映射结果，不增加工具调用。
+
+```bash
+# 使用本项目已有的本地环境运行改进版
+.tools/conda-env/bin/python drills.py train fpga params-new-state.yml
+
+# 检查状态语义、原版兼容性、工具调用次数和续训
+.tools/conda-env/bin/python -m unittest discover -s tests -v
+
+# 与之前保存在 results/ 的原版结果比较
+.tools/conda-env/bin/python compare_new_state.py
+```
+
+新结果保存在 `results/new-state/`，对比说明见 [new-state-comparison.md](new-state-comparison.md)。重跑实验需指定新的输出目录，已存在的训练不会被覆盖。此配置中的工具路径指向本机 `.tools/conda-env/`，在其他机器运行时需调整。
+
+不配置 `method.performance_features`，或将其设为空列表 `[]`，继续使用原九维状态。新增特征时必须从头训练，不能使用原九维检查点；同一改进版可用 `--resume` 续训，特征定义必须匹配。
+
 ## 参考基线
 
 采用 LUT6 映射；参考运行使用 100 episodes × 10 iterations、种子 0/1/2。参考结果取三个种子各自训练搜索最优可行解的均值。

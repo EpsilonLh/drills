@@ -61,7 +61,10 @@ class A2C:
         torch.manual_seed(seed)
         self.rng = torch.Generator(device='cpu').manual_seed(seed)
         self.game = FPGASession(config, circuit, directory)
-        self.network = ActorCritic(len(self.method['features']), len(self.protocol['actions']),
+        self.state_features = dict(structural=list(self.method['features']),
+                                   performance=list(self.game.performance_features))
+        inputs = len(self.state_features['structural']) + len(self.state_features['performance'])
+        self.network = ActorCritic(inputs, len(self.protocol['actions']),
                                    self.method['network']).to('cpu')
         opt = self.method['optimizer']
         self.optimizer = {'Adam': torch.optim.Adam}[opt['name']](
@@ -72,6 +75,13 @@ class A2C:
         self.training_seconds = 0.0
         if resume:
             saved = torch.load(self.checkpoint, map_location='cpu', weights_only=True)
+            saved_features = saved.get('state_features')
+            if saved_features is None:
+                # Original nine-dimensional checkpoints predate state metadata.
+                if self.state_features['performance']:
+                    raise ValueError('Legacy checkpoints cannot resume with performance features enabled.')
+            elif saved_features != self.state_features:
+                raise ValueError('Checkpoint state features do not match the requested configuration.')
             self.network.load_state_dict(saved['network'])
             current_groups = [dict(g) for g in self.optimizer.param_groups]
             self.optimizer.load_state_dict(saved['optimizer'])
@@ -94,11 +104,15 @@ class A2C:
             raise RuntimeError('The prescribed training budget is already complete.')
         started = perf_counter()
         state = self.game.reset()
-        normalizer = Normalizer(len(state), self.method['normalization'])
+        structural_size = len(self.state_features['structural'])
+        normalizer = Normalizer(structural_size, self.method['normalization'])
         states, actions, rewards = [], [], []
         done = False
         while not done:
-            state = normalizer.normalize(state)
+            structural = normalizer.normalize(state[:structural_size])
+            # Fixed-scale performance features retain their constraint boundary at zero.
+            state = (np.concatenate((structural, state[structural_size:]))
+                     if self.state_features['performance'] else structural)
             with torch.no_grad():
                 logits, _ = self.network(torch.as_tensor(state, device='cpu'))
                 action = torch.multinomial(logits.softmax(-1), 1, generator=self.rng).item()
@@ -139,6 +153,7 @@ class A2C:
         torch.save(dict(network=self.network.state_dict(),
                         optimizer=self.optimizer.state_dict(), rng_state=self.rng.get_state(),
                         episodes_completed=self.episodes_completed, rewards=self.rewards,
+                        state_features=self.state_features,
                         training_seconds=self.training_seconds,
                         best=self.game.best, best_netlists=self.game.best_netlists), temporary)
         temporary.replace(self.checkpoint)
