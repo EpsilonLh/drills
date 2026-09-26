@@ -5,7 +5,9 @@ from datetime import datetime, timezone
 import hashlib
 import json
 from pathlib import Path
+import platform
 import statistics
+import subprocess
 
 import numpy as np
 
@@ -61,6 +63,16 @@ def validate_stage(label):
 
 def compare(stage):
     preserved, initialization, validation = validate_history()
+    historical_provenance = read_json(ROOT / 'results/new-state/run-provenance.json')
+    historical_config = read_json(ROOT / 'results/new-state/experiment.json')['config']
+    benchmark_hashes = {}
+    for circuit in historical_config['protocol']['circuits'].values():
+        path = Path(circuit['file'])
+        expected = historical_provenance['benchmark_hashes'][path.name]
+        actual = hashlib.sha256(path.read_bytes()).hexdigest()
+        if actual != expected:
+            raise ValueError(f'Benchmark differs from the historical run: {path}')
+        benchmark_hashes[str(path)] = actual
     plan = read_json(OUTPUT / 'analysis-plan.json')
     zero_root = OUTPUT / 'zero'
     if stage == 'first':
@@ -73,6 +85,10 @@ def compare(stage):
         execution = [zero_stage]
         seeds = [0, 1, 2]
     else:
+        first_report = json.loads(subprocess.check_output(
+            ['git', 'show', 'HEAD:state-validation-first.json'], cwd=ROOT, text=True))
+        if plan != first_report['analysis_plan']:
+            raise ValueError('The analysis plan differs from the committed first-stage report.')
         zero_stage = validate_stage('stage2-zero')
         performance_stage = validate_stage('stage2-performance')
         zero_config = zero_stage['provenance']['config']
@@ -81,6 +97,10 @@ def compare(stage):
         historical_source = verify_recorded_source(ROOT, read_json(ROOT / 'results/new-state/run-provenance.json')['source_hashes'])
         execution = [validate_stage('stage1-zero'), zero_stage, performance_stage]
         seeds = plan['fixed_seeds']
+    for item in execution:
+        for key in ['python', 'torch', 'numpy', 'yosys', 'abc']:
+            if item['provenance'][key] != historical_provenance[key]:
+                raise ValueError(f'Execution environment differs: {item["label"]}/{key}')
     method = dict(zero_config['method'])
     zero_mask = method.pop('performance_feature_mask', [1, 1])
     performance_method = dict(performance_config['method'])
@@ -137,6 +157,11 @@ def compare(stage):
                    stage=stage, seeds=seeds, zero_config=zero_config, performance_config=performance_config,
                    rows=rows, summary=summary, initialization=initialization, validation=validation,
                    analysis_plan=plan, execution=execution, historical_commit=preserved['commit'],
+                   analysis_commit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
+                   analysis_code_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+                   plan_matches_first_stage=stage == 'ten',
+                   benchmark_sha256=benchmark_hashes,
+                   analysis_environment=dict(platform=platform.platform(), machine=platform.machine()),
                    historical_source=historical_source, preserved_history_files=len(preserved['files']),
                    historical_files_unchanged=True, ablation_gate_met=gate)
     stem = ROOT / f'state-validation-{stage}'
@@ -199,6 +224,8 @@ def compare(stage):
               '## 核验与复现', '',
               '- 固定三个电路、种子集合及 100×10 预算；LUT6、奖励、动作集、隐藏层、归一化和优化器保持一致。',
               '- 十个种子的两组初始权重及历史十一维模型初始化完全一致；15 项状态、掩码及续训检查通过。',
+              '- 配对分析方案固定在第一步提交中；十种子分析开始前核对方案一致，分析脚本哈希随 JSON 保存。',
+              '- 三个电路输入的 SHA-256，以及 Python、PyTorch、NumPy、ABC 和 Yosys 版本，与历史性能特征运行一致。',
               '- 所有预定种子均完整纳入；每次训练最终网表经过指标复核和 CEC；报告逐回合复核最优解及保存位置。',
               f'- 历史 {len(preserved["files"])} 个结果文件与原配置哈希保持不变；本阶段执行代码快照、命令和进程状态保存于 results/state-validation/。',
               '- 只改变新增信息是否可见；输入维度和初始参数相同。零输入使对应连接的梯度为零，这是对照的预期行为。', '',
