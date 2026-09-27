@@ -7,3 +7,6 @@ playground/
 models/
 *.egg-info/
 results/
+
+# Full 200x5 evidence is retained locally; see GIT_DELIVERY.md.
+/experiments/learning-effectiveness-200x5/evidence.tar.gz
