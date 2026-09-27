@@ -1,0 +1,29 @@
+{
+  "command": [
+    "/Users/zhan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/plot.py"
+  ],
+  "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "reportlab": "4.4.9",
+  "trajectory_rows": 64800,
+  "old_budget_rows": 162,
+  "evaluation_prefix_rows": 6480,
+  "missing_evaluation_rows": 540,
+  "uniform_shared": true,
+  "physical_rollouts": 810,
+  "logical_rollouts": 990,
+  "hashes": {
+    "trajectories.csv": "0a00a84c14e0f0539345a40dace955027f006d662460603caa6c1607a10cfcfd",
+    "old-budget.csv": "ed59193b8587e341bc87addfe925aa5f8534c4a3d37d1ebd4611c7bae619ee65",
+    "evaluation.csv": "b068acde9221048d11be2486f22853b965158f334a305460b243fa345b2ff49e",
+    "summary.json": "ca6b3444581fda4d561a89e0e1a738422026322b51770a48d87919434130b98d",
+    "plot.py": "b7afe88d7605f6ec7817726ce3a0c5598406e2efc275828f023d2677613dc15c",
+    "search-curves.svg": "014876cd658766801d921cc8147bd69cfd47b073595aa3daa2bd11540a2ed7ab",
+    "search-curves.png": "7f9e900f424646f923930588363949f93ac49208e32e3260cc6dc6b03d348b8f",
+    "old-budget.svg": "c0a0896e6f5cb526049f596b2b629988ab776e3ae566f4121673e936dfe3a127",
+    "old-budget.png": "ee076839843e6eb073f3420a2336da77d8c8d05a36920cd41bb43cb90912da3f",
+    "evaluation-prefixes.svg": "5838ff9556c07f0e6ef04c70981d16fa6783c367503dcd20449a4c707747540e",
+    "evaluation-prefixes.png": "a1cec135750f968506473d97796e566a7c0ee208b45b03168ea6bf65b849c68d"
+  }
+}

@@ -7,7 +7,70 @@ import subprocess
 import sys
 import time
 
-from common import HERE, GROUPS, POLICIES, EVAL_SEEDS, config, dump, now, sha
+from common import HERE, GROUPS, POLICIES, EVAL_SEEDS, config, dump, load, now, sha
+
+
+def read(path):
+    return json.loads(path.read_text())
+
+
+def checkpoint_export(folder):
+    """An interrupted run's export must match its committed checkpoint exactly."""
+    checkpoint = folder / 'checkpoint.pt'
+    if not checkpoint.exists():
+        if any((folder / name).exists() for name in ('best.json','best.v','best-mapped.v')):
+            raise ValueError(f'Export without a committed checkpoint: {folder}')
+        return None
+    saved = load(checkpoint)
+    expected = saved['best']
+    if expected is None:
+        return None
+    if read(folder / 'best.json') != expected:
+        raise ValueError(f'Export/checkpoint metadata mismatch: {folder}')
+    for name in ('best.v','best-mapped.v'):
+        if (folder / name).read_text() != saved['best_netlists'][name]:
+            raise ValueError(f'Export/checkpoint netlist mismatch: {folder}/{name}')
+    result = folder / 'result.json'
+    if result.exists() and read(result)['best'] != expected:
+        raise ValueError(f'Result/checkpoint best mismatch: {folder}')
+    return expected
+
+
+def collect_tasks(cfg):
+    root = Path(cfg['runtime']['output_dir'])
+    tasks, missing = [], []
+    baseline = read(root / 'baseline.json')
+    for name, circuit in cfg['protocol']['circuits'].items():
+        tasks.append((cfg,circuit,root/'baseline'/name,baseline[name],'mapped.v',None))
+        for group in GROUPS:
+            for seed in cfg['protocol']['seeds']:
+                folder = root/'training'/group/name/f'seed-{seed}'
+                expected = checkpoint_export(folder)
+                if expected is None:
+                    missing.append(dict(phase='training',folder=str(folder.relative_to(root)),reason='No committed best export'))
+                else:
+                    tasks.append((cfg,circuit,folder,expected,'best-mapped.v','best.v'))
+        for policy in POLICIES:
+            for seed in ([cfg['protocol']['seeds'][0]] if policy == 'uniform' else cfg['protocol']['seeds']):
+                folder = root/'evaluation'/policy/name/f'seed-{seed}'
+                found = 0
+                for evaluation_seed in EVAL_SEEDS:
+                    destination = folder/f'rollout-{evaluation_seed}'
+                    if not (destination/'best.json').exists():
+                        continue
+                    expected = read(destination/'best.json')
+                    record = destination/'rollout.json'
+                    if record.exists() and read(record)['best'] != expected:
+                        raise ValueError(f'Rollout/export mismatch: {destination}')
+                    tasks.append((cfg,circuit,destination,expected,'best-mapped.v','best.v'))
+                    found += 1
+                if found != len(EVAL_SEEDS):
+                    missing.append(dict(phase='evaluation',folder=str(folder.relative_to(root)),
+                        reason='Missing rollout exports',found=found,expected=len(EVAL_SEEDS)))
+    collected = {folder/'best-mapped.v' for _,_,folder,_,mapped,_ in tasks if mapped=='best-mapped.v'}
+    if set(root.rglob('best-mapped.v')) != collected:
+        raise ValueError('An exported best netlist was omitted from CEC coverage.')
+    return tasks, missing
 
 
 def verify(task):
@@ -51,28 +114,7 @@ def verify(task):
 def main():
     cfg = config()
     root = Path(cfg['runtime']['output_dir'])
-    tasks = []
-    def read(path):
-        return json.loads(path.read_text())
-    baseline = read(root / 'baseline.json')
-    for name, circuit in cfg['protocol']['circuits'].items():
-        tasks.append((cfg, circuit, root / 'baseline' / name, baseline[name], 'mapped.v', None))
-        for group in GROUPS:
-            for seed in cfg['protocol']['seeds']:
-                folder = root / 'training' / group / name / f'seed-{seed}'
-                result = read(folder / 'result.json')
-                if result['status'] != 'complete':
-                    raise ValueError('Cannot certify an incomplete training run.')
-                tasks.append((cfg, circuit, folder, result['best'], 'best-mapped.v', 'best.v'))
-        for policy in POLICIES:
-            for seed in ([cfg['protocol']['seeds'][0]] if policy == 'uniform' else cfg['protocol']['seeds']):
-                folder = root / 'evaluation' / policy / name / f'seed-{seed}'
-                result = read(folder / 'result.json')
-                if result['status'] != 'complete' or len(result['rollouts']) != len(EVAL_SEEDS):
-                    raise ValueError('Cannot certify an incomplete evaluation task.')
-                for row in result['rollouts']:
-                    tasks.append((cfg, circuit, folder / f'rollout-{row["evaluation_seed"]}',
-                                  row['best'], 'best-mapped.v', 'best.v'))
+    tasks, missing = collect_tasks(cfg)
     started = now()
     records = []
     with ThreadPoolExecutor(max_workers=cfg['runtime']['workers']) as executor:
@@ -86,7 +128,10 @@ def main():
     dump(HERE / 'netlist-validation.json', dict(command=[sys.executable, '-B', str(Path(__file__).resolve())],
         source_sha256=sha(Path(__file__)), abc_sha256=sha(cfg['runtime']['abc_binary']), started_at=started,
         finished_at=now(), status='complete' if successful else 'failed', workers=cfg['runtime']['workers'],
-        exports_checked=len(records), netlists_verified=sum(r['netlists_verified'] for r in records), records=records))
+        exports_checked=len(records), netlists_verified=sum(r['netlists_verified'] for r in records),
+        expected_present_exports=len(tasks), all_present_exports_checked=True,
+        protocol_expected_exports=930, protocol_complete=len(tasks)==930 and not missing,
+        missing=missing, records=records))
     models = sorted(root.rglob('*.pt'))
     dump(HERE / 'model-manifest.json', dict(root=str(root), models_committed=False, files=len(models),
         hashes={str(p.relative_to(root)): sha(p) for p in models},

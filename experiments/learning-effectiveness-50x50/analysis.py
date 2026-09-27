@@ -442,12 +442,31 @@ def generate(cfg):
                         best_luts=value['luts'] if value else None, best_levels=value['levels'] if value else None,
                         best_feasible=value['feasible'] if value else None))
     root = Path(cfg['runtime']['output_dir'])
+    processes = {}
+    for phase in ('training', 'evaluation'):
+        path = root / 'logs' / phase / 'processes.json'
+        processes[phase] = read(path) if path.exists() else []
+    failures = [dict(phase=phase, **row) for phase, records in processes.items()
+                for row in records if row['exit_code'] != 0]
+    for run in runs:
+        label = f'{run["group"]}-{run["circuit"]}-{run["seed"]}'
+        failure = next((r for r in failures if r['phase'] == 'training' and r['label'] == label), None)
+        if failure:
+            run['status'] = 'timed_out' if failure['timed_out'] else 'failed'
+            run['error'] = '30分钟硬超时' if failure['timed_out'] else f'退出码 {failure["exit_code"]}'
+            next(r for r in validation if (r['group'],r['circuit'],r['seed']) ==
+                 (run['group'],run['circuit'],run['seed']))['status'] = run['status']
+    latest_diagnostics = [max(bank, key=lambda r: r['episode']) for run in runs
+        if (bank := [r for r in diagnostics if (r['group'],r['circuit'],r['seed']) ==
+                     (run['group'],run['circuit'],run['seed'])])]
+    evaluation_manifest = read(root / 'evaluation.json') if (root / 'evaluation.json').exists() else {}
     summary = dict(protocol=dict(episodes=cfg['protocol']['episodes'], iterations=cfg['protocol']['iterations'],
             seeds=cfg['protocol']['seeds'], circuits=cfg['protocol']['circuits'], snapshots=list(SNAPSHOTS),
             evaluation_prefixes=list(EVAL_PREFIXES)), training=runs, evaluation=evaluation_cases,
         comparisons=comparisons, search_comparisons=search_comparisons(runs, cfg), behavior=behavior,
         old_budget=budgets, new_budget=new_budgets, target_hits=hits, old_sources=old_sources,
-        diagnostic_summary=[r for r in diagnostics if r['episode'] == cfg['protocol']['episodes']],
+        diagnostic_summary=latest_diagnostics, failures=failures,
+        skipped_evaluation=evaluation_manifest.get('skipped', []),
         training_complete=sum(r['status'] == 'complete' for r in runs),
         evaluation_complete=sum(r['status'] == 'complete' and r['steps'] == 50 for r in evaluation_cases),
         physical_banks=physical_checks, physical_banks_complete=sum(r['status'] == 'complete' for r in physical_checks),
@@ -466,6 +485,7 @@ def generate(cfg):
                     datetime.fromisoformat(record['finished_at']) - datetime.fromisoformat(record['started_at'])).total_seconds()
     dump(HERE / 'summary.json', summary)
     dump(HERE / 'log-validation.json', dict(training=validation, evaluation=physical_checks,
+        evidence_replayed=True,
         committed_training_steps=len(steps), physical_evaluation_rollouts=summary['physical_rollouts'],
         logical_evaluation_prefix_rows=len(evaluation_rows), status='complete' if
         summary['training_complete'] == 27 and summary['physical_banks_complete'] == 30 else 'incomplete'))
@@ -500,6 +520,40 @@ def count_rate(count, total):
     return f'{count}/{total} ({count / total:.1%})' if total else '0/0（未完成）'
 
 
+def learning_conclusion_lines(summary):
+    lines = []
+    main = [r for r in summary['comparisons'] if r['steps'] == 50]
+    for row in main:
+        baseline = '初始化/冻结' if row['baseline'] == 'initial' else 'uniform'
+        if not row['complete']:
+            if row['baseline'] == 'initial':
+                lines.append(f'{row["circuit"]}：第50轮主评估缺失或未完整完成，不以第25轮结果替代。')
+            continue
+        if row['mean_luts_reduction'] is not None:
+            lines.append(f'{row["circuit"]}：第50轮固定策略相对{baseline}平均减少 '
+                f'{row["mean_luts_reduction"]:.3f} LUT，探索性95%区间 {interval(row["ci95"])}。')
+        else:
+            lines.append(f'{row["circuit"]}：第50轮固定策略可行 {row["trained_feasible"]}/90，{baseline} '
+                f'{row["baseline_feasible"]}/90；可行率变化 {format_value(row["feasibility_gain_pp"])} 个百分点，'
+                f'探索性95%区间 {interval(row["feasibility_ci95"])}，未汇总筛选后的LUT均值。')
+    uniform = [r for r in main if r['baseline'] == 'uniform' and r['complete']]
+    if uniform and all(r['ci95'] is not None and r['ci95'][0] <= 0 <= r['ci95'][1]
+                       and r['feasibility_gain_pp'] == 0 for r in uniform):
+        lines.append('已完整评估的电路相对uniform的探索性区间均覆盖零；'
+            '未获得稳定优于随机策略的证据，也不能据此证明策略等效。')
+    if not all(r['complete'] for r in main):
+        lines.append('缺失的第50轮模型限制了整体判断；不作三个电路整体学习收益的结论。')
+    else:
+        consistent = all(r['feasibility_gain_pp'] > 0 or
+            (r['feasibility_gain_pp'] == 0 and r['mean_luts_reduction'] is not None
+             and r['mean_luts_reduction'] > 0) for r in main)
+        lines.append('完整50步评估对三个电路和两种基线的平均改善方向一致；'
+            '仍须检查逐种子波动和探索性区间，不能据此宣称普遍有效。' if consistent else
+            '完整50步评估未呈现对三个电路、两种基线均一致的收益；'
+            '这不否定参数更新，也不证明策略等效或其他设置无效。')
+    return lines
+
+
 def conclusion_lines(summary):
     trained = [r for r in summary['diagnostic_summary'] if r['group'] == 'trained']
     fixed = [r for r in summary['diagnostic_summary'] if r['group'] != 'trained']
@@ -507,7 +561,7 @@ def conclusion_lines(summary):
     policies = sum(r['policy_kl'] > 0 for r in trained)
     unchanged = sum(r['actor_drift_rms'] == 0 and r['critic_drift_rms'] == 0 for r in fixed)
     lines = [f'权重更新：训练组 {changed}/9 次 Actor/Critic 均改变；固定探针动作分布 {policies}/9 次改变；'
-             f'冻结及 uniform {unchanged}/18 次参数保持不变。完整终轮诊断才计入这些分母。']
+             f'冻结及 uniform {unchanged}/18 次参数保持不变。使用每次运行最后已保存轮次，超时运行不能视为完成50轮。']
     for name in summary['protocol']['circuits']:
         effects = []
         for budget in OLD_BUDGETS:
@@ -521,27 +575,15 @@ def conclusion_lines(summary):
                  '个别预算或相对uniform的优势不足以单独支持探索预算抹平学习优势这一解释。')
     for row in summary['search_comparisons']:
         if row['baseline'] == 'frozen':
+            if not row['complete']:
+                lines.append(f'{row["circuit"]}：2,500候选预算未完整完成，不汇总完整预算搜索差值。')
+                continue
             lines.append(f'{row["circuit"]}：2,500 候选搜索中，训练相对冻结平均少 '
                 f'{format_value(row["mean_luts_reduction"])} LUT，逐种子差值 {row["differences"]}，'
                 f'胜/平/负 {row["wins"]}/{row["ties"]}/{row["losses"]}。')
     if summary['physical_banks_complete'] != 30:
-        return lines + ['独立评估尚未全部完成，暂不作最终学习收益判断。']
-    main = [r for r in summary['comparisons'] if r['steps'] == 50]
-    for row in main:
-        if row['baseline'] != 'initial':
-            continue
-        if row['mean_luts_reduction'] is not None:
-            lines.append(f'{row["circuit"]}：第50轮固定策略相对初始化/冻结平均减少 '
-                f'{row["mean_luts_reduction"]:.3f} LUT，探索性95%区间 {interval(row["ci95"])}。')
-        else:
-            lines.append(f'{row["circuit"]}：第50轮固定策略可行 {row["trained_feasible"]}/90，初始化/冻结 '
-                f'{row["baseline_feasible"]}/90；可行率变化 {format_value(row["feasibility_gain_pp"])} 个百分点，'
-                f'探索性95%区间 {interval(row["feasibility_ci95"])}，未汇总筛选后的LUT均值。')
-    consistent = all(r['complete'] and (r['feasibility_gain_pp'] > 0 or
-        (r['feasibility_gain_pp'] == 0 and r['mean_luts_reduction'] is not None and r['mean_luts_reduction'] > 0)) for r in main)
-    lines.append('完整50步评估对三个电路和两种基线的平均改善方向一致；仍须检查逐种子波动和探索性区间，不能据此宣称普遍有效。'
-        if consistent else '完整50步评估未呈现对三个电路、两种基线均一致的收益；这不否定参数更新，也不证明策略等效或其他设置无效。')
-    return lines
+        lines.append('独立评估尚未全部完成；以下只判断已经完整完成的电路内主比较，缺失比较不作收益结论。')
+    return lines + learning_conclusion_lines(summary)
 
 
 def write_report(summary):
@@ -553,10 +595,25 @@ def write_report(summary):
              if summary['training_complete'] == 27 and summary['physical_banks_complete'] == 30 else 'INCOMPLETE'),
         '- Version Label: learning_effectiveness_50x50_v1', '', '## 主要结论', '',
         f'训练搜索完成 {summary["training_complete"]}/27 次，物理独立评估完成 {summary["physical_rollouts"]}/900 条，'
-        f'对应 {summary["logical_rollouts"]}/1,080 条逻辑配对行（每个前缀）。', '', *conclusion_lines(summary), '',
+        f'对应 {summary["logical_rollouts"]}/1,080 条逻辑配对行（每个前缀）。', '',
+        *[part for line in conclusion_lines(summary) for part in (line, '')],
         '**50轮×50步同时增加搜索动作预算（1,000→2,500）、延长单条序列（10→50）、减少更新次数（100→50）。**'
         '回报标准化范围和求和损失长度也改变，因此跨设置的改善不能直接归因于学习。预算抹平假设由旧数据预算曲线单独检查；'
-        '新实验回答长序列条件下固定训练策略是否优于初始化与随机策略。', '', '## 条件和统计口径', '',
+        '新实验回答长序列条件下固定训练策略是否优于初始化与随机策略。', '',
+        '## 运行完成情况与中断', '',
+        '| 阶段 | 任务 | 原因 | 退出码 | 耗时秒 |', '|---|---|---|---:|---:|']
+    for failure in summary['failures']:
+        lines.append(f'| {failure["phase"]} | {failure["label"]} | '
+            f'{"30分钟硬超时" if failure["timed_out"] else "工具或脚本失败"} | '
+            f'{failure["exit_code"]} | {failure["elapsed_seconds"]:.1f} |')
+    if not summary['failures']:
+        lines.append('| — | — | 尚无已记录失败 | — | — |')
+    for skipped in summary['skipped_evaluation']:
+        lines.append(f'| evaluation | {skipped["policy"]}/{skipped["circuit"]}/seed-{skipped["seed"]} | '
+            f'{skipped["reason"]} | 未启动 | — |')
+    lines += ['', '部分运行保留已提交的完整轮次、诊断、模型和中断轮次原始文件；'
+        '未完成运行不进入2,500候选的完整预算比较。缺失的第50轮模型不以中期模型替代。', '',
+        '## 条件和统计口径', '',
         f'三组 trained/frozen/uniform、种子0/1/2，每次 {episode_count}轮×{length}步；'
         'int2float/i2c/max 的最大层数为3/4/41，LUT6。算法、奖励、episode_welford状态归一化、网络、Adam和学习率保持原设置。'
         'trained更新网络；frozen从初始化起保持Actor/Critic及Adam不变；uniform固定以1/7概率抽取七种动作。'
@@ -617,10 +674,11 @@ def write_report(summary):
         '| 电路 | 对照 | 对照减训练LUT seed0/1/2 | 平均减少LUT | 改善% | 胜/平/负 |',
         '|---|---|---|---:|---:|---|']
     for row in summary['search_comparisons']:
+        scores = f'{row["wins"]}/{row["ties"]}/{row["losses"]}' if row['complete'] else '未完成配对'
         lines.append(f'| {row["circuit"]} | {row["baseline"]} | {row["differences"]} | '
             f'{format_value(row["mean_luts_reduction"])} | {format_value(row["percent"])} | '
-            f'{row["wins"]}/{row["ties"]}/{row["losses"]} |')
-    lines += ['', '| 电路 | 新实验候选预算 | trained均值（可行/3） | frozen均值（可行/3） | uniform均值（可行/3） |',
+            f'{scores} |')
+    lines += ['', '| 电路 | 新实验候选预算 | trained（LUT；达标/已知；完成预算/3） | frozen（LUT；达标/已知；完成预算/3） | uniform（LUT；达标/已知；完成预算/3） |',
         '|---|---:|---|---|---|']
     for name in protocol['circuits']:
         for budget in (500, 1000, 2500):
@@ -629,12 +687,14 @@ def write_report(summary):
             values = []
             for bank in banks:
                 complete = len(bank) == 3 and all(r['status'] == 'complete' for r in bank)
+                observed = sum(r['status']=='complete' for r in bank)
                 feasible = sum(bool(r['best_feasible']) for r in bank)
                 mean = float(np.mean([r['best_luts'] for r in bank])) if complete and feasible == 3 else None
-                values.append(f'{format_value(mean)} ({feasible}/3)')
+                values.append(f'{format_value(mean)}；{feasible}/{observed}；{observed}/3')
             lines.append(f'| {name} | {budget} | ' + ' | '.join(values) + ' |')
     lines += ['', '500和1,000候选与旧预算相同，但序列长度和更新次数不同；此处用于定位新设置的搜索曲线，'
-        '不能据跨设置差值直接归因于学习。完整逐种子预算切片见search-budget.csv。', '',
+        '不能据跨设置差值直接归因于学习。“达标/已知”的分母仅是已有该预算日志的运行数；0/0表示缺失，不表示0%可行。'
+        '完整逐种子预算切片见search-budget.csv。', '',
         '![2500候选搜索曲线](search-curves.svg)', '', '## 独立评估：主结果与预算前缀', '',
         '| 电路 | 训练seed | 初始化/冻结 | 第25轮 | 第50轮 | uniform共享bank |',
         '|---|---:|---|---|---|---|']
@@ -674,11 +734,11 @@ def write_report(summary):
                 f'{format_value(row["terminal_luts_mean"])} | {format_value(row["terminal_levels_mean"])} | {format_value(row["reward_mean"])} |')
     lines += ['', '终点LUT只有全部终点可行时才汇总；层数和奖励在完整评估中保留全部序列。', '',
         '## 更新、策略与机制诊断', '',
-        '| 电路 | seed | Actor变化RMS | Critic变化RMS | 固定探针KL | 熵 |',
-        '|---|---:|---:|---:|---:|---:|']
+        '| 电路 | seed | 最后保存轮次 | Actor变化RMS | Critic变化RMS | 固定探针KL | 熵 |',
+        '|---|---:|---:|---:|---:|---:|---:|']
     for row in summary['diagnostic_summary']:
         if row['group'] == 'trained':
-            lines.append(f'| {row["circuit"]} | {row["seed"]} | {row["actor_drift_rms"]:.6f} | '
+            lines.append(f'| {row["circuit"]} | {row["seed"]} | {row["episode"]} | {row["actor_drift_rms"]:.6f} | '
                 f'{row["critic_drift_rms"]:.6f} | {row["policy_kl"]:.6f} | {row["entropy"]:.6f} |')
     lines += ['', 'diagnostics.csv逐轮保存梯度、更新量、损失、回报尺度、参数漂移、固定探针概率、KL及熵。'
         '诊断不消耗采样随机数；探针覆盖局部输入，概率变化不是策略质量改善的充分证据。', '',
@@ -719,6 +779,10 @@ def write_report(summary):
         '在仓库根目录执行。首次执行使用独立干净结果目录；已有相同指纹证据使用--resume。'
         'plot.py在带ReportLab/PyMuPDF的独立Python运行时生成曲线，无需Torch；package.py汇总证据及交付哈希。', '',
         '## 综合判断与下一步', '',
+        '本次旧预算曲线没有呈现三个电路一致的训练早期优势随后被对照追平，'
+        '未支持“预算过大抹平优势”这一解释。参数及动作分布的改变已经验证；'
+        '长序列条件下的搜索收益必须同时看初始化/冻结和uniform两种对照。', '',
+        *[part for line in learning_conclusion_lines(summary) for part in (line, '')],
         '判断预算是否掩盖优势，应比较相同目标、相同候选预算下的命中率与首次命中，并核对优势是否随预算增长收敛。'
         '若方向随电路或种子变化，不能仅凭个别“更早找到”归因于预算。'
         '判断长序列学习是否有效，应以第50轮固定策略对初始化和uniform的独立50步评估为主；训练期间找到的单个最佳解只作搜索表现。', '',

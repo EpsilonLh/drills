@@ -1,0 +1,67 @@
+{
+  "command": [
+    "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+    "experiments/learning-effectiveness-50x50/evaluate.py",
+    "--report-only"
+  ],
+  "finished_at": "2026-09-27T11:45:19.975402+00:00",
+  "sources": {
+    "experiments/learning-effectiveness-50x50/analysis.py": "5c52ae2230dffc135bf97b3d8dc4d443443019a2e41ea1f6a88933e39561f256",
+    "experiments/learning-effectiveness-50x50/evaluate.py": "c06b34d017c65b396539688eb0fc738c10dc88d4b5c4b8a72d51979d6aef1ce5",
+    "experiments/learning-effectiveness-50x50/protocol.yml": "a010e7121e0cfc4c492e2f4a8ae75d79aafc05e1d22aab20dfc6b2f5201d44f1"
+  },
+  "old_sources": {
+    "experiments/learning-effectiveness/trajectories.csv": "0e179c96edf27972fae62bd342408b63e550f09894e76d4ab5020030bef568db"
+  },
+  "bootstrap_repetitions": 10000,
+  "bootstrap_seed": 20260927,
+  "pairing": "training rows first; common paired evaluation columns jointly; uniform bank shared across rows",
+  "independent_training_seeds": [
+    0,
+    1,
+    2
+  ],
+  "evaluation_seeds": [
+    10000,
+    10001,
+    10002,
+    10003,
+    10004,
+    10005,
+    10006,
+    10007,
+    10008,
+    10009,
+    10010,
+    10011,
+    10012,
+    10013,
+    10014,
+    10015,
+    10016,
+    10017,
+    10018,
+    10019,
+    10020,
+    10021,
+    10022,
+    10023,
+    10024,
+    10025,
+    10026,
+    10027,
+    10028,
+    10029
+  ],
+  "physical_expected_banks": 30,
+  "physical_expected_rollouts": 900,
+  "logical_expected_rollouts_per_prefix": 1080,
+  "evaluation_prefixes": [
+    5,
+    10,
+    20,
+    30,
+    40,
+    50
+  ]
+}

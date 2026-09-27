@@ -61,7 +61,7 @@ def inference_rollout(cfg, circuit, network, evaluation_seed, folder, uniform=Fa
 def training_validation(cfg):
     root = Path(cfg['runtime']['output_dir'])
     old = ROOT / 'results/learning-effectiveness/training'
-    result = dict(runs=0, first_episodes_equal=True, initial_states_equal=True,
+    result = dict(runs=0, complete_runs=0, first_episodes_equal=True, initial_states_equal=True,
         old_initial_states_equal=True, old_first_10_equal=True, frozen_unchanged=True,
         frozen_snapshot_alias=True, trained_changed=True, checks=[], errors=[])
     for name in cfg['protocol']['circuits']:
@@ -69,15 +69,20 @@ def training_validation(cfg):
             initial_states = []
             for group in GROUPS:
                 folder = root / 'training' / group / name / f'seed-{seed}'
-                if not (folder / 'result.json').exists():
+                if not (folder / 'checkpoint.pt').exists():
                     result['errors'].append(f'Missing {group}/{name}/{seed}')
                     continue
-                row = read(folder / 'result.json')
-                if row['status'] != 'complete' or row['episodes_completed'] != cfg['protocol']['episodes']:
+                final = load(folder / 'checkpoint.pt')
+                row = read(folder / 'result.json') if (folder / 'result.json').exists() else dict(
+                    status='incomplete',episodes_completed=final['episodes_completed'])
+                complete = row['status']=='complete' and row['episodes_completed']==cfg['protocol']['episodes']
+                if not complete:
                     result['errors'].append(f'Incomplete {group}/{name}/{seed}')
+                if final['episodes_completed'] < 1:
                     continue
                 result['runs'] += 1
-                initial, final = load(folder / 'snapshots/0.pt'), load(folder / 'checkpoint.pt')
+                result['complete_runs'] += int(complete)
+                initial = load(folder / 'snapshots/0.pt')
                 initial_states.append(tuple(state_hash(initial[k]) for k in ('network','optimizer','rng_state')))
                 previous = load(old / group / name / f'seed-{seed}/snapshots/0.pt')
                 result['old_initial_states_equal'] &= all(state_hash(initial[k]) == state_hash(previous[k])
@@ -88,14 +93,20 @@ def training_validation(cfg):
                     previous_log = list(csv.DictReader(stream))
                 result['old_first_10_equal'] &= current_log == previous_log
                 changed = state_hash(initial['network']) != state_hash(final['network'])
+                saved_snapshots = [e for e in SNAPSHOTS if (folder / f'snapshots/{e}.pt').exists()]
+                if any(e not in saved_snapshots for e in SNAPSHOTS if e<=final['episodes_completed']):
+                    raise ValueError(f'Missing committed milestone snapshot: {folder}')
                 check = dict(group=group, circuit=name, seed=seed, changed=changed,
+                    status='complete' if complete else 'incomplete',episodes_completed=final['episodes_completed'],
+                    checkpoint_sha256=sha(folder / 'checkpoint.pt'),
                     rng_advanced=not torch.equal(initial['rng_state'],final['rng_state']),
-                    snapshot_sha256={str(e):sha(folder / f'snapshots/{e}.pt') for e in SNAPSHOTS})
+                    snapshot_sha256={str(e):sha(folder / f'snapshots/{e}.pt') for e in saved_snapshots},
+                    missing_snapshots=[e for e in SNAPSHOTS if e not in saved_snapshots])
                 if group != 'trained':
                     check['optimizer_unchanged'] = state_hash(initial['optimizer']) == state_hash(final['optimizer'])
                     result['frozen_unchanged'] &= not changed and check['optimizer_unchanged']
                     result['frozen_snapshot_alias'] &= all(state_hash(load(folder / f'snapshots/{e}.pt')['network'])
-                                                          == state_hash(initial['network']) for e in SNAPSHOTS)
+                                                          == state_hash(initial['network']) for e in saved_snapshots)
                 else:
                     result['trained_changed'] &= changed
                 result['checks'].append(check)

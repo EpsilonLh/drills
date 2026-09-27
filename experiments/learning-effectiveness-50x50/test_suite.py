@@ -13,8 +13,10 @@ import torch
 from common import (ROOT, ORIGINAL, SNAPSHOTS, DiagnosticA2C, config, group_config,
                     load, state_hash)
 from drills.model import A2C
-from evaluate import inference_rollout, physical_seeds
+from evaluate import inference_rollout, physical_seeds, training_validation
 from analysis import policy_comparison, hierarchical_bootstrap, generate
+from verify import checkpoint_export, verify
+from package import validate_coverage
 
 
 class LongExperimentTests(unittest.TestCase):
@@ -170,6 +172,61 @@ class LongExperimentTests(unittest.TestCase):
         self.assertEqual(summary['training_complete'],0)
         self.assertEqual(summary['physical_banks_complete'],0)
         self.assertTrue(all(r['mean_luts_reduction'] is None for r in summary['comparisons']))
+
+    def test_partial_checkpoint_fairness_exports_and_timeout_reporting(self):
+        cfg=copy.deepcopy(self.cfg)
+        cfg['protocol']['circuits']={'int2float':self.circuit}
+        cfg['protocol']['seeds']=[0]
+        root=self.directory/'partial'; cfg['runtime']['output_dir']=str(root)
+        for group in ('trained','frozen','uniform'):
+            folder=root/'training'/group/'int2float/seed-0'
+            agent=DiagnosticA2C(group_config(cfg,group,'test'),self.circuit,0,folder)
+            agent.run_episode()
+        validation=training_validation(cfg)
+        self.assertEqual((validation['runs'],validation['complete_runs']),(3,0))
+        self.assertEqual(len(validation['errors']),3)
+        self.assertTrue(validation['first_episodes_equal'] and validation['old_first_10_equal'])
+        self.assertTrue(validation['initial_states_equal'] and validation['frozen_unchanged'])
+        self.assertTrue(all(r['episodes_completed']==1 and 50 in r['missing_snapshots'] for r in validation['checks']))
+        folder=root/'training/trained/int2float/seed-0'
+        expected=checkpoint_export(folder)
+        self.assertEqual(verify((cfg,self.circuit,folder,expected,'best-mapped.v','best.v'))['status'],'complete')
+        exported=folder/'best.v'; original=exported.read_text(); exported.write_text(original+'\n')
+        with self.assertRaises(ValueError):
+            checkpoint_export(folder)
+        exported.write_text(original)
+        processes=root/'logs/training/processes.json'; processes.parent.mkdir(parents=True)
+        processes.write_text(json.dumps([dict(label='trained-int2float-0',exit_code=-15,
+            timed_out=True,elapsed_seconds=1800)]))
+        destination=self.directory/'partial-report'; destination.mkdir()
+        with patch('analysis.HERE',destination):
+            summary=generate(cfg)
+        self.assertEqual(summary['training'][0]['status'],'timed_out')
+        self.assertEqual(summary['training_complete'],0)
+        self.assertEqual(json.loads((destination/'log-validation.json').read_text())['committed_training_steps'],150)
+        self.assertIn('30分钟硬超时',(destination/'report.md').read_text())
+        self.assertIn('0/0表示缺失，不表示0%可行',(destination/'report.md').read_text())
+        self.assertIn('未完成配对',(destination/'report.md').read_text())
+
+    def test_packaging_partial_evidence_requires_explicit_failures_and_all_cec(self):
+        training=dict(status='incomplete',processes=[dict(label=str(i),exit_code=-15 if i<9 else 0) for i in range(27)])
+        evaluation=dict(status='incomplete',processes=[dict(label=str(i),exit_code=0) for i in range(27)],skipped=[{}]*3)
+        summary=dict(training_complete=18,physical_banks_complete=27,physical_rollouts=810,logical_rollouts=990,
+                     training=[dict(candidates=2500)]*18+[dict(candidates=2000)]*9)
+        validation=dict(evidence_replayed=True,committed_training_steps=63000,physical_evaluation_rollouts=810)
+        records=[dict(status='complete',netlist_sha256={'mapped':'hash'})]*3+[
+            dict(status='complete',netlist_sha256={'mapped':'hash','raw':'hash'})]*837
+        netlists=dict(status='complete',all_present_exports_checked=True,exports_checked=840,
+                      expected_present_exports=840,netlists_verified=1677,records=records)
+        coverage=validate_coverage(training,evaluation,summary,validation,netlists)
+        self.assertFalse(coverage['protocol_complete'])
+        self.assertEqual(coverage['evaluation_physical_rollouts'],810)
+        with self.assertRaises(ValueError):
+            validate_coverage(training,evaluation,summary,dict(validation,evidence_replayed=False),netlists)
+        with self.assertRaises(ValueError):
+            validate_coverage(training,evaluation,summary,validation,dict(netlists,netlists_verified=1676))
+        with self.assertRaises(ValueError):
+            validate_coverage(dict(training,status='running'),evaluation,summary,validation,netlists)
 
 
 if __name__=='__main__':

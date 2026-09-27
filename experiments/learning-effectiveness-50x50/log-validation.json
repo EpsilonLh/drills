@@ -1,0 +1,491 @@
+{
+  "training": [
+    {
+      "group": "trained",
+      "circuit": "int2float",
+      "seed": 0,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "trained",
+      "circuit": "int2float",
+      "seed": 1,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "trained",
+      "circuit": "int2float",
+      "seed": 2,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "trained",
+      "circuit": "i2c",
+      "seed": 0,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "trained",
+      "circuit": "i2c",
+      "seed": 1,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "trained",
+      "circuit": "i2c",
+      "seed": 2,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "trained",
+      "circuit": "max",
+      "seed": 0,
+      "status": "timed_out",
+      "completed_episodes": 41,
+      "replayed_steps": 2050,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "trained",
+      "circuit": "max",
+      "seed": 1,
+      "status": "timed_out",
+      "completed_episodes": 43,
+      "replayed_steps": 2150,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "trained",
+      "circuit": "max",
+      "seed": 2,
+      "status": "timed_out",
+      "completed_episodes": 42,
+      "replayed_steps": 2100,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "frozen",
+      "circuit": "int2float",
+      "seed": 0,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "frozen",
+      "circuit": "int2float",
+      "seed": 1,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "frozen",
+      "circuit": "int2float",
+      "seed": 2,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "frozen",
+      "circuit": "i2c",
+      "seed": 0,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "frozen",
+      "circuit": "i2c",
+      "seed": 1,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "frozen",
+      "circuit": "i2c",
+      "seed": 2,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "frozen",
+      "circuit": "max",
+      "seed": 0,
+      "status": "timed_out",
+      "completed_episodes": 48,
+      "replayed_steps": 2400,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "frozen",
+      "circuit": "max",
+      "seed": 1,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "frozen",
+      "circuit": "max",
+      "seed": 2,
+      "status": "timed_out",
+      "completed_episodes": 49,
+      "replayed_steps": 2450,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "uniform",
+      "circuit": "int2float",
+      "seed": 0,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "uniform",
+      "circuit": "int2float",
+      "seed": 1,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "uniform",
+      "circuit": "int2float",
+      "seed": 2,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "uniform",
+      "circuit": "i2c",
+      "seed": 0,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "uniform",
+      "circuit": "i2c",
+      "seed": 1,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "uniform",
+      "circuit": "i2c",
+      "seed": 2,
+      "status": "complete",
+      "completed_episodes": 50,
+      "replayed_steps": 2500,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "uniform",
+      "circuit": "max",
+      "seed": 0,
+      "status": "timed_out",
+      "completed_episodes": 41,
+      "replayed_steps": 2050,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "uniform",
+      "circuit": "max",
+      "seed": 1,
+      "status": "timed_out",
+      "completed_episodes": 41,
+      "replayed_steps": 2050,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    },
+    {
+      "group": "uniform",
+      "circuit": "max",
+      "seed": 2,
+      "status": "timed_out",
+      "completed_episodes": 41,
+      "replayed_steps": 2050,
+      "best_replayed": true,
+      "checkpoint_checked": true
+    }
+  ],
+  "evaluation": [
+    {
+      "physical_bank_id": "initial/int2float/seed-0",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "initial/int2float/seed-1",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "initial/int2float/seed-2",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "initial/i2c/seed-0",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "initial/i2c/seed-1",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "initial/i2c/seed-2",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "initial/max/seed-0",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "initial/max/seed-1",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "initial/max/seed-2",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "trained-25/int2float/seed-0",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "trained-25/int2float/seed-1",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "trained-25/int2float/seed-2",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "trained-25/i2c/seed-0",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "trained-25/i2c/seed-1",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "trained-25/i2c/seed-2",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "trained-25/max/seed-0",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "trained-25/max/seed-1",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "trained-25/max/seed-2",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "trained-50/int2float/seed-0",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "trained-50/int2float/seed-1",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "trained-50/int2float/seed-2",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "trained-50/i2c/seed-0",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "trained-50/i2c/seed-1",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "trained-50/i2c/seed-2",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "trained-50/max/seed-0",
+      "status": "missing",
+      "completed": 0,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "trained-50/max/seed-1",
+      "status": "missing",
+      "completed": 0,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "trained-50/max/seed-2",
+      "status": "missing",
+      "completed": 0,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "uniform/int2float/seed-0",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "uniform/i2c/seed-0",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    },
+    {
+      "physical_bank_id": "uniform/max/seed-0",
+      "status": "complete",
+      "completed": 30,
+      "expected": 30,
+      "error": null
+    }
+  ],
+  "evidence_replayed": true,
+  "committed_training_steps": 64800,
+  "physical_evaluation_rollouts": 810,
+  "logical_evaluation_prefix_rows": 6480,
+  "status": "incomplete"
+}

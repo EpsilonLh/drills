@@ -1,0 +1,1133 @@
+{
+  "command": [
+    "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+    "-B",
+    "-u",
+    "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py"
+  ],
+  "started_at": "2026-09-27T09:53:24.356251+00:00",
+  "sources": {
+    "experiments/learning-effectiveness-50x50/evaluate.py": "c06b34d017c65b396539688eb0fc738c10dc88d4b5c4b8a72d51979d6aef1ce5",
+    "experiments/learning-effectiveness-50x50/common.py": "5d8c86ddec0dd75c61af094663e1a31b807742ff56457f94d37eba62beaf619f"
+  },
+  "training_fingerprint": "4a77a3b68992d1705a3b367da9bf5f39156e5cec5c6fabc43db1ce06787d9f15",
+  "training_validation": {
+    "runs": 27,
+    "complete_runs": 19,
+    "first_episodes_equal": true,
+    "initial_states_equal": true,
+    "old_initial_states_equal": true,
+    "old_first_10_equal": true,
+    "frozen_unchanged": true,
+    "frozen_snapshot_alias": true,
+    "trained_changed": true,
+    "checks": [
+      {
+        "group": "trained",
+        "circuit": "int2float",
+        "seed": 0,
+        "changed": true,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "81e3fabc5555888aee226e86d86761a9070cc3b9b3d34e9173d39abcf17c1657",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "2338ec2c27c2ab08b569abbea95a73f7197b559f1c8a9e9ecf983978b82e680f",
+          "10": "2a8917c4983c80f009fa3ff4282d6726aa66b649d95702ce061ee06d2abd4061",
+          "25": "e2d7ef659fc9ba01734e2fdd32b8c56de67def84ef820ff77a6e4d5d01afa74a",
+          "50": "81e3fabc5555888aee226e86d86761a9070cc3b9b3d34e9173d39abcf17c1657"
+        },
+        "missing_snapshots": []
+      },
+      {
+        "group": "frozen",
+        "circuit": "int2float",
+        "seed": 0,
+        "changed": false,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "168f732a93ee0abe13451a7306a114b931331a5b824d4b4e9a5100ed994123b9",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "d218fce099fc001947d511c9f8269bb31e5e3329fd62e8edbaa44f9a742aeb31",
+          "10": "d1c04d5ab82fb66a77d08603999ec3a6068ed86798a4064e83d8c2cfd12e8205",
+          "25": "92d41c413f56af55cff57f5f9283f3ad18518a5fda7ff01b8400e3d8b4b9614c",
+          "50": "168f732a93ee0abe13451a7306a114b931331a5b824d4b4e9a5100ed994123b9"
+        },
+        "missing_snapshots": [],
+        "optimizer_unchanged": true
+      },
+      {
+        "group": "uniform",
+        "circuit": "int2float",
+        "seed": 0,
+        "changed": false,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "3d83f8edf40996e6d77aa053adf78f46b71d4a9e31eea35b486e316f5a603623",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "5d7d7aec3c3797be76371c20cecc5eddb6921a7727da0ed720f7ae25ddc793a6",
+          "10": "6124cc9c67ceae942c6933a42addaf80ee1008edb5ab3d7bc8408943616ff8b4",
+          "25": "c2b40e3a8e6d8945ca1ebb4fd900da9d6cd06799735eed3d24adbe9db6435301",
+          "50": "3d83f8edf40996e6d77aa053adf78f46b71d4a9e31eea35b486e316f5a603623"
+        },
+        "missing_snapshots": [],
+        "optimizer_unchanged": true
+      },
+      {
+        "group": "trained",
+        "circuit": "int2float",
+        "seed": 1,
+        "changed": true,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "2c49737847c2add8bbe908d5cb43f6332811bcfc522cbc68cbf371ba9f1baa38",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "ce7eb3271ad820966610a41938a2ac590f96f09be03a4ada92f08eadea54c725",
+          "10": "851113b3522fa91c3b1f1bf03478dc8630101da643ee572aed51b6a89563141b",
+          "25": "5cc394120e3d7e80dd83b983c4ace432835d66f35d517144fa1036f57fc1c34b",
+          "50": "2c49737847c2add8bbe908d5cb43f6332811bcfc522cbc68cbf371ba9f1baa38"
+        },
+        "missing_snapshots": []
+      },
+      {
+        "group": "frozen",
+        "circuit": "int2float",
+        "seed": 1,
+        "changed": false,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "196429bb1b854564b16531b888632bf7d735a9f423beae1a6e12d39f5b882a0b",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "3ce477e3ee1c7903913576c0e707a64b297cb06cf81e985ab423ec620a883777",
+          "10": "16fd2f3845f6fb71bca40a2436846890f9c09f0eb2e754ce05cdc75aae2a49c1",
+          "25": "a233f29ecc0e7a303bd082a9e36d235c2ff51bb7e52e01df3d559aacdcb2f55e",
+          "50": "196429bb1b854564b16531b888632bf7d735a9f423beae1a6e12d39f5b882a0b"
+        },
+        "missing_snapshots": [],
+        "optimizer_unchanged": true
+      },
+      {
+        "group": "uniform",
+        "circuit": "int2float",
+        "seed": 1,
+        "changed": false,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "7b23511f9826f3c966f116e1681f0030e0c2f6a666b2ca5187807e7aa5d387c8",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "f932420e2d2bc0ee2e6778ab7d8c713a778b555de2c5683a79a71267205fe790",
+          "10": "7337efd46291ce927e42a3a010cd1c08fa4980b8a1988b83e8f54e432ee28e5b",
+          "25": "278d826a7a862c6f161affbfc479776e3f2409ebcc6a480f20c13bbc3aa8d00e",
+          "50": "7b23511f9826f3c966f116e1681f0030e0c2f6a666b2ca5187807e7aa5d387c8"
+        },
+        "missing_snapshots": [],
+        "optimizer_unchanged": true
+      },
+      {
+        "group": "trained",
+        "circuit": "int2float",
+        "seed": 2,
+        "changed": true,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "b66644fb3a472a1acaa2721c7b5acf284f1244d28029779f75cb8cde6d3e3e54",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "59069925e79040d3455395ad38b8af6962d6230eae86fb3090ea53373f0b7714",
+          "10": "5d8c3588613c74d2ce332781b77a3c513d03d1f90d917fbcba746b04621b37fa",
+          "25": "2d1dec7d505cfc4a3d8a0868f00d2b73938a7a1600d78003088da650dd35021d",
+          "50": "b66644fb3a472a1acaa2721c7b5acf284f1244d28029779f75cb8cde6d3e3e54"
+        },
+        "missing_snapshots": []
+      },
+      {
+        "group": "frozen",
+        "circuit": "int2float",
+        "seed": 2,
+        "changed": false,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "c98406147b62fb80d1770bef2163ba08fd88bf058bc56e7f111a53d4b6176f7f",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "1931a30bbda9c69f27ffaa7799caf93b341d998cda0dc67a9151bf47cec85646",
+          "10": "88d3b60637389d89dc87bd79fcf368e36bfef78a3f6fa8faa45e2a14450f6a6d",
+          "25": "1cd175d6dbb88709fd57a16a48881636e1b313e2a8f75973d08856d6e3fe696d",
+          "50": "c98406147b62fb80d1770bef2163ba08fd88bf058bc56e7f111a53d4b6176f7f"
+        },
+        "missing_snapshots": [],
+        "optimizer_unchanged": true
+      },
+      {
+        "group": "uniform",
+        "circuit": "int2float",
+        "seed": 2,
+        "changed": false,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "bde3514634a7fbd366ee9333d3ad7a55bc468bbc8279c60d09e5b1b5b8a08ee7",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "bf9d40a42ec01586764125107d50bc349d80b95c9613ae85a879a0608c7e8e7b",
+          "10": "6aa24df510df1229f41074b0865081c1c8a7fb4d91f010f703224b06099a070b",
+          "25": "4494aa958e1a5480942265e73331134a0a65e090e224546128cd102ef7085e35",
+          "50": "bde3514634a7fbd366ee9333d3ad7a55bc468bbc8279c60d09e5b1b5b8a08ee7"
+        },
+        "missing_snapshots": [],
+        "optimizer_unchanged": true
+      },
+      {
+        "group": "trained",
+        "circuit": "i2c",
+        "seed": 0,
+        "changed": true,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "21c36de3cff01007cf7e6ff84e591bcd44a8e79314c8ee9eb0ff591477e0afac",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "2338ec2c27c2ab08b569abbea95a73f7197b559f1c8a9e9ecf983978b82e680f",
+          "10": "40707fbd01102b24d4f7b3610f0003d114a9655c4f72da88e9215ac4da8b93a2",
+          "25": "6c2e743e249441db0c726b765a2ec299f860db2c4b1e6c4206fff57a3dec490a",
+          "50": "21c36de3cff01007cf7e6ff84e591bcd44a8e79314c8ee9eb0ff591477e0afac"
+        },
+        "missing_snapshots": []
+      },
+      {
+        "group": "frozen",
+        "circuit": "i2c",
+        "seed": 0,
+        "changed": false,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "9664c020862d672c02b2a7adf6b5c33da57a0109e03e2db1fad4bca3d1ae7235",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "d218fce099fc001947d511c9f8269bb31e5e3329fd62e8edbaa44f9a742aeb31",
+          "10": "dcddb4cb2ab16a2f993281a15348e84aca5a3d62090d8af1a63a53010934b16e",
+          "25": "c3a20da905edb4a8d16aa1b71e29e6fe59f8778c8cf104ae01247a27ae5be320",
+          "50": "9664c020862d672c02b2a7adf6b5c33da57a0109e03e2db1fad4bca3d1ae7235"
+        },
+        "missing_snapshots": [],
+        "optimizer_unchanged": true
+      },
+      {
+        "group": "uniform",
+        "circuit": "i2c",
+        "seed": 0,
+        "changed": false,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "4fc749ccddd85cc85ab88d9ff1072686d167c3cab85d0099da3018d40a0ff035",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "5d7d7aec3c3797be76371c20cecc5eddb6921a7727da0ed720f7ae25ddc793a6",
+          "10": "1c38c899b7e27926dcfe030db4c3e15f368d05d7908cbe4b8b481872b47602a9",
+          "25": "f2ea1aa57011a8dec4eb444597aceca079cc21260c6f362948540a571f804e70",
+          "50": "4fc749ccddd85cc85ab88d9ff1072686d167c3cab85d0099da3018d40a0ff035"
+        },
+        "missing_snapshots": [],
+        "optimizer_unchanged": true
+      },
+      {
+        "group": "trained",
+        "circuit": "i2c",
+        "seed": 1,
+        "changed": true,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "03d264348ea71233a33a027c6b8f3ebb970fb4ec301c2f32f49c73c97cc81a52",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "ce7eb3271ad820966610a41938a2ac590f96f09be03a4ada92f08eadea54c725",
+          "10": "d9081112d94884bdef4bc7c7fd68c6a4abf7ea5577361e4e916dff0398153e1c",
+          "25": "af5f1308d6065ab1edf14eb9a10108ff398e07f83712cc18e432d1c99420d49b",
+          "50": "03d264348ea71233a33a027c6b8f3ebb970fb4ec301c2f32f49c73c97cc81a52"
+        },
+        "missing_snapshots": []
+      },
+      {
+        "group": "frozen",
+        "circuit": "i2c",
+        "seed": 1,
+        "changed": false,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "78a8ae238ab4c0b4db1d47413a8e6561a00dc880cc7d4a378f8fde47ff61d0b5",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "3ce477e3ee1c7903913576c0e707a64b297cb06cf81e985ab423ec620a883777",
+          "10": "befef590464a3f3696d9bbd59b7282ac39f800c3142d1b17cfbc390c539f7db2",
+          "25": "2cd3abf6484f03c9f4e335aa223999c5f6f0884cd2906f71be1b511ebe99eb35",
+          "50": "78a8ae238ab4c0b4db1d47413a8e6561a00dc880cc7d4a378f8fde47ff61d0b5"
+        },
+        "missing_snapshots": [],
+        "optimizer_unchanged": true
+      },
+      {
+        "group": "uniform",
+        "circuit": "i2c",
+        "seed": 1,
+        "changed": false,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "f2754d71e16e4fffbf85b7745942d1b946ba0ea6668a165fef799759919afcd8",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "f932420e2d2bc0ee2e6778ab7d8c713a778b555de2c5683a79a71267205fe790",
+          "10": "2d7a5f32cd42256b2ff935b878e00628fa2131aad15d3a99d67287b917ae8dd2",
+          "25": "865cabd12b83f3aace1916b2e8cb4a666818a007b934633e307c1a85b8cb316f",
+          "50": "f2754d71e16e4fffbf85b7745942d1b946ba0ea6668a165fef799759919afcd8"
+        },
+        "missing_snapshots": [],
+        "optimizer_unchanged": true
+      },
+      {
+        "group": "trained",
+        "circuit": "i2c",
+        "seed": 2,
+        "changed": true,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "56fb9c78609d3e30424b51ca7519ea5ac3935e597ee64a80bce678c05bb1facd",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "59069925e79040d3455395ad38b8af6962d6230eae86fb3090ea53373f0b7714",
+          "10": "6c14d0a9feb840ac1c1130a36b74e1621702493997ce2fe47b7967b9b63f2bdf",
+          "25": "7a09e148f80bdec0cc03ce1840ce66862a3f765333f4a2a1bbe2a45a73baf5ab",
+          "50": "56fb9c78609d3e30424b51ca7519ea5ac3935e597ee64a80bce678c05bb1facd"
+        },
+        "missing_snapshots": []
+      },
+      {
+        "group": "frozen",
+        "circuit": "i2c",
+        "seed": 2,
+        "changed": false,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "c1c27638250d1d007038b6fde440820594c2de1ed463e5e4b60a5ea260c15869",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "1931a30bbda9c69f27ffaa7799caf93b341d998cda0dc67a9151bf47cec85646",
+          "10": "3a1ca8b15bc8defa948db404424c85e5a1a7d2c4807377fb8efbc0276331089f",
+          "25": "effbe4c8c5545885ca3064ac16f0c9d53cf9a423024409a253f4604d12db8d3b",
+          "50": "c1c27638250d1d007038b6fde440820594c2de1ed463e5e4b60a5ea260c15869"
+        },
+        "missing_snapshots": [],
+        "optimizer_unchanged": true
+      },
+      {
+        "group": "uniform",
+        "circuit": "i2c",
+        "seed": 2,
+        "changed": false,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "43e973ac60d3668f59f1f5b948cb6045d835edfcb73ccb6d42bf2a0f5fca0614",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "bf9d40a42ec01586764125107d50bc349d80b95c9613ae85a879a0608c7e8e7b",
+          "10": "4fb245119fdc3e08302f3d361a376c6db268b7b831313b2da43fc306a6463eb1",
+          "25": "cace77408a9374393ab175f0bc9a931533c6ba9593cce47c02f1960de335e574",
+          "50": "43e973ac60d3668f59f1f5b948cb6045d835edfcb73ccb6d42bf2a0f5fca0614"
+        },
+        "missing_snapshots": [],
+        "optimizer_unchanged": true
+      },
+      {
+        "group": "trained",
+        "circuit": "max",
+        "seed": 0,
+        "changed": true,
+        "status": "incomplete",
+        "episodes_completed": 41,
+        "checkpoint_sha256": "578b71ad29ef56285359b02024b6614fd9cab7002b92e88c42ed4257c4855416",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "2338ec2c27c2ab08b569abbea95a73f7197b559f1c8a9e9ecf983978b82e680f",
+          "10": "acc5113b46939c65450387292910fb23aa6ae8403c435796df350d21dc606ee2",
+          "25": "2f554b6849e9e1e0abf5bdfd43a2b214f28cf0067d864466b82e3af2d374a939"
+        },
+        "missing_snapshots": [
+          50
+        ]
+      },
+      {
+        "group": "frozen",
+        "circuit": "max",
+        "seed": 0,
+        "changed": false,
+        "status": "incomplete",
+        "episodes_completed": 48,
+        "checkpoint_sha256": "6ec6076accccbb3c31e3bd28712b11fa559178b08f75b0514a9936d722aa23c3",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "d218fce099fc001947d511c9f8269bb31e5e3329fd62e8edbaa44f9a742aeb31",
+          "10": "b0659ee4554ed29cca1c71d47d3dc8bcc4480ffe251deef6b534dc454248f0aa",
+          "25": "7d8f463061c2409e320fc7d93a85ba7f13d71185370f7c6a22e62bb330bd5fd4"
+        },
+        "missing_snapshots": [
+          50
+        ],
+        "optimizer_unchanged": true
+      },
+      {
+        "group": "uniform",
+        "circuit": "max",
+        "seed": 0,
+        "changed": false,
+        "status": "incomplete",
+        "episodes_completed": 41,
+        "checkpoint_sha256": "5cf004092de5c7d79820c584e8e70e0cafc70b5b79318eed43c2ac29ef727e68",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "5d7d7aec3c3797be76371c20cecc5eddb6921a7727da0ed720f7ae25ddc793a6",
+          "10": "1f12638f9fb37ed254c0b36e46a9bf21e306b809887389f74d048407368a2cce",
+          "25": "f0a03db4d30d0a05664f4f489e056cdf22b5bc497132f557ba158cc6f814bb15"
+        },
+        "missing_snapshots": [
+          50
+        ],
+        "optimizer_unchanged": true
+      },
+      {
+        "group": "trained",
+        "circuit": "max",
+        "seed": 1,
+        "changed": true,
+        "status": "incomplete",
+        "episodes_completed": 43,
+        "checkpoint_sha256": "cfeccbe01822ba8f04de0f1964978708d6386cd4aef2d33d74406155911f6d9e",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "ce7eb3271ad820966610a41938a2ac590f96f09be03a4ada92f08eadea54c725",
+          "10": "2979f63f4f25f5ba0224d02fc55d76db4ed4e1496838959764818b1e4b6e7b86",
+          "25": "000e56acc8ad259bb078e5657aec523cb9653572a5057d77937e5ef77b68a5ac"
+        },
+        "missing_snapshots": [
+          50
+        ]
+      },
+      {
+        "group": "frozen",
+        "circuit": "max",
+        "seed": 1,
+        "changed": false,
+        "status": "complete",
+        "episodes_completed": 50,
+        "checkpoint_sha256": "cf86a037af7d31ad262d27c8458210a4b44683f68a21a73f136357f4089c1592",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "3ce477e3ee1c7903913576c0e707a64b297cb06cf81e985ab423ec620a883777",
+          "10": "9c25ff17b63515de6ad352751efa9c1c5ed277db1a15358ef309b3a022f1a4b7",
+          "25": "c4de340f78f60f43e9f17bbfacbc69ebcf605294a0f6339aa375aba1b6bc198b",
+          "50": "cf86a037af7d31ad262d27c8458210a4b44683f68a21a73f136357f4089c1592"
+        },
+        "missing_snapshots": [],
+        "optimizer_unchanged": true
+      },
+      {
+        "group": "uniform",
+        "circuit": "max",
+        "seed": 1,
+        "changed": false,
+        "status": "incomplete",
+        "episodes_completed": 41,
+        "checkpoint_sha256": "9d58858fb89ce8a95dd72e4544453acbbca149c1cf59b3785c3ce8f3d2cb8eb8",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "f932420e2d2bc0ee2e6778ab7d8c713a778b555de2c5683a79a71267205fe790",
+          "10": "936a505cce73657072bdfe2c5bc82fb358504542a6567fccbb13de642f1b334b",
+          "25": "17a6434372be3856d2bf5e24200935fcdc5968dcd775381ad189055c22ab6a93"
+        },
+        "missing_snapshots": [
+          50
+        ],
+        "optimizer_unchanged": true
+      },
+      {
+        "group": "trained",
+        "circuit": "max",
+        "seed": 2,
+        "changed": true,
+        "status": "incomplete",
+        "episodes_completed": 42,
+        "checkpoint_sha256": "0326c4c3c7229ec07907030c9261ddff73e68f52ab1f926fc88c470705ad3c4e",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "59069925e79040d3455395ad38b8af6962d6230eae86fb3090ea53373f0b7714",
+          "10": "fee4d25633bcb5f0f05c87e4ffa73aabc4b57de75f3e072e4aaeeada1f153af0",
+          "25": "cc407fa21413a8d65da711e367444a874757d97a2cff90964308b3c4041a2e0f"
+        },
+        "missing_snapshots": [
+          50
+        ]
+      },
+      {
+        "group": "frozen",
+        "circuit": "max",
+        "seed": 2,
+        "changed": false,
+        "status": "incomplete",
+        "episodes_completed": 49,
+        "checkpoint_sha256": "1287d15d8141fa85496878666a4f4a0078f0d61c2f3ec6236e66abdb3f94da38",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "1931a30bbda9c69f27ffaa7799caf93b341d998cda0dc67a9151bf47cec85646",
+          "10": "5a5e6d79af4c12f19ab1e155085d0e6d42da2b0ce9d7a949928c75489c734b76",
+          "25": "a5e0036ea010772436723ff17a76d398ac923563d7c0a3f98ff781161ab03a15"
+        },
+        "missing_snapshots": [
+          50
+        ],
+        "optimizer_unchanged": true
+      },
+      {
+        "group": "uniform",
+        "circuit": "max",
+        "seed": 2,
+        "changed": false,
+        "status": "incomplete",
+        "episodes_completed": 41,
+        "checkpoint_sha256": "01b4847f62737778b4206547eb6f6ae98076ced4c37e357376bc6f7ef895eb8d",
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "bf9d40a42ec01586764125107d50bc349d80b95c9613ae85a879a0608c7e8e7b",
+          "10": "5381222f5cba76a58b8d630c35db6ba92db7b59e6e35bf330753862a20b009b9",
+          "25": "0cd1c29c553409f0e662693227d55ddafbedf454989142633425cdbbcd7c4ce0"
+        },
+        "missing_snapshots": [
+          50
+        ],
+        "optimizer_unchanged": true
+      }
+    ],
+    "errors": [
+      "Incomplete trained/max/0",
+      "Incomplete frozen/max/0",
+      "Incomplete uniform/max/0",
+      "Incomplete trained/max/1",
+      "Incomplete uniform/max/1",
+      "Incomplete trained/max/2",
+      "Incomplete frozen/max/2",
+      "Incomplete uniform/max/2"
+    ]
+  },
+  "evaluation_seeds": [
+    10000,
+    10001,
+    10002,
+    10003,
+    10004,
+    10005,
+    10006,
+    10007,
+    10008,
+    10009,
+    10010,
+    10011,
+    10012,
+    10013,
+    10014,
+    10015,
+    10016,
+    10017,
+    10018,
+    10019,
+    10020,
+    10021,
+    10022,
+    10023,
+    10024,
+    10025,
+    10026,
+    10027,
+    10028,
+    10029
+  ],
+  "policies": [
+    "initial",
+    "trained-25",
+    "trained-50",
+    "uniform"
+  ],
+  "prefixes": [
+    5,
+    10,
+    20,
+    30,
+    40,
+    50
+  ],
+  "uniform_bank_shared": true,
+  "processes": [
+    {
+      "label": "initial-int2float-1",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "initial",
+        "int2float",
+        "1"
+      ],
+      "started_at": "2026-09-27T09:53:24.372746+00:00",
+      "finished_at": "2026-09-27T09:58:11.435419+00:00",
+      "elapsed_seconds": 287.06036812499997,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/initial-int2float-1.log",
+      "log_sha256": "ae6e3df9b2ca85cbc522401d2fc76878527ad132260437e2929b8f7d420b5333"
+    },
+    {
+      "label": "initial-int2float-2",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "initial",
+        "int2float",
+        "2"
+      ],
+      "started_at": "2026-09-27T09:53:24.379390+00:00",
+      "finished_at": "2026-09-27T09:58:14.455330+00:00",
+      "elapsed_seconds": 290.07360958299995,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/initial-int2float-2.log",
+      "log_sha256": "bc89b4ea1214d923d94d006a868463942e9fec82dab526cc88e66d21b8c725a1"
+    },
+    {
+      "label": "initial-int2float-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "initial",
+        "int2float",
+        "0"
+      ],
+      "started_at": "2026-09-27T09:53:24.366114+00:00",
+      "finished_at": "2026-09-27T09:58:18.473731+00:00",
+      "elapsed_seconds": 294.105247583,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/initial-int2float-0.log",
+      "log_sha256": "f0414626a2f81be938f2c7a3e13deba582bc7d6651bbb91d268d43eb078729f4"
+    },
+    {
+      "label": "initial-i2c-1",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "initial",
+        "i2c",
+        "1"
+      ],
+      "started_at": "2026-09-27T09:58:15.464697+00:00",
+      "finished_at": "2026-09-27T10:09:54.545299+00:00",
+      "elapsed_seconds": 699.0750129170001,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/initial-i2c-1.log",
+      "log_sha256": "1ed32be7f25fe6314216f29628c43e055260c748732f98589aae3bd66f618008"
+    },
+    {
+      "label": "initial-i2c-2",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "initial",
+        "i2c",
+        "2"
+      ],
+      "started_at": "2026-09-27T09:58:19.481657+00:00",
+      "finished_at": "2026-09-27T10:10:01.591224+00:00",
+      "elapsed_seconds": 702.103950458,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/initial-i2c-2.log",
+      "log_sha256": "f07892ad5459b95435acadc1ec167a4967c847e43879cd195c1f36e7de64fa13"
+    },
+    {
+      "label": "initial-i2c-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "initial",
+        "i2c",
+        "0"
+      ],
+      "started_at": "2026-09-27T09:58:12.445906+00:00",
+      "finished_at": "2026-09-27T10:10:18.703844+00:00",
+      "elapsed_seconds": 726.252127625,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/initial-i2c-0.log",
+      "log_sha256": "8d187260bafd2c922af25bd01fc607e9459d5c2ca5d00d5c1d9153dd4e568d5b"
+    },
+    {
+      "label": "initial-max-1",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "initial",
+        "max",
+        "1"
+      ],
+      "started_at": "2026-09-27T10:10:02.598078+00:00",
+      "finished_at": "2026-09-27T10:31:49.696106+00:00",
+      "elapsed_seconds": 1307.0877672499996,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/initial-max-1.log",
+      "log_sha256": "dfc9b2cd91ef9fe747a3302306174ee67a8b7e18779dd7d1b6680de67e3b4b2c"
+    },
+    {
+      "label": "initial-max-2",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "initial",
+        "max",
+        "2"
+      ],
+      "started_at": "2026-09-27T10:10:19.719053+00:00",
+      "finished_at": "2026-09-27T10:32:17.805740+00:00",
+      "elapsed_seconds": 1318.0759710830002,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/initial-max-2.log",
+      "log_sha256": "a2103c3c28a60c8b70352690c74d111bab1151320120a4aa35d056990204c2cb"
+    },
+    {
+      "label": "initial-max-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "initial",
+        "max",
+        "0"
+      ],
+      "started_at": "2026-09-27T10:09:55.560580+00:00",
+      "finished_at": "2026-09-27T10:32:45.924680+00:00",
+      "elapsed_seconds": 1370.3514442500002,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/initial-max-0.log",
+      "log_sha256": "01e440c68232dad18ef9e3e687147e1a03f1f2e8956531e68031cce04a590b6a"
+    },
+    {
+      "label": "trained-25-int2float-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "trained-25",
+        "int2float",
+        "0"
+      ],
+      "started_at": "2026-09-27T10:31:50.706298+00:00",
+      "finished_at": "2026-09-27T10:36:26.710828+00:00",
+      "elapsed_seconds": 276.0000803749999,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/trained-25-int2float-0.log",
+      "log_sha256": "df7c4064fab64da7f623cc2667c8734e0f926ead7997fb1adbdef9f64faa5af2"
+    },
+    {
+      "label": "trained-25-int2float-1",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "trained-25",
+        "int2float",
+        "1"
+      ],
+      "started_at": "2026-09-27T10:32:18.819009+00:00",
+      "finished_at": "2026-09-27T10:36:51.806539+00:00",
+      "elapsed_seconds": 272.9835861249999,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/trained-25-int2float-1.log",
+      "log_sha256": "db330449bab93344290f47f0fad6606af0e31ab5f8743c55995e6bbc489f066a"
+    },
+    {
+      "label": "trained-25-int2float-2",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "trained-25",
+        "int2float",
+        "2"
+      ],
+      "started_at": "2026-09-27T10:32:46.932371+00:00",
+      "finished_at": "2026-09-27T10:37:22.912033+00:00",
+      "elapsed_seconds": 275.97713354200005,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/trained-25-int2float-2.log",
+      "log_sha256": "eb5baa944ffd905ff7946e9fd73905964f88e32ee284c9c872a71f042f2c24ae"
+    },
+    {
+      "label": "trained-25-i2c-1",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "trained-25",
+        "i2c",
+        "1"
+      ],
+      "started_at": "2026-09-27T10:36:52.815418+00:00",
+      "finished_at": "2026-09-27T10:46:52.653523+00:00",
+      "elapsed_seconds": 599.8331257079999,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/trained-25-i2c-1.log",
+      "log_sha256": "d8f48dba74d06ff9545d624b3a5d4868ca894e2371868b77f5c78a941ceac2ec"
+    },
+    {
+      "label": "trained-25-i2c-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "trained-25",
+        "i2c",
+        "0"
+      ],
+      "started_at": "2026-09-27T10:36:27.721004+00:00",
+      "finished_at": "2026-09-27T10:46:55.686662+00:00",
+      "elapsed_seconds": 627.9604325,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/trained-25-i2c-0.log",
+      "log_sha256": "fe8dd85c99c60d1b3aa05789489df04f92361ce97ceef7b7217b1b1e32662117"
+    },
+    {
+      "label": "trained-25-i2c-2",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "trained-25",
+        "i2c",
+        "2"
+      ],
+      "started_at": "2026-09-27T10:37:23.919672+00:00",
+      "finished_at": "2026-09-27T10:47:27.816277+00:00",
+      "elapsed_seconds": 603.8915660830003,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/trained-25-i2c-2.log",
+      "log_sha256": "1c924e7f5a6ab4d44d98981030ac0d76f40d54c8da0b8af1d6833b5b2c39ca69"
+    },
+    {
+      "label": "trained-25-max-1",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "trained-25",
+        "max",
+        "1"
+      ],
+      "started_at": "2026-09-27T10:46:56.695281+00:00",
+      "finished_at": "2026-09-27T11:09:08.007346+00:00",
+      "elapsed_seconds": 1331.3044596250002,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/trained-25-max-1.log",
+      "log_sha256": "8c5e1518927cfc5872e2d60064e80848b52d2d5f31d3ac4fc40bfd1fb43497ac"
+    },
+    {
+      "label": "trained-25-max-2",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "trained-25",
+        "max",
+        "2"
+      ],
+      "started_at": "2026-09-27T10:47:28.826562+00:00",
+      "finished_at": "2026-09-27T11:09:58.297122+00:00",
+      "elapsed_seconds": 1349.4628357499996,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/trained-25-max-2.log",
+      "log_sha256": "1e31f52e81d4f9a1a4dba0a4106981173875d8830643f00dac10856373bbd814"
+    },
+    {
+      "label": "trained-25-max-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "trained-25",
+        "max",
+        "0"
+      ],
+      "started_at": "2026-09-27T10:46:53.660957+00:00",
+      "finished_at": "2026-09-27T11:10:20.381773+00:00",
+      "elapsed_seconds": 1406.7126127500005,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/trained-25-max-0.log",
+      "log_sha256": "a9136b28465b65372f87ba224adef54dd691eb2f3875cc8c5d235f864c2342ae"
+    },
+    {
+      "label": "trained-50-int2float-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "trained-50",
+        "int2float",
+        "0"
+      ],
+      "started_at": "2026-09-27T11:09:09.124076+00:00",
+      "finished_at": "2026-09-27T11:14:06.520155+00:00",
+      "elapsed_seconds": 297.39367104099983,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/trained-50-int2float-0.log",
+      "log_sha256": "7073a047fbfebd44d698d56a4e793e11c8aa9fa7f3bb56e57ac2cdbfdac5bf61"
+    },
+    {
+      "label": "trained-50-int2float-1",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "trained-50",
+        "int2float",
+        "1"
+      ],
+      "started_at": "2026-09-27T11:09:59.308084+00:00",
+      "finished_at": "2026-09-27T11:14:45.660591+00:00",
+      "elapsed_seconds": 286.3502880420001,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/trained-50-int2float-1.log",
+      "log_sha256": "604d6ea952653854d763a8e2235585d5b639344033ee1270e04efe1a71605711"
+    },
+    {
+      "label": "trained-50-int2float-2",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "trained-50",
+        "int2float",
+        "2"
+      ],
+      "started_at": "2026-09-27T11:10:21.392750+00:00",
+      "finished_at": "2026-09-27T11:15:03.740669+00:00",
+      "elapsed_seconds": 282.34570512499977,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/trained-50-int2float-2.log",
+      "log_sha256": "1ec220a4dc75c2345a11503eb9a12677cce728b9a23efad96ebca680d291255b"
+    },
+    {
+      "label": "trained-50-i2c-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "trained-50",
+        "i2c",
+        "0"
+      ],
+      "started_at": "2026-09-27T11:14:07.529628+00:00",
+      "finished_at": "2026-09-27T11:25:44.115041+00:00",
+      "elapsed_seconds": 696.592308542,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/trained-50-i2c-0.log",
+      "log_sha256": "2748f0092ca106db66e4b0deb5337b7ed6782fd349d5cf8159377a840f7a062c"
+    },
+    {
+      "label": "trained-50-i2c-1",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "trained-50",
+        "i2c",
+        "1"
+      ],
+      "started_at": "2026-09-27T11:14:46.670444+00:00",
+      "finished_at": "2026-09-27T11:26:02.200577+00:00",
+      "elapsed_seconds": 675.5372655830006,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/trained-50-i2c-1.log",
+      "log_sha256": "da8e6e39e4f2de99a9f84d3f9eca15aa58322bcb013e78082d6ccab819320ba2"
+    },
+    {
+      "label": "trained-50-i2c-2",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "trained-50",
+        "i2c",
+        "2"
+      ],
+      "started_at": "2026-09-27T11:15:04.748993+00:00",
+      "finished_at": "2026-09-27T11:26:37.373797+00:00",
+      "elapsed_seconds": 692.6319093749999,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/trained-50-i2c-2.log",
+      "log_sha256": "3b057ed9e02621b4c3e1d4f386f14f2a16b94f9e03b53629ba888c34040801eb"
+    },
+    {
+      "label": "uniform-int2float-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "uniform",
+        "int2float",
+        "0"
+      ],
+      "started_at": "2026-09-27T11:25:45.128994+00:00",
+      "finished_at": "2026-09-27T11:30:43.306234+00:00",
+      "elapsed_seconds": 298.1754654999995,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/uniform-int2float-0.log",
+      "log_sha256": "0e5bbe0f2369a5780a7c3f9b8a71b721e8bb56f03ba403a0c4fe8a44019389b4"
+    },
+    {
+      "label": "uniform-i2c-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "uniform",
+        "i2c",
+        "0"
+      ],
+      "started_at": "2026-09-27T11:26:03.211802+00:00",
+      "finished_at": "2026-09-27T11:35:12.561014+00:00",
+      "elapsed_seconds": 549.3459540419999,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/uniform-i2c-0.log",
+      "log_sha256": "68c49fd70ea1d55bf00558d36eb2015389fec367779276a8bd1ed5aa55276fd2"
+    },
+    {
+      "label": "uniform-max-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/evaluate.py",
+        "--task",
+        "uniform",
+        "max",
+        "0"
+      ],
+      "started_at": "2026-09-27T11:26:38.390031+00:00",
+      "finished_at": "2026-09-27T11:41:26.712387+00:00",
+      "elapsed_seconds": 888.470535167,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-50x50/logs/evaluation/uniform-max-0.log",
+      "log_sha256": "95fd34602ad3ebcc371d2dec2a786c42d45e8a15ada506452bbabd1ebc95b509"
+    }
+  ],
+  "finished_at": "2026-09-27T11:41:26.715845+00:00",
+  "skipped": [
+    {
+      "policy": "trained-50",
+      "circuit": "max",
+      "seed": 0,
+      "reason": "Missing checkpoint"
+    },
+    {
+      "policy": "trained-50",
+      "circuit": "max",
+      "seed": 1,
+      "reason": "Missing checkpoint"
+    },
+    {
+      "policy": "trained-50",
+      "circuit": "max",
+      "seed": 2,
+      "reason": "Missing checkpoint"
+    }
+  ],
+  "status": "incomplete"
+}

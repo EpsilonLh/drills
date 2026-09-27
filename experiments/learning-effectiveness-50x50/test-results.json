@@ -4,10 +4,10 @@
     "-B",
     "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/check.py"
   ],
-  "started_at": "2026-09-27T07:16:21.245579+00:00",
-  "finished_at": "2026-09-27T07:18:10.615682+00:00",
-  "elapsed_seconds": 109.36939245800001,
-  "tests_run": 11,
+  "started_at": "2026-09-27T11:44:49.235023+00:00",
+  "finished_at": "2026-09-27T11:46:59.019745+00:00",
+  "elapsed_seconds": 129.786923583,
+  "tests_run": 13,
   "failures": 0,
   "errors": 0,
   "skipped": 0,
@@ -35,13 +35,13 @@
     "experiments/learning-effectiveness-50x50/common.py": "5d8c86ddec0dd75c61af094663e1a31b807742ff56457f94d37eba62beaf619f",
     "experiments/learning-effectiveness-50x50/run.py": "498ef96e65ff3cfedc4a4370b4d8224500060796b48748a3816e9d17df9342be",
     "experiments/learning-effectiveness-50x50/protocol.yml": "a010e7121e0cfc4c492e2f4a8ae75d79aafc05e1d22aab20dfc6b2f5201d44f1",
-    "experiments/learning-effectiveness-50x50/package.py": "abfe27cfdecfcc555b03dff8a1fd14e2b5f4a87292329be41a3cb1f6c3ddf2cd",
-    "experiments/learning-effectiveness-50x50/plot.py": "c9e904b2915119ecfea6ed3137486e93515035d7826960b82e76863c02652e1e",
-    "experiments/learning-effectiveness-50x50/analysis.py": "32d21f4ecb52a383cb2ffc93d952a88e7759d32b04ccb078556c1da7f1a4c62e",
+    "experiments/learning-effectiveness-50x50/package.py": "95c785d3a7c7d3cb72983e385753aa839b6cf1f56dc5861a2f34c15c24177b5d",
+    "experiments/learning-effectiveness-50x50/plot.py": "b7afe88d7605f6ec7817726ce3a0c5598406e2efc275828f023d2677613dc15c",
+    "experiments/learning-effectiveness-50x50/analysis.py": "5c52ae2230dffc135bf97b3d8dc4d443443019a2e41ea1f6a88933e39561f256",
     "experiments/learning-effectiveness-50x50/check.py": "94f8a9dea05408497de4ef6f1f110f06f0cd8e977c53e5a132297fc08039b78c",
-    "experiments/learning-effectiveness-50x50/test_suite.py": "6f2ab5b5f92cc1ffd1cd2d356d7133ad8fe25fa5fe8953b350102eea7105ef9a",
-    "experiments/learning-effectiveness-50x50/evaluate.py": "066a5f8da03fde5f2e24157fe0f4a650e6e600d3b6693c6186d9489b3622cc28",
-    "experiments/learning-effectiveness-50x50/verify.py": "44b39b936b8c0c7d089d1099ba9f163450878e6dbf91653b2951a493c7dff76e"
+    "experiments/learning-effectiveness-50x50/test_suite.py": "2f2e3a300184f10fa2e83fe53492cc020220254b1afd644d5fd3051441a8a43b",
+    "experiments/learning-effectiveness-50x50/evaluate.py": "c06b34d017c65b396539688eb0fc738c10dc88d4b5c4b8a72d51979d6aef1ce5",
+    "experiments/learning-effectiveness-50x50/verify.py": "ec50d433a97f30f66b3a1fb11a8b274ce8f793d7580bdfbe85c672a85745a663"
   },
-  "log_sha256": "6939621fe2e5809fae7a4283d36e8700c6925ea242aadabcb0ea2241154d741e"
+  "log_sha256": "d5e954ce0fa7457f166dbec568cd84d852e3b34455dd1785784b2c703ad43ae2"
 }

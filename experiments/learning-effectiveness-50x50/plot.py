@@ -79,6 +79,7 @@ def search_curves(data, summary):
             drawing.add(String(x, y + 195, f'{name} / seed {seed}', fontName='Helvetica-Bold', fontSize=12))
             drawing.add(String(x + 90, y - 35, 'Action candidates', fontSize=10))
     drawing.add(String(35, 18, 'Step 0 is eligible but is not counted as an action. Infeasible candidates are retained in CSV, not plotted as LUTs.', fontSize=10))
+    drawing.add(String(35, 5, 'Partial runs stop at the last committed candidate; their missing tail is not extrapolated.', fontSize=9))
     return save(drawing, 'search-curves')
 
 
@@ -128,7 +129,7 @@ def evaluation_prefixes(data, summary):
                 points = []
                 for prefix in PREFIXES:
                     bank = [r for r in records if r['training_seed'] == str(seed) and r['policy'] == policy and int(r['steps']) == prefix]
-                    if len(bank) != 30 or any(r['status'] != 'complete' for r in bank):
+                    if len(bank) != 30 or any(r['status'] != 'complete' or r['task_status'] != 'complete' for r in bank):
                         continue
                     value = (100 * sum(r['best_feasible'] == 'True' for r in bank) / 30 if use_feasibility
                              else sum(int(r['best_luts']) for r in bank) / 30)
@@ -144,6 +145,7 @@ def evaluation_prefixes(data, summary):
             drawing.add(String(x, y + 195, f'{name} / training seed {seed}', fontName='Helvetica-Bold', fontSize=12))
             drawing.add(String(x + 70, y - 35, 'Actions per evaluation sequence', fontSize=10))
     drawing.add(String(35, 18, 'Uniform is one shared 30-sequence bank per circuit. Repeated columns and prefixes do not add independent samples.', fontSize=10))
+    drawing.add(String(35, 5, 'Missing or failed banks are omitted; a missing policy is not plotted as 0% feasible.', fontSize=9))
     return save(drawing, 'evaluation-prefixes')
 
 
