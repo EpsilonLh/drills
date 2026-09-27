@@ -81,3 +81,9 @@ python drills.py report fpga
 
 通用训练配置可选 `method.learning_enabled: false`，跳过 Actor/Critic 和 Adam 更新；默认仍开启学习。
 同一检查点不允许切换学习开关或实验组别续跑。
+
+## 200轮 × 5步短序列对照实验
+
+`experiments/learning-effectiveness-200x5/` 在原学习率、奖励和算法设置下，运行三组、三电路、三个训练种子的200×5对照。
+第0/100/200轮模型使用新种子20000–20029独立评估，第200轮为主结果，uniform基线共享时不重复计算独立样本量。
+完整运行、验证、断点恢复及交付说明见该目录的README.md；结果报告为report.md。
