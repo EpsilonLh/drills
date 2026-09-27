@@ -1,0 +1,32 @@
+test_feature_order_and_invalid_inputs (test_fixed_state_normalization.FixedNormalizationTests) ... ok
+test_fixed_scale_counts_zero_and_fractions (test_fixed_state_normalization.FixedNormalizationTests) ... ok
+test_fixed_training_frozen_pair_and_reference (test_fixed_state_normalization.FixedNormalizationTests) ... ok
+test_inference_uses_training_coordinates_and_is_immutable (test_fixed_state_normalization.FixedNormalizationTests) ... ok
+test_learning_and_representation_are_separate_comparisons (test_fixed_state_normalization.FixedNormalizationTests) ... ok
+test_legacy_welford_is_exactly_unchanged (test_fixed_state_normalization.FixedNormalizationTests) ... ok
+test_production_and_diagnostics_match_for_both_modes (test_fixed_state_normalization.FixedNormalizationTests) ... ok
+test_real_tool_resume_matches_continuous (test_fixed_state_normalization.FixedNormalizationTests) ... ok
+test_resume_rejects_mode_feature_order_and_legacy_fixed (test_fixed_state_normalization.FixedNormalizationTests) ... ok
+test_same_state_is_independent_of_path_and_reference_is_copied (test_fixed_state_normalization.FixedNormalizationTests) ... ok
+test_bootstrap_preserves_training_seed_clusters (test_learning_effectiveness.LearningTests) ... ok
+test_controlled_positive_advantage_increases_action_probability (test_learning_effectiveness.LearningTests) ... ok
+test_default_and_diagnostics_match_original_exactly (test_learning_effectiveness.LearningTests) ... ok
+test_failed_partial_training_and_evaluation_are_not_aggregated (test_learning_effectiveness.LearningTests) ... Report: /var/folders/bq/j0jrdxzx5jz9dfjbgghc84s80000gn/T/tmpxob_5z7f/failed-report/report.md; training 0/27; evaluation 0/36
+ok
+test_first_episode_of_trained_and_frozen_matches (test_learning_effectiveness.LearningTests) ... ok
+test_frozen_and_uniform_parameters_optimizer_are_unchanged (test_learning_effectiveness.LearningTests) ... ok
+test_frozen_path_preserves_populated_adam_moments (test_learning_effectiveness.LearningTests) ... ok
+test_independent_evaluation_does_not_mutate_weights_optimizer_or_rng (test_learning_effectiveness.LearningTests) ... ok
+test_infeasible_rollouts_are_counted_without_filtered_lut_means (test_learning_effectiveness.LearningTests) ... ok
+test_interruption_between_checkpoint_and_snapshot_is_repaired (test_learning_effectiveness.LearningTests) ... ok
+test_missing_runs_are_retained_in_partial_report (test_learning_effectiveness.LearningTests) ... Report: /var/folders/bq/j0jrdxzx5jz9dfjbgghc84s80000gn/T/tmpna1mcpa1/partial-report/report.md; training 0/27; evaluation 0/36
+ok
+test_normalization_and_reward_diagnostic_properties (test_learning_effectiveness.LearningTests) ... ok
+test_real_tool_resume_matches_continuous_for_all_groups (test_learning_effectiveness.LearningTests) ... ok
+test_resume_rejects_group_fingerprint_and_learning_switch (test_learning_effectiveness.LearningTests) ... ok
+test_uniform_diagnostics_describe_actual_uniform_policy (test_learning_effectiveness.LearningTests) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 19.223s
+
+OK

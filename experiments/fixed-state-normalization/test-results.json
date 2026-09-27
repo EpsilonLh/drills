@@ -1,0 +1,36 @@
+{
+  "command": [
+    "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+    "-B",
+    "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/check.py"
+  ],
+  "started_at": "2026-09-27T17:04:08.879659+00:00",
+  "finished_at": "2026-09-27T17:04:28.113282+00:00",
+  "elapsed_seconds": 19.233618665999998,
+  "tests_run": 25,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "successful": true,
+  "source_hashes": {
+    "requirements.txt": "ce06542b5e74aeae2733fe9ac3607c3f11e41bfc3cea747a9dd4b80608963aed",
+    "drills/__init__.py": "bd1d84a3673dabd0fdbe4d8ca4f11f69155e9ad500c8e2c375df42809034a875",
+    "drills/experiment.py": "b7d11ffe5db362ac0b57954fc647550718262ac92d8f650055b84ef1394b4b0b",
+    "drills/features.py": "d0c9ab6028f2c28e1116de693a66eceefab0c78a5d57a34c0ee76dce4ab46dc6",
+    "drills/fpga_session.py": "1ecba422c1e69bc17bb911e2561130cf16f8b591eb30a23a6a38e500f71dcbf9",
+    "drills/model.py": "c5401e467ba0639cf90f8155cba19f1d1eb1b7ba93b0b7ef8472ebf295f24b0b",
+    "experiments/learning-effectiveness/common.py": "f81b8778547ae8bd1f3223e4e733348c11e5c5d7a52b19ce29fc28d870405704",
+    "experiments/fixed-state-normalization/protocol.yml": "d6fa903ca8a61874f561702059df4880e681a9c1362d347f1c358b7f52fed4c8",
+    "experiments/fixed-state-normalization/check.py": "a77c14928dda9785138d1dd0b98ec7e053ab17fc32934362b6a14ea46addeaad",
+    "experiments/fixed-state-normalization/plot.py": "5e52463a9cee32499e96751471bec7ee2b700e6f973d9a8d103b04049b0486bb",
+    "experiments/fixed-state-normalization/results.py": "d92aa7e7d143b41a955fac78bdcad36f5c086cd5b7f506ce7b623a300bcbcd6a",
+    "experiments/fixed-state-normalization/run.py": "e9d7086782f08e9e499eb49d8f0223def0ddf63cff261f242a982a9c1a9b9cf2",
+    "experiments/fixed-state-normalization/study.py": "c689f25989b096747857526064f9a32708dcc404ff47e72cf3183e6f4a798db0",
+    "tests/test_fixed_state_normalization.py": "72794fce389043784271f7a7065587b96cdcf9616ab4691036dccfb03e322351"
+  },
+  "test_hashes": {
+    "tests/test_fixed_state_normalization.py": "72794fce389043784271f7a7065587b96cdcf9616ab4691036dccfb03e322351",
+    "tests/test_learning_effectiveness.py": "6093c492b230aed0e86bdffa4094c3ad9153687291e0abe614c707cdb9b26421"
+  },
+  "log_sha256": "c79571789e7a93e01a642e10bfdae9101751a4c89ba58500232a15d295234c29"
+}

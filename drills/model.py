@@ -10,15 +10,35 @@ from .fpga_session import FPGASession
 
 
 class Normalizer:
-    def __init__(self, size, params):
+    COUNT_FEATURES = frozenset(('input_pins', 'output_pins', 'cells', 'edges', 'levels', 'latches'))
+    FRACTION_FEATURES = frozenset(('and_fraction', 'or_fraction', 'not_fraction'))
+
+    def __init__(self, size, params, feature_names=None, initial_state=None):
         self.params = params
+        if params['state'] not in ('none', 'episode_welford', 'fixed_initial'):
+            raise ValueError('Unknown state normalization mode.')
         self.n = 0
         self.mean = np.zeros(size)
         self.mean_diff = np.zeros(size)
+        if params['state'] == 'fixed_initial':
+            if feature_names is None or initial_state is None:
+                raise ValueError('fixed_initial requires feature names and the initial strash state.')
+            initial = np.asarray(initial_state, dtype=np.float32)
+            if len(feature_names) != size or initial.shape != (size,) or not np.isfinite(initial).all():
+                raise ValueError('Invalid fixed_initial feature names or initial state.')
+            if len(set(feature_names)) != size or set(feature_names) - (self.COUNT_FEATURES | self.FRACTION_FEATURES):
+                raise ValueError('Unsupported or duplicate fixed_initial feature names.')
+            self.scale = np.asarray([max(abs(float(initial[i])), 1.0) if name in self.COUNT_FEATURES else 1.0
+                                     for i, name in enumerate(feature_names)], dtype=np.float32)
 
     def normalize(self, state):
         if self.params['state'] == 'none':
             return state
+        if self.params['state'] == 'fixed_initial':
+            state = np.asarray(state, dtype=np.float32)
+            if state.shape != self.scale.shape or not np.isfinite(state).all():
+                raise ValueError('Invalid state for fixed_initial normalization.')
+            return (state / self.scale).astype(np.float32)
         self.n += 1
         delta = state - self.mean
         self.mean += delta / self.n
@@ -74,6 +94,12 @@ class A2C:
         self.training_seconds = 0.0
         if resume:
             saved = torch.load(self.checkpoint, map_location='cpu', weights_only=True)
+            normalization = saved.get('state_normalization')
+            requested = dict(mode=self.method['normalization']['state'], features=self.method['features'])
+            if normalization is None and requested['mode'] == 'fixed_initial':
+                raise ValueError('Legacy checkpoint cannot resume with fixed_initial normalization.')
+            if normalization is not None and normalization != requested:
+                raise ValueError('Checkpoint state normalization or feature order does not match.')
             if saved.get('learning_enabled', True) != self.method.get('learning_enabled', True):
                 raise ValueError('Cannot change learning_enabled when resuming.')
             for key in ['experiment_group', 'experiment_fingerprint']:
@@ -101,7 +127,7 @@ class A2C:
             raise RuntimeError('The prescribed training budget is already complete.')
         started = perf_counter()
         state = self.game.reset()
-        normalizer = Normalizer(len(state), self.method['normalization'])
+        normalizer = Normalizer(len(state), self.method['normalization'], self.method['features'], state)
         states, actions, rewards = [], [], []
         done = False
         while not done:
@@ -151,6 +177,8 @@ class A2C:
                         learning_enabled=self.method.get('learning_enabled', True),
                         experiment_group=self.config['runtime'].get('experiment_group'),
                         experiment_fingerprint=self.config['runtime'].get('experiment_fingerprint'),
+                        state_normalization=dict(mode=self.method['normalization']['state'],
+                                                 features=self.method['features']),
                         best=self.game.best, best_netlists=self.game.best_netlists), temporary)
         temporary.replace(self.checkpoint)
         self.game.export_best()
