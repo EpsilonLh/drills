@@ -1,0 +1,207 @@
+{
+  "command": [
+    "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+    "-B",
+    "/Users/zhan/Downloads/test/DRiLLS/experiments/ten-step-optimality/check.py"
+  ],
+  "source_sha256": "e1c882d41db6410ab6c6d52f0fa99a000176cd28e89a1525e4bc30c298ed858a",
+  "reference_source_sha256": "1ecba422c1e69bc17bb911e2561130cf16f8b591eb30a23a6a38e500f71dcbf9",
+  "candidates_sha256": "d4aee890f50bd02e802d2e501fce8646459e51bb28a32baa36dfa01cd1b83f14",
+  "comparisons": 15,
+  "recorded_tool_commands_verified": 8403,
+  "all_matched": true,
+  "records": [
+    {
+      "circuit": "int2float",
+      "depth": 0,
+      "actions": [],
+      "matched": true,
+      "luts": 49,
+      "levels": 3,
+      "structural_sha256": "cec6cfda0ba7a22001c5e06637472132c1406b411710a2bd3fa18c65c0dd0524",
+      "mapped_structural_sha256": "f9e1c854e83892ae8e80a5b8422a3dc30a05aa4c162712e615ed6947aede01c4"
+    },
+    {
+      "circuit": "int2float",
+      "depth": 1,
+      "actions": [
+        "rewrite"
+      ],
+      "matched": true,
+      "luts": 50,
+      "levels": 3,
+      "structural_sha256": "69f5751b3cb6a7310b993ac9a683a58b3ed6e4935ca6b3501aa5efd73466d15d",
+      "mapped_structural_sha256": "4ec6d3b812aa06c02e28cb49e347225dbc6ade8866dbd9a5365e81c4309a9482"
+    },
+    {
+      "circuit": "int2float",
+      "depth": 2,
+      "actions": [
+        "rewrite",
+        "refactor -z"
+      ],
+      "matched": true,
+      "luts": 48,
+      "levels": 3,
+      "structural_sha256": "9d2b912ddc233dfda617acfb80dc075fad2e531b682acedc046c0f66fd533d5b",
+      "mapped_structural_sha256": "97adb1d01d08980c0da0f6cce2b2343d9dba735649445d1bef755b22cbbecf64"
+    },
+    {
+      "circuit": "int2float",
+      "depth": 3,
+      "actions": [
+        "rewrite",
+        "refactor -z",
+        "resub"
+      ],
+      "matched": true,
+      "luts": 47,
+      "levels": 3,
+      "structural_sha256": "3eb552bd1c34949e7fa4a5360bc6e92deea9fc7490a2f027436e8577281aacf9",
+      "mapped_structural_sha256": "faeeab91fee4e4d70cde5a7db1fdfad68b11d2cdc81a41940532de1941ef27b1"
+    },
+    {
+      "circuit": "int2float",
+      "depth": 4,
+      "actions": [
+        "rewrite",
+        "refactor -z",
+        "resub",
+        "balance"
+      ],
+      "matched": true,
+      "luts": 46,
+      "levels": 3,
+      "structural_sha256": "2968117cfe312ce8ec6063252675dd07daa3513b8f15086333e9359abc6d0649",
+      "mapped_structural_sha256": "29c767f702288d1b8650571e2b4cd582a0fa3060d81f26ad0381802d34c0f4fd"
+    },
+    {
+      "circuit": "i2c",
+      "depth": 0,
+      "actions": [],
+      "matched": true,
+      "luts": 365,
+      "levels": 4,
+      "structural_sha256": "4f68042ca5dab8efd08d2f0d960e0e4431a561ab9e002a5ae4e1380dce40427c",
+      "mapped_structural_sha256": "61bccb5a63141552b88319f991cc9b8da46e05371ff437fe708d48e27ea538d9"
+    },
+    {
+      "circuit": "i2c",
+      "depth": 1,
+      "actions": [
+        "rewrite"
+      ],
+      "matched": true,
+      "luts": 354,
+      "levels": 4,
+      "structural_sha256": "444d9a51d14aa663d243cac12ab970c128b023666582790b615e4b381b20227e",
+      "mapped_structural_sha256": "10d6b0b793ace70e29dba1bb6a631b8f07378002c9d22c84d8168d2b6963d647"
+    },
+    {
+      "circuit": "i2c",
+      "depth": 2,
+      "actions": [
+        "rewrite",
+        "refactor -z"
+      ],
+      "matched": true,
+      "luts": 357,
+      "levels": 4,
+      "structural_sha256": "ce3682b1a0a7bbc6a811205f22b837c4dd268726396167b13e190a0a2c1bee23",
+      "mapped_structural_sha256": "44240c8e7b38dddae6e98a23a2d8349495ad613980a7126d3cc75dab70b4ea24"
+    },
+    {
+      "circuit": "i2c",
+      "depth": 3,
+      "actions": [
+        "rewrite",
+        "refactor -z",
+        "resub"
+      ],
+      "matched": true,
+      "luts": 343,
+      "levels": 4,
+      "structural_sha256": "9cf05338a0dc8e8186d2fb1fe8f05e313ba1355b7863382ae493205462e68921",
+      "mapped_structural_sha256": "30303f59125dad03d01887f7b0acfefe6c828715a168febca4fa9c979306104c"
+    },
+    {
+      "circuit": "i2c",
+      "depth": 4,
+      "actions": [
+        "rewrite",
+        "refactor -z",
+        "resub",
+        "balance"
+      ],
+      "matched": true,
+      "luts": 336,
+      "levels": 4,
+      "structural_sha256": "d8da0fe5cfcaf33981331a90e62d346fa3358d2024df96c860e9f827e3608816",
+      "mapped_structural_sha256": "2294104e7951abe8e5b509aa2661c750f9694a5bdbe548f768cdedd0bfbc5326"
+    },
+    {
+      "circuit": "max",
+      "depth": 0,
+      "actions": [],
+      "matched": true,
+      "luts": 842,
+      "levels": 56,
+      "structural_sha256": "529003f1e7f4c6b1f7e6a6ebb8b655f6cb142d8975a0dc3e80c92723b2c49769",
+      "mapped_structural_sha256": "9d37be65b5fa59bee4ac2e0a08e41bf4e23762560e42f292ad4712e018064b7c"
+    },
+    {
+      "circuit": "max",
+      "depth": 1,
+      "actions": [
+        "rewrite"
+      ],
+      "matched": true,
+      "luts": 842,
+      "levels": 56,
+      "structural_sha256": "529003f1e7f4c6b1f7e6a6ebb8b655f6cb142d8975a0dc3e80c92723b2c49769",
+      "mapped_structural_sha256": "9d37be65b5fa59bee4ac2e0a08e41bf4e23762560e42f292ad4712e018064b7c"
+    },
+    {
+      "circuit": "max",
+      "depth": 2,
+      "actions": [
+        "rewrite",
+        "refactor -z"
+      ],
+      "matched": true,
+      "luts": 828,
+      "levels": 46,
+      "structural_sha256": "472e5153bf633c27a1c9629d5f145e85f9ba2e77038292246eea838b6744fc03",
+      "mapped_structural_sha256": "e1a386b1ad2aa5b6671bfe4ba0e5a5818d7fa41b28af0ebc53f7b47cb680905e"
+    },
+    {
+      "circuit": "max",
+      "depth": 3,
+      "actions": [
+        "rewrite",
+        "refactor -z",
+        "resub"
+      ],
+      "matched": true,
+      "luts": 828,
+      "levels": 46,
+      "structural_sha256": "7c4a9abe993c7d28896b859b91a4f3fc6d8199eef17b92adffb3606a663cd11d",
+      "mapped_structural_sha256": "e1a386b1ad2aa5b6671bfe4ba0e5a5818d7fa41b28af0ebc53f7b47cb680905e"
+    },
+    {
+      "circuit": "max",
+      "depth": 4,
+      "actions": [
+        "rewrite",
+        "refactor -z",
+        "resub",
+        "balance"
+      ],
+      "matched": true,
+      "luts": 791,
+      "levels": 42,
+      "structural_sha256": "401ec819325c49e1e14eff9443b463b6fd647227c3938a139618931037668ecf",
+      "mapped_structural_sha256": "0c9b23a1dc63779db4a2431d449287049eb6ca654f25332221cb4a0a89b6bb82"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "fingerprint": "e9bab0af58df2000023093356037d03d87365b13e8c094d56b630709ddb3429b",
+  "source_sha256": "3a04efc95ca3a79e39665985c0bf97222814d930f451b528e07b93ec0ac333a2",
+  "protocol": {
+    "episodes": 100,
+    "iterations": 10,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "lut_inputs": 6,
+    "initial_sequence": [
+      "strash"
+    ],
+    "resyn2": [
+      "balance",
+      "rewrite",
+      "refactor",
+      "balance",
+      "rewrite",
+      "rewrite -z",
+      "balance",
+      "refactor -z",
+      "rewrite -z",
+      "balance"
+    ],
+    "actions": [
+      "rewrite",
+      "rewrite -z",
+      "refactor",
+      "refactor -z",
+      "resub",
+      "resub -z",
+      "balance"
+    ],
+    "circuits": {
+      "int2float": {
+        "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/int2float.aig",
+        "max_levels": 3
+      },
+      "i2c": {
+        "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/i2c.aig",
+        "max_levels": 4
+      },
+      "max": {
+        "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/max.aig",
+        "max_levels": 41
+      }
+    },
+    "evaluation": {
+      "include_initial": true,
+      "std_ddof": 0
+    }
+  },
+  "abc_sha256": "8bfa8e2ed1ea3c952cf9445e9467f16882b204f4c609e493bf96a83943817366",
+  "circuits_sha256": {
+    "int2float": "ad280bdb8331591998b8184ff70ad00d31184649c245796965fc6777e3016bab",
+    "i2c": "3f6ab413a3f745c87811fa6565d972146f1f4e6ede78fae71fcb16e469b9b213",
+    "max": "9a7c45c95cec2afbfd418468d8b5ff6a33161c591892e34ba34ff6ed3fbbb1a9"
+  },
+  "depth": 4,
+  "started_at": "2026-09-27T04:14:18.902814+00:00",
+  "command": [
+    "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+    "-B",
+    "-u",
+    "/Users/zhan/Downloads/test/DRiLLS/experiments/ten-step-optimality/enumerate.py",
+    "--depth",
+    "4"
+  ],
+  "workers": 3,
+  "implementation_commit": "4fae65758833151f2e980f12e0b7a60a472119d0",
+  "finished_at": "2026-09-27T04:17:23.050803+00:00",
+  "wall_seconds": 184.12484824999999,
+  "processes": [
+    {
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/ten-step-optimality/enumerate.py",
+        "--depth",
+        "4",
+        "--worker",
+        "0"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/ten-step-optimality/enumerate.py",
+        "--depth",
+        "4",
+        "--worker",
+        "1"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/ten-step-optimality/enumerate.py",
+        "--depth",
+        "4",
+        "--worker",
+        "2"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "status": "complete"
+}

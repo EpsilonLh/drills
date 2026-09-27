@@ -1,0 +1,58 @@
+{
+  "created_at": "2026-09-27T04:24:49.235774+00:00",
+  "depth": 4,
+  "candidates": 8403,
+  "reference_comparisons": 15,
+  "netlists_cec": 6,
+  "original_learning_experiment_artifacts_unchanged": true,
+  "files": {
+    "experiments/ten-step-optimality/analyze.py": {
+      "sha256": "2757ff9f13230c2a1af9793329959697231401ba614fddfe1d1e7f6280cb96a3",
+      "bytes": 7291
+    },
+    "experiments/ten-step-optimality/candidates.csv": {
+      "sha256": "d4aee890f50bd02e802d2e501fce8646459e51bb28a32baa36dfa01cd1b83f14",
+      "bytes": 2025023
+    },
+    "experiments/ten-step-optimality/check.py": {
+      "sha256": "e1c882d41db6410ab6c6d52f0fa99a000176cd28e89a1525e4bc30c298ed858a",
+      "bytes": 3912
+    },
+    "experiments/ten-step-optimality/enumerate.py": {
+      "sha256": "3a04efc95ca3a79e39665985c0bf97222814d930f451b528e07b93ec0ac333a2",
+      "bytes": 15072
+    },
+    "experiments/ten-step-optimality/evidence-hashes.json": {
+      "sha256": "5b6bc0de0e441f7c8e288348c0094249085abcf4106f77e7f07911dadeed1182",
+      "bytes": 2913
+    },
+    "experiments/ten-step-optimality/evidence.tar.gz": {
+      "sha256": "47aa2c009a6e8b798a8b26d82b70855f436b5d80d3a1cafe401833d411c2f13a",
+      "bytes": 833857
+    },
+    "experiments/ten-step-optimality/provenance.json": {
+      "sha256": "eec536a504b90d0ed51cc18ebd64d66c3bad1d6383ce9aeaf41bfa8575d661ea",
+      "bytes": 2994
+    },
+    "experiments/ten-step-optimality/reference-validation.json": {
+      "sha256": "6024316686e0a3c63403fcb157904aa99aa5535c58b46d2d936f64e95a8ca02d",
+      "bytes": 6255
+    },
+    "experiments/ten-step-optimality/report.md": {
+      "sha256": "8384399cd4f7e81324703cb424e9eb8efd94d81e4844cb2549742013d4119d67",
+      "bytes": 4884
+    },
+    "experiments/ten-step-optimality/summary.json": {
+      "sha256": "9b6ae7415e3e9e340537781382921ae9b78f7d2746944060d4eeed682cffef2e",
+      "bytes": 13150
+    },
+    "experiments/ten-step-optimality/transition-checks.json": {
+      "sha256": "982bd67cb635476a3943e10d131d2bfb47a8e98c60b3c1eeb43b7710e4e8e0b7",
+      "bytes": 1394
+    },
+    "experiments/ten-step-optimality/validation-attempts.json": {
+      "sha256": "1a4497212cb86c107dea37f2a8497c538d539c38b2089d20ea5f26d181789055",
+      "bytes": 540
+    }
+  }
+}

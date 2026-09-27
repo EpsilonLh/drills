@@ -1,0 +1,15 @@
+{
+  "attempts": [
+    {
+      "status": "failed",
+      "check_source_sha256": "9cc6147bdd778d85667eb754c810975fc01dc1e8f77ad813374c10e335fd9cd7",
+      "reason": "Reference checker loaded JSON reward-table keys as strings, causing KeyError(-1); enumeration only uses protocol and ABC mapping and was unaffected."
+    },
+    {
+      "status": "complete",
+      "check_source_sha256": "e1c882d41db6410ab6c6d52f0fa99a000176cd28e89a1525e4bc30c298ed858a",
+      "reference_comparisons": 15,
+      "recorded_commands_verified": 8403
+    }
+  ]
+}

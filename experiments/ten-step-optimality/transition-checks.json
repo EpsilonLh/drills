@@ -1,0 +1,39 @@
+{
+  "command": [
+    "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+    "-B",
+    "/Users/zhan/Downloads/test/DRiLLS/experiments/ten-step-optimality/analyze.py"
+  ],
+  "source_sha256": "2757ff9f13230c2a1af9793329959697231401ba614fddfe1d1e7f6280cb96a3",
+  "candidates_sha256": "d4aee890f50bd02e802d2e501fce8646459e51bb28a32baa36dfa01cd1b83f14",
+  "inference": "Only observed 0\u20134-step transitions are checked; this does not certify future state merging.",
+  "checks": [
+    {
+      "circuit": "int2float",
+      "observed_structures": 1078,
+      "structures_with_different_mapped_outputs": 0,
+      "observed_structure_action_pairs": 1547,
+      "structure_action_pairs_with_different_successors": 0,
+      "different_outputs": {},
+      "different_transitions": {}
+    },
+    {
+      "circuit": "i2c",
+      "observed_structures": 1401,
+      "structures_with_different_mapped_outputs": 0,
+      "observed_structure_action_pairs": 1750,
+      "structure_action_pairs_with_different_successors": 0,
+      "different_outputs": {},
+      "different_transitions": {}
+    },
+    {
+      "circuit": "max",
+      "observed_structures": 276,
+      "structures_with_different_mapped_outputs": 0,
+      "observed_structure_action_pairs": 497,
+      "structure_action_pairs_with_different_successors": 0,
+      "different_outputs": {},
+      "different_transitions": {}
+    }
+  ]
+}

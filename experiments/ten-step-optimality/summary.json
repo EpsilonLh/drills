@@ -1,0 +1,457 @@
+{
+  "status": "complete",
+  "max_depth": 4,
+  "expected_candidates": 8403,
+  "evaluated_candidates": 8403,
+  "complete_sequence_coverage": true,
+  "pruning": false,
+  "structural_identity": "SHA256 of ABC Verilog bytes with only the generated timestamp comment removed; no states merged",
+  "results": [
+    {
+      "circuit": "int2float",
+      "maximum_depth": 0,
+      "candidates": 1,
+      "feasible_candidates": 1,
+      "best": {
+        "index": 0,
+        "circuit": "int2float",
+        "depth": 0,
+        "actions": [],
+        "status": "complete",
+        "luts": 49,
+        "levels": 3,
+        "feasible": true,
+        "structural_sha256": "cec6cfda0ba7a22001c5e06637472132c1406b411710a2bd3fa18c65c0dd0524",
+        "mapped_structural_sha256": "f9e1c854e83892ae8e80a5b8422a3dc30a05aa4c162712e615ed6947aede01c4",
+        "elapsed_seconds": 0.024385291999999996
+      },
+      "distinct_structures": 1,
+      "new_structures": 1,
+      "structures_at_exact_depth": 1
+    },
+    {
+      "circuit": "int2float",
+      "maximum_depth": 1,
+      "candidates": 8,
+      "feasible_candidates": 8,
+      "best": {
+        "index": 0,
+        "circuit": "int2float",
+        "depth": 0,
+        "actions": [],
+        "status": "complete",
+        "luts": 49,
+        "levels": 3,
+        "feasible": true,
+        "structural_sha256": "cec6cfda0ba7a22001c5e06637472132c1406b411710a2bd3fa18c65c0dd0524",
+        "mapped_structural_sha256": "f9e1c854e83892ae8e80a5b8422a3dc30a05aa4c162712e615ed6947aede01c4",
+        "elapsed_seconds": 0.024385291999999996
+      },
+      "distinct_structures": 7,
+      "new_structures": 6,
+      "structures_at_exact_depth": 6
+    },
+    {
+      "circuit": "int2float",
+      "maximum_depth": 2,
+      "candidates": 57,
+      "feasible_candidates": 53,
+      "best": {
+        "index": 35,
+        "circuit": "int2float",
+        "depth": 2,
+        "actions": [
+          "refactor -z",
+          "balance"
+        ],
+        "status": "complete",
+        "luts": 47,
+        "levels": 3,
+        "feasible": true,
+        "structural_sha256": "2036bbebfd1967dafeee54c657dd4a9454f714f89ea3d1708cc63f26ae1c5fa8",
+        "mapped_structural_sha256": "81d6bef98f46bd722226e957fc04d1594a1911b7efbac599297efa82fcd6bfa1",
+        "elapsed_seconds": 0.022936915999999974
+      },
+      "distinct_structures": 42,
+      "new_structures": 35,
+      "structures_at_exact_depth": 36
+    },
+    {
+      "circuit": "int2float",
+      "maximum_depth": 3,
+      "candidates": 400,
+      "feasible_candidates": 350,
+      "best": {
+        "index": 116,
+        "circuit": "int2float",
+        "depth": 3,
+        "actions": [
+          "rewrite -z",
+          "rewrite -z",
+          "refactor -z"
+        ],
+        "status": "complete",
+        "luts": 46,
+        "levels": 3,
+        "feasible": true,
+        "structural_sha256": "f8770d6394bba750211ff8d42e7f97ebd4d70f6dda4791fa841122d5c906aa0b",
+        "mapped_structural_sha256": "0ca4f643ddc8ab5c3c5c6dd7377ddba1290e4916022abf61b650843f3fecec1f",
+        "elapsed_seconds": 0.04142891600000009
+      },
+      "distinct_structures": 221,
+      "new_structures": 179,
+      "structures_at_exact_depth": 203
+    },
+    {
+      "circuit": "int2float",
+      "maximum_depth": 4,
+      "candidates": 2801,
+      "feasible_candidates": 2354,
+      "best": {
+        "index": 1647,
+        "circuit": "int2float",
+        "depth": 4,
+        "actions": [
+          "refactor -z",
+          "resub",
+          "refactor -z",
+          "rewrite -z"
+        ],
+        "status": "complete",
+        "luts": 44,
+        "levels": 3,
+        "feasible": true,
+        "structural_sha256": "d99ba191510da7f3bf776657b456d40cec6a59ce905ac70cf9378c929d7a4c10",
+        "mapped_structural_sha256": "881a6aeaea04db3b07b2908aac1020f4ed7a29860a7d995ae3cc05fe3e7bc46d",
+        "elapsed_seconds": 0.04046225000000092
+      },
+      "distinct_structures": 1078,
+      "new_structures": 857,
+      "structures_at_exact_depth": 1045
+    },
+    {
+      "circuit": "i2c",
+      "maximum_depth": 0,
+      "candidates": 1,
+      "feasible_candidates": 1,
+      "best": {
+        "index": 2801,
+        "circuit": "i2c",
+        "depth": 0,
+        "actions": [],
+        "status": "complete",
+        "luts": 365,
+        "levels": 4,
+        "feasible": true,
+        "structural_sha256": "4f68042ca5dab8efd08d2f0d960e0e4431a561ab9e002a5ae4e1380dce40427c",
+        "mapped_structural_sha256": "61bccb5a63141552b88319f991cc9b8da46e05371ff437fe708d48e27ea538d9",
+        "elapsed_seconds": 0.02927079199999838
+      },
+      "distinct_structures": 1,
+      "new_structures": 1,
+      "structures_at_exact_depth": 1
+    },
+    {
+      "circuit": "i2c",
+      "maximum_depth": 1,
+      "candidates": 8,
+      "feasible_candidates": 8,
+      "best": {
+        "index": 2806,
+        "circuit": "i2c",
+        "depth": 1,
+        "actions": [
+          "resub"
+        ],
+        "status": "complete",
+        "luts": 337,
+        "levels": 4,
+        "feasible": true,
+        "structural_sha256": "30e0f62d0177ae74ce17a5fe3232f6be4e1f7e92ab9f2d05bc258873d721a133",
+        "mapped_structural_sha256": "f9c743523a19a73ff43b0e7ce064ffeb7980a8d9f341ea15ef15f3f491d3cd5b",
+        "elapsed_seconds": 0.03436200000000156
+      },
+      "distinct_structures": 7,
+      "new_structures": 6,
+      "structures_at_exact_depth": 6
+    },
+    {
+      "circuit": "i2c",
+      "maximum_depth": 2,
+      "candidates": 57,
+      "feasible_candidates": 57,
+      "best": {
+        "index": 2838,
+        "circuit": "i2c",
+        "depth": 2,
+        "actions": [
+          "resub",
+          "rewrite -z"
+        ],
+        "status": "complete",
+        "luts": 320,
+        "levels": 4,
+        "feasible": true,
+        "structural_sha256": "11eef6227c44cee8008f94bc55ddaba1eb7f1ceffbbeef69514b48940b442499",
+        "mapped_structural_sha256": "f514411b7bebed17f246c30ff66bf73258f915d45e6c93f66ac591d7cd04fecd",
+        "elapsed_seconds": 0.05419516700000315
+      },
+      "distinct_structures": 43,
+      "new_structures": 36,
+      "structures_at_exact_depth": 36
+    },
+    {
+      "circuit": "i2c",
+      "maximum_depth": 3,
+      "candidates": 400,
+      "feasible_candidates": 400,
+      "best": {
+        "index": 2985,
+        "circuit": "i2c",
+        "depth": 3,
+        "actions": [
+          "refactor",
+          "resub",
+          "rewrite -z"
+        ],
+        "status": "complete",
+        "luts": 317,
+        "levels": 4,
+        "feasible": true,
+        "structural_sha256": "9815ea6b2d6af1a41eedbd79e4ee6b9cfb06832b39b074d23c1d8d4d4b206214",
+        "mapped_structural_sha256": "c7b9e7df6030f328b7612fa9cc6ef5be108080f5974941d8bb8b83b3dd8df1e4",
+        "elapsed_seconds": 0.06021170799999709
+      },
+      "distinct_structures": 250,
+      "new_structures": 207,
+      "structures_at_exact_depth": 215
+    },
+    {
+      "circuit": "i2c",
+      "maximum_depth": 4,
+      "candidates": 2801,
+      "feasible_candidates": 2801,
+      "best": {
+        "index": 3622,
+        "circuit": "i2c",
+        "depth": 4,
+        "actions": [
+          "rewrite -z",
+          "rewrite -z",
+          "resub",
+          "rewrite -z"
+        ],
+        "status": "complete",
+        "luts": 312,
+        "levels": 4,
+        "feasible": true,
+        "structural_sha256": "de4ca5b00a0dc9bfc9fad968640742a3c57dad2776c92dce9ef657a31bef572b",
+        "mapped_structural_sha256": "23d08c761b1b5501c2f2d991307c5754e408dfe9a624acd6de8888840527c663",
+        "elapsed_seconds": 0.0664811249999957
+      },
+      "distinct_structures": 1401,
+      "new_structures": 1151,
+      "structures_at_exact_depth": 1255
+    },
+    {
+      "circuit": "max",
+      "maximum_depth": 0,
+      "candidates": 1,
+      "feasible_candidates": 0,
+      "best": null,
+      "distinct_structures": 1,
+      "new_structures": 1,
+      "structures_at_exact_depth": 1
+    },
+    {
+      "circuit": "max",
+      "maximum_depth": 1,
+      "candidates": 8,
+      "feasible_candidates": 0,
+      "best": null,
+      "distinct_structures": 4,
+      "new_structures": 3,
+      "structures_at_exact_depth": 4
+    },
+    {
+      "circuit": "max",
+      "maximum_depth": 2,
+      "candidates": 57,
+      "feasible_candidates": 0,
+      "best": null,
+      "distinct_structures": 18,
+      "new_structures": 14,
+      "structures_at_exact_depth": 18
+    },
+    {
+      "circuit": "max",
+      "maximum_depth": 3,
+      "candidates": 400,
+      "feasible_candidates": 1,
+      "best": {
+        "index": 5819,
+        "circuit": "max",
+        "depth": 3,
+        "actions": [
+          "refactor -z",
+          "rewrite -z",
+          "balance"
+        ],
+        "status": "complete",
+        "luts": 781,
+        "levels": 41,
+        "feasible": true,
+        "structural_sha256": "43d9b17ad0c8c9220ffe8ee08b60cf6c35368916eab48d8a9fbf22401aa80014",
+        "mapped_structural_sha256": "633bce4f952bf407b342e688745f516dd59afc8a69e04c14bcba60aa905ee767",
+        "elapsed_seconds": 0.10118504199999734
+      },
+      "distinct_structures": 71,
+      "new_structures": 53,
+      "structures_at_exact_depth": 71
+    },
+    {
+      "circuit": "max",
+      "maximum_depth": 4,
+      "candidates": 2801,
+      "feasible_candidates": 27,
+      "best": {
+        "index": 5819,
+        "circuit": "max",
+        "depth": 3,
+        "actions": [
+          "refactor -z",
+          "rewrite -z",
+          "balance"
+        ],
+        "status": "complete",
+        "luts": 781,
+        "levels": 41,
+        "feasible": true,
+        "structural_sha256": "43d9b17ad0c8c9220ffe8ee08b60cf6c35368916eab48d8a9fbf22401aa80014",
+        "mapped_structural_sha256": "633bce4f952bf407b342e688745f516dd59afc8a69e04c14bcba60aa905ee767",
+        "elapsed_seconds": 0.10118504199999734
+      },
+      "distinct_structures": 276,
+      "new_structures": 205,
+      "structures_at_exact_depth": 276
+    }
+  ],
+  "experiment": {
+    "fingerprint": "e9bab0af58df2000023093356037d03d87365b13e8c094d56b630709ddb3429b",
+    "source_sha256": "3a04efc95ca3a79e39665985c0bf97222814d930f451b528e07b93ec0ac333a2",
+    "protocol": {
+      "episodes": 100,
+      "iterations": 10,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "lut_inputs": 6,
+      "initial_sequence": [
+        "strash"
+      ],
+      "resyn2": [
+        "balance",
+        "rewrite",
+        "refactor",
+        "balance",
+        "rewrite",
+        "rewrite -z",
+        "balance",
+        "refactor -z",
+        "rewrite -z",
+        "balance"
+      ],
+      "actions": [
+        "rewrite",
+        "rewrite -z",
+        "refactor",
+        "refactor -z",
+        "resub",
+        "resub -z",
+        "balance"
+      ],
+      "circuits": {
+        "int2float": {
+          "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/int2float.aig",
+          "max_levels": 3
+        },
+        "i2c": {
+          "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/i2c.aig",
+          "max_levels": 4
+        },
+        "max": {
+          "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/max.aig",
+          "max_levels": 41
+        }
+      },
+      "evaluation": {
+        "include_initial": true,
+        "std_ddof": 0
+      }
+    },
+    "abc_sha256": "8bfa8e2ed1ea3c952cf9445e9467f16882b204f4c609e493bf96a83943817366",
+    "circuits_sha256": {
+      "int2float": "ad280bdb8331591998b8184ff70ad00d31184649c245796965fc6777e3016bab",
+      "i2c": "3f6ab413a3f745c87811fa6565d972146f1f4e6ede78fae71fcb16e469b9b213",
+      "max": "9a7c45c95cec2afbfd418468d8b5ff6a33161c591892e34ba34ff6ed3fbbb1a9"
+    },
+    "depth": 4,
+    "started_at": "2026-09-27T04:14:18.902814+00:00",
+    "command": [
+      "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+      "-B",
+      "-u",
+      "/Users/zhan/Downloads/test/DRiLLS/experiments/ten-step-optimality/enumerate.py",
+      "--depth",
+      "4"
+    ],
+    "workers": 3,
+    "implementation_commit": "4fae65758833151f2e980f12e0b7a60a472119d0",
+    "finished_at": "2026-09-27T04:17:23.050803+00:00",
+    "wall_seconds": 184.12484824999999,
+    "processes": [
+      {
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/ten-step-optimality/enumerate.py",
+          "--depth",
+          "4",
+          "--worker",
+          "0"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/ten-step-optimality/enumerate.py",
+          "--depth",
+          "4",
+          "--worker",
+          "1"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/ten-step-optimality/enumerate.py",
+          "--depth",
+          "4",
+          "--worker",
+          "2"
+        ],
+        "exit_code": 0
+      }
+    ],
+    "status": "complete"
+  }
+}
