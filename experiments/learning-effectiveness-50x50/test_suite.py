@@ -1,0 +1,176 @@
+"""50-step real-tool checks plus policy and resume invariants."""
+import copy
+import json
+from pathlib import Path
+import subprocess
+import tempfile
+import unittest
+from unittest.mock import patch
+
+import numpy as np
+import torch
+
+from common import (ROOT, ORIGINAL, SNAPSHOTS, DiagnosticA2C, config, group_config,
+                    load, state_hash)
+from drills.model import A2C
+from evaluate import inference_rollout, physical_seeds
+from analysis import policy_comparison, hierarchical_bootstrap, generate
+
+
+class LongExperimentTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.directory = Path(self.temp.name)
+        self.cfg = config()
+        self.cfg['protocol']['episodes'] = 2
+        self.circuit = self.cfg['protocol']['circuits']['int2float']
+
+    def tearDown(self):
+        self.temp.cleanup()
+
+    def agent(self, name, group='trained', resume=False):
+        return DiagnosticA2C(group_config(self.cfg,group,'test'),self.circuit,0,self.directory/name,resume)
+
+    def test_protocol_only_changes_episode_count_and_length(self):
+        cfg = config()
+        self.assertEqual((cfg['protocol']['episodes'],cfg['protocol']['iterations']),(50,50))
+        self.assertEqual(SNAPSHOTS,(0,10,25,50))
+        self.assertEqual(physical_seeds(cfg,'uniform'),[0])
+        self.assertEqual(physical_seeds(cfg,'initial'),[0,1,2])
+
+    def test_diagnostics_match_original_training_at_50_steps(self):
+        source = subprocess.check_output(['git','show',f'{ORIGINAL}:drills/model.py'],cwd=ROOT)
+        namespace = {'__package__':'drills','__name__':'drills.original_reference'}
+        exec(compile(source,'original-model.py','exec'),namespace)
+        reference = namespace['A2C'](copy.deepcopy(self.cfg),self.circuit,0,self.directory/'reference')
+        diagnostic = self.agent('diagnostic')
+        for _ in range(2):
+            reference.run_episode()
+            diagnostic.run_episode()
+            for field in ('network','optimizer','rng_state','rewards','best'):
+                self.assertEqual(state_hash(load(reference.checkpoint)[field]),state_hash(load(diagnostic.checkpoint)[field]))
+            ep = reference.episodes_completed
+            self.assertEqual((self.directory/f'reference/episodes/{ep}/log.csv').read_bytes(),
+                             (self.directory/f'diagnostic/episodes/{ep}/log.csv').read_bytes())
+
+    def test_50_step_first_episode_and_old_prefix_agree(self):
+        trained,frozen = self.agent('trained'),self.agent('frozen','frozen')
+        trained.run_episode(); frozen.run_episode()
+        self.assertEqual((trained.folder/'steps.jsonl').read_bytes(),(frozen.folder/'steps.jsonl').read_bytes())
+        cfg = copy.deepcopy(self.cfg); cfg['protocol']['iterations']=10
+        short = A2C(cfg,self.circuit,0,self.directory/'short'); short.run_episode()
+        self.assertEqual((short.game.log_file).read_text().splitlines(),
+                         trained.game.log_file.read_text().splitlines()[:12])
+
+    def test_50_step_continuous_and_resume_match_all_groups(self):
+        for group in ('trained','frozen','uniform'):
+            full = self.agent(group+'-full',group)
+            full.run_episode(); full.run_episode()
+            interrupted = self.agent(group+'-resumed',group)
+            interrupted.run_episode()
+            with (interrupted.folder/'steps.jsonl').open('a') as stream:
+                stream.write(json.dumps(dict(episode=2,partial=True))+'\n')
+            resumed = self.agent(group+'-resumed',group,True); resumed.run_episode()
+            for field in ('network','optimizer','rng_state','rewards','best'):
+                self.assertEqual(state_hash(load(full.checkpoint)[field]),state_hash(load(resumed.checkpoint)[field]))
+            for name in ('steps.jsonl','diagnostics.jsonl'):
+                self.assertEqual((full.folder/name).read_bytes(),(resumed.folder/name).read_bytes())
+            if group != 'trained':
+                zero = load(full.folder/'snapshots/0.pt'); end = load(full.checkpoint)
+                self.assertEqual(state_hash(zero['network']),state_hash(end['network']))
+                self.assertEqual(state_hash(zero['optimizer']),state_hash(end['optimizer']))
+
+    def test_frozen_preserves_populated_adam_at_50_steps(self):
+        agent = A2C(group_config(self.cfg,'frozen','test'),self.circuit,0,self.directory/'moments')
+        for p in agent.network.parameters():
+            p.grad=torch.ones_like(p)
+        agent.optimizer.step(); agent.optimizer.zero_grad(set_to_none=True)
+        before = (state_hash(agent.network.state_dict()),state_hash(agent.optimizer.state_dict()))
+        with patch.object(agent,'_update',side_effect=AssertionError('Frozen update called')):
+            agent.run_episode()
+        self.assertEqual(before,(state_hash(agent.network.state_dict()),state_hash(agent.optimizer.state_dict())))
+
+    def test_evaluation_is_rng_neutral_and_nested_prefix_is_exact(self):
+        agent = self.agent('train'); agent.run_episode()
+        def hashes():
+            return [state_hash(agent.network.state_dict()),state_hash(agent.optimizer.state_dict()),
+                    state_hash(agent.rng.get_state()),state_hash(torch.get_rng_state()),agent.checkpoint.read_bytes()]
+        before = hashes()
+        long = inference_rollout(self.cfg,self.circuit,agent.network,10000,self.directory/'long')
+        self.assertEqual(before,hashes())
+        short_cfg = copy.deepcopy(self.cfg); short_cfg['protocol']['iterations']=10
+        short = inference_rollout(short_cfg,self.circuit,agent.network,10000,self.directory/'short-eval')
+        prefix = next(p for p in long['prefixes'] if p['steps']==10)
+        self.assertEqual(prefix['best'],short['best'])
+        self.assertEqual(prefix['terminal'],short['terminal'])
+        self.assertEqual(long['actions'][:10],short['actions'])
+        self.assertEqual(before,hashes())
+
+    def test_cross_group_fingerprint_and_learning_switch_are_rejected(self):
+        self.agent('protected','frozen')
+        for key,value in [('experiment_group','uniform'),('experiment_fingerprint','different')]:
+            cfg = group_config(self.cfg,'frozen','test'); cfg['runtime'][key]=value
+            with self.assertRaises(ValueError):
+                A2C(cfg,self.circuit,0,self.directory/'protected',True)
+        with self.assertRaises(ValueError):
+            self.agent('protected','trained',True)
+
+    def test_all_milestone_snapshots_and_interruption_recovery(self):
+        self.cfg['protocol']['episodes']=50
+        agent=self.agent('snapshots')
+        for ep in SNAPSHOTS:
+            agent.episodes_completed=ep; agent.rewards=[0]*ep; agent.save_model()
+            self.assertEqual(agent.checkpoint.read_bytes(),(agent.folder/f'snapshots/{ep}.pt').read_bytes())
+        target=agent.folder/'snapshots/50.pt'; target.unlink()
+        resumed=self.agent('snapshots','trained',True)
+        self.assertEqual(resumed.episodes_completed,50)
+        self.assertEqual(target.read_bytes(),resumed.checkpoint.read_bytes())
+
+    def test_controlled_long_trajectory_changes_action_probabilities(self):
+        agent=self.agent('controlled')
+        states=np.ones((50,9),dtype=np.float32)
+        before=agent.network(torch.tensor(states))[0].softmax(-1)[0,0].item()
+        agent._update(states,[0]*25+[1]*25,[1.]*25+[0.]*25)
+        after=agent.network(torch.tensor(states))[0].softmax(-1)[0,0].item()
+        self.assertGreater(after,before)
+
+    def evaluation_rows(self):
+        return [dict(policy=policy,circuit='case',training_seed=seed,evaluation_seed=10000+i,steps=50,
+                     status='complete',task_status='complete',best_luts=10,best_levels=3,best_feasible=True)
+                for seed in (0,1,2) for policy in ('initial','trained-50') for i in range(30)]
+
+    def test_infeasible_and_failed_banks_are_not_filtered_or_aggregated(self):
+        rows=self.evaluation_rows()
+        for r in rows:
+            if r['policy']=='initial' and r['evaluation_seed']==10029:
+                r.update(best_feasible=False,best_levels=4)
+        comparison=policy_comparison(rows,'case','initial',[0,1,2],50)
+        self.assertTrue(comparison['complete'])
+        self.assertFalse(comparison['complete_feasible'])
+        self.assertIsNone(comparison['mean_luts_reduction'])
+        self.assertEqual((comparison['baseline_feasible'],comparison['trained_feasible']),(87,90))
+        rows=self.evaluation_rows()
+        for r in rows:
+            if r['policy']=='initial' and r['training_seed']==0:
+                r['task_status']='failed'
+        comparison=policy_comparison(rows,'case','initial',[0,1,2],50)
+        self.assertFalse(comparison['complete'])
+        self.assertIsNone(comparison['mean_luts_reduction'])
+        self.assertIsNone(comparison['wins'])
+
+    def test_shared_bank_bootstrap_and_missing_evidence(self):
+        shared=np.tile(np.arange(30,dtype=float),(3,1))
+        interval=hierarchical_bootstrap(shared)
+        self.assertEqual(interval,hierarchical_bootstrap(shared))
+        self.assertGreater(interval[1]-interval[0],5.)
+        cfg=config(); cfg['runtime']['output_dir']=str(self.directory/'missing')
+        destination=self.directory/'report'; destination.mkdir()
+        with patch('analysis.HERE',destination):
+            summary=generate(cfg)
+        self.assertEqual(summary['training_complete'],0)
+        self.assertEqual(summary['physical_banks_complete'],0)
+        self.assertTrue(all(r['mean_luts_reduction'] is None for r in summary['comparisons']))
+
+
+if __name__=='__main__':
+    unittest.main(verbosity=2)

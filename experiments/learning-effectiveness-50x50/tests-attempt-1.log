@@ -1,0 +1,74 @@
+test_50_step_continuous_and_resume_match_all_groups (test_suite.LongExperimentTests) ... ok
+test_50_step_first_episode_and_old_prefix_agree (test_suite.LongExperimentTests) ... FAIL
+test_all_milestone_snapshots_and_interruption_recovery (test_suite.LongExperimentTests) ... ok
+test_controlled_long_trajectory_changes_action_probabilities (test_suite.LongExperimentTests) ... ok
+test_cross_group_fingerprint_and_learning_switch_are_rejected (test_suite.LongExperimentTests) ... ok
+test_diagnostics_match_original_training_at_50_steps (test_suite.LongExperimentTests) ... ok
+test_evaluation_is_rng_neutral_and_nested_prefix_is_exact (test_suite.LongExperimentTests) ... ok
+test_frozen_preserves_populated_adam_at_50_steps (test_suite.LongExperimentTests) ... ok
+test_protocol_only_changes_episode_count_and_length (test_suite.LongExperimentTests) ... ok
+
+======================================================================
+FAIL: test_50_step_first_episode_and_old_prefix_agree (test_suite.LongExperimentTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/test_suite.py", line 61, in test_50_step_first_episode_and_old_prefix_agree
+    self.assertEqual((short.game.log_file).read_text().splitlines(),
+AssertionError: Lists differ: ['ite[212 chars]refactor -z,46,3,3', '9,refactor,46,3,0', '10,refactor,46,3,0'] != ['ite[212 chars]refactor -z,46,3,3', '9,refactor,46,3,0']
+
+First list contains 1 additional elements.
+First extra element 11:
+'10,refactor,46,3,0'
+
+  ['iteration,optimization,luts,levels,reward',
+   '0,strash,49,3,0',
+   '1,balance,51,3,-1',
+   '2,resub,48,3,3',
+   '3,balance,49,3,-1',
+   '4,rewrite -z,45,4,-1',
+   '5,rewrite -z,51,3,-1',
+   '6,balance,48,3,3',
+   '7,resub -z,48,3,0',
+   '8,refactor -z,46,3,3',
+-  '9,refactor,46,3,0',
+?                     ^
+
++  '9,refactor,46,3,0']
+?                     ^
+
+-  '10,refactor,46,3,0']
+
+----------------------------------------------------------------------
+Ran 9 tests in 96.308s
+
+FAILED (failures=1)
+
+Unchanged original regression suite:
+test_bootstrap_preserves_training_seed_clusters (test_learning_effectiveness.LearningTests) ... ok
+test_controlled_positive_advantage_increases_action_probability (test_learning_effectiveness.LearningTests) ... ok
+test_default_and_diagnostics_match_original_exactly (test_learning_effectiveness.LearningTests) ... ok
+test_failed_partial_training_and_evaluation_are_not_aggregated (test_learning_effectiveness.LearningTests) ... /Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness/analysis.py:93: ResourceWarning: unclosed file <_io.TextIOWrapper name='/var/folders/bq/j0jrdxzx5jz9dfjbgghc84s80000gn/T/tmpemeppa_7/failed-results/training/trained/int2float/seed-0/episodes/1/log.csv' mode='r' encoding='UTF-8'>
+  rows = list(csv.DictReader(path.open()))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness/analysis.py:93: ResourceWarning: unclosed file <_io.TextIOWrapper name='/var/folders/bq/j0jrdxzx5jz9dfjbgghc84s80000gn/T/tmpemeppa_7/failed-results/evaluation/initial/int2float/seed-0/rollout-10000/episodes/1/log.csv' mode='r' encoding='UTF-8'>
+  rows = list(csv.DictReader(path.open()))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+Report: /var/folders/bq/j0jrdxzx5jz9dfjbgghc84s80000gn/T/tmpemeppa_7/failed-report/report.md; training 0/27; evaluation 0/36
+ok
+test_first_episode_of_trained_and_frozen_matches (test_learning_effectiveness.LearningTests) ... ok
+test_frozen_and_uniform_parameters_optimizer_are_unchanged (test_learning_effectiveness.LearningTests) ... ok
+test_frozen_path_preserves_populated_adam_moments (test_learning_effectiveness.LearningTests) ... ok
+test_independent_evaluation_does_not_mutate_weights_optimizer_or_rng (test_learning_effectiveness.LearningTests) ... ok
+test_infeasible_rollouts_are_counted_without_filtered_lut_means (test_learning_effectiveness.LearningTests) ... ok
+test_interruption_between_checkpoint_and_snapshot_is_repaired (test_learning_effectiveness.LearningTests) ... ok
+test_missing_runs_are_retained_in_partial_report (test_learning_effectiveness.LearningTests) ... Report: /var/folders/bq/j0jrdxzx5jz9dfjbgghc84s80000gn/T/tmpw41t8bpr/partial-report/report.md; training 0/27; evaluation 0/36
+ok
+test_normalization_and_reward_diagnostic_properties (test_learning_effectiveness.LearningTests) ... ok
+test_real_tool_resume_matches_continuous_for_all_groups (test_learning_effectiveness.LearningTests) ... ok
+test_resume_rejects_group_fingerprint_and_learning_switch (test_learning_effectiveness.LearningTests) ... ok
+test_uniform_diagnostics_describe_actual_uniform_policy (test_learning_effectiveness.LearningTests) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 10.026s
+
+OK

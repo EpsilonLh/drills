@@ -1,0 +1,92 @@
+[
+  {
+    "command": [
+      "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+      "-B",
+      "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/check.py"
+    ],
+    "started_at": "2026-09-27T07:08:02.560335+00:00",
+    "finished_at": "2026-09-27T07:09:49.767339+00:00",
+    "elapsed_seconds": 107.206229167,
+    "tests_run": 9,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "original_regression_command": [
+      "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "original_regression_exit_code": 0,
+    "successful": false,
+    "source_hashes": {
+      "drills.py": "9525a72d594532339fe72e2ff26b9d2f86369b8d380ab143c7882eb4b6ad6cb8",
+      "requirements.txt": "ce06542b5e74aeae2733fe9ac3607c3f11e41bfc3cea747a9dd4b80608963aed",
+      "drills/__init__.py": "bd1d84a3673dabd0fdbe4d8ca4f11f69155e9ad500c8e2c375df42809034a875",
+      "drills/experiment.py": "b7d11ffe5db362ac0b57954fc647550718262ac92d8f650055b84ef1394b4b0b",
+      "drills/features.py": "d0c9ab6028f2c28e1116de693a66eceefab0c78a5d57a34c0ee76dce4ab46dc6",
+      "drills/fpga_session.py": "1ecba422c1e69bc17bb911e2561130cf16f8b591eb30a23a6a38e500f71dcbf9",
+      "drills/model.py": "299b93b7c721a98136ff51e1428322344515676079a32b2e48e52f0ccec574dd",
+      "experiments/learning-effectiveness-50x50/common.py": "5d8c86ddec0dd75c61af094663e1a31b807742ff56457f94d37eba62beaf619f",
+      "experiments/learning-effectiveness-50x50/run.py": "37d7bbf6d00b27280f3e9e89bdc83ae81fe277a4a9749172ac131d833ef647b5",
+      "experiments/learning-effectiveness-50x50/protocol.yml": "8ada719769f466ab5b907a7831192bdaa201e48f52002299c76aa3cee23cadc1",
+      "experiments/learning-effectiveness-50x50/package.py": "736f19248bd6087f4a0534277383996f7a09e4d58cbf17a0ac608e2efa2a1a61",
+      "experiments/learning-effectiveness-50x50/check.py": "eff8bc7662cd310a00caf37a67813a72b3d0d49b2d90f2889c22b5fb626dbc73",
+      "experiments/learning-effectiveness-50x50/test_suite.py": "42e7f9b0b4f979f15a77a1821e017302d9aa9bd270b034fa14f2396e3b96b50d",
+      "experiments/learning-effectiveness-50x50/evaluate.py": "de59508a7ede2d3591c20513f2b655572f94ff80c92fdb12cffd11a11c6677aa",
+      "experiments/learning-effectiveness-50x50/verify.py": "44b39b936b8c0c7d089d1099ba9f163450878e6dbf91653b2951a493c7dff76e"
+    },
+    "log_sha256": "8af61722815cbfb6924cd953c770f07b9ba96d4cd4657aa6c2ba4ec13cdf1b3c"
+  },
+  {
+    "command": [
+      "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+      "-B",
+      "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-50x50/check.py"
+    ],
+    "started_at": "2026-09-27T07:13:07.130152+00:00",
+    "finished_at": "2026-09-27T07:14:56.220595+00:00",
+    "elapsed_seconds": 109.089570708,
+    "tests_run": 11,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "original_regression_command": [
+      "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "original_regression_exit_code": 0,
+    "successful": false,
+    "source_hashes": {
+      "drills.py": "9525a72d594532339fe72e2ff26b9d2f86369b8d380ab143c7882eb4b6ad6cb8",
+      "requirements.txt": "ce06542b5e74aeae2733fe9ac3607c3f11e41bfc3cea747a9dd4b80608963aed",
+      "drills/__init__.py": "bd1d84a3673dabd0fdbe4d8ca4f11f69155e9ad500c8e2c375df42809034a875",
+      "drills/experiment.py": "b7d11ffe5db362ac0b57954fc647550718262ac92d8f650055b84ef1394b4b0b",
+      "drills/features.py": "d0c9ab6028f2c28e1116de693a66eceefab0c78a5d57a34c0ee76dce4ab46dc6",
+      "drills/fpga_session.py": "1ecba422c1e69bc17bb911e2561130cf16f8b591eb30a23a6a38e500f71dcbf9",
+      "drills/model.py": "299b93b7c721a98136ff51e1428322344515676079a32b2e48e52f0ccec574dd",
+      "experiments/learning-effectiveness-50x50/common.py": "5d8c86ddec0dd75c61af094663e1a31b807742ff56457f94d37eba62beaf619f",
+      "experiments/learning-effectiveness-50x50/run.py": "498ef96e65ff3cfedc4a4370b4d8224500060796b48748a3816e9d17df9342be",
+      "experiments/learning-effectiveness-50x50/protocol.yml": "a010e7121e0cfc4c492e2f4a8ae75d79aafc05e1d22aab20dfc6b2f5201d44f1",
+      "experiments/learning-effectiveness-50x50/package.py": "abfe27cfdecfcc555b03dff8a1fd14e2b5f4a87292329be41a3cb1f6c3ddf2cd",
+      "experiments/learning-effectiveness-50x50/plot.py": "c9e904b2915119ecfea6ed3137486e93515035d7826960b82e76863c02652e1e",
+      "experiments/learning-effectiveness-50x50/analysis.py": "322691b7570c0537d9c257354782f137b836a8a4d6ec2badaee7e922a5796420",
+      "experiments/learning-effectiveness-50x50/check.py": "b0d2358b4e10ac4105a825c2ba5621a0d96d3d0ac5d32ba51e35c89e69e8047c",
+      "experiments/learning-effectiveness-50x50/test_suite.py": "6f2ab5b5f92cc1ffd1cd2d356d7133ad8fe25fa5fe8953b350102eea7105ef9a",
+      "experiments/learning-effectiveness-50x50/evaluate.py": "066a5f8da03fde5f2e24157fe0f4a650e6e600d3b6693c6186d9489b3622cc28",
+      "experiments/learning-effectiveness-50x50/verify.py": "44b39b936b8c0c7d089d1099ba9f163450878e6dbf91653b2951a493c7dff76e"
+    },
+    "log_sha256": "4e563aa81cd8581f7805c7eb8e0dbed2657d47f1113751171bffc15ab6058033"
+  }
+]
