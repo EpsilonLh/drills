@@ -1,0 +1,133 @@
+{
+  "status": "complete",
+  "fingerprint": "a885ac8d6692f58641eff6962e3f60b1235b44a74c3adece46a049f1a1a49e77",
+  "implementation_commit": "5d25b7c750d5659cc98a7197e15916a7829499de",
+  "packaged_at": "2026-09-27T17:23:43.108739+00:00",
+  "historical_files_unchanged": 18420,
+  "sources": {
+    "requirements.txt": "ce06542b5e74aeae2733fe9ac3607c3f11e41bfc3cea747a9dd4b80608963aed",
+    "drills/__init__.py": "bd1d84a3673dabd0fdbe4d8ca4f11f69155e9ad500c8e2c375df42809034a875",
+    "drills/experiment.py": "b7d11ffe5db362ac0b57954fc647550718262ac92d8f650055b84ef1394b4b0b",
+    "drills/features.py": "d0c9ab6028f2c28e1116de693a66eceefab0c78a5d57a34c0ee76dce4ab46dc6",
+    "drills/fpga_session.py": "1ecba422c1e69bc17bb911e2561130cf16f8b591eb30a23a6a38e500f71dcbf9",
+    "drills/model.py": "c5401e467ba0639cf90f8155cba19f1d1eb1b7ba93b0b7ef8472ebf295f24b0b",
+    "experiments/learning-effectiveness/common.py": "f81b8778547ae8bd1f3223e4e733348c11e5c5d7a52b19ce29fc28d870405704",
+    "experiments/fixed-state-normalization/protocol.yml": "d6fa903ca8a61874f561702059df4880e681a9c1362d347f1c358b7f52fed4c8",
+    "experiments/fixed-state-normalization/check.py": "a77c14928dda9785138d1dd0b98ec7e053ab17fc32934362b6a14ea46addeaad",
+    "experiments/fixed-state-normalization/plot.py": "5e52463a9cee32499e96751471bec7ee2b700e6f973d9a8d103b04049b0486bb",
+    "experiments/fixed-state-normalization/results.py": "d92aa7e7d143b41a955fac78bdcad36f5c086cd5b7f506ce7b623a300bcbcd6a",
+    "experiments/fixed-state-normalization/run.py": "e9d7086782f08e9e499eb49d8f0223def0ddf63cff261f242a982a9c1a9b9cf2",
+    "experiments/fixed-state-normalization/study.py": "c689f25989b096747857526064f9a32708dcc404ff47e72cf3183e6f4a798db0",
+    "tests/test_fixed_state_normalization.py": "72794fce389043784271f7a7065587b96cdcf9616ab4691036dccfb03e322351"
+  },
+  "files": {
+    "experiments/fixed-state-normalization/README.md": {
+      "sha256": "2ef3643f0b323924518ff4ce8e62c3cd675bc82e8dd8c5d17f9e86f5484820e3",
+      "bytes": 1848
+    },
+    "experiments/fixed-state-normalization/archive-validation.json": {
+      "sha256": "3123ff3ac40948f1882d78aff0574334d4275dc2f74a8a9631f990e37856379d",
+      "bytes": 153
+    },
+    "experiments/fixed-state-normalization/check.py": {
+      "sha256": "a77c14928dda9785138d1dd0b98ec7e053ab17fc32934362b6a14ea46addeaad",
+      "bytes": 1199
+    },
+    "experiments/fixed-state-normalization/evaluation-means.csv": {
+      "sha256": "3ca2255afb4d078e41da2151458a01acf99205fbb28197024e453e2b7460c73a",
+      "bytes": 1003
+    },
+    "experiments/fixed-state-normalization/evaluation.csv": {
+      "sha256": "abc7444a735c7a38c10ee1c99ba1c34467d2b2c7c80fd72b7240a93db7036405",
+      "bytes": 21633
+    },
+    "experiments/fixed-state-normalization/evidence.tar.gz": {
+      "sha256": "3b8689e092427f40e62941dcdf1bc2600185dec99b761d32a83bf09a5a1fafa8",
+      "bytes": 12772357
+    },
+    "experiments/fixed-state-normalization/historical-inputs.json": {
+      "sha256": "b54805507784d41aff29c6a147bc66a73d19585202c95a282de53653cbe13661",
+      "bytes": 3003643
+    },
+    "experiments/fixed-state-normalization/model-manifest.json": {
+      "sha256": "dd6dcdc9a123e5c5839dcb10537c54c035bf82ac205a8bfc0517200130dda567",
+      "bytes": 9306
+    },
+    "experiments/fixed-state-normalization/netlist-validation.json": {
+      "sha256": "4a78931c7f7cd69d197832e9c72c9d61b644e6835af00cd648e0aee3ef0a9200",
+      "bytes": 642716
+    },
+    "experiments/fixed-state-normalization/package.sh": {
+      "sha256": "5c0c8b46f730bd07d3746090309d1bf2be14a014cb3e883c74575041283261ba",
+      "bytes": 754
+    },
+    "experiments/fixed-state-normalization/plot-validation.json": {
+      "sha256": "dde6701de9febe69a3a99ebc1d187cc3f90041aea72513505ede73b65630adef",
+      "bytes": 594
+    },
+    "experiments/fixed-state-normalization/plot.py": {
+      "sha256": "5e52463a9cee32499e96751471bec7ee2b700e6f973d9a8d103b04049b0486bb",
+      "bytes": 2807
+    },
+    "experiments/fixed-state-normalization/protocol.yml": {
+      "sha256": "d6fa903ca8a61874f561702059df4880e681a9c1362d347f1c358b7f52fed4c8",
+      "bytes": 2009
+    },
+    "experiments/fixed-state-normalization/provenance.json": {
+      "sha256": "f97561b9fe850f9dadabb0e5360b0828fe3322a4f9488ce88d1311116304eb34",
+      "bytes": 23452
+    },
+    "experiments/fixed-state-normalization/report.md": {
+      "sha256": "4711018c7724537e13615cf0763c42c136c8f5da73740b63914285676a323f9b",
+      "bytes": 8657
+    },
+    "experiments/fixed-state-normalization/results.py": {
+      "sha256": "d92aa7e7d143b41a955fac78bdcad36f5c086cd5b7f506ce7b623a300bcbcd6a",
+      "bytes": 32254
+    },
+    "experiments/fixed-state-normalization/run.py": {
+      "sha256": "e9d7086782f08e9e499eb49d8f0223def0ddf63cff261f242a982a9c1a9b9cf2",
+      "bytes": 2813
+    },
+    "experiments/fixed-state-normalization/search-curves.csv": {
+      "sha256": "c97c6b6695f35286e98f7b29b98f918950ffacbbbe2cd1987415b452246306b3",
+      "bytes": 442852
+    },
+    "experiments/fixed-state-normalization/search-curves.png": {
+      "sha256": "59987cd5dd63c6f7b99157654395e13107c3d77ad4ffeed5e5be353808331144",
+      "bytes": 43244
+    },
+    "experiments/fixed-state-normalization/search-curves.svg": {
+      "sha256": "9ec895574f6751c41b2d8a9d8b82ff8020bd4a891fe52a3bb89f626388cc7093",
+      "bytes": 272571
+    },
+    "experiments/fixed-state-normalization/study.py": {
+      "sha256": "c689f25989b096747857526064f9a32708dcc404ff47e72cf3183e6f4a798db0",
+      "bytes": 17043
+    },
+    "experiments/fixed-state-normalization/summary.json": {
+      "sha256": "7c6c7d113fbbae90bbd6298ad30af22803614e56a6dd3defe517666147d93959",
+      "bytes": 9585
+    },
+    "experiments/fixed-state-normalization/test-results.json": {
+      "sha256": "c1541d8b87f5fb0cf40fb77f9dd2a861ddc7e1d735441a0195dcee70fad5cd7c",
+      "bytes": 2318
+    },
+    "experiments/fixed-state-normalization/tests.log": {
+      "sha256": "c79571789e7a93e01a642e10bfdae9101751a4c89ba58500232a15d295234c29",
+      "bytes": 3104
+    },
+    "experiments/fixed-state-normalization/training.csv": {
+      "sha256": "1e7f2b842c80735abb3aa202e49c11570a52c6448c95fd55068f6149faa7510b",
+      "bytes": 1008
+    },
+    "experiments/fixed-state-normalization/validation.json": {
+      "sha256": "9de418f256acb29368bf563f03b18bebfe80cb7ab68e0144c87d9d848ae574e8",
+      "bytes": 8137
+    },
+    "experiments/fixed-state-normalization/visual-review.json": {
+      "sha256": "f01d773e5ed41d952dcb064f04408c1d7da8781493e75e5681c28af7ee7b578c",
+      "bytes": 359
+    }
+  }
+}

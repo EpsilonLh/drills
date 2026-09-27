@@ -1,0 +1,16 @@
+group,seed,status,reused,episodes,luts,levels,feasible,training_seconds
+old-trained,0,complete,True,100,300,4,True,176.36332720500002
+old-trained,1,complete,True,100,305,4,True,169.81248591999983
+old-trained,2,complete,True,100,306,4,True,174.14063758499992
+old-frozen,0,complete,True,100,301,4,True,211.69309929199997
+old-frozen,1,complete,True,100,307,4,True,206.09598221400012
+old-frozen,2,complete,True,100,306,4,True,209.37318134000006
+fixed-trained,0,complete,False,100,303,4,True,150.18942574599993
+fixed-trained,1,complete,False,100,310,4,True,145.338967121
+fixed-trained,2,complete,False,100,303,4,True,150.84252437599994
+fixed-frozen,0,complete,False,100,303,4,True,156.88292625199986
+fixed-frozen,1,complete,False,100,303,4,True,152.264658372
+fixed-frozen,2,complete,False,100,303,4,True,156.80726870799998
+uniform,0,complete,True,100,304,4,True,206.08990404099998
+uniform,1,complete,True,100,304,4,True,207.77382795399998
+uniform,2,complete,True,100,305,4,True,207.79489170800014

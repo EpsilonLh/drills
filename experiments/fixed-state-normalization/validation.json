@@ -1,0 +1,253 @@
+{
+  "status": "complete",
+  "training_runs": 15,
+  "training_candidates": 15000,
+  "evaluation_rollouts": 390,
+  "evaluation_candidates": 3900,
+  "paired_initial_weights": true,
+  "paired_first_episodes": true,
+  "state_and_reward_replay": true,
+  "fixed_reference": [
+    147.0,
+    142.0,
+    2728.0,
+    2698.0,
+    20.0,
+    0.0,
+    0.4802052676677704,
+    0.01173020526766777,
+    0.5080645084381104
+  ],
+  "checks": [
+    {
+      "group": "old-trained",
+      "seed": 0,
+      "candidates": 1000,
+      "actor_changed": true,
+      "critic_changed": true,
+      "frozen_unchanged": false,
+      "initial_sha256": "98e369c0260f2e4a9a7a49fd5d8b9a6a505c3b3f80b7eb49934a2ea71e4fc45a",
+      "final_sha256": "d441782efc4778fe738421fe78a4ff27ee7c37ffbb244003459cfa7643a50fc4"
+    },
+    {
+      "group": "old-trained",
+      "seed": 1,
+      "candidates": 1000,
+      "actor_changed": true,
+      "critic_changed": true,
+      "frozen_unchanged": false,
+      "initial_sha256": "6f883de0235904ddbbe97355a306909a2396bbe9e8bed8d196b0ae5c48648e27",
+      "final_sha256": "9757c5e2706c7bb3bcfd38e92064bd7f4745b393b24733a0b5f5064c9800c090"
+    },
+    {
+      "group": "old-trained",
+      "seed": 2,
+      "candidates": 1000,
+      "actor_changed": true,
+      "critic_changed": true,
+      "frozen_unchanged": false,
+      "initial_sha256": "41f68e858a0cc623c99cee5ca8b5d140b843e0c5e8c5ddac5f41de781e42f28c",
+      "final_sha256": "6e12f93d75cdcf63e5999fcf26115d34c2cba0d563d68dcce0cc07a29b0745cb"
+    },
+    {
+      "group": "old-frozen",
+      "seed": 0,
+      "candidates": 1000,
+      "actor_changed": false,
+      "critic_changed": false,
+      "frozen_unchanged": true,
+      "initial_sha256": "98ffe35ff7de7693a67b535e2bd80e9f7120aed378398ecec80278bf4e3ae9aa",
+      "final_sha256": "a986b20f77202561c5fd964163015589b7209c01f46f848853df80c5ea0e5a68"
+    },
+    {
+      "group": "old-frozen",
+      "seed": 1,
+      "candidates": 1000,
+      "actor_changed": false,
+      "critic_changed": false,
+      "frozen_unchanged": true,
+      "initial_sha256": "ffda31f554cfb779bc3b37cf18a59313f8417f2ed61ae08b2624c5e0c41b8d28",
+      "final_sha256": "3cf32af35951b2fe8054583b52f4c28a0764c17d85a02d19353d442f74ff608f"
+    },
+    {
+      "group": "old-frozen",
+      "seed": 2,
+      "candidates": 1000,
+      "actor_changed": false,
+      "critic_changed": false,
+      "frozen_unchanged": true,
+      "initial_sha256": "324df828212a8c118226d3602610bebf44c070dda4a18fc572b7021e24b49372",
+      "final_sha256": "d3b7189ae00b6dfb3ce1678fca699f149570095b3db6974f9bc9c1d2f20a8350"
+    },
+    {
+      "group": "fixed-trained",
+      "seed": 0,
+      "candidates": 1000,
+      "actor_changed": true,
+      "critic_changed": true,
+      "frozen_unchanged": false,
+      "initial_sha256": "978fbe760a8c5865e45be8b415431f8b3e1331c57512bbf2095885c03521c2cb",
+      "final_sha256": "48e0286f90fbf37065c755f48e542a1be5101094aa8f7a979dcaa89cf8fabab2"
+    },
+    {
+      "group": "fixed-trained",
+      "seed": 1,
+      "candidates": 1000,
+      "actor_changed": true,
+      "critic_changed": true,
+      "frozen_unchanged": false,
+      "initial_sha256": "c437253ebbe3ba73c0ca37cb3b483bdc7acbdfdea08fb36053d536d68f989a08",
+      "final_sha256": "e01fee5b6d9846c1f4f5556a182a32af7ea5948d1186261e54dded4d0abe34b9"
+    },
+    {
+      "group": "fixed-trained",
+      "seed": 2,
+      "candidates": 1000,
+      "actor_changed": true,
+      "critic_changed": true,
+      "frozen_unchanged": false,
+      "initial_sha256": "a5bee4e480b4c6b70e2ac4a10bb5d5c9b2597b430e8f1a7321552668b052ae7e",
+      "final_sha256": "c96726e9bbfbd40188cba0d1e2ebd4d7f1a4c1641871f8079fbb63bbf46b37d8"
+    },
+    {
+      "group": "fixed-frozen",
+      "seed": 0,
+      "candidates": 1000,
+      "actor_changed": false,
+      "critic_changed": false,
+      "frozen_unchanged": true,
+      "initial_sha256": "bba48278f0bca6dcb7b3ae6e73eeab6aada5fb62d42a0f67a5b87f4a4833cf9b",
+      "final_sha256": "963bde3c33fc30af0109d6da47a455c195e692e6c12d44eda7c08586bbae9fbb"
+    },
+    {
+      "group": "fixed-frozen",
+      "seed": 1,
+      "candidates": 1000,
+      "actor_changed": false,
+      "critic_changed": false,
+      "frozen_unchanged": true,
+      "initial_sha256": "657fa3c13b184dcf3fd746c0fad3e5467eae91c05df61298399c9758365100c3",
+      "final_sha256": "d9cb86516635ed751646ac732fcb54996022420bef491904983605a347eb9492"
+    },
+    {
+      "group": "fixed-frozen",
+      "seed": 2,
+      "candidates": 1000,
+      "actor_changed": false,
+      "critic_changed": false,
+      "frozen_unchanged": true,
+      "initial_sha256": "2873bbad9ba9802d59d28cc6a2b06b7bf5ddd60a782008779ffee7b06d85e70c",
+      "final_sha256": "74291e5bc03491c7e52a5b5090850cf50bc008deca69426164d68859a92d1fea"
+    },
+    {
+      "group": "uniform",
+      "seed": 0,
+      "candidates": 1000,
+      "actor_changed": false,
+      "critic_changed": false,
+      "frozen_unchanged": true,
+      "initial_sha256": "b3d2c48d8fe8908c34cc01a24d1cf9ed866d209c963fab220742d0e0dd7fed85",
+      "final_sha256": "6c3e3fab39d1d19e3214e34450d9ac8f710c5213da623da50542fc066b344d96"
+    },
+    {
+      "group": "uniform",
+      "seed": 1,
+      "candidates": 1000,
+      "actor_changed": false,
+      "critic_changed": false,
+      "frozen_unchanged": true,
+      "initial_sha256": "5c3613f0f18def366b705d15dda1ae7e96c7e731b66c373c5abd1a0e1db46d24",
+      "final_sha256": "1f6a89684a1e51fa53755a6108530075be5f0a334b6be500cfb8a0b85875b667"
+    },
+    {
+      "group": "uniform",
+      "seed": 2,
+      "candidates": 1000,
+      "actor_changed": false,
+      "critic_changed": false,
+      "frozen_unchanged": true,
+      "initial_sha256": "33a4e1534e3be0ce1c1aa545889ac78759b7787534c473eb5c640be8edd6b7a6",
+      "final_sha256": "28018db0d6e0cb0ecad496f2ce8cb86af6d9c846d739423b1b46805ada9a8b43"
+    }
+  ],
+  "evaluation_checks": [
+    {
+      "group": "old-trained",
+      "seed": 0,
+      "rollouts": 30,
+      "checkpoint_sha256": "d441782efc4778fe738421fe78a4ff27ee7c37ffbb244003459cfa7643a50fc4"
+    },
+    {
+      "group": "old-trained",
+      "seed": 1,
+      "rollouts": 30,
+      "checkpoint_sha256": "9757c5e2706c7bb3bcfd38e92064bd7f4745b393b24733a0b5f5064c9800c090"
+    },
+    {
+      "group": "old-trained",
+      "seed": 2,
+      "rollouts": 30,
+      "checkpoint_sha256": "6e12f93d75cdcf63e5999fcf26115d34c2cba0d563d68dcce0cc07a29b0745cb"
+    },
+    {
+      "group": "old-frozen",
+      "seed": 0,
+      "rollouts": 30,
+      "checkpoint_sha256": "a986b20f77202561c5fd964163015589b7209c01f46f848853df80c5ea0e5a68"
+    },
+    {
+      "group": "old-frozen",
+      "seed": 1,
+      "rollouts": 30,
+      "checkpoint_sha256": "3cf32af35951b2fe8054583b52f4c28a0764c17d85a02d19353d442f74ff608f"
+    },
+    {
+      "group": "old-frozen",
+      "seed": 2,
+      "rollouts": 30,
+      "checkpoint_sha256": "d3b7189ae00b6dfb3ce1678fca699f149570095b3db6974f9bc9c1d2f20a8350"
+    },
+    {
+      "group": "fixed-trained",
+      "seed": 0,
+      "rollouts": 30,
+      "checkpoint_sha256": "48e0286f90fbf37065c755f48e542a1be5101094aa8f7a979dcaa89cf8fabab2"
+    },
+    {
+      "group": "fixed-trained",
+      "seed": 1,
+      "rollouts": 30,
+      "checkpoint_sha256": "e01fee5b6d9846c1f4f5556a182a32af7ea5948d1186261e54dded4d0abe34b9"
+    },
+    {
+      "group": "fixed-trained",
+      "seed": 2,
+      "rollouts": 30,
+      "checkpoint_sha256": "c96726e9bbfbd40188cba0d1e2ebd4d7f1a4c1641871f8079fbb63bbf46b37d8"
+    },
+    {
+      "group": "fixed-frozen",
+      "seed": 0,
+      "rollouts": 30,
+      "checkpoint_sha256": "963bde3c33fc30af0109d6da47a455c195e692e6c12d44eda7c08586bbae9fbb"
+    },
+    {
+      "group": "fixed-frozen",
+      "seed": 1,
+      "rollouts": 30,
+      "checkpoint_sha256": "d9cb86516635ed751646ac732fcb54996022420bef491904983605a347eb9492"
+    },
+    {
+      "group": "fixed-frozen",
+      "seed": 2,
+      "rollouts": 30,
+      "checkpoint_sha256": "74291e5bc03491c7e52a5b5090850cf50bc008deca69426164d68859a92d1fea"
+    },
+    {
+      "group": "uniform",
+      "seed": 0,
+      "rollouts": 30,
+      "checkpoint_sha256": "6c3e3fab39d1d19e3214e34450d9ac8f710c5213da623da50542fc066b344d96"
+    }
+  ]
+}

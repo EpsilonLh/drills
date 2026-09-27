@@ -1,0 +1,425 @@
+{
+  "status": "complete",
+  "training": [
+    {
+      "group": "old-trained",
+      "seed": 0,
+      "status": "complete",
+      "reused": true,
+      "episodes": 100,
+      "luts": 300,
+      "levels": 4,
+      "feasible": true,
+      "training_seconds": 176.36332720500002
+    },
+    {
+      "group": "old-trained",
+      "seed": 1,
+      "status": "complete",
+      "reused": true,
+      "episodes": 100,
+      "luts": 305,
+      "levels": 4,
+      "feasible": true,
+      "training_seconds": 169.81248591999983
+    },
+    {
+      "group": "old-trained",
+      "seed": 2,
+      "status": "complete",
+      "reused": true,
+      "episodes": 100,
+      "luts": 306,
+      "levels": 4,
+      "feasible": true,
+      "training_seconds": 174.14063758499992
+    },
+    {
+      "group": "old-frozen",
+      "seed": 0,
+      "status": "complete",
+      "reused": true,
+      "episodes": 100,
+      "luts": 301,
+      "levels": 4,
+      "feasible": true,
+      "training_seconds": 211.69309929199997
+    },
+    {
+      "group": "old-frozen",
+      "seed": 1,
+      "status": "complete",
+      "reused": true,
+      "episodes": 100,
+      "luts": 307,
+      "levels": 4,
+      "feasible": true,
+      "training_seconds": 206.09598221400012
+    },
+    {
+      "group": "old-frozen",
+      "seed": 2,
+      "status": "complete",
+      "reused": true,
+      "episodes": 100,
+      "luts": 306,
+      "levels": 4,
+      "feasible": true,
+      "training_seconds": 209.37318134000006
+    },
+    {
+      "group": "fixed-trained",
+      "seed": 0,
+      "status": "complete",
+      "reused": false,
+      "episodes": 100,
+      "luts": 303,
+      "levels": 4,
+      "feasible": true,
+      "training_seconds": 150.18942574599993
+    },
+    {
+      "group": "fixed-trained",
+      "seed": 1,
+      "status": "complete",
+      "reused": false,
+      "episodes": 100,
+      "luts": 310,
+      "levels": 4,
+      "feasible": true,
+      "training_seconds": 145.338967121
+    },
+    {
+      "group": "fixed-trained",
+      "seed": 2,
+      "status": "complete",
+      "reused": false,
+      "episodes": 100,
+      "luts": 303,
+      "levels": 4,
+      "feasible": true,
+      "training_seconds": 150.84252437599994
+    },
+    {
+      "group": "fixed-frozen",
+      "seed": 0,
+      "status": "complete",
+      "reused": false,
+      "episodes": 100,
+      "luts": 303,
+      "levels": 4,
+      "feasible": true,
+      "training_seconds": 156.88292625199986
+    },
+    {
+      "group": "fixed-frozen",
+      "seed": 1,
+      "status": "complete",
+      "reused": false,
+      "episodes": 100,
+      "luts": 303,
+      "levels": 4,
+      "feasible": true,
+      "training_seconds": 152.264658372
+    },
+    {
+      "group": "fixed-frozen",
+      "seed": 2,
+      "status": "complete",
+      "reused": false,
+      "episodes": 100,
+      "luts": 303,
+      "levels": 4,
+      "feasible": true,
+      "training_seconds": 156.80726870799998
+    },
+    {
+      "group": "uniform",
+      "seed": 0,
+      "status": "complete",
+      "reused": true,
+      "episodes": 100,
+      "luts": 304,
+      "levels": 4,
+      "feasible": true,
+      "training_seconds": 206.08990404099998
+    },
+    {
+      "group": "uniform",
+      "seed": 1,
+      "status": "complete",
+      "reused": true,
+      "episodes": 100,
+      "luts": 304,
+      "levels": 4,
+      "feasible": true,
+      "training_seconds": 207.77382795399998
+    },
+    {
+      "group": "uniform",
+      "seed": 2,
+      "status": "complete",
+      "reused": true,
+      "episodes": 100,
+      "luts": 305,
+      "levels": 4,
+      "feasible": true,
+      "training_seconds": 207.79489170800014
+    }
+  ],
+  "evaluation_means": [
+    {
+      "group": "old-trained",
+      "seed": 0,
+      "status": "complete",
+      "rollouts": 30,
+      "feasible": 30,
+      "mean_luts": 315.8666666666667,
+      "terminal_feasible": 30,
+      "terminal_mean_luts": 316.53333333333336,
+      "terminal_mean_levels": 4.0
+    },
+    {
+      "group": "old-trained",
+      "seed": 1,
+      "status": "complete",
+      "rollouts": 30,
+      "feasible": 30,
+      "mean_luts": 325.3,
+      "terminal_feasible": 30,
+      "terminal_mean_luts": 326.7,
+      "terminal_mean_levels": 3.966666666666667
+    },
+    {
+      "group": "old-trained",
+      "seed": 2,
+      "status": "complete",
+      "rollouts": 30,
+      "feasible": 30,
+      "mean_luts": 318.6333333333333,
+      "terminal_feasible": 30,
+      "terminal_mean_luts": 319.26666666666665,
+      "terminal_mean_levels": 4.0
+    },
+    {
+      "group": "old-frozen",
+      "seed": 0,
+      "status": "complete",
+      "rollouts": 30,
+      "feasible": 30,
+      "mean_luts": 316.8,
+      "terminal_feasible": 30,
+      "terminal_mean_luts": 317.43333333333334,
+      "terminal_mean_levels": 4.0
+    },
+    {
+      "group": "old-frozen",
+      "seed": 1,
+      "status": "complete",
+      "rollouts": 30,
+      "feasible": 30,
+      "mean_luts": 324.93333333333334,
+      "terminal_feasible": 30,
+      "terminal_mean_luts": 326.1333333333333,
+      "terminal_mean_levels": 4.0
+    },
+    {
+      "group": "old-frozen",
+      "seed": 2,
+      "status": "complete",
+      "rollouts": 30,
+      "feasible": 30,
+      "mean_luts": 319.43333333333334,
+      "terminal_feasible": 30,
+      "terminal_mean_luts": 320.6,
+      "terminal_mean_levels": 3.966666666666667
+    },
+    {
+      "group": "fixed-trained",
+      "seed": 0,
+      "status": "complete",
+      "rollouts": 30,
+      "feasible": 30,
+      "mean_luts": 317.23333333333335,
+      "terminal_feasible": 30,
+      "terminal_mean_luts": 318.06666666666666,
+      "terminal_mean_levels": 4.0
+    },
+    {
+      "group": "fixed-trained",
+      "seed": 1,
+      "status": "complete",
+      "rollouts": 30,
+      "feasible": 30,
+      "mean_luts": 323.6,
+      "terminal_feasible": 30,
+      "terminal_mean_luts": 325.06666666666666,
+      "terminal_mean_levels": 4.0
+    },
+    {
+      "group": "fixed-trained",
+      "seed": 2,
+      "status": "complete",
+      "rollouts": 30,
+      "feasible": 30,
+      "mean_luts": 318.76666666666665,
+      "terminal_feasible": 30,
+      "terminal_mean_luts": 319.2,
+      "terminal_mean_levels": 4.0
+    },
+    {
+      "group": "fixed-frozen",
+      "seed": 0,
+      "status": "complete",
+      "rollouts": 30,
+      "feasible": 30,
+      "mean_luts": 317.2,
+      "terminal_feasible": 30,
+      "terminal_mean_luts": 318.2,
+      "terminal_mean_levels": 4.0
+    },
+    {
+      "group": "fixed-frozen",
+      "seed": 1,
+      "status": "complete",
+      "rollouts": 30,
+      "feasible": 30,
+      "mean_luts": 322.43333333333334,
+      "terminal_feasible": 30,
+      "terminal_mean_luts": 324.5,
+      "terminal_mean_levels": 3.966666666666667
+    },
+    {
+      "group": "fixed-frozen",
+      "seed": 2,
+      "status": "complete",
+      "rollouts": 30,
+      "feasible": 30,
+      "mean_luts": 318.73333333333335,
+      "terminal_feasible": 30,
+      "terminal_mean_luts": 319.1666666666667,
+      "terminal_mean_levels": 4.0
+    },
+    {
+      "group": "uniform",
+      "seed": 0,
+      "status": "complete",
+      "rollouts": 30,
+      "feasible": 30,
+      "mean_luts": 318.43333333333334,
+      "terminal_feasible": 30,
+      "terminal_mean_luts": 318.73333333333335,
+      "terminal_mean_levels": 4.0
+    }
+  ],
+  "search_comparisons": {
+    "engineering": {
+      "by_seed": [
+        -3.0,
+        -5.0,
+        3.0
+      ],
+      "mean": -1.6666666666666667,
+      "std": 3.39934634239519,
+      "wins": 1,
+      "ties": 0,
+      "losses": 2
+    },
+    "old_learning": {
+      "by_seed": [
+        1.0,
+        2.0,
+        0.0
+      ],
+      "mean": 1.0,
+      "std": 0.816496580927726,
+      "wins": 2,
+      "ties": 1,
+      "losses": 0
+    },
+    "fixed_learning": {
+      "by_seed": [
+        0.0,
+        -7.0,
+        0.0
+      ],
+      "mean": -2.3333333333333335,
+      "std": 3.2998316455372216,
+      "wins": 0,
+      "ties": 2,
+      "losses": 1
+    },
+    "learning_change": {
+      "by_seed": [
+        -1.0,
+        -9.0,
+        0.0
+      ],
+      "mean": -3.3333333333333335,
+      "std": 4.0276819911981905,
+      "wins": 0,
+      "ties": 1,
+      "losses": 2
+    }
+  },
+  "evaluation_comparisons": {
+    "engineering": {
+      "by_seed": [
+        -1.3666666666666742,
+        1.6999999999999886,
+        -0.13333333333332575
+      ],
+      "mean": 0.06666666666666288,
+      "std": 1.2599235720500672,
+      "wins": 1,
+      "ties": 0,
+      "losses": 2
+    },
+    "old_learning": {
+      "by_seed": [
+        0.9333333333333371,
+        -0.36666666666667425,
+        0.8000000000000114
+      ],
+      "mean": 0.4555555555555581,
+      "std": 0.5839414819320473,
+      "wins": 2,
+      "ties": 0,
+      "losses": 1
+    },
+    "fixed_learning": {
+      "by_seed": [
+        -0.03333333333335986,
+        -1.1666666666666856,
+        -0.03333333333330302
+      ],
+      "mean": -0.41111111111111615,
+      "std": 0.5342584568965124,
+      "wins": 0,
+      "ties": 0,
+      "losses": 3
+    },
+    "learning_change": {
+      "by_seed": [
+        -0.966666666666697,
+        -0.8000000000000114,
+        -0.8333333333333144
+      ],
+      "mean": -0.8666666666666742,
+      "std": 0.07200822998232301,
+      "wins": 0,
+      "ties": 0,
+      "losses": 3
+    }
+  },
+  "screening_passed": false,
+  "training_candidates_new": 6000,
+  "training_candidates_reused": 9000,
+  "evaluation_candidates": 3900,
+  "independent_training_seeds": 3,
+  "uniform_evaluation_unique_rollouts": 30,
+  "frozen_representation_gain": {
+    "search_mean": 1.6666666666666667,
+    "evaluation_mean": 0.9333333333333371
+  }
+}

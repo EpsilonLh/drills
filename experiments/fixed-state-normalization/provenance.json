@@ -1,0 +1,658 @@
+{
+  "fingerprint": "a885ac8d6692f58641eff6962e3f60b1235b44a74c3adece46a049f1a1a49e77",
+  "sources": {
+    "requirements.txt": "ce06542b5e74aeae2733fe9ac3607c3f11e41bfc3cea747a9dd4b80608963aed",
+    "drills/__init__.py": "bd1d84a3673dabd0fdbe4d8ca4f11f69155e9ad500c8e2c375df42809034a875",
+    "drills/experiment.py": "b7d11ffe5db362ac0b57954fc647550718262ac92d8f650055b84ef1394b4b0b",
+    "drills/features.py": "d0c9ab6028f2c28e1116de693a66eceefab0c78a5d57a34c0ee76dce4ab46dc6",
+    "drills/fpga_session.py": "1ecba422c1e69bc17bb911e2561130cf16f8b591eb30a23a6a38e500f71dcbf9",
+    "drills/model.py": "c5401e467ba0639cf90f8155cba19f1d1eb1b7ba93b0b7ef8472ebf295f24b0b",
+    "experiments/learning-effectiveness/common.py": "f81b8778547ae8bd1f3223e4e733348c11e5c5d7a52b19ce29fc28d870405704",
+    "experiments/fixed-state-normalization/protocol.yml": "d6fa903ca8a61874f561702059df4880e681a9c1362d347f1c358b7f52fed4c8",
+    "experiments/fixed-state-normalization/check.py": "a77c14928dda9785138d1dd0b98ec7e053ab17fc32934362b6a14ea46addeaad",
+    "experiments/fixed-state-normalization/plot.py": "5e52463a9cee32499e96751471bec7ee2b700e6f973d9a8d103b04049b0486bb",
+    "experiments/fixed-state-normalization/results.py": "d92aa7e7d143b41a955fac78bdcad36f5c086cd5b7f506ce7b623a300bcbcd6a",
+    "experiments/fixed-state-normalization/run.py": "e9d7086782f08e9e499eb49d8f0223def0ddf63cff261f242a982a9c1a9b9cf2",
+    "experiments/fixed-state-normalization/study.py": "c689f25989b096747857526064f9a32708dcc404ff47e72cf3183e6f4a798db0",
+    "tests/test_fixed_state_normalization.py": "72794fce389043784271f7a7065587b96cdcf9616ab4691036dccfb03e322351"
+  },
+  "config": {
+    "protocol": {
+      "episodes": 100,
+      "iterations": 10,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "lut_inputs": 6,
+      "initial_sequence": [
+        "strash"
+      ],
+      "resyn2": [
+        "balance",
+        "rewrite",
+        "refactor",
+        "balance",
+        "rewrite",
+        "rewrite -z",
+        "balance",
+        "refactor -z",
+        "rewrite -z",
+        "balance"
+      ],
+      "actions": [
+        "rewrite",
+        "rewrite -z",
+        "refactor",
+        "refactor -z",
+        "resub",
+        "resub -z",
+        "balance"
+      ],
+      "circuits": {
+        "i2c": {
+          "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/i2c.aig",
+          "max_levels": 4
+        }
+      },
+      "evaluation": {
+        "include_initial": true,
+        "std_ddof": 0
+      }
+    },
+    "method": {
+      "gamma": 0.99,
+      "optimizer": {
+        "name": "Adam",
+        "learning_rate": 0.001,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "epsilon": 1e-08,
+        "weight_decay": 0.0
+      },
+      "network": {
+        "actor_hidden": [
+          20,
+          20
+        ],
+        "critic_hidden": [
+          10
+        ],
+        "activation": "ReLU",
+        "initialization": "xavier_uniform",
+        "bias_initialization": 0.0
+      },
+      "features": [
+        "input_pins",
+        "output_pins",
+        "cells",
+        "edges",
+        "levels",
+        "latches",
+        "and_fraction",
+        "or_fraction",
+        "not_fraction"
+      ],
+      "normalization": {
+        "state": "fixed_initial",
+        "variance_min": 0.01,
+        "variance_max": 1000000000.0,
+        "returns": "standardize",
+        "returns_epsilon": 1e-08
+      },
+      "loss": {
+        "actor_weight": 1.0,
+        "critic_weight": 1.0,
+        "reduction": "sum"
+      },
+      "reward": {
+        "feasible": {
+          "-1": -1,
+          "0": 0,
+          "1": 3
+        },
+        "infeasible": {
+          "-1": {
+            "-1": -3,
+            "0": -2,
+            "1": -1
+          },
+          "0": {
+            "-1": -2,
+            "0": 0,
+            "1": 2
+          },
+          "1": {
+            "-1": 1,
+            "0": 2,
+            "1": 3
+          }
+        }
+      }
+    },
+    "environment": {
+      "torch_threads": 1
+    },
+    "runtime": {
+      "abc_binary": "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/yosys-abc",
+      "yosys_binary": "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/yosys",
+      "output_dir": "/Users/zhan/Downloads/test/DRiLLS/results/fixed-state-normalization",
+      "workers": 3
+    },
+    "experiment": {
+      "evaluation_seeds": [
+        30000,
+        30001,
+        30002,
+        30003,
+        30004,
+        30005,
+        30006,
+        30007,
+        30008,
+        30009,
+        30010,
+        30011,
+        30012,
+        30013,
+        30014,
+        30015,
+        30016,
+        30017,
+        30018,
+        30019,
+        30020,
+        30021,
+        30022,
+        30023,
+        30024,
+        30025,
+        30026,
+        30027,
+        30028,
+        30029
+      ],
+      "timeout_seconds": 1800,
+      "minimum_mean_lut_reduction": 1,
+      "minimum_seed_wins": 2
+    }
+  },
+  "tools": {
+    "abc_binary": "8bfa8e2ed1ea3c952cf9445e9467f16882b204f4c609e493bf96a83943817366",
+    "yosys_binary": "da0a89f2c35c7a5d4d582ab6c547a9cab00d38f4afeb2b4572994e9bd3ae36a4"
+  },
+  "benchmark": "3f6ab413a3f745c87811fa6565d972146f1f4e6ede78fae71fcb16e469b9b213",
+  "python": "3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 18:02:02) \n[Clang 18.1.8 ]",
+  "torch": "2.8.0",
+  "numpy": "1.26.4",
+  "started_at": "2026-09-27T17:04:54.188516+00:00",
+  "implementation_commit": "5d25b7c750d5659cc98a7197e15916a7829499de",
+  "base_commit": "341a8db73a9dbec46bcd10eff31c9bdb0ee6c970",
+  "imports": [
+    {
+      "group": "old-trained",
+      "seed": 0,
+      "source": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness/training/trained/i2c/seed-0",
+      "result_sha256": "7147121ac75d8e65289eaa83633022ab02e61b9217ad8dc6c52f8c58d81a9ddd",
+      "source_fingerprint": "db942d83d54c99a5e9dbf932f33e14d45e05cbc6eb0c5f83da205cf96de5ede1"
+    },
+    {
+      "group": "old-trained",
+      "seed": 1,
+      "source": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness/training/trained/i2c/seed-1",
+      "result_sha256": "7f38881e2e3277e714cd139f64e7c92f3a8b41cdf5417b0f0553515ab0f4f299",
+      "source_fingerprint": "db942d83d54c99a5e9dbf932f33e14d45e05cbc6eb0c5f83da205cf96de5ede1"
+    },
+    {
+      "group": "old-trained",
+      "seed": 2,
+      "source": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness/training/trained/i2c/seed-2",
+      "result_sha256": "6816a16cdec0861be1923f6c90527b080c7672ec914efb2a3e7ec8a347ef3234",
+      "source_fingerprint": "db942d83d54c99a5e9dbf932f33e14d45e05cbc6eb0c5f83da205cf96de5ede1"
+    },
+    {
+      "group": "old-frozen",
+      "seed": 0,
+      "source": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness/training/frozen/i2c/seed-0",
+      "result_sha256": "a2f051ea28f7c8c476b8366ad04ca00bbd4bcb71d598b2bcce50f0b2c044a8a7",
+      "source_fingerprint": "db942d83d54c99a5e9dbf932f33e14d45e05cbc6eb0c5f83da205cf96de5ede1"
+    },
+    {
+      "group": "old-frozen",
+      "seed": 1,
+      "source": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness/training/frozen/i2c/seed-1",
+      "result_sha256": "32b5309d1142b50503940a697b4aef916a998d9f543b1293c9b5400cc1af0e39",
+      "source_fingerprint": "db942d83d54c99a5e9dbf932f33e14d45e05cbc6eb0c5f83da205cf96de5ede1"
+    },
+    {
+      "group": "old-frozen",
+      "seed": 2,
+      "source": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness/training/frozen/i2c/seed-2",
+      "result_sha256": "66b50bd3ffa5184545a256a37541ed5fab56ddd2e074f45f951ce888b4353b54",
+      "source_fingerprint": "db942d83d54c99a5e9dbf932f33e14d45e05cbc6eb0c5f83da205cf96de5ede1"
+    },
+    {
+      "group": "uniform",
+      "seed": 0,
+      "source": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness/training/uniform/i2c/seed-0",
+      "result_sha256": "720b32173be3e1867ddf5a5c4e2cf5b166ba6edd74438fc9c2f0b42951151b03",
+      "source_fingerprint": "db942d83d54c99a5e9dbf932f33e14d45e05cbc6eb0c5f83da205cf96de5ede1"
+    },
+    {
+      "group": "uniform",
+      "seed": 1,
+      "source": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness/training/uniform/i2c/seed-1",
+      "result_sha256": "3a11a155a1a62d228f4dcf7be6fba99606eec5cc4900ff6a5f3931e5bcfcdbf6",
+      "source_fingerprint": "db942d83d54c99a5e9dbf932f33e14d45e05cbc6eb0c5f83da205cf96de5ede1"
+    },
+    {
+      "group": "uniform",
+      "seed": 2,
+      "source": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness/training/uniform/i2c/seed-2",
+      "result_sha256": "441e8d9fa1e0ad3b1a984768d63be133a01ce007c33bce2e9822756964d1cb6c",
+      "source_fingerprint": "db942d83d54c99a5e9dbf932f33e14d45e05cbc6eb0c5f83da205cf96de5ede1"
+    }
+  ],
+  "historical_files": 18420,
+  "historical_models": 45,
+  "training_candidates_new": 6000,
+  "training_candidates_reused": 9000,
+  "evaluation_candidates": 3900,
+  "training": {
+    "started_tasks": 6,
+    "processes": [
+      {
+        "label": "fixed-trained-1",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "train",
+          "--task",
+          "fixed-trained",
+          "1"
+        ],
+        "started_at": "2026-09-27T17:04:54.228079+00:00",
+        "finished_at": "2026-09-27T17:07:21.910922+00:00",
+        "elapsed_seconds": 147.683334375,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/train/fixed-trained-1.log",
+        "log_sha256": "a52987e339e2268cf79745cc6dd57efbc122a256ad0639db412abb03de4ab453"
+      },
+      {
+        "label": "fixed-trained-0",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "train",
+          "--task",
+          "fixed-trained",
+          "0"
+        ],
+        "started_at": "2026-09-27T17:04:54.225339+00:00",
+        "finished_at": "2026-09-27T17:07:26.956978+00:00",
+        "elapsed_seconds": 152.732124917,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/train/fixed-trained-0.log",
+        "log_sha256": "170cdba56eab269e021811dee25415f6ad391c561f79629c149a68da6ac4c62c"
+      },
+      {
+        "label": "fixed-trained-2",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "train",
+          "--task",
+          "fixed-trained",
+          "2"
+        ],
+        "started_at": "2026-09-27T17:04:54.231253+00:00",
+        "finished_at": "2026-09-27T17:07:27.965753+00:00",
+        "elapsed_seconds": 153.73499,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/train/fixed-trained-2.log",
+        "log_sha256": "2766134855642facc3964fcb0980113a924f2f8ce6f46da03efab4ca4caf0503"
+      },
+      {
+        "label": "fixed-frozen-0",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "train",
+          "--task",
+          "fixed-frozen",
+          "0"
+        ],
+        "started_at": "2026-09-27T17:07:22.917361+00:00",
+        "finished_at": "2026-09-27T17:10:02.222654+00:00",
+        "elapsed_seconds": 159.305803417,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/train/fixed-frozen-0.log",
+        "log_sha256": "70f9529451ab99ca1900c3742015cdc6acb5abc45eacbc4224ef60e9719e3018"
+      },
+      {
+        "label": "fixed-frozen-1",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "train",
+          "--task",
+          "fixed-frozen",
+          "1"
+        ],
+        "started_at": "2026-09-27T17:07:27.965657+00:00",
+        "finished_at": "2026-09-27T17:10:02.223375+00:00",
+        "elapsed_seconds": 154.258211541,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/train/fixed-frozen-1.log",
+        "log_sha256": "eae3f89b66820872c26eea0685c6463cd501041945878a4d152312e4f44da85e"
+      },
+      {
+        "label": "fixed-frozen-2",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "train",
+          "--task",
+          "fixed-frozen",
+          "2"
+        ],
+        "started_at": "2026-09-27T17:07:28.978899+00:00",
+        "finished_at": "2026-09-27T17:10:08.282845+00:00",
+        "elapsed_seconds": 159.30448049999998,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/train/fixed-frozen-2.log",
+        "log_sha256": "f3d36e7c43cb79df35b5e3e264b637549ab380f7874c491e8ebe6bf3a338c336"
+      }
+    ],
+    "finished_at": "2026-09-27T17:10:08.284969+00:00",
+    "status": "complete"
+  },
+  "evaluation": {
+    "started_tasks": 13,
+    "processes": [
+      {
+        "label": "old-trained-1",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "evaluate",
+          "--task",
+          "old-trained",
+          "1"
+        ],
+        "started_at": "2026-09-27T17:10:08.334681+00:00",
+        "finished_at": "2026-09-27T17:10:59.746376+00:00",
+        "elapsed_seconds": 51.411871916999985,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/evaluate/old-trained-1.log",
+        "log_sha256": "31ac2466bbc21e4ae1b4eed6e6060776d52a3d6882c6ca44518e073e431aa0bb"
+      },
+      {
+        "label": "old-trained-2",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "evaluate",
+          "--task",
+          "old-trained",
+          "2"
+        ],
+        "started_at": "2026-09-27T17:10:08.336818+00:00",
+        "finished_at": "2026-09-27T17:11:00.759703+00:00",
+        "elapsed_seconds": 52.42304125000004,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/evaluate/old-trained-2.log",
+        "log_sha256": "ee6cc962158046dd156f8ddd92f71fb12bd373d6bd69ecfe705fc3380d186ba8"
+      },
+      {
+        "label": "old-trained-0",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "evaluate",
+          "--task",
+          "old-trained",
+          "0"
+        ],
+        "started_at": "2026-09-27T17:10:08.332364+00:00",
+        "finished_at": "2026-09-27T17:11:01.764560+00:00",
+        "elapsed_seconds": 53.43234933299999,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/evaluate/old-trained-0.log",
+        "log_sha256": "9cfbee04eda1c2c5e9af5d6e4d84e5c959fc250fe7da0b4402d4376604c37c8c"
+      },
+      {
+        "label": "old-frozen-0",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "evaluate",
+          "--task",
+          "old-frozen",
+          "0"
+        ],
+        "started_at": "2026-09-27T17:11:00.759612+00:00",
+        "finished_at": "2026-09-27T17:11:53.185353+00:00",
+        "elapsed_seconds": 52.425904333000005,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/evaluate/old-frozen-0.log",
+        "log_sha256": "7cd066a36adc1e85fcd5750dca10d504adf9d055de945e4656a170c019ebe102"
+      },
+      {
+        "label": "old-frozen-1",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "evaluate",
+          "--task",
+          "old-frozen",
+          "1"
+        ],
+        "started_at": "2026-09-27T17:11:01.764464+00:00",
+        "finished_at": "2026-09-27T17:11:53.185902+00:00",
+        "elapsed_seconds": 51.421592583999995,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/evaluate/old-frozen-1.log",
+        "log_sha256": "6dac63276428a15afc140964d488951501fb7daacf645df02a842fc73fc6fc7e"
+      },
+      {
+        "label": "old-frozen-2",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "evaluate",
+          "--task",
+          "old-frozen",
+          "2"
+        ],
+        "started_at": "2026-09-27T17:11:02.777208+00:00",
+        "finished_at": "2026-09-27T17:11:55.207165+00:00",
+        "elapsed_seconds": 52.430119417000014,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/evaluate/old-frozen-2.log",
+        "log_sha256": "b434cb31c96928287b40627ff8085da2f0db30bbe4f32df850524a2729df99cb"
+      },
+      {
+        "label": "fixed-trained-1",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "evaluate",
+          "--task",
+          "fixed-trained",
+          "1"
+        ],
+        "started_at": "2026-09-27T17:11:54.197003+00:00",
+        "finished_at": "2026-09-27T17:12:45.532009+00:00",
+        "elapsed_seconds": 51.439526375000014,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/evaluate/fixed-trained-1.log",
+        "log_sha256": "76a055568b87fad36b3d22b095cbbf39e23872b63e7d29fc9efd35e5c749b9da"
+      },
+      {
+        "label": "fixed-trained-0",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "evaluate",
+          "--task",
+          "fixed-trained",
+          "0"
+        ],
+        "started_at": "2026-09-27T17:11:54.195044+00:00",
+        "finished_at": "2026-09-27T17:12:48.557325+00:00",
+        "elapsed_seconds": 54.46683900000005,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/evaluate/fixed-trained-0.log",
+        "log_sha256": "e2ab334ef02b8223295cc35bd86b5f231cd3911df84de622be47c4d263ebe32e"
+      },
+      {
+        "label": "fixed-trained-2",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "evaluate",
+          "--task",
+          "fixed-trained",
+          "2"
+        ],
+        "started_at": "2026-09-27T17:11:56.214170+00:00",
+        "finished_at": "2026-09-27T17:12:50.573845+00:00",
+        "elapsed_seconds": 54.464254708,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/evaluate/fixed-trained-2.log",
+        "log_sha256": "6400b64c0e2d1d2326f4ec614e83812506dc5e135861aabe016a2422fbdea3c9"
+      },
+      {
+        "label": "fixed-frozen-0",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "evaluate",
+          "--task",
+          "fixed-frozen",
+          "0"
+        ],
+        "started_at": "2026-09-27T17:12:46.545531+00:00",
+        "finished_at": "2026-09-27T17:13:40.982895+00:00",
+        "elapsed_seconds": 54.43834770800004,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/evaluate/fixed-frozen-0.log",
+        "log_sha256": "12193893e915ab1c7274b88be73fd0451c14768288bbc1276ce96d29240005cd"
+      },
+      {
+        "label": "fixed-frozen-1",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "evaluate",
+          "--task",
+          "fixed-frozen",
+          "1"
+        ],
+        "started_at": "2026-09-27T17:12:49.570888+00:00",
+        "finished_at": "2026-09-27T17:13:41.992093+00:00",
+        "elapsed_seconds": 52.422135124999954,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/evaluate/fixed-frozen-1.log",
+        "log_sha256": "130ca29b3614e91c3711a67dfbf4c8bf717cbb14aac59334ebb41c8f95d6c296"
+      },
+      {
+        "label": "fixed-frozen-2",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "evaluate",
+          "--task",
+          "fixed-frozen",
+          "2"
+        ],
+        "started_at": "2026-09-27T17:12:51.586967+00:00",
+        "finished_at": "2026-09-27T17:13:45.022882+00:00",
+        "elapsed_seconds": 53.43687200000005,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/evaluate/fixed-frozen-2.log",
+        "log_sha256": "8c0a1478f74bebe05a4d71e079cda5a28a53b9277dd0597fd9cc6da1375cf4f8"
+      },
+      {
+        "label": "uniform-0",
+        "command": [
+          "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+          "-B",
+          "-u",
+          "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/run.py",
+          "evaluate",
+          "--task",
+          "uniform",
+          "0"
+        ],
+        "started_at": "2026-09-27T17:13:41.991981+00:00",
+        "finished_at": "2026-09-27T17:14:26.382066+00:00",
+        "elapsed_seconds": 44.39090154099995,
+        "exit_code": 0,
+        "timed_out": false,
+        "log": "results/fixed-state-normalization/logs/evaluate/uniform-0.log",
+        "log_sha256": "9e3239ef906aac1d15f8c366e06da0303aeb92d94d837bc72d252fee8ea73810"
+      }
+    ],
+    "finished_at": "2026-09-27T17:14:26.384295+00:00",
+    "status": "complete"
+  }
+}

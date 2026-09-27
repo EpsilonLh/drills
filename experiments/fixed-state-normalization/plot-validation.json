@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/Users/zhan/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-B",
+    "/Users/zhan/Downloads/test/DRiLLS/experiments/fixed-state-normalization/plot.py"
+  ],
+  "hashes": {
+    "search-curves.csv": "c97c6b6695f35286e98f7b29b98f918950ffacbbbe2cd1987415b452246306b3",
+    "search-curves.svg": "9ec895574f6751c41b2d8a9d8b82ff8020bd4a891fe52a3bb89f626388cc7093",
+    "search-curves.png": "59987cd5dd63c6f7b99157654395e13107c3d77ad4ffeed5e5be353808331144",
+    "plot.py": "5e52463a9cee32499e96751471bec7ee2b700e6f973d9a8d103b04049b0486bb"
+  }
+}
