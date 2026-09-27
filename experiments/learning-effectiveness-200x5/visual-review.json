@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "review_method": "Visual inspection of rendered PNGs; policy figure also inspected at original resolution.",
+  "checks": [
+    "Titles, legends and axis labels readable; no clipping or overlap at original resolution.",
+    "Search x axis uses 1000 action candidates; evaluation x axis uses checkpoints 0/100/200.",
+    "Feasibility is plotted for max; LUT means for fully feasible int2float/i2c banks.",
+    "Shared uniform baseline is labelled; missing evidence is not drawn as zero."
+  ],
+  "hashes": {
+    "search-curves.svg": "b362de5b1be5aaf53a68d8974d7f5a1ca1c7db87d3f89a60637748d154c08bb4",
+    "search-curves.png": "36af10736238d43d3dc593508bb401d10e70ba80a00208bf6575104eb03bc4cc",
+    "policy-evaluation.svg": "d956c93cd14eee499d18484cd075c95b594315a5dbc853bdf7d024da45f82c47",
+    "policy-evaluation.png": "e86427ddeed1501166cfaf90998fef19ee52b11bfc2b0d1c94dd88dec8b4e678"
+  }
+}

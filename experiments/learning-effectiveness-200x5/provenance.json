@@ -1,0 +1,794 @@
+{
+  "fingerprint": "a9601f9c9f8eeb5bd7663da97a323b1cca89890493d8e49b354d02baba14b220",
+  "sources": {
+    "drills.py": "9525a72d594532339fe72e2ff26b9d2f86369b8d380ab143c7882eb4b6ad6cb8",
+    "requirements.txt": "ce06542b5e74aeae2733fe9ac3607c3f11e41bfc3cea747a9dd4b80608963aed",
+    "drills/__init__.py": "bd1d84a3673dabd0fdbe4d8ca4f11f69155e9ad500c8e2c375df42809034a875",
+    "drills/experiment.py": "b7d11ffe5db362ac0b57954fc647550718262ac92d8f650055b84ef1394b4b0b",
+    "drills/features.py": "d0c9ab6028f2c28e1116de693a66eceefab0c78a5d57a34c0ee76dce4ab46dc6",
+    "drills/fpga_session.py": "1ecba422c1e69bc17bb911e2561130cf16f8b591eb30a23a6a38e500f71dcbf9",
+    "drills/model.py": "299b93b7c721a98136ff51e1428322344515676079a32b2e48e52f0ccec574dd",
+    "experiments/learning-effectiveness-200x5/analysis.py": "353f9690e7e4975545f9d3324553d8ebced22b7b9bbb239690b3667d409e4e13",
+    "experiments/learning-effectiveness-200x5/check.py": "eae9e9dec85176353538ffcd60d0d6f9c05427632a3d0953c4cdcd4c65ab731c",
+    "experiments/learning-effectiveness-200x5/common.py": "a78108f909630addcd0a152de3a4c02cd4a5f29cbcd7c13e2b9ac24d79070cd8",
+    "experiments/learning-effectiveness-200x5/evaluate.py": "c812be9e8b1660614292e37be9ddd872227541c4534c9f5e8ff54d9c15f06d73",
+    "experiments/learning-effectiveness-200x5/package.py": "40dad05362ee4ee1433ffd8048af2271da9924908fa1040b482be8b15a640688",
+    "experiments/learning-effectiveness-200x5/plot.py": "bfed0c84bc3b57dd161fbf2b1828edd3c3e4fde289200b9fe318c968d3558911",
+    "experiments/learning-effectiveness-200x5/report.py": "7529a7a66ab2d6ff072755dedcc746a59ea08da7c338451a7194be11b03328a0",
+    "experiments/learning-effectiveness-200x5/run.py": "abcc01bf08a9e8af3d06a697bf004839abf297a383d582a1e40f27ccdec07b24",
+    "experiments/learning-effectiveness-200x5/test_suite.py": "296efd3e118f7488277ea5b5ee65e6f61bafbc0d66a34152689b03546ba31f1a",
+    "experiments/learning-effectiveness-200x5/verify.py": "410b4f54616957bf671aeed5db00d16124cc93ea1103ae2aa70a995401bda539",
+    "experiments/learning-effectiveness-200x5/protocol.yml": "12dd846f5d1db102cab6fa749948caf160afa6e18832e0d7da4eae556ed66562"
+  },
+  "config": {
+    "protocol": {
+      "episodes": 200,
+      "iterations": 5,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "lut_inputs": 6,
+      "initial_sequence": [
+        "strash"
+      ],
+      "resyn2": [
+        "balance",
+        "rewrite",
+        "refactor",
+        "balance",
+        "rewrite",
+        "rewrite -z",
+        "balance",
+        "refactor -z",
+        "rewrite -z",
+        "balance"
+      ],
+      "actions": [
+        "rewrite",
+        "rewrite -z",
+        "refactor",
+        "refactor -z",
+        "resub",
+        "resub -z",
+        "balance"
+      ],
+      "circuits": {
+        "int2float": {
+          "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/int2float.aig",
+          "max_levels": 3
+        },
+        "i2c": {
+          "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/i2c.aig",
+          "max_levels": 4
+        },
+        "max": {
+          "file": "/Users/zhan/Downloads/test/DRiLLS/benchmarks/max.aig",
+          "max_levels": 41
+        }
+      },
+      "evaluation": {
+        "include_initial": true,
+        "std_ddof": 0
+      }
+    },
+    "method": {
+      "gamma": 0.99,
+      "optimizer": {
+        "name": "Adam",
+        "learning_rate": 0.001,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "epsilon": 1e-08,
+        "weight_decay": 0.0
+      },
+      "network": {
+        "actor_hidden": [
+          20,
+          20
+        ],
+        "critic_hidden": [
+          10
+        ],
+        "activation": "ReLU",
+        "initialization": "xavier_uniform",
+        "bias_initialization": 0.0
+      },
+      "features": [
+        "input_pins",
+        "output_pins",
+        "cells",
+        "edges",
+        "levels",
+        "latches",
+        "and_fraction",
+        "or_fraction",
+        "not_fraction"
+      ],
+      "normalization": {
+        "state": "episode_welford",
+        "variance_min": 0.01,
+        "variance_max": 1000000000.0,
+        "returns": "standardize",
+        "returns_epsilon": 1e-08
+      },
+      "loss": {
+        "actor_weight": 1.0,
+        "critic_weight": 1.0,
+        "reduction": "sum"
+      },
+      "reward": {
+        "feasible": {
+          "-1": -1,
+          "0": 0,
+          "1": 3
+        },
+        "infeasible": {
+          "-1": {
+            "-1": -3,
+            "0": -2,
+            "1": -1
+          },
+          "0": {
+            "-1": -2,
+            "0": 0,
+            "1": 2
+          },
+          "1": {
+            "-1": 1,
+            "0": 2,
+            "1": 3
+          }
+        }
+      }
+    },
+    "environment": {
+      "torch_threads": 1
+    },
+    "runtime": {
+      "abc_binary": "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/yosys-abc",
+      "yosys_binary": "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/yosys",
+      "output_dir": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness-200x5",
+      "workers": 3
+    },
+    "assessment": {
+      "snapshots": [
+        0,
+        100,
+        200
+      ],
+      "main_checkpoint": 200,
+      "evaluation_seeds": {
+        "start": 20000,
+        "count": 30
+      },
+      "evaluation_steps": [
+        5
+      ],
+      "bootstrap": {
+        "repetitions": 10000,
+        "seed": 20260927
+      },
+      "candidate_budgets": [
+        50,
+        100,
+        250,
+        500,
+        750,
+        1000
+      ],
+      "task_timeout_seconds": 1800
+    }
+  },
+  "tools": {
+    "abc_binary": "8bfa8e2ed1ea3c952cf9445e9467f16882b204f4c609e493bf96a83943817366",
+    "yosys_binary": "da0a89f2c35c7a5d4d582ab6c547a9cab00d38f4afeb2b4572994e9bd3ae36a4"
+  },
+  "benchmarks": {
+    "int2float": "ad280bdb8331591998b8184ff70ad00d31184649c245796965fc6777e3016bab",
+    "i2c": "3f6ab413a3f745c87811fa6565d972146f1f4e6ede78fae71fcb16e469b9b213",
+    "max": "9a7c45c95cec2afbfd418468d8b5ff6a33161c591892e34ba34ff6ed3fbbb1a9"
+  },
+  "python": "3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 18:02:02) \n[Clang 18.1.8 ]",
+  "torch": "2.8.0",
+  "numpy": "1.26.4",
+  "original_algorithm_commit": "adf7bef53cdf6c4161586c03e6e2caecffe26bc4",
+  "branch": "learning-effectiveness",
+  "implementation_commit": "e410b1925cd1f5cda0f4367a26c1c41587319a3d",
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "command": [
+    "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+    "-B",
+    "-u",
+    "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py"
+  ],
+  "started_at": "2026-09-27T13:30:02.809733+00:00",
+  "groups": [
+    "trained",
+    "frozen",
+    "uniform"
+  ],
+  "evaluation_seeds": [
+    20000,
+    20001,
+    20002,
+    20003,
+    20004,
+    20005,
+    20006,
+    20007,
+    20008,
+    20009,
+    20010,
+    20011,
+    20012,
+    20013,
+    20014,
+    20015,
+    20016,
+    20017,
+    20018,
+    20019,
+    20020,
+    20021,
+    20022,
+    20023,
+    20024,
+    20025,
+    20026,
+    20027,
+    20028,
+    20029
+  ],
+  "tools_versions": {
+    "abc_binary": "ABC command line: \"version\".\n\nUC Berkeley, ABC 1.01 (compiled Sep 25 2026 02:25:45)",
+    "yosys_binary": "Yosys 0.44 (git sha1 80ba43d26, clang++ 21.0.0 -fPIC -O3)"
+  },
+  "processes": [
+    {
+      "label": "trained-int2float-1",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "trained",
+        "int2float",
+        "1"
+      ],
+      "started_at": "2026-09-27T13:30:03.341599+00:00",
+      "finished_at": "2026-09-27T13:31:36.719308+00:00",
+      "elapsed_seconds": 93.37796829099999,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/trained-int2float-1.log",
+      "log_sha256": "0580d629668c132b557381a01c188baea48651b7ab094be69dcf7be837cb90db"
+    },
+    {
+      "label": "trained-int2float-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "trained",
+        "int2float",
+        "0"
+      ],
+      "started_at": "2026-09-27T13:30:03.339236+00:00",
+      "finished_at": "2026-09-27T13:31:37.728123+00:00",
+      "elapsed_seconds": 94.38913454200001,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/trained-int2float-0.log",
+      "log_sha256": "97981c842abf8a192c24f04f61bc3bcf3615b9bb4389bf5477a491a93bbe81f2"
+    },
+    {
+      "label": "trained-int2float-2",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "trained",
+        "int2float",
+        "2"
+      ],
+      "started_at": "2026-09-27T13:30:03.345154+00:00",
+      "finished_at": "2026-09-27T13:31:37.728682+00:00",
+      "elapsed_seconds": 94.38378337500001,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/trained-int2float-2.log",
+      "log_sha256": "8922c6b8749566a1f6f01d326a4f50fd07046ba7354e448d9922b0297ff1a4d1"
+    },
+    {
+      "label": "trained-i2c-1",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "trained",
+        "i2c",
+        "1"
+      ],
+      "started_at": "2026-09-27T13:31:38.734607+00:00",
+      "finished_at": "2026-09-27T13:35:06.876325+00:00",
+      "elapsed_seconds": 208.142299208,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/trained-i2c-1.log",
+      "log_sha256": "1ddbba5c2bdbf49a956605d0072da60488b441a80ddb2238498b212df2994727"
+    },
+    {
+      "label": "trained-i2c-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "trained",
+        "i2c",
+        "0"
+      ],
+      "started_at": "2026-09-27T13:31:37.728032+00:00",
+      "finished_at": "2026-09-27T13:35:09.894550+00:00",
+      "elapsed_seconds": 212.167111208,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/trained-i2c-0.log",
+      "log_sha256": "beb98d1b41093c2b1e723cca6661984257a242154eaffc594da101c0c824fdd0"
+    },
+    {
+      "label": "trained-i2c-2",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "trained",
+        "i2c",
+        "2"
+      ],
+      "started_at": "2026-09-27T13:31:38.736302+00:00",
+      "finished_at": "2026-09-27T13:35:09.895456+00:00",
+      "elapsed_seconds": 211.159746709,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/trained-i2c-2.log",
+      "log_sha256": "37acc704b302b4fd1a7187a0e0c157770aad46ab57a8428b414f65ee2e57d4c9"
+    },
+    {
+      "label": "trained-max-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "trained",
+        "max",
+        "0"
+      ],
+      "started_at": "2026-09-27T13:35:07.884266+00:00",
+      "finished_at": "2026-09-27T13:41:40.651441+00:00",
+      "elapsed_seconds": 392.768265333,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/trained-max-0.log",
+      "log_sha256": "405a8ff23e497d9e951f39cce7a0f41b5b94bec651126e8535c62631322dc28a"
+    },
+    {
+      "label": "trained-max-2",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "trained",
+        "max",
+        "2"
+      ],
+      "started_at": "2026-09-27T13:35:10.904676+00:00",
+      "finished_at": "2026-09-27T13:41:43.672689+00:00",
+      "elapsed_seconds": 392.76909399999994,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/trained-max-2.log",
+      "log_sha256": "d0f93f257fc6931549307883d7d070dcbc8e37ac271a18a5c2cc37bc170758b1"
+    },
+    {
+      "label": "trained-max-1",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "trained",
+        "max",
+        "1"
+      ],
+      "started_at": "2026-09-27T13:35:10.902866+00:00",
+      "finished_at": "2026-09-27T13:41:44.683669+00:00",
+      "elapsed_seconds": 393.781876375,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/trained-max-1.log",
+      "log_sha256": "20468ffc03a73a58c6fdabb7bb68b016c330829d34c72df0f4e339e0d70ed9d2"
+    },
+    {
+      "label": "frozen-int2float-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "frozen",
+        "int2float",
+        "0"
+      ],
+      "started_at": "2026-09-27T13:41:41.660043+00:00",
+      "finished_at": "2026-09-27T13:44:03.656009+00:00",
+      "elapsed_seconds": 141.99637062499994,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/frozen-int2float-0.log",
+      "log_sha256": "57d7dfb98db1e7765527c2c0a316088f51cebd873ae3a4e7ca804a244528c3ed"
+    },
+    {
+      "label": "frozen-int2float-1",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "frozen",
+        "int2float",
+        "1"
+      ],
+      "started_at": "2026-09-27T13:41:44.683560+00:00",
+      "finished_at": "2026-09-27T13:44:03.657342+00:00",
+      "elapsed_seconds": 138.97415675000002,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/frozen-int2float-1.log",
+      "log_sha256": "a2d19eec0dad8e006e07ee566007461b0344b20ac67b2a54e6e7b30896730805"
+    },
+    {
+      "label": "frozen-int2float-2",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "frozen",
+        "int2float",
+        "2"
+      ],
+      "started_at": "2026-09-27T13:41:45.692048+00:00",
+      "finished_at": "2026-09-27T13:44:05.741231+00:00",
+      "elapsed_seconds": 139.988766209,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/frozen-int2float-2.log",
+      "log_sha256": "7d687aa1ef32eb771a84dee516e7b04fc401ad5e354e8432f7852f1112fd0f86"
+    },
+    {
+      "label": "frozen-i2c-1",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "frozen",
+        "i2c",
+        "1"
+      ],
+      "started_at": "2026-09-27T13:44:04.672388+00:00",
+      "finished_at": "2026-09-27T13:47:55.434523+00:00",
+      "elapsed_seconds": 230.69978870799991,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/frozen-i2c-1.log",
+      "log_sha256": "b1048122e8f13a7739301a0e0054bc24761f83e91e015ff1b418966f8f301f07"
+    },
+    {
+      "label": "frozen-i2c-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "frozen",
+        "i2c",
+        "0"
+      ],
+      "started_at": "2026-09-27T13:44:04.670493+00:00",
+      "finished_at": "2026-09-27T13:47:59.473739+00:00",
+      "elapsed_seconds": 234.740846208,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/frozen-i2c-0.log",
+      "log_sha256": "f871c7497a97d1b30113efaf8d63fd250f2a67ca490d8437107b56debbf4bc90"
+    },
+    {
+      "label": "frozen-i2c-2",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "frozen",
+        "i2c",
+        "2"
+      ],
+      "started_at": "2026-09-27T13:44:06.755561+00:00",
+      "finished_at": "2026-09-27T13:48:00.478373+00:00",
+      "elapsed_seconds": 233.72112825,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/frozen-i2c-2.log",
+      "log_sha256": "6d8226830b27748db56dec0a9c723fb847207785f44707e7de5699f583c8bdd8"
+    },
+    {
+      "label": "frozen-max-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "frozen",
+        "max",
+        "0"
+      ],
+      "started_at": "2026-09-27T13:47:56.448677+00:00",
+      "finished_at": "2026-09-27T13:54:41.353578+00:00",
+      "elapsed_seconds": 404.9020083749999,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/frozen-max-0.log",
+      "log_sha256": "f026769a7ee1a58216923a6720665ae93163811aeb2afa573b6d4cfdc68fcb7d"
+    },
+    {
+      "label": "frozen-max-1",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "frozen",
+        "max",
+        "1"
+      ],
+      "started_at": "2026-09-27T13:48:00.478239+00:00",
+      "finished_at": "2026-09-27T13:54:46.385859+00:00",
+      "elapsed_seconds": 405.904726709,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/frozen-max-1.log",
+      "log_sha256": "226b77b10fbea04a31a0ae64702f028074c185dac4748731e0b611263053f0ff"
+    },
+    {
+      "label": "frozen-max-2",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "frozen",
+        "max",
+        "2"
+      ],
+      "started_at": "2026-09-27T13:48:01.487671+00:00",
+      "finished_at": "2026-09-27T13:54:48.408030+00:00",
+      "elapsed_seconds": 406.9174405419999,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/frozen-max-2.log",
+      "log_sha256": "f28bf80a6bb97117b0a325c6b741b1b21a13c9f7a1a614531ecf189ebcf37409"
+    },
+    {
+      "label": "uniform-int2float-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "uniform",
+        "int2float",
+        "0"
+      ],
+      "started_at": "2026-09-27T13:54:42.360393+00:00",
+      "finished_at": "2026-09-27T13:57:00.522788+00:00",
+      "elapsed_seconds": 138.16139529099996,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/uniform-int2float-0.log",
+      "log_sha256": "bc3d6e18a33e0adbfcb40185bef3d0b6be2bb613f9a53ea64e5bb4b07ea5f0e9"
+    },
+    {
+      "label": "uniform-int2float-1",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "uniform",
+        "int2float",
+        "1"
+      ],
+      "started_at": "2026-09-27T13:54:47.397783+00:00",
+      "finished_at": "2026-09-27T13:57:06.587048+00:00",
+      "elapsed_seconds": 139.18826033300002,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/uniform-int2float-1.log",
+      "log_sha256": "3d8595180eb1023cd0898d2ad859a3b77cce16acf5fd47f7f7fb529401005628"
+    },
+    {
+      "label": "uniform-int2float-2",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "uniform",
+        "int2float",
+        "2"
+      ],
+      "started_at": "2026-09-27T13:54:49.421898+00:00",
+      "finished_at": "2026-09-27T13:57:08.610373+00:00",
+      "elapsed_seconds": 139.18746958299994,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/uniform-int2float-2.log",
+      "log_sha256": "ede36fa9a835d5aa3e161ee5c4532112a53c19b4bd423107cc4efd47b9d74186"
+    },
+    {
+      "label": "uniform-i2c-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "uniform",
+        "i2c",
+        "0"
+      ],
+      "started_at": "2026-09-27T13:57:01.536652+00:00",
+      "finished_at": "2026-09-27T14:00:40.682177+00:00",
+      "elapsed_seconds": 219.12483145800002,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/uniform-i2c-0.log",
+      "log_sha256": "8552f2e4156fd1e8a8bd4e8283177caade83a7917de6477c02e21da5cb12c6f8"
+    },
+    {
+      "label": "uniform-i2c-1",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "uniform",
+        "i2c",
+        "1"
+      ],
+      "started_at": "2026-09-27T13:57:07.600195+00:00",
+      "finished_at": "2026-09-27T14:00:47.758286+00:00",
+      "elapsed_seconds": 220.13648116600007,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/uniform-i2c-1.log",
+      "log_sha256": "3ddbde38ec6d8122e7c23c6af28d00a1c38e31ffe93f6db61993bdf20a6dc277"
+    },
+    {
+      "label": "uniform-i2c-2",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "uniform",
+        "i2c",
+        "2"
+      ],
+      "started_at": "2026-09-27T13:57:09.616628+00:00",
+      "finished_at": "2026-09-27T14:00:49.782402+00:00",
+      "elapsed_seconds": 220.14396475000012,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/uniform-i2c-2.log",
+      "log_sha256": "ab4fde7e534da453b73b6af7e8d4d5b765b174d58a90e993a5fc40b6c869bbfc"
+    },
+    {
+      "label": "uniform-max-0",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "uniform",
+        "max",
+        "0"
+      ],
+      "started_at": "2026-09-27T14:00:41.697044+00:00",
+      "finished_at": "2026-09-27T14:07:20.650700+00:00",
+      "elapsed_seconds": 398.94707916699986,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/uniform-max-0.log",
+      "log_sha256": "d37c24a723922188f764ee15a098d3a225762b84820054d107a93e3df5333968"
+    },
+    {
+      "label": "uniform-max-1",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "uniform",
+        "max",
+        "1"
+      ],
+      "started_at": "2026-09-27T14:00:48.772128+00:00",
+      "finished_at": "2026-09-27T14:07:29.697391+00:00",
+      "elapsed_seconds": 400.91949758300007,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/uniform-max-1.log",
+      "log_sha256": "740f047fdc2fc5397fe580dda9a4c5b780a8cea9dd82a4c92a9954ef0035355f"
+    },
+    {
+      "label": "uniform-max-2",
+      "command": [
+        "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+        "-B",
+        "-u",
+        "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness-200x5/run.py",
+        "--task",
+        "uniform",
+        "max",
+        "2"
+      ],
+      "started_at": "2026-09-27T14:00:50.799131+00:00",
+      "finished_at": "2026-09-27T14:07:30.703590+00:00",
+      "elapsed_seconds": 399.8989020419997,
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "results/learning-effectiveness-200x5/logs/training/uniform-max-2.log",
+      "log_sha256": "9023439030d726531b1837d58c116e79debf3b303b9f20a5aa05411551bea3d1"
+    }
+  ],
+  "finished_at": "2026-09-27T14:07:30.707220+00:00",
+  "status": "complete"
+}
