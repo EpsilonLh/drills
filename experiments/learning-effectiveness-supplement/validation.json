@@ -1,0 +1,536 @@
+{
+  "status": "complete",
+  "started_at": "2026-09-27T14:52:12.712780+00:00",
+  "finished_at": "2026-09-27T14:52:36.497473+00:00",
+  "command": [
+    "/Users/zhan/Downloads/test/DRiLLS/.tools/conda-env/bin/python",
+    "experiments/learning-effectiveness-supplement/validate.py",
+    "--replay"
+  ],
+  "audit_source_sha256": "1edc0b06c68980f594e60d77a5b93ec739d567b289c74956f1592c877c249ef5",
+  "original_training_fingerprint": "db942d83d54c99a5e9dbf932f33e14d45e05cbc6eb0c5f83da205cf96de5ede1",
+  "source_tool_input_fingerprint_match": true,
+  "current_artifacts_verified": 37,
+  "historical_document_bindings": [
+    {
+      "path": "README.md",
+      "original_sha256": "8930bbedb78a57d8c1b13e95d81b36c51890429a9f3f31487f983ce7f0c1b11a",
+      "matching_git_commit": "4fae65758833151f2e980f12e0b7a60a472119d0",
+      "current_sha256": "94bd28e35ec14510536e5dbb07998cda5084ca4e24cedda46f808d7118208dba",
+      "reason": "Later experiment documentation added."
+    }
+  ],
+  "model_probe_files_verified": 135,
+  "training_validation": {
+    "runs": 27,
+    "first_episodes_equal": true,
+    "initial_states_equal": true,
+    "frozen_unchanged": true,
+    "frozen_snapshot_alias": true,
+    "trained_changed": true,
+    "checks": [
+      {
+        "group": "trained",
+        "circuit": "int2float",
+        "seed": 0,
+        "changed": true,
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "98e369c0260f2e4a9a7a49fd5d8b9a6a505c3b3f80b7eb49934a2ea71e4fc45a",
+          "50": "5655b8a131dae329dcc39e2ea75b5cfe9b235fb93bcb354bf61ab609f277ad41",
+          "100": "31b45970100333cafd2556f4a10533f1934ba1c7cd451e9cf1d1cdc91d324a13"
+        }
+      },
+      {
+        "group": "frozen",
+        "circuit": "int2float",
+        "seed": 0,
+        "changed": false,
+        "rng_advanced": true,
+        "optimizer_unchanged": true,
+        "snapshot_sha256": {
+          "0": "98ffe35ff7de7693a67b535e2bd80e9f7120aed378398ecec80278bf4e3ae9aa",
+          "50": "c677e2451e0f4a2876c36435d49ee5b0edf4846ce9d62db1323a8b8d2369f101",
+          "100": "5d2f60b51dac53b73cddd935d34a524b542ebe90777fcbb6610aa383cdd8792a"
+        }
+      },
+      {
+        "group": "uniform",
+        "circuit": "int2float",
+        "seed": 0,
+        "changed": false,
+        "rng_advanced": true,
+        "optimizer_unchanged": true,
+        "snapshot_sha256": {
+          "0": "b3d2c48d8fe8908c34cc01a24d1cf9ed866d209c963fab220742d0e0dd7fed85",
+          "50": "50adc65e39a4811a3b07358e4a7ddc9e17ae2c1672f62634c5e8b9132c9b3235",
+          "100": "82533cce9b1c816211a301da212082e3566f3641cd50fdeb9ff0b54d5f3b01de"
+        }
+      },
+      {
+        "group": "trained",
+        "circuit": "int2float",
+        "seed": 1,
+        "changed": true,
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "6f883de0235904ddbbe97355a306909a2396bbe9e8bed8d196b0ae5c48648e27",
+          "50": "ac34717a5bc3d1ab454090927ff127c6997343a9b5951a07f2ded9b35f096114",
+          "100": "72dbc28ba5c02350a8b3b747b0b43d612702fc870c4db64b6b7c94091ac96e9b"
+        }
+      },
+      {
+        "group": "frozen",
+        "circuit": "int2float",
+        "seed": 1,
+        "changed": false,
+        "rng_advanced": true,
+        "optimizer_unchanged": true,
+        "snapshot_sha256": {
+          "0": "ffda31f554cfb779bc3b37cf18a59313f8417f2ed61ae08b2624c5e0c41b8d28",
+          "50": "4b3f1146af1cd3c144892e577a83aef10a5569ccfaf5ed19dbb1e05f8654b96e",
+          "100": "7c2389ca37ac86e888d0eeeecd15555441b351f5109a9123d064e72a502386d2"
+        }
+      },
+      {
+        "group": "uniform",
+        "circuit": "int2float",
+        "seed": 1,
+        "changed": false,
+        "rng_advanced": true,
+        "optimizer_unchanged": true,
+        "snapshot_sha256": {
+          "0": "5c3613f0f18def366b705d15dda1ae7e96c7e731b66c373c5abd1a0e1db46d24",
+          "50": "2031751f6927a6efa938aefcbd92fe29e578d0e60e7b1a3d7a667280e4c6484d",
+          "100": "ac108cdcddc90a6991a22c15438d9e41abb3ae62c8e8d78a3f84fb5301684307"
+        }
+      },
+      {
+        "group": "trained",
+        "circuit": "int2float",
+        "seed": 2,
+        "changed": true,
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "41f68e858a0cc623c99cee5ca8b5d140b843e0c5e8c5ddac5f41de781e42f28c",
+          "50": "316830c9af4698a694abd20d17217c6a02b21481ec02235a5d8d51ad13bc1be0",
+          "100": "a0febbe8b46a4016430b3d7520c5be507ea3e69515bd08da6390d9fb55a06978"
+        }
+      },
+      {
+        "group": "frozen",
+        "circuit": "int2float",
+        "seed": 2,
+        "changed": false,
+        "rng_advanced": true,
+        "optimizer_unchanged": true,
+        "snapshot_sha256": {
+          "0": "324df828212a8c118226d3602610bebf44c070dda4a18fc572b7021e24b49372",
+          "50": "4869632a35019d853659112db3f1ec516ff1e99545e9db0178ee9ccfdf702c46",
+          "100": "423d39b6c38a3f9909f919204fd5d3dd2c4e2e88babe12c40d48d57d28f06370"
+        }
+      },
+      {
+        "group": "uniform",
+        "circuit": "int2float",
+        "seed": 2,
+        "changed": false,
+        "rng_advanced": true,
+        "optimizer_unchanged": true,
+        "snapshot_sha256": {
+          "0": "33a4e1534e3be0ce1c1aa545889ac78759b7787534c473eb5c640be8edd6b7a6",
+          "50": "09f97768c7266973baeaff211bc9a66b534913fac6798bcaf0cc2b84f028ebca",
+          "100": "842052dc711ff73b4546fbc5507f9f923bc99c666bc5a80275cb51792ce649eb"
+        }
+      },
+      {
+        "group": "trained",
+        "circuit": "i2c",
+        "seed": 0,
+        "changed": true,
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "98e369c0260f2e4a9a7a49fd5d8b9a6a505c3b3f80b7eb49934a2ea71e4fc45a",
+          "50": "4003807077294e94a8bf1822fd3c1ec95f2257897c603463a7f89cd504c8a8a2",
+          "100": "d441782efc4778fe738421fe78a4ff27ee7c37ffbb244003459cfa7643a50fc4"
+        }
+      },
+      {
+        "group": "frozen",
+        "circuit": "i2c",
+        "seed": 0,
+        "changed": false,
+        "rng_advanced": true,
+        "optimizer_unchanged": true,
+        "snapshot_sha256": {
+          "0": "98ffe35ff7de7693a67b535e2bd80e9f7120aed378398ecec80278bf4e3ae9aa",
+          "50": "9103ca045178d15ed2c38ee4bc40799fc218c995f63ef286e9e61fce321e9a38",
+          "100": "a986b20f77202561c5fd964163015589b7209c01f46f848853df80c5ea0e5a68"
+        }
+      },
+      {
+        "group": "uniform",
+        "circuit": "i2c",
+        "seed": 0,
+        "changed": false,
+        "rng_advanced": true,
+        "optimizer_unchanged": true,
+        "snapshot_sha256": {
+          "0": "b3d2c48d8fe8908c34cc01a24d1cf9ed866d209c963fab220742d0e0dd7fed85",
+          "50": "0e5eeefc45da8bf201e4b749433e42fb7b5b0ce8123b2be5d6d5ebaf69cd5938",
+          "100": "6c3e3fab39d1d19e3214e34450d9ac8f710c5213da623da50542fc066b344d96"
+        }
+      },
+      {
+        "group": "trained",
+        "circuit": "i2c",
+        "seed": 1,
+        "changed": true,
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "6f883de0235904ddbbe97355a306909a2396bbe9e8bed8d196b0ae5c48648e27",
+          "50": "8622c6c74ebcd6a2ef6bac203c6e61f300cf391f76190010368a2dbafe59d3f0",
+          "100": "9757c5e2706c7bb3bcfd38e92064bd7f4745b393b24733a0b5f5064c9800c090"
+        }
+      },
+      {
+        "group": "frozen",
+        "circuit": "i2c",
+        "seed": 1,
+        "changed": false,
+        "rng_advanced": true,
+        "optimizer_unchanged": true,
+        "snapshot_sha256": {
+          "0": "ffda31f554cfb779bc3b37cf18a59313f8417f2ed61ae08b2624c5e0c41b8d28",
+          "50": "2d52e17bf4aeb3593b5b92fae7db710028dd0cd4fee2848ddee8010d085fff96",
+          "100": "3cf32af35951b2fe8054583b52f4c28a0764c17d85a02d19353d442f74ff608f"
+        }
+      },
+      {
+        "group": "uniform",
+        "circuit": "i2c",
+        "seed": 1,
+        "changed": false,
+        "rng_advanced": true,
+        "optimizer_unchanged": true,
+        "snapshot_sha256": {
+          "0": "5c3613f0f18def366b705d15dda1ae7e96c7e731b66c373c5abd1a0e1db46d24",
+          "50": "6e594cd2238eaaaa526734c136666469963c510fd13bd77f43531b873355d9d4",
+          "100": "1f6a89684a1e51fa53755a6108530075be5f0a334b6be500cfb8a0b85875b667"
+        }
+      },
+      {
+        "group": "trained",
+        "circuit": "i2c",
+        "seed": 2,
+        "changed": true,
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "41f68e858a0cc623c99cee5ca8b5d140b843e0c5e8c5ddac5f41de781e42f28c",
+          "50": "f35824c8f38b16a45f49422cbdc554df7549a5060be186d84de56eccdd9c0678",
+          "100": "6e12f93d75cdcf63e5999fcf26115d34c2cba0d563d68dcce0cc07a29b0745cb"
+        }
+      },
+      {
+        "group": "frozen",
+        "circuit": "i2c",
+        "seed": 2,
+        "changed": false,
+        "rng_advanced": true,
+        "optimizer_unchanged": true,
+        "snapshot_sha256": {
+          "0": "324df828212a8c118226d3602610bebf44c070dda4a18fc572b7021e24b49372",
+          "50": "5b91507c5556cdd1af45a34d0c9b2f4c48acdcf5b915f7b9bbce4382a18d2dfc",
+          "100": "d3b7189ae00b6dfb3ce1678fca699f149570095b3db6974f9bc9c1d2f20a8350"
+        }
+      },
+      {
+        "group": "uniform",
+        "circuit": "i2c",
+        "seed": 2,
+        "changed": false,
+        "rng_advanced": true,
+        "optimizer_unchanged": true,
+        "snapshot_sha256": {
+          "0": "33a4e1534e3be0ce1c1aa545889ac78759b7787534c473eb5c640be8edd6b7a6",
+          "50": "6c7c1a88d6557152f48411f9563a9447ec5aeed41a09c2c0b6c750a5e9f4e830",
+          "100": "28018db0d6e0cb0ecad496f2ce8cb86af6d9c846d739423b1b46805ada9a8b43"
+        }
+      },
+      {
+        "group": "trained",
+        "circuit": "max",
+        "seed": 0,
+        "changed": true,
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "98e369c0260f2e4a9a7a49fd5d8b9a6a505c3b3f80b7eb49934a2ea71e4fc45a",
+          "50": "8775f0d4aba87921f619bfcfcfd08c9bd5ef97725c255e222780141e62acf4f5",
+          "100": "765d6a8b29e730df8ae71586f0d31693ca188bdc11b7c7474f448a2e94e94138"
+        }
+      },
+      {
+        "group": "frozen",
+        "circuit": "max",
+        "seed": 0,
+        "changed": false,
+        "rng_advanced": true,
+        "optimizer_unchanged": true,
+        "snapshot_sha256": {
+          "0": "98ffe35ff7de7693a67b535e2bd80e9f7120aed378398ecec80278bf4e3ae9aa",
+          "50": "24a346634ac1d9b0f4c786143dcfb06cb702d18b00e1265c3d109244bcc00d39",
+          "100": "6c182a73c41bb8b1df8583abfafa821a8438757e6ed78fc4f8345b0d8a77993b"
+        }
+      },
+      {
+        "group": "uniform",
+        "circuit": "max",
+        "seed": 0,
+        "changed": false,
+        "rng_advanced": true,
+        "optimizer_unchanged": true,
+        "snapshot_sha256": {
+          "0": "b3d2c48d8fe8908c34cc01a24d1cf9ed866d209c963fab220742d0e0dd7fed85",
+          "50": "a082cd60d37eb7548fd0e4b4381cee3bef464327743e6d1d7b25106beec89b38",
+          "100": "2adb10e3a9784a7cdfe849e768ef516da27b17486b18ea63ded16ef98d0cd3a1"
+        }
+      },
+      {
+        "group": "trained",
+        "circuit": "max",
+        "seed": 1,
+        "changed": true,
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "6f883de0235904ddbbe97355a306909a2396bbe9e8bed8d196b0ae5c48648e27",
+          "50": "d1971b75a92c8a4f71b0a1ba44695c056b55f5365bcae8e5e84b90b807ddab4e",
+          "100": "8c00185ca505ba8798657e66116867ab4d64f9a2acd3bb9da7015e68d514ded2"
+        }
+      },
+      {
+        "group": "frozen",
+        "circuit": "max",
+        "seed": 1,
+        "changed": false,
+        "rng_advanced": true,
+        "optimizer_unchanged": true,
+        "snapshot_sha256": {
+          "0": "ffda31f554cfb779bc3b37cf18a59313f8417f2ed61ae08b2624c5e0c41b8d28",
+          "50": "c3635bae1a30afd1b8c886d6b7ceb73f7ee2c51f977bce87966f5ebc952dd33b",
+          "100": "ac8165f0baaf30e19528588ac805cfaef8e5db99d0032a9f09daacff12ae684a"
+        }
+      },
+      {
+        "group": "uniform",
+        "circuit": "max",
+        "seed": 1,
+        "changed": false,
+        "rng_advanced": true,
+        "optimizer_unchanged": true,
+        "snapshot_sha256": {
+          "0": "5c3613f0f18def366b705d15dda1ae7e96c7e731b66c373c5abd1a0e1db46d24",
+          "50": "805bdc1674543558709d21f7c7832c471478a1ed9cf8ae413aee589dbb435876",
+          "100": "91c46e1526afb9f900501b12651eb6f40acd62c7efd29ffcde6f809002682e49"
+        }
+      },
+      {
+        "group": "trained",
+        "circuit": "max",
+        "seed": 2,
+        "changed": true,
+        "rng_advanced": true,
+        "snapshot_sha256": {
+          "0": "41f68e858a0cc623c99cee5ca8b5d140b843e0c5e8c5ddac5f41de781e42f28c",
+          "50": "0ee70e284d21e62822261b6f1241d18df9f0c64222a0acfa5cdca88a2b0cdb30",
+          "100": "11851d32c5a2fcf02c69f7be7ec892f70580bfddb344c4a4b5ab3518223c4903"
+        }
+      },
+      {
+        "group": "frozen",
+        "circuit": "max",
+        "seed": 2,
+        "changed": false,
+        "rng_advanced": true,
+        "optimizer_unchanged": true,
+        "snapshot_sha256": {
+          "0": "324df828212a8c118226d3602610bebf44c070dda4a18fc572b7021e24b49372",
+          "50": "3e4f193dc4c676a5525bfc43fde17f72f6e4ffc60c3fe568eddd06e6a6c4da0c",
+          "100": "c7ebde152aeddbbd9f3503e7baf009b00fdb6a54d848623826a5eec329cea456"
+        }
+      },
+      {
+        "group": "uniform",
+        "circuit": "max",
+        "seed": 2,
+        "changed": false,
+        "rng_advanced": true,
+        "optimizer_unchanged": true,
+        "snapshot_sha256": {
+          "0": "33a4e1534e3be0ce1c1aa545889ac78759b7787534c473eb5c640be8edd6b7a6",
+          "50": "520fccb0e3235395c0e5919d1711fbb8d00df86b50376d3ba5d5b1d9d1850408",
+          "100": "5fb9f2b7b5d5a604fd109df724e76dfdea8c78e71105bae36e318761634ab144"
+        }
+      }
+    ],
+    "errors": []
+  },
+  "physical_evaluation_banks": 36,
+  "physical_evaluation_rollouts": 1080,
+  "evaluation_actions": 10800,
+  "nonduplicated_policy_rollout_combinations": 900,
+  "independent_uniform_sequences_per_circuit": 30,
+  "raw_logs_csv_bootstrap_exact_match": true,
+  "cec_exports_hash_verified": 1110,
+  "prior_cec_netlists_hash_verified": 2217,
+  "evidence_archive_files_verified": 10687,
+  "inference_replays": [
+    {
+      "policy": "trained-100",
+      "circuit": "int2float",
+      "training_seed": 0,
+      "evaluation_seed": 10000,
+      "exact_match": true,
+      "weights_unchanged": true,
+      "checkpoint_unchanged": true,
+      "global_torch_rng_unchanged": true,
+      "folder": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness-supplement/20260927T145216869360/trained-100/int2float/seed-0"
+    },
+    {
+      "policy": "trained-100",
+      "circuit": "int2float",
+      "training_seed": 1,
+      "evaluation_seed": 10000,
+      "exact_match": true,
+      "weights_unchanged": true,
+      "checkpoint_unchanged": true,
+      "global_torch_rng_unchanged": true,
+      "folder": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness-supplement/20260927T145216869360/trained-100/int2float/seed-1"
+    },
+    {
+      "policy": "trained-100",
+      "circuit": "int2float",
+      "training_seed": 2,
+      "evaluation_seed": 10000,
+      "exact_match": true,
+      "weights_unchanged": true,
+      "checkpoint_unchanged": true,
+      "global_torch_rng_unchanged": true,
+      "folder": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness-supplement/20260927T145216869360/trained-100/int2float/seed-2"
+    },
+    {
+      "policy": "trained-100",
+      "circuit": "i2c",
+      "training_seed": 0,
+      "evaluation_seed": 10000,
+      "exact_match": true,
+      "weights_unchanged": true,
+      "checkpoint_unchanged": true,
+      "global_torch_rng_unchanged": true,
+      "folder": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness-supplement/20260927T145216869360/trained-100/i2c/seed-0"
+    },
+    {
+      "policy": "trained-100",
+      "circuit": "i2c",
+      "training_seed": 1,
+      "evaluation_seed": 10000,
+      "exact_match": true,
+      "weights_unchanged": true,
+      "checkpoint_unchanged": true,
+      "global_torch_rng_unchanged": true,
+      "folder": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness-supplement/20260927T145216869360/trained-100/i2c/seed-1"
+    },
+    {
+      "policy": "trained-100",
+      "circuit": "i2c",
+      "training_seed": 2,
+      "evaluation_seed": 10000,
+      "exact_match": true,
+      "weights_unchanged": true,
+      "checkpoint_unchanged": true,
+      "global_torch_rng_unchanged": true,
+      "folder": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness-supplement/20260927T145216869360/trained-100/i2c/seed-2"
+    },
+    {
+      "policy": "trained-100",
+      "circuit": "max",
+      "training_seed": 0,
+      "evaluation_seed": 10000,
+      "exact_match": true,
+      "weights_unchanged": true,
+      "checkpoint_unchanged": true,
+      "global_torch_rng_unchanged": true,
+      "folder": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness-supplement/20260927T145216869360/trained-100/max/seed-0"
+    },
+    {
+      "policy": "trained-100",
+      "circuit": "max",
+      "training_seed": 1,
+      "evaluation_seed": 10000,
+      "exact_match": true,
+      "weights_unchanged": true,
+      "checkpoint_unchanged": true,
+      "global_torch_rng_unchanged": true,
+      "folder": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness-supplement/20260927T145216869360/trained-100/max/seed-1"
+    },
+    {
+      "policy": "trained-100",
+      "circuit": "max",
+      "training_seed": 2,
+      "evaluation_seed": 10000,
+      "exact_match": true,
+      "weights_unchanged": true,
+      "checkpoint_unchanged": true,
+      "global_torch_rng_unchanged": true,
+      "folder": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness-supplement/20260927T145216869360/trained-100/max/seed-2"
+    },
+    {
+      "policy": "uniform",
+      "circuit": "int2float",
+      "training_seed": 0,
+      "evaluation_seed": 10000,
+      "exact_match": true,
+      "weights_unchanged": true,
+      "checkpoint_unchanged": true,
+      "global_torch_rng_unchanged": true,
+      "folder": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness-supplement/20260927T145216869360/uniform/int2float/seed-0"
+    },
+    {
+      "policy": "uniform",
+      "circuit": "i2c",
+      "training_seed": 0,
+      "evaluation_seed": 10000,
+      "exact_match": true,
+      "weights_unchanged": true,
+      "checkpoint_unchanged": true,
+      "global_torch_rng_unchanged": true,
+      "folder": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness-supplement/20260927T145216869360/uniform/i2c/seed-0"
+    },
+    {
+      "policy": "uniform",
+      "circuit": "max",
+      "training_seed": 0,
+      "evaluation_seed": 10000,
+      "exact_match": true,
+      "weights_unchanged": true,
+      "checkpoint_unchanged": true,
+      "global_torch_rng_unchanged": true,
+      "folder": "/Users/zhan/Downloads/test/DRiLLS/results/learning-effectiveness-supplement/20260927T145216869360/uniform/max/seed-0"
+    }
+  ],
+  "full_training_or_evaluation_rerun": false,
+  "statistical_fallacies_checked": {
+    "simpsons_paradox": "逐电路报告，保留逐训练种子效应；i2c种子1与均值方向不同。",
+    "ecological_fallacy": "独立训练单位为3个种子，90条配对序列不视为90次训练。",
+    "selection_bias": "使用完整种子集合和预定第100轮模型，未按最好模型筛选。",
+    "collider_bias": "含不可行序列时不筛选可行子集计算LUT收益。",
+    "base_rate_neglect": "max报告完整32/90与随机10/30可行数量。",
+    "regression_to_mean": "采用初始化与随机对照；未按极端训练结果挑选种子。",
+    "survivorship_bias": "36/36评估任务完成，全部不可行序列进入统计。",
+    "look_elsewhere_effect": "报告全部六个主对照；区间探索性，未做多重比较校正。",
+    "forking_paths": "复用原分析方法与统计种子，第50轮仅为过程观察；本次为既有证据补充核对。",
+    "correlation_causation": "不将网络改变或奖励提高等同搜索收益；不推断步数导致差异。",
+    "reverse_causality": "检查点先训练后固定评估，评估序列不参与更新；仍非新电路泛化验证。"
+  },
+  "statistical_scan_coverage": "11/11",
+  "original_evaluation_finished_at": "2026-09-26T19:38:51.829121+00:00"
+}

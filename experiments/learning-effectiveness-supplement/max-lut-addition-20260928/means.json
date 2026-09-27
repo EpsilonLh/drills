@@ -1,0 +1,32 @@
+{
+  "metric": "mean selected-candidate LUT across all evaluation sequences, including infeasible; feasible-first selection",
+  "source": "/Users/zhan/Downloads/test/DRiLLS/experiments/learning-effectiveness/evaluation.csv",
+  "source_sha256": "03f87b60f7466877bb2ad585c80cb8e3de54795352123b50a073b6973c71dd0d",
+  "uniform_shared_bank_training_seed": 0,
+  "values": [
+    {
+      "policy": "initial",
+      "count": 90,
+      "mean_luts": 789.5555555555555,
+      "feasible": 32
+    },
+    {
+      "policy": "trained-50",
+      "count": 90,
+      "mean_luts": 789.1555555555556,
+      "feasible": 32
+    },
+    {
+      "policy": "trained-100",
+      "count": 90,
+      "mean_luts": 788.4222222222222,
+      "feasible": 32
+    },
+    {
+      "policy": "uniform",
+      "count": 30,
+      "mean_luts": 790.2666666666667,
+      "feasible": 10
+    }
+  ]
+}
