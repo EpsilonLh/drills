@@ -63,4 +63,4 @@ python drills.py report fpga
 
 ## 实验评审
 
-参考结果是训练搜索中见过的最好可行解，不是独立测试成绩。设计是否可靠、这些数字说明什么、下一步改什么，见 [docs/fpga-experiment-review.md](docs/fpga-experiment-review.md)。
+参考结果是训练搜索中见过的最好可行解，不是独立测试成绩。设计是否可靠、这些数字说明什么、下一步改什么，见 [docs/fpga-experiment-review.md](docs/fpga-experiment-review.md)。四步学习率实验的结论与下一步见 [docs/four-step-lr-review.md](docs/four-step-lr-review.md)。
