@@ -63,4 +63,4 @@ python drills.py report fpga
 
 ## 实验评审
 
-参考结果是训练搜索中见过的最好可行解，不是独立测试成绩。设计是否可靠、这些数字说明什么、下一步改什么，见 [docs/fpga-experiment-review.md](docs/fpga-experiment-review.md)。四步学习率实验的结论与下一步见 [docs/four-step-lr-review.md](docs/four-step-lr-review.md)，后续执行计划见 [docs/four-step-followup-plan.md](docs/four-step-followup-plan.md)。滑动窗口回报实验的结论、奖励审计与下一步计划见 [docs/four-step-window-return-review.md](docs/four-step-window-return-review.md)。新奖励四步与十步实验的评审见 [docs/four-step-reward-review.md](docs/four-step-reward-review.md)。
+参考结果是训练搜索中见过的最好可行解，不是独立测试成绩。设计是否可靠、这些数字说明什么、下一步改什么，见 [docs/fpga-experiment-review.md](docs/fpga-experiment-review.md)。四步学习率实验的结论与下一步见 [docs/four-step-lr-review.md](docs/four-step-lr-review.md)，后续执行计划见 [docs/four-step-followup-plan.md](docs/four-step-followup-plan.md)。滑动窗口回报实验的结论、奖励审计与下一步计划见 [docs/four-step-window-return-review.md](docs/four-step-window-return-review.md)。新奖励四步与十步实验的评审见 [docs/four-step-reward-review.md](docs/four-step-reward-review.md)。完整改进过程与最终结论见 [docs/improvement-final-report.md](docs/improvement-final-report.md)。
